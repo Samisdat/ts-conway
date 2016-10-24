@@ -10,10 +10,11 @@
   "author": "samisdat",
   "license": "MIT",
   "devDependencies": {
-    "grunt-ts": "^6.0.0-beta.3",
+    "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-mocha-istanbul": "^5.0.2",
     "grunt-mocha-test": "^0.12.7",
+    "grunt-ts": "^6.0.0-beta.3",
     "istanbul": "^0.4.5",
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.5.2",
