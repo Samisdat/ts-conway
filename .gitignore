@@ -1,0 +1,7 @@
+node_modules/
+.tscache/
+coverage/
+html-report/
+javascript/**/*.js
+javascript/**/*.map
+tests/.baseDir.ts
