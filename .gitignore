@@ -1,0 +1,8 @@
+node_modules/
+.tscache/default/timestamp
+.tscache/
+coverage/
+html-report/
+ts/**/*.js
+ts/**/*.map
+test/*.js
