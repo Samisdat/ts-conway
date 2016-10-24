@@ -1,0 +1,11 @@
+{
+	"default": [],
+
+	"test": {
+        "description": "run tests",
+        "tasks": [
+        	"ts",        	
+            "mochaTest:typescript"
+        ]
+    }
+}
