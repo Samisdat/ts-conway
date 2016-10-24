@@ -2,13 +2,18 @@
   "name": "conway",
   "version": "0.1.0",
   "description": "conway's game of live in typescript",
+  "repository": "git@github.com:Samisdat/conway.git",
   "main": "index.js",
   "scripts": {
     "test": "test"
   },
-  "author": "bastian pertz",
+  "author": "samisdat",
   "license": "MIT",
   "devDependencies": {
     "grunt-ts": "^6.0.0-beta.3"
+    "grunt": "^1.0.1",
+    "load-grunt-config": "^0.19.2",
+    "load-grunt-tasks": "^3.5.2",
+    "time-grunt": "^1.4.0",
   }
 }
