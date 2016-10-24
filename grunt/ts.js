@@ -1,9 +1,13 @@
 var ts = {
 	default : {
 		options: {
-        	sourceMap: true
+        	sourceMap: true,
+	        fast: 'never'
       	},		
-		src: ["ts/**/*.ts"]
+		files: [{ 
+			src: ['typescript/**/*.ts'], 
+			dest: 'javascript' 
+		}]
 	}
 };
 
