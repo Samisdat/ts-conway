@@ -4,7 +4,7 @@
 	"test": {
         "description": "run tests",
         "tasks": [
-        	"ts",        	
+        	"ts:testing",        	
             "mochaTest:typescript"
         ]
     },
