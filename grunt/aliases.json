@@ -11,7 +11,7 @@
     "coverage": {
         "description": "run tests and generate coverage report",
         "tasks": [
-        	"ts",
+        	"ts:testing",
             "mocha_istanbul:coverage",
             "remapIstanbul"
         ]

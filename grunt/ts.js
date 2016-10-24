@@ -1,14 +1,12 @@
 var ts = {
-	default : {
-		options: {
-        	sourceMap: true,
-	        fast: 'never'
-      	},		
-		files: [{ 
-			src: ['typescript/**/*.ts'], 
-			dest: 'javascript' 
-		}]
-	}
+	production: {
+		src: ['lib/**/*.ts'], 
+ 		outDir: 'javascript/lib',
+	},
+	testing: {
+		src: ['tests/**/*.ts'], 
+ 		outDir: 'javascript/testing',
+	}	
 };
 
 module.exports = ts;
