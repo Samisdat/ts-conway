@@ -7,5 +7,13 @@
         	"ts",        	
             "mochaTest:typescript"
         ]
+    },
+    "coverage": {
+        "description": "run tests and generate coverage report",
+        "tasks": [
+        	"ts",
+            "mocha_istanbul:coverage",
+            "remapIstanbul"
+        ]
     }
 }
