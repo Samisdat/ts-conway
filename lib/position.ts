@@ -1,10 +1,17 @@
 export default class Position {
 
-    public readonly  x: Number;
-    public readonly  y: Number;
+    public readonly  x: number;
+    public readonly  y: number;
 
-    constructor(x:Number, y:Number) {
+    constructor(x:number, y:number) {
         this.x = x;
         this.y = y;
+    }
+
+    move(position: Position):Position{
+        return new Position(
+            this.x + position.x,
+            this.y + position.y,
+        );
     }
 }
