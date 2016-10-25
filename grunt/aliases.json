@@ -4,6 +4,7 @@
 	"test": {
         "description": "run tests",
         "tasks": [
+            "clean:testing",
         	"ts:testing",        	
             "mochaTest:typescript"
         ]
@@ -11,6 +12,8 @@
     "coverage": {
         "description": "run tests and generate coverage report",
         "tasks": [
+            "clean:testing",
+            "clean:coverage",
         	"ts:testing",
             "mocha_istanbul:coverage",
             "remapIstanbul"
