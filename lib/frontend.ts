@@ -36,7 +36,7 @@ export default class Frontend {
     public getPan(): Position {
         return this.pan;
     }
-        
+
     public setPan(position: Position): void {
         this.pan = position;;
     } 
@@ -46,7 +46,16 @@ export default class Frontend {
     }    
 
     public seed(position:Position):void {
+        position = this.reverseMap(position);
         this.habitat.seed(position);
+    }
+
+    private reverseMap(position:Position):Position{
+
+        position = position.move(this.zero.inverse());
+        position = position.move(this.pan.inverse());
+
+        return position;
     }
 
     public map(position:Position):Position{

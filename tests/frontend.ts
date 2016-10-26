@@ -17,6 +17,8 @@ describe('Frontend', () => {
             new Habitat()
         );
 
+        expect(frontend).to.be.instanceof(Frontend);        
+
     });
 
     it('seeding top right corner', () => {
@@ -36,11 +38,15 @@ describe('Frontend', () => {
          * 000
          */
         frontend.seed(
-            new Position(-1, -1)
+            new Position(0, 0)
         );
 
         expect(frontend.get()).to.be.deep.equal([
             new Position(0, 0),
+        ]);
+
+        expect(frontend.getHabitat().get()).to.be.deep.equal([
+            new Position(-1, -1),
         ]);
 
     });
@@ -62,7 +68,7 @@ describe('Frontend', () => {
          * 000
          */
         frontend.seed(
-            new Position(-1, -1)
+            new Position(0, 0)
         );
 
         expect(frontend.get()).to.be.deep.equal([
@@ -109,19 +115,19 @@ describe('Frontend', () => {
          * X0X
          */
         frontend.seed(
-            new Position(-1, -1)
+            new Position(0, 0)
         );
 
         frontend.seed(
-            new Position(1, -1)
+            new Position(2, 0)
         );
 
         frontend.seed(
-            new Position(-1, 1)
+            new Position(0, 2)
         );
 
         frontend.seed(
-            new Position(1, 1)
+            new Position(2, 2)
         );
 
         expect(frontend.get()).to.be.deep.equal([
@@ -129,6 +135,13 @@ describe('Frontend', () => {
             new Position(2, 0),
             new Position(0, 2),
             new Position(2, 2),
+        ]);
+
+        expect(frontend.getHabitat().get()).to.be.deep.equal([
+            new Position(-1, -1),
+            new Position(1, -1),
+            new Position(-1, 1),
+            new Position(1, 1),
         ]);
 
         console.log(frontend.toString());
@@ -147,15 +160,15 @@ describe('Frontend', () => {
         expect(frontend.get()).to.be.deep.equal([]);
         
         frontend.seed(
-            new Position(0, -1)
+            new Position(1, 0)
         );
         frontend.seed(
-            new Position(0, 0)
+            new Position(1, 1)
         );
         frontend.seed(
-            new Position(0, 1)
+            new Position(1, 2)
         );
-
+        
         expect(frontend.get()).to.be.deep.equal([
             new Position(1, 0),
             new Position(1, 1),
@@ -180,7 +193,8 @@ describe('Frontend', () => {
             new Position(1, 2)
         ]);
 
-        console.log(frontend.toString());        
+        console.log(frontend.toString()); 
+
     });
 
 });
