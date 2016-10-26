@@ -1,4 +1,7 @@
 var clean = {
+    production: [
+        'javascript/lib/'
+    ],
     testing: [
         'coverage/',
         'javascript/testing/'

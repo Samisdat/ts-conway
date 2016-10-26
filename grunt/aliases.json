@@ -1,6 +1,13 @@
 {
 	"default": [],
 
+	"tsc": {
+        "description": "run tests",
+        "tasks": [
+            "clean:production",
+        	"ts:production"        	
+        ]
+    },
 	"test": {
         "description": "run tests",
         "tasks": [
