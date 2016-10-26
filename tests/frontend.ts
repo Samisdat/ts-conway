@@ -43,8 +43,52 @@ describe('Frontend', () => {
             new Position(0, 0),
         ]);
 
-        console.log(frontend.toString());
+    });
 
+    it('seeding top right corner and pan one', () => {
+
+        let frontend = new Frontend(
+            3, 
+            3, 
+            new Habitat()
+        );
+
+        expect(frontend.get()).to.be.deep.equal([]);
+        
+        /** 
+         * seeding
+         * X00
+         * 000
+         * 000
+         */
+        frontend.seed(
+            new Position(-1, -1)
+        );
+
+        expect(frontend.get()).to.be.deep.equal([
+            new Position(0, 0),
+        ]);
+
+        expect(frontend.getPan().x).to.be.equal(0);
+        expect(frontend.getPan().y).to.be.equal(0);
+
+        frontend.panBy(new Position(1, 1));
+
+        expect(frontend.get()).to.be.deep.equal([
+            new Position(1, 1),
+        ]);
+        expect(frontend.getPan().x).to.be.equal(1);
+        expect(frontend.getPan().y).to.be.equal(1);
+
+        frontend.setPan(new Position(0, 2));
+
+        expect(frontend.get()).to.be.deep.equal([
+            new Position(0, 2),
+        ]);
+        expect(frontend.getPan().x).to.be.equal(0);
+        expect(frontend.getPan().y).to.be.equal(2);
+
+        console.log(frontend.toString());
 
     });
 
@@ -119,7 +163,7 @@ describe('Frontend', () => {
         ]);
 
         console.log(frontend.toString());
-        frontend.elapse();
+        frontend.getHabitat().elapse();
 
         expect(frontend.get()).to.be.deep.equal([
             new Position(1, 1),
@@ -128,7 +172,7 @@ describe('Frontend', () => {
         ]);        
         
         console.log(frontend.toString());
-        frontend.elapse();
+        frontend.getHabitat().elapse();
 
         expect(frontend.get()).to.be.deep.equal([
             new Position(1, 1),

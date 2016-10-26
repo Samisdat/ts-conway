@@ -29,11 +29,21 @@ export default class Frontend {
         this.habitat = habitat
     }
 
-    public elapse():void {
-
-        this.habitat.elapse();
-
+    public getHabitat(): Habitat {
+        return this.habitat;
+    }    
+    
+    public getPan(): Position {
+        return this.pan;
     }
+        
+    public setPan(position: Position): void {
+        this.pan = position;;
+    } 
+
+    public panBy(position: Position): void {
+        this.pan = this.pan.move(position);
+    }    
 
     public seed(position:Position):void {
         this.habitat.seed(position);
