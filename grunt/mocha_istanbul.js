@@ -5,7 +5,7 @@ var mochaIstanbul = {
             'javascript/testing/**/*.js'
         ],
         options:{
-			reportFormats: ['json']        	
+			reportFormats: ['json', 'lcov']        	
         }
 
     }

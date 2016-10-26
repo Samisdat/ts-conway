@@ -15,6 +15,7 @@ general:
 dependencies:
   override:
     - npm install -g grunt-cli
+    - npm install -g codeclimate-test-reporter
     - npm install
 
 ## The Build process itself
@@ -26,3 +27,5 @@ compile:
 test:
   override:
     - grunt coverage
+  post:
+    - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov-mapped.info

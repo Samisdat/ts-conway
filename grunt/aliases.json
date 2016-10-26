@@ -23,7 +23,8 @@
             "clean:coverage",
         	"ts:testing",
             "mocha_istanbul:coverage",
-            "remapIstanbul"
+            "remapIstanbul",
+            "lcov"
         ]
     }
 }
