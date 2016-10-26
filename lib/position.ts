@@ -8,10 +8,17 @@ export default class Position {
         this.y = y;
     }
 
-    move(position: Position):Position{
+    public move(position: Position):Position{
         return new Position(
             this.x + position.x,
-            this.y + position.y,
+            this.y + position.y
+        );
+    }
+
+    public inverse():Position{
+        return new Position(
+            -1 * this.x,
+            -1 * this.y
         );
     }
 }
