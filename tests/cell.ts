@@ -27,7 +27,7 @@ describe('Cell', () => {
         let position = new Position(1, 2);
         let cell =  new Cell(position);
         
-        expect(cell.x).to.be.equal(position.x);
+        expect(cell.x).to.be.not.equal(position.x);
         expect(cell.y).to.be.equal(position.y);
         expect(cell.position).to.be.equal(position);
 
