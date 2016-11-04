@@ -66,58 +66,45 @@ export default class Pattern {
         return this.height;        
     }
     
-    public mirrorVertical():Position[]{
+    public mirrorVertical():void{
 
-        let mirroredPositions:Position[] = [];        
         for(let i = 0, x = this.positions.length; i < x; i += 1){
 
-            let position:Position = this.positions[i];
 
-            let mirroredPosition:Position = new Position(
-                position.x,
-                this.width - 1 - position.y
+            this.positions[i] = new Position(
+                this.positions[i].x,
+                this.width - 1 - this.positions[i].y
             );
 
-            mirroredPositions.push( mirroredPosition);
        }
 
-       return mirroredPositions;
-
     }
-    public mirrorHorizontal():Position[]{
+    public mirrorHorizontal():void{
         
-        let mirroredPositions:Position[] = [];        
         for(let i = 0, x = this.positions.length; i < x; i += 1){
 
-            let position:Position = this.positions[i];
-
-            let mirroredPosition:Position = new Position(
-                this.width - 1 - position.x,
-                position.y
+            this.positions[i] = new Position(
+                this.width - 1 - this.positions[i].x,
+                this.positions[i].y
             );
 
-            mirroredPositions.push( mirroredPosition);
        }
-
-       return mirroredPositions;
 
     }
 
-    public rotate():Position[]{
+    public rotate(angle:number):void{
         let rotatedPositions:Position[] = [];        
         for(let i = 0, x = this.positions.length; i < x; i += 1){
 
             let position:Position = this.positions[i];
 
             let rotatedPosition:Position = new Position(
-                this.width - 1 - position.x,
-                position.y
+                position.y,
+                position.x
             );
 
             rotatedPositions.push( rotatedPosition);
        }
-
-       return rotatedPositions;
         
     }
     

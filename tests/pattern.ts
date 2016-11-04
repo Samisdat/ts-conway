@@ -86,7 +86,8 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern.mirrorHorizontal()).to.be.deep.equal(
+        pattern.mirrorHorizontal();
+        expect(pattern.get()).to.be.deep.equal(
             [new Position(2, 1)]
         );
 
@@ -139,8 +140,9 @@ describe('Pattern', () => {
                 [ 0, 0, 0, 0] 
             ]
         );
+        pattern.mirrorVertical();
 
-        expect(pattern.mirrorVertical()).to.be.deep.equal(
+        expect(pattern.get()).to.be.deep.equal(
             [
                 new Position(1, 2),
                 new Position(2, 2)
