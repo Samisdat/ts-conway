@@ -92,7 +92,7 @@ export default class Pattern {
 
     }
 
-    public rotate(angle:number):void{
+    private rotate90():void{
 
         let tmp:number[][] = [];
 
@@ -108,11 +108,6 @@ export default class Pattern {
 
         }    
         
-        for(let row of tmp){
-            console.log(row)        
-        }
-
-
         let rotate:number[][] = [];
 
         for(let x = 0; x < this.width; x += 1){
@@ -132,17 +127,36 @@ export default class Pattern {
             for(let x = 0; x < rotate[y].length; x += 1){
 
                 if(1 === rotate[y][x]){
-                    this.positions.push(
-                        new Position(
-                            x,
-                            y
-                        )
-                    )
+                    this.positions.push(new Position(x, y));
                 }
             }
 
         }
         
+
+    }
+
+    public getRotateSteps(angle:number):number{
+        let by90 = (angle % 360 ) / 90;
+        
+        if(0 <= by90){
+            return by90;
+        }
+
+        return 4 + by90;
+    };
+
+    public rotate(angle:number):void{
+
+        if(0 !== angle % 90){
+            throw new Error('angle must be 0 or a multiple of 90');
+        }
+
+        let by90 = this.getRotateSteps(angle);
+
+        for(let i = 0; i < by90; i += 1){
+            this.rotate90();
+        }
 
     }
     
