@@ -15,7 +15,8 @@ module.exports = function(grunt){
                 'javascript/testing/lib/habitat.js.map',
                 'javascript/testing/lib/livingcell.js.map',
                 'javascript/testing/lib/neighbours.js.map',
-                'javascript/testing/lib/position.js.map'                
+                'javascript/testing/lib/position.js.map',                
+                'javascript/testing/lib/pattern.js.map'                
             ],
             "./javascript/testing/lib/", 
             "./"
