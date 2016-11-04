@@ -93,19 +93,57 @@ export default class Pattern {
     }
 
     public rotate(angle:number):void{
-        let rotatedPositions:Position[] = [];        
-        for(let i = 0, x = this.positions.length; i < x; i += 1){
 
-            let position:Position = this.positions[i];
+        let tmp:number[][] = [];
 
-            let rotatedPosition:Position = new Position(
-                position.y,
-                position.x
-            );
+        for(let i = 0; i < this.height; i += 1){
+            tmp.push(
+                Array.apply(0, Array(this.width)).map(function () { return 0; })
+            )
+        } 
+            
+        for(let position of this.positions){
+    
+            tmp[position.y][position.x] = 1;
 
-            rotatedPositions.push( rotatedPosition);
-       }
+        }    
         
+        for(let row of tmp){
+            console.log(row)        
+        }
+
+
+        let rotate:number[][] = [];
+
+        for(let x = 0; x < this.width; x += 1){
+            
+            let row = [];
+
+            for(let y = 0; y < this.height; y += 1){
+
+                row.push(tmp[y][x])
+            }
+            rotate.push(row.reverse()) 
+        }
+
+        this.positions = [];        
+
+        for(let y = 0; y < rotate.length; y += 1){
+            for(let x = 0; x < rotate[y].length; x += 1){
+
+                if(1 === rotate[y][x]){
+                    this.positions.push(
+                        new Position(
+                            x,
+                            y
+                        )
+                    )
+                }
+            }
+
+        }
+        
+
     }
     
 }

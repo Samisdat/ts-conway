@@ -156,14 +156,21 @@ describe('Pattern', () => {
         let pattern =  new Pattern(
             'Scottish',
             [
-                [ 0, 0],
-                [ 1, 0] 
+                [ 1, 0, 0],
+                [ 0, 0, 1], 
+                [ 1, 0, 0] 
             ]
         );
 
-        expect(pattern.mirrorVertical()).to.be.deep.equal(
-            [new Position(0, 0)]
-        );
+        pattern.rotate(90)
+
+        expect(pattern.get()).to.be.deep.equal(
+            [
+                new Position(0, 0),
+                new Position(2, 0),
+                new Position(1, 2)
+            ]
+        );  
 
     });
     
