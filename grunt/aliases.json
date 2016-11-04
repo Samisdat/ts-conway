@@ -2,7 +2,7 @@
 	"default": [],
 
 	"tsc": {
-        "description": "run tests",
+        "description": "compile",
         "tasks": [
             "clean:production",
         	"ts:production"        	
