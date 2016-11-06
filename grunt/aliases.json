@@ -26,5 +26,12 @@
             "remapIstanbul",
             "lcov"
         ]
-    }
+    },
+    "run": {
+    "description": "build and run local server ",
+    "tasks": [
+      "connect",      
+      "watch"
+    ]
+  }    
 }
