@@ -4,11 +4,11 @@ var ts = {
 			sourceMap: false,
    			target: 'es5'			
 		},
-		src: ['src/**/*.ts'], 
+		src: ['src/ts/**/*.ts'], 
  		outDir: 'dist/javascript',
 	},
 	testing: {
-		src: ['tests/**/*.ts'], 
+		src: ['src/tests/**/*.ts'], 
  		outDir: 'javascript/testing',
 	}	
 };

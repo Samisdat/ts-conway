@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
-import Position from '../lib/position';
-import Cell from '../lib/cell';
+import Position from '../ts/position';
+import Cell from '../ts/cell';
 
-import LivingCell from '../lib/livingcell';
+import LivingCell from '../ts/livingcell';
 
 describe('LivingCell', () => {
 

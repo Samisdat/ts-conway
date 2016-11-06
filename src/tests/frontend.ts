@@ -1,9 +1,9 @@
 
 import { expect } from 'chai';
 
-import Position from '../lib/position';
-import Frontend from '../lib/frontend';
-import Habitat from '../lib/habitat';
+import Position from '../ts/position';
+import Frontend from '../ts/frontend';
+import Habitat from '../ts/habitat';
 
 describe('Frontend', () => {
 
