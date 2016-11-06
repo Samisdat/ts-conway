@@ -26,7 +26,7 @@ export default class Frontend {
             0
         );
 
-        this.habitat = habitat
+        this.habitat = habitat;
     }
 
     public getHabitat(): Habitat {
@@ -80,6 +80,12 @@ export default class Frontend {
         }
 
         return mapped;
+    }
+
+    public elapse():void {
+
+        this.habitat.elapse();
+
     }
 
     toString():string{
