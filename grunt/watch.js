@@ -5,10 +5,11 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
     var watch = {
         development: {
             files: [
-                'dist/**/*.html',
-                'lib/**/*.ts',
+                'src/**/*.html',
+                'src/**/*.ts',
             ],
             tasks: [
+                'copy:html',
                 'ts:production',
                 'browserify'
             ],

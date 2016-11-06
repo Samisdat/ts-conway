@@ -4,8 +4,8 @@ var ts = {
 			sourceMap: false,
    			target: 'es5'			
 		},
-		src: ['lib/**/*.ts'], 
- 		outDir: 'dist/javascript/lib',
+		src: ['src/**/*.ts'], 
+ 		outDir: 'dist/javascript',
 	},
 	testing: {
 		src: ['tests/**/*.ts'], 

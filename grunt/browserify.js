@@ -1,7 +1,7 @@
 var browserify = {
   dist: {
     files: {
-      'dist/conway.js': 'dist/javascript/lib/conway.js'
+      'dist/conway.js': 'dist/javascript/conway.js'
     },
     options: {
     	require: []

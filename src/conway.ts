@@ -24,6 +24,8 @@ var start = function () {
     frontend.elapse();
     console.log(frontend.get());
 
+    console.log('conway game of live')
+
 };
 
 start();
