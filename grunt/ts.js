@@ -9,7 +9,7 @@ var ts = {
 	},
 	testing: {
 		src: ['src/tests/**/*.ts'], 
- 		outDir: 'javascript/testing',
+ 		outDir: 'testing',
 	}	
 };
 

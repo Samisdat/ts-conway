@@ -1,10 +1,10 @@
 var clean = {
     production: [
-        'javascript/lib/'
+        'dist/'
     ],
     testing: [
-        'coverage/',
-        'javascript/testing/'
+        'testing/', 
+        'coverage/' 
     ],
     coverage: [
         'html-report/'

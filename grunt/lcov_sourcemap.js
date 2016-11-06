@@ -10,19 +10,19 @@ module.exports = function(grunt){
         lcovSourcemap(
             "./coverage/lcov.info", 
             [
-                'javascript/testing/lib/cell.js.map',
-                'javascript/testing/lib/frontend.js.map',
-                'javascript/testing/lib/habitat.js.map',
-                'javascript/testing/lib/livingcell.js.map',
-                'javascript/testing/lib/neighbours.js.map',
-                'javascript/testing/lib/position.js.map',                
-                'javascript/testing/lib/pattern.js.map'                
+                './testing/ts/cell.js.map',
+                './testing/ts/frontend.js.map',
+                './testing/ts/habitat.js.map',
+                './testing/ts/livingcell.js.map',
+                './testing/ts/neighbours.js.map',
+                './testing/ts/position.js.map',                
+                './testing/ts/pattern.js.map'                
             ],
-            "./javascript/testing/lib/", 
+            "./testing/src/", 
             "./"
         ).then(function (lcov) {
 
-            lcov = lcov.replace(/.\/..\/..\/..\/lib/g, 'lib');
+            lcov = lcov.replace(/.\/..\/..\/..\/src/g, 'src');
 
             fs.writeFile('coverage/lcov-mapped.info', lcov, function(err) {
                 if (err) {
