@@ -28,10 +28,13 @@
         ]
     },
     "run": {
-    "description": "build and run local server ",
-    "tasks": [
-      "connect",      
-      "watch"
-    ]
-  }    
+        "description": "build and run local server ",
+        "tasks": [
+            "copy:html",
+            "ts:production",
+            "browserify",
+            "connect",      
+            "watch"
+        ]
+    }    
 }
