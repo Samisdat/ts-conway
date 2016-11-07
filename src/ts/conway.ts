@@ -1,31 +1,16 @@
+import * as $ from 'jquery';
+
 import Position from './position';
 import Habitat from './habitat';
 import Frontend from './frontend';
+import CanvasRenderer from './canvas-renderer'
 
-var start = function () {
+$(document).ready(function(){
 
-  let frontend = new Frontend(
-        25, 
-        10, 
-        new Habitat()
+    let renderer = new CanvasRenderer(
+        $('#conway')
     );
 
-    frontend.seed(
-        new Position(1, 0)
-    );
-    frontend.seed(
-        new Position(1, 1)
-    );
-    frontend.seed(
-        new Position(1, 2)
-    );
+    renderer.render();
 
-    console.log(frontend.get());
-    frontend.elapse();
-    console.log(frontend.get());
-
-    console.log('conway game of live')
-
-};
-
-start();
+  });
