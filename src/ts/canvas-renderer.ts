@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 
 import Position from './position';
+import Habitat from './habitat';
 
 export default class CanvasRenderer {
 
@@ -17,6 +18,8 @@ export default class CanvasRenderer {
         dark: '#000',
         light: '#fff'
     };
+    private habitat: Habitat;
+
     private cols: number;
     private rows: number;
 
@@ -29,6 +32,7 @@ export default class CanvasRenderer {
         this.setCanvas($element);
 
         console.log(this.ctx)
+        this.setHabitat();
     }
 
     private setCanvas($element: JQuery):void{
@@ -125,6 +129,13 @@ export default class CanvasRenderer {
         }
 
     }    
+    
+    public getHabitat(): Habitat {
+        return this.habitat;
+    }    
+
+    private setHabitat():void {
+        this.habitat = new Habitat();
     }    
     
     public getPan(): Position {
@@ -138,4 +149,21 @@ export default class CanvasRenderer {
     public panBy(position: Position): void {
         this.pan = this.pan.move(position);
     }    
+    public seed(position:Position):void {
+        position = this.reverseMap(position);
+        this.habitat.seed(position);
+    }
+
+    private reverseMap(position:Position):Position{
+
+        position = position.move(this.zero.inverse());
+        position = position.move(this.pan.inverse());
+
+        return position;
+    }
+    public elapse():void {
+
+        this.habitat.elapse();
+
+    }
 }
