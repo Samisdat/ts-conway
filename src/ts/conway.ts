@@ -11,7 +11,29 @@ $(document).ready(function(){
         $('#conway')
     );
 
-    renderer.render();
+    const habitat = renderer.getHabitat();
+
+    habitat.seed(
+        new Position(-1, 0)
+    );
+    habitat.seed(
+        new Position(0, 0)
+    );
+    habitat.seed(
+        new Position(1, 0)
+    );
+
+    /*
+    habitat.seed(
+        new Position(0, -1)
+    );
+
+    habitat.seed(
+        new Position(0, 1)
+    );
+    */
+
+
     $('.control .top').click(function(){
         console.log(renderer.panBy(new Position( 0, -1)))
     });
@@ -27,5 +49,10 @@ $(document).ready(function(){
     $('.control .right').click(function(){
         console.log(renderer.panBy(new Position( 1, 0)))
     });
+
+    window.setInterval(() => {
+        renderer.elapse();
+        renderer.render();
+    }, 1000);
 
   });
