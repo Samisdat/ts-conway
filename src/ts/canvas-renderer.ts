@@ -4,14 +4,14 @@ import Position from './position';
 
 export default class CanvasRenderer {
 
-    private $element;
-    private ctx;
+    private $element:JQuery;
+    private ctx:CanvasRenderingContext2D;
 
-    private canvasWidth:number = 500;
-    private canvasHeight:number = 400;
+    private canvasWidth:number;
+    private canvasHeight:number;
 
-    public cellWidth:number;
-    public cellHeight:number;
+    public cellWidth:number = 40;
+    public cellHeight:number = 40;
 
     private bgColors = {
         dark: '#000',
@@ -43,7 +43,22 @@ export default class CanvasRenderer {
             this.$element.append($('<canvas>'));
         }
 
-        this.ctx = this.$element.find('canvas').get(0).getContext('2d');
+        const canvas = this.$element.find('canvas').get(0) as HTMLCanvasElement;
+
+        this.ctx = canvas.getContext('2d');
+
+        this.canvasWidth = this.$element.width();
+        this.canvasHeight = this.$element.height();
+
+        // canvas is getting blury when these stunts are left
+        $(canvas).css({
+            width: this.canvasWidth + 'px',
+            height: this.canvasHeight + 'px'
+        });
+
+        this.ctx.canvas.width = this.canvasWidth;
+        this.ctx.canvas.height = this.canvasHeight;
+
         this.cols = this.canvasWidth / this.cellWidth;
         this.rows = this.canvasHeight/this.cellHeight;
 
@@ -58,11 +73,58 @@ export default class CanvasRenderer {
 
     }
 
+    private chess():void{
+
+        let color = '#FFAAAA';
+        let force = false
+        for(let y = 0; y < this.rows; y += 1){
+            for(let x = 0; x < this.cols; x += 1){
+                color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';
+
+                if(true === force){
+                    force = false;
+                    color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';                    
+                }
+
+                this.ctx.fillStyle = color;   
+                this.ctx.fillRect(
+                    x * this.cellWidth,  
+                    y * this.cellHeight, 
+                    this.cellWidth, 
+                    this.cellHeight
+                );
+
+                
+            }
+
+            if(0 === this.rows % 2){
+                force = true;
+            }            
+        }
+    }
     public render():void{
 
-        this.ctx.fillStyle = this.bgColors.dark;   
+        this.ctx.fillStyle = this.bgColors.light;   
         this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
+        this.chess();
+
+        const positions:Position[] = this.get();
+
+        this.ctx.fillStyle = this.bgColors.dark;   
+
+        for(let position of positions){
+
+            this.ctx.fillRect(
+                position.x * this.cellWidth,
+                position.y * this.cellHeight,
+                this.cellWidth, this.cellHeight
+            );
+
+
+        }
+
+    }    
     }    
     
     public getPan(): Position {
