@@ -161,6 +161,31 @@ export default class CanvasRenderer {
 
         return position;
     }
+
+    public map(position:Position):Position{
+
+        let mapped = this.zero.move(position);
+        let moved = mapped.move(this.pan);
+
+        return moved;
+    }
+
+    public get():Position[] {
+
+        var mapped:Position[] = [];     
+
+        var living:Position[] = this.habitat.get();
+
+        for(let position of living){
+            let map = this.map(position);
+
+            mapped.push(map);
+            
+        }
+
+        return mapped;
+    }
+
     public elapse():void {
 
         this.habitat.elapse();
