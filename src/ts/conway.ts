@@ -12,5 +12,20 @@ $(document).ready(function(){
     );
 
     renderer.render();
+    $('.control .top').click(function(){
+        console.log(renderer.panBy(new Position( 0, -1)))
+    });
+
+    $('.control .bottom').click(function(){
+        console.log(renderer.panBy(new Position( 0, 1)))
+    });
+
+    $('.control .left').click(function(){
+        console.log(renderer.panBy(new Position( -1, 0)))
+    });
+
+    $('.control .right').click(function(){
+        console.log(renderer.panBy(new Position( 1, 0)))
+    });
 
   });

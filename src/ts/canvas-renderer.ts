@@ -17,6 +17,12 @@ export default class CanvasRenderer {
         dark: '#000',
         light: '#fff'
     };
+    private cols: number;
+    private rows: number;
+
+    private zero: Position;
+
+    private pan: Position;
 
     constructor($element: JQuery) {
 
@@ -38,6 +44,17 @@ export default class CanvasRenderer {
         }
 
         this.ctx = this.$element.find('canvas').get(0).getContext('2d');
+        this.cols = this.canvasWidth / this.cellWidth;
+        this.rows = this.canvasHeight/this.cellHeight;
+
+        this.zero = new Position(
+            Math.floor(this.cols/2),
+            Math.floor(this.rows/2)
+        );
+        this.pan = new Position(
+            0,
+            0
+        );
 
     }
 
@@ -48,4 +65,15 @@ export default class CanvasRenderer {
 
     }    
     
+    public getPan(): Position {
+        return this.pan;
+    }
+
+    public setPan(position: Position): void {
+        this.pan = position;
+    } 
+
+    public panBy(position: Position): void {
+        this.pan = this.pan.move(position);
+    }    
 }
