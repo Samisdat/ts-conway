@@ -11,8 +11,8 @@ export default class CanvasRenderer {
     private canvasWidth:number;
     private canvasHeight:number;
 
-    public cellWidth:number = 40;
-    public cellHeight:number = 40;
+    public cellWidth:number = 80;
+    public cellHeight:number = 80;
 
     private bgColors = {
         dark: '#000',
@@ -70,19 +70,38 @@ export default class CanvasRenderer {
             Math.floor(this.cols/2),
             Math.floor(this.rows/2)
         );
+        
+        let panX = 0;
+        let panY = 0;
+
+        if(0 === this.rows % 2){
+            panY = -0.5;
+        }            
+
+        if(0 === this.cols % 2){
+            panX = -0.5;
+        }            
+
+        this.pan = new Position(
+            panX,
+            panY
+        );        
+
         this.pan = new Position(
             0,
             0
-        );
+        );        
 
     }
 
     private chess():void{
 
         let color = '#FFAAAA';
-        let force = false
-        for(let y = 0; y < this.rows; y += 1){
-            for(let x = 0; x < this.cols; x += 1){
+        let force = false;
+
+        for(let x = 0; x < this.cols; x += 1){
+
+            for(let y = 0; y < this.rows; y += 1){
                 color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';
 
                 if(true === force){
@@ -90,10 +109,13 @@ export default class CanvasRenderer {
                     color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';                    
                 }
 
+                let tilePos = new Position(x, y);
+                tilePos = tilePos.move(this.pan);
+
                 this.ctx.fillStyle = color;   
                 this.ctx.fillRect(
-                    x * this.cellWidth,  
-                    y * this.cellHeight, 
+                    tilePos.x * this.cellWidth,  
+                    tilePos.y * this.cellHeight, 
                     this.cellWidth, 
                     this.cellHeight
                 );
@@ -101,7 +123,7 @@ export default class CanvasRenderer {
                 
             }
 
-            if(0 === this.rows % 2){
+            if(0 === this.cols % 2){
                 force = true;
             }            
         }
