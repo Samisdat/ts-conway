@@ -83,9 +83,11 @@ export default class Control {
             let action = $(this).data('action');
             let value = $(this).data('value');
 
-            if('zoom' === action){
+            if('pan' === action){
+                control.setPan(value);
+            }
+            else if('zoom' === action){
                 control.setZoom(value);
-                console.log(control.getZoom())
             }
         });
     }
@@ -116,6 +118,44 @@ export default class Control {
 
     public getPan():Position{
         return this.pan;
+    }
+
+    public setPan(mode:string):void{
+
+        let panX = 0;
+        let panY = 0;
+
+        if('top'=== mode){
+            panY = -1;
+        }
+        else if('bottom'=== mode){
+            panY = 1;            
+        }
+        else if('left'=== mode){
+            panX = -1;
+        }
+        else if('right'=== mode){
+            panX = 1;            
+        }
+
+        if(this.minPanTop > this.pan.y + panY){
+            panY = 0;
+        }
+        if(this.minPanLeft > this.pan.x + panX){
+            panX = 0;
+        }
+
+        if(this.minPanBottom < this.pan.y + panY){
+            panY = 0;
+        }
+        if(this.minPanRight < this.pan.x + panX){
+            panX = 0;
+        }
+
+        const panBy = new Position(panX, panY);
+
+        this.pan = this.pan.move(panBy);
+
     }
 
 }
