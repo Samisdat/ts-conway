@@ -40,6 +40,7 @@ export default class Control {
         this.createPanControl();
         this.createZoomControl();
 
+        this.addEventListener();
     }
 
     private createControl():void{
@@ -82,8 +83,44 @@ export default class Control {
 
     }
 
+    private addEventListener():void{
+
+        const control = this;
+
+        $(this.canvasWrap).on('click', '.control div[data-action]', function(){
+
+            let action = $(this).data('action');
+            let value = $(this).data('value');
+
+            if('zoom' === action){
+                control.setZoom(value);
+                console.log(control.getZoom())
+            }
+        });
+    }
+
     public getZoom():number{
         return this.zoom;
+    }
+    public setZoom(mode:string){
+
+        let modifier = 1;
+
+        if(1 > this.zoom){
+            modifier = 0.1
+        }
+        else if(1 === this.zoom && 'zoom-out' === mode){
+            modifier = 0.1
+        }
+
+        if('zoom-out' === mode){
+            modifier = -1 * modifier;
+        }
+
+        if(this.minZoom <= this.zoom + modifier && this.maxZoom >= this.zoom + modifier){
+            this.zoom = Math.round( (this.zoom + modifier) * 10 ) / 10;;
+        }
+
     }
 
     public getPan():Position{
