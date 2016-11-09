@@ -59,6 +59,8 @@ export default class Control {
         $(pan).append(this.getControlElement('pan', 'bottom', 'arrow-down'));
         $(pan).append(this.getControlElement('pan', 'left', 'arrow-left'));
         $(pan).append(this.getControlElement('pan', 'right', 'arrow-right'));
+
+        this.control.append(pan);
     }
 
     private createZoomControl():void{
@@ -69,6 +71,7 @@ export default class Control {
         $(zoom).append(this.getControlElement('zoom', 'zoom-in', 'search-plus'));
         $(zoom).append(this.getControlElement('zoom', 'zoom-out', 'search-minus'));
 
+        this.control.append(zoom);
     }
 
     private addEventListener():void{
