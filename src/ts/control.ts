@@ -20,18 +20,6 @@ export default class Control {
 
     private pan:Position = new Position(0, 0); 
 
-    private maxZoom: number = 5;
-    private minZoom: number = 0.5;
-
-    private zoom: number = 1;
-
-    private minPanTop: number = -30;
-    private minPanBottom: number = 30;
-    private minPanLeft: number = -30;
-    private minPanRight: number = 30;
-
-    private pan:Position = new Position(0, 0); 
-
     constructor(canvasWrap: HTMLElement) {
 
         this.canvasWrap = canvasWrap;
