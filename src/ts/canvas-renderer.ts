@@ -12,8 +12,8 @@ export default class CanvasRenderer {
     private canvasWidth:number;
     private canvasHeight:number;
 
-    public cellWidth:number = 80;
-    public cellHeight:number = 80;
+    public cellWidth:number = 40;
+    public cellHeight:number = 40;
 
     private bgColors = {
         dark: '#000',
