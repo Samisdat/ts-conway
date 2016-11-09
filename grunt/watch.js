@@ -10,6 +10,8 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
             ],
             tasks: [
                 'copy:html',
+                'copy:fontawesome_css',
+                'copy:fontawesome_font',
                 'ts:production',
                 'browserify'
             ],

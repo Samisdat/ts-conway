@@ -30,7 +30,10 @@
     "run": {
         "description": "build and run local server ",
         "tasks": [
+            "clean:production",
             "copy:html",
+            "copy:fontawesome_css",
+            "copy:fontawesome_font",
             "ts:production",
             "browserify",
             "connect",      

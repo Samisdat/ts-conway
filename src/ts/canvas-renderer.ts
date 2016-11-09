@@ -2,6 +2,7 @@ import * as $ from 'jquery';
 
 import Position from './position';
 import Habitat from './habitat';
+import Control from './control';
 
 export default class CanvasRenderer {
 
@@ -27,11 +28,13 @@ export default class CanvasRenderer {
 
     private pan: Position;
 
+    private control:Control;
     constructor($element: JQuery) {
 
         this.setCanvas($element);
 
         console.log(this.ctx)
+        this.control = new Control($element.get(0));
         this.setHabitat();
     }
 
