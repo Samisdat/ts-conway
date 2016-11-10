@@ -214,12 +214,10 @@ export default class CanvasRenderer {
 
     public elapse():void {
 
-        /*
         window.setInterval(() => {
             this.habitat.elapse();
             }
-            ,1000
+            ,600
         );    
-        */
     }
 }
