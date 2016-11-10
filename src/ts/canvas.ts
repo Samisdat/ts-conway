@@ -1,18 +1,21 @@
 
 export default class Canvas {
 
-    private ctx: CanvasRenderingContext2D;
+    private canvasContext: CanvasRenderingContext2D;
 
-    constructor(ctx: CanvasRenderingContext2D) {
-        this.ctx = ctx;
+    constructor(canvasContext: CanvasRenderingContext2D) {
+        this.canvasContext = canvasContext;
     }
 
+    get ctx():CanvasRenderingContext2D{
+        return this.canvasContext;
+    }
     get width():number{
-        return this.ctx.canvas.width;
+        return this.canvasContext.canvas.width;
     }
 
     get height():number{
-        return this.ctx.canvas.height;
+        return this.canvasContext.canvas.height;
     }    
     
 }
