@@ -3,11 +3,14 @@ import * as $ from 'jquery';
 import Position from './position';
 import Habitat from './habitat';
 import Control from './control';
+import Checkerboard from './checkerboard';
+import Canvas from './canvas';
 
 export default class CanvasRenderer {
 
     private $element:JQuery;
-    private ctx:CanvasRenderingContext2D;
+
+    private canvas:Canvas;
 
     private canvasWidth:number;
     private canvasHeight:number;
@@ -15,10 +18,6 @@ export default class CanvasRenderer {
     public cellWidth:number = 40;
     public cellHeight:number = 40;
 
-    private bgColors = {
-        dark: '#000',
-        light: '#fff'
-    };
     private habitat: Habitat;
 
     private cols: number;
@@ -32,6 +31,8 @@ export default class CanvasRenderer {
 
     private panStep:number = 0.1;
 
+    private background:Checkerboard;
+
     constructor($element: JQuery) {
 
         this.control = new Control($element.get(0));
@@ -41,9 +42,13 @@ export default class CanvasRenderer {
         this.setCanvas($element);
 
         this.setHabitat();
+
+        this.background = new Checkerboard(this.canvas, '#D46A6A', '#FFAAAA');
     }
 
     private setCanvas($element: JQuery):void{
+
+        console.log('setCanvas')
 
         if(undefined === $element.get(0)){
             throw new Error('jquery selector does not match an element');
@@ -57,22 +62,23 @@ export default class CanvasRenderer {
 
         const canvas = this.$element.find('canvas').get(0) as HTMLCanvasElement;
 
-        this.ctx = canvas.getContext('2d');
+        const canvasWidth = this.$element.width();
+        const canvasHeight = this.$element.height();
 
-        this.canvasWidth = this.$element.width();
-        this.canvasHeight = this.$element.height();
+        const ctx = canvas.getContext('2d');
+        ctx.canvas.width = canvasWidth;
+        ctx.canvas.height =canvasHeight;
+
+        this.canvas = new Canvas(ctx);
 
         // canvas is getting blury when these stunts are left
         $(canvas).css({
-            width: this.canvasWidth + 'px',
-            height: this.canvasHeight + 'px'
+            width: canvasWidth + 'px',
+            height: canvasHeight + 'px'
         });
 
-        this.ctx.canvas.width = this.canvasWidth;
-        this.ctx.canvas.height = this.canvasHeight;
-
-        this.cols = this.canvasWidth / this.cellWidth;
-        this.rows = this.canvasHeight/this.cellHeight;
+        this.cols = this.canvas.width / this.cellWidth;
+        this.rows = this.canvas.height/this.cellHeight;
 
         this.zero = new Position(
             Math.floor(this.cols/2),
@@ -101,41 +107,6 @@ export default class CanvasRenderer {
         );
 
         this.control.overwritePan(pan);        
-    }
-
-    private chess():void{
-
-        let color = '#FFAAAA';
-        let force = false;
-
-        for(let x = 0; x < this.cols; x += 1){
-
-            for(let y = 0; y < this.rows; y += 1){
-                color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';
-
-                if(true === force){
-                    force = false;
-                    color = ('#FFAAAA' === color) ? '#D46A6A' : '#FFAAAA';                    
-                }
-
-                let tilePos = new Position(x, y);
-                tilePos = tilePos.move(this.pan);
-                
-                this.ctx.fillStyle = color;   
-                this.ctx.fillRect(
-                    tilePos.x * this.cellWidth,  
-                    tilePos.y * this.cellHeight, 
-                    this.cellWidth, 
-                    this.cellHeight
-                );
-
-                
-            }
-
-            if(0 === this.cols % 2){
-                force = true;
-            }            
-        }
     }
 
     public update():void{
@@ -169,30 +140,27 @@ export default class CanvasRenderer {
                 Math.round(this.pan.x * 1000) / 1000,
                 Math.round(this.pan.y * 1000) / 1000,
             );
-            console.log(this.pan, actualPan)
+
         }
+
+        this.background.update(this.cellWidth, this.pan);
     }
 
     public render():void{
 
-        this.ctx.fillStyle = this.bgColors.light;   
-        this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
-
-        this.chess();
+        this.background.render();
 
         const positions:Position[] = this.get();
 
-        this.ctx.fillStyle = this.bgColors.dark;   
+        this.canvas.ctx.fillStyle = this.bgColors.dark;   
 
         for(let position of positions){
 
-            this.ctx.fillRect(
+            this.canvas.ctx.fillRect(
                 position.x * this.cellWidth,
                 position.y * this.cellHeight,
                 this.cellWidth, this.cellHeight
             );
-
-
         }
 
     }    
