@@ -120,6 +120,10 @@ export default class Control {
         return this.pan;
     }
 
+    public overwritePan(position:Position):void{
+        this.pan = position;
+    }
+
     public setPan(mode:string):void{
 
         let panX = 0;

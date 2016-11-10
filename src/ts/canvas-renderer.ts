@@ -26,15 +26,15 @@ export default class CanvasRenderer {
 
     private zero: Position;
 
-    private pan: Position;
-
     private control:Control;
+
     constructor($element: JQuery) {
+
+        this.control = new Control($element.get(0));
+        console.log(this.control)
 
         this.setCanvas($element);
 
-        console.log(this.ctx)
-        this.control = new Control($element.get(0));
         this.setHabitat();
     }
 
@@ -83,18 +83,19 @@ export default class CanvasRenderer {
 
         if(0 === this.cols % 2){
             panX = -0.5;
-        }            
-
-        this.pan = new Position(
+        }             
+         
+        let pan = new Position(
             panX,
             panY
         );        
 
-        this.pan = new Position(
+        pan = new Position(
             0,
             0
-        );        
+        );
 
+        this.control.overwritePan(pan);        
     }
 
     private chess():void{
@@ -113,8 +114,8 @@ export default class CanvasRenderer {
                 }
 
                 let tilePos = new Position(x, y);
-                tilePos = tilePos.move(this.pan);
-
+                tilePos = tilePos.move(this.control.getPan());
+                
                 this.ctx.fillStyle = color;   
                 this.ctx.fillRect(
                     tilePos.x * this.cellWidth,  
@@ -164,15 +165,15 @@ export default class CanvasRenderer {
     }    
     
     public getPan(): Position {
-        return this.pan;
+        return this.control.getPan();
     }
 
     public setPan(position: Position): void {
-        this.pan = position;
+        this.control.overwritePan(position);
     } 
 
     public panBy(position: Position): void {
-        this.pan = this.pan.move(position);
+        this.control.getPan().move(position);
     }    
     public seed(position:Position):void {
         position = this.reverseMap(position);
@@ -182,7 +183,7 @@ export default class CanvasRenderer {
     private reverseMap(position:Position):Position{
 
         position = position.move(this.zero.inverse());
-        position = position.move(this.pan.inverse());
+        position = position.move(this.control.getPan().inverse());
 
         return position;
     }
@@ -190,7 +191,7 @@ export default class CanvasRenderer {
     public map(position:Position):Position{
 
         let mapped = this.zero.move(position);
-        let moved = mapped.move(this.pan);
+        let moved = mapped.move(this.control.getPan());
 
         return moved;
     }
@@ -213,7 +214,12 @@ export default class CanvasRenderer {
 
     public elapse():void {
 
-        this.habitat.elapse();
-
+        /*
+        window.setInterval(() => {
+            this.habitat.elapse();
+            }
+            ,1000
+        );    
+        */
     }
 }
