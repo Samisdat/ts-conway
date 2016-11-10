@@ -28,10 +28,15 @@ export default class CanvasRenderer {
 
     private control:Control;
 
+    private pan:Position;
+
+    private panStep:number = 0.1;
+
     constructor($element: JQuery) {
 
         this.control = new Control($element.get(0));
-        console.log(this.control)
+
+        this.pan = this.control.getPan();
 
         this.setCanvas($element);
 
@@ -114,7 +119,7 @@ export default class CanvasRenderer {
                 }
 
                 let tilePos = new Position(x, y);
-                tilePos = tilePos.move(this.control.getPan());
+                tilePos = tilePos.move(this.pan);
                 
                 this.ctx.fillStyle = color;   
                 this.ctx.fillRect(
@@ -132,6 +137,42 @@ export default class CanvasRenderer {
             }            
         }
     }
+
+    public update():void{
+        let actualPan = this.control.getPan();
+
+        if(false === actualPan.compare(this.pan)){
+
+            var moveX = 0;
+            var moveY = 0;
+
+            if(this.pan.x > actualPan.x){
+                moveX = -1 * this.panStep;
+            }
+            else if(this.pan.x < actualPan.x){
+                moveX = this.panStep;
+            }
+
+            if(this.pan.y > actualPan.y){
+                moveY = -1 * this.panStep;
+            }
+            else if(this.pan.y < actualPan.y){
+                moveY = this.panStep;
+            }
+
+
+            const move = new Position(moveX, moveY);
+
+            this.pan = this.pan.move(move);
+
+            this.pan = new Position(
+                Math.round(this.pan.x * 1000) / 1000,
+                Math.round(this.pan.y * 1000) / 1000,
+            );
+            console.log(this.pan, actualPan)
+        }
+    }
+
     public render():void{
 
         this.ctx.fillStyle = this.bgColors.light;   
@@ -191,7 +232,7 @@ export default class CanvasRenderer {
     public map(position:Position):Position{
 
         let mapped = this.zero.move(position);
-        let moved = mapped.move(this.control.getPan());
+        let moved = mapped.move(this.pan);
 
         return moved;
     }

@@ -36,6 +36,7 @@ $(document).ready(function(){
 
     let loop = function(){
 
+        renderer.update();
         renderer.render();
 
         window.requestAnimationFrame(loop);    
