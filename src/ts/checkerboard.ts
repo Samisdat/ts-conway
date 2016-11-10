@@ -10,6 +10,13 @@ export default class Checkerboard {
     private cellWidth: number;
     private pan: Position;
 
+    /*
+    private startColors:string[][] = [
+        ['#FFAAAA', '#D46A6A'],
+        ['#D46A6A', '#FFAAAA']
+    ];*/
+
+
     constructor(canvas: Canvas, darkColor:string, lightColor:string) {
         this.canvas = canvas;
 
