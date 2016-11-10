@@ -21,4 +21,10 @@ export default class Position {
             -1 * this.y
         );
     }
+
+    public compare(position:Position):Boolean{
+
+        return (position.x === this.x && position.y === this.y);        
+
+    }
 }
