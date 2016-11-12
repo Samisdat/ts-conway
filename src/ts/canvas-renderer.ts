@@ -29,9 +29,14 @@ export default class CanvasRenderer {
 
     private pan:Position;
 
-    private panStep:number = 0.1;
+    private panStep:number = 0.05;
 
     private background:Checkerboard;
+
+    private bgColors = {
+        dark: '#000',
+        light: '#fff'
+    };
 
     constructor($element: JQuery) {
 
@@ -47,8 +52,6 @@ export default class CanvasRenderer {
     }
 
     private setCanvas($element: JQuery):void{
-
-        console.log('setCanvas')
 
         if(undefined === $element.get(0)){
             throw new Error('jquery selector does not match an element');
@@ -142,7 +145,6 @@ export default class CanvasRenderer {
             );
 
         }
-
         this.background.update(this.cellWidth, this.pan);
     }
 

@@ -23,17 +23,6 @@ $(document).ready(function(){
         new Position(1, 0)
     );
 
-    /*
-    habitat.seed(
-        new Position(0, -1)
-    );
-
-    habitat.seed(
-        new Position(0, 1)
-    );
-    */
-
-
     let loop = function(){
 
         renderer.update();
@@ -42,8 +31,6 @@ $(document).ready(function(){
         window.requestAnimationFrame(loop);    
     }
 
-    window.requestAnimationFrame(loop);    
-
-    renderer.elapse();
+    loop();
 
   });
