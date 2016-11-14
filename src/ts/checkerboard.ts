@@ -57,49 +57,44 @@ export default class Checkerboard {
         const rows = Math.floor(this.canvas.height / this.cellWidth);
         const cols = Math.floor(this.canvas.width / this.cellWidth);
 
-        var x = this.pan.x % 1;
+        const x = this.pan.x % 1;
+        const y = this.pan.y % 1;
         
-        let xStart = x - rows;
-        let xStop = xStart + cols + rows;
+        const xStart = x - rows;
+        const xStop = xStart + cols + rows;
 
-        let yStart = this.pan.y;
-        let yStop = yStart + rows;
+        const yStart = this.pan.y;
+        const yStop = yStart + rows;
 
         this.canvas.ctx.fillStyle = colors.foreground;   
 
         let positions:Position[] = [];
 
-        for(let y = yStart; y < yStop + 1; y += 1){
+        for(let col = -1; col < cols + 2; col += 2){
 
-            let tilePos = new Position(y, y);
+            for(let row = -1; row < rows + 2; row += 1){
 
-            positions.push(tilePos);
-            
+                const offset = -1 * Math.abs(row % 2)
+
+                let tilePos = new Position(col + offset, row);
+                positions.push(tilePos);
+            }
         }
 
+        var move = new Position(x, y);
 
-        for(let x = xStart; x < xStop + 1; x += 2){
-
-            var move = new Position(x, 0);
-
-            for(let position of positions){
-                position = position.move(move);
-                
-                this.canvas.ctx.fillRect(
-                    position.x * this.cellWidth,  
-                    position.y * this.cellWidth, 
-                    this.cellWidth, 
-                    this.cellWidth
-                );
-
-            }
-
-
+        for(let position of positions){
+            position = position.move(move);
+            
+            this.canvas.ctx.fillRect(
+                position.x * this.cellWidth,  
+                position.y * this.cellWidth, 
+                this.cellWidth, 
+                this.cellWidth
+            );
 
         }
 
     }
-
-    
     
 }
