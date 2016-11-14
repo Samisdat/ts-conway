@@ -35,8 +35,11 @@ export default class Checkerboard {
             foreground: ''
         }
 
-        const rowIndex = Math.abs(this.pan.y % 2);
-        const colIndex = Math.abs(this.pan.x % 2);
+        const y = (0 > this.pan.y) ? Math.ceil(this.pan.y) : Math.floor(this.pan.y); 
+        const x = (0 > this.pan.x) ? Math.ceil(this.pan.x) : Math.floor(this.pan.x); 
+
+        const rowIndex = Math.abs(y % 2);
+        const colIndex = Math.abs(x % 2);
 
         colors.background = this.startColors[rowIndex][colIndex];
         colors.foreground = (this.darkColor === colors.background) ? this.lightColor : this.darkColor;
@@ -57,7 +60,9 @@ export default class Checkerboard {
         const rows = Math.floor(this.canvas.height / this.cellWidth);
         const cols = Math.floor(this.canvas.width / this.cellWidth);
 
-        let xStart = this.pan.x - rows;
+        var x = this.pan.x % 1;
+        
+        let xStart = x - rows;
         let xStop = xStart + cols + rows;
 
         let yStart = this.pan.y;
