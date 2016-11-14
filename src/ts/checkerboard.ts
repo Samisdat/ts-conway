@@ -44,9 +44,6 @@ export default class Checkerboard {
         colors.background = this.startColors[rowIndex][colIndex];
         colors.foreground = (this.darkColor === colors.background) ? this.lightColor : this.darkColor;
 
-        colors.background = this.darkColor;
-        colors.foreground = this.lightColor;
-
         return colors;
     }
 
