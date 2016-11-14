@@ -15,8 +15,8 @@ export default class CanvasRenderer {
     private canvasWidth:number;
     private canvasHeight:number;
 
-    public cellWidth:number = 20;
-    public cellHeight:number = 20;
+    public originalCellWidth:number = 20;
+    public cellWidth:number;
 
     private habitat: Habitat;
 
@@ -43,6 +43,8 @@ export default class CanvasRenderer {
         this.control = new Control($element.get(0));
 
         this.pan = this.control.getPan();
+
+        this.cellWidth = this.control.getZoom() * this.originalCellWidth;
 
         this.setCanvas($element);
 
@@ -81,7 +83,7 @@ export default class CanvasRenderer {
         });
 
         this.cols = this.canvas.width / this.cellWidth;
-        this.rows = this.canvas.height/this.cellHeight;
+        this.rows = this.canvas.height / this.cellWidth;
 
         this.zero = new Position(
             Math.floor(this.cols/2),
@@ -115,6 +117,10 @@ export default class CanvasRenderer {
     public update():void{
         let actualPan = this.control.getPan();
 
+        let actualZoom = this.control.getZoom();
+
+        this.cellWidth = this.control.getZoom() * this.originalCellWidth;
+        
         if(false === actualPan.compare(this.pan)){
 
             var moveX = 0;
@@ -160,8 +166,8 @@ export default class CanvasRenderer {
 
             this.canvas.ctx.fillRect(
                 position.x * this.cellWidth,
-                position.y * this.cellHeight,
-                this.cellWidth, this.cellHeight
+                position.y * this.cellWidth,
+                this.cellWidth, this.cellWidth
             );
         }
 

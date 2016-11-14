@@ -8,8 +8,8 @@ export default class Control {
 
     private control:JQuery;
 
-    private maxZoom: number = 5;
-    private minZoom: number = 0.5;
+    private maxZoom: number = 10;
+    private minZoom: number = 0.2;
 
     private zoom: number = 1;
 
