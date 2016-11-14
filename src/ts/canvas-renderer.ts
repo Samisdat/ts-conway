@@ -15,8 +15,8 @@ export default class CanvasRenderer {
     private canvasWidth:number;
     private canvasHeight:number;
 
-    public cellWidth:number = 40;
-    public cellHeight:number = 40;
+    public cellWidth:number = 20;
+    public cellHeight:number = 20;
 
     private habitat: Habitat;
 

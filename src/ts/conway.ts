@@ -13,7 +13,6 @@ $(document).ready(function(){
 
     const habitat = renderer.getHabitat();
 
-/*
     habitat.seed(
         new Position(-1, 0)
     );
@@ -24,15 +23,17 @@ $(document).ready(function(){
         new Position(1, 0)
     );
 
-*/
     let loop = function(){
 
         renderer.update();
         renderer.render();
 
-        window.requestAnimationFrame(loop);    
+        window.requestAnimationFrame(loop);
+        //window.setTimeout(loop, 500)    
     }
 
     loop();
+
+    renderer.elapse();
 
   });
