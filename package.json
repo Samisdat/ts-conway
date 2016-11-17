@@ -32,6 +32,6 @@
     "remap-istanbul": "^0.7.0",
     "source-map-support": "^0.4.5",
     "time-grunt": "^1.4.0",
-    "typescript": "^2.0.7"
+    "typescript": "^2.1.1"
   }
 }
