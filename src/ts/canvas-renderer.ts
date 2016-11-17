@@ -30,6 +30,7 @@ export default class CanvasRenderer {
     private pan:Position;
 
     private panStep:number = 0.05;
+    private zoomStep:number = 0.05;
 
     private background:Checkerboard;
 
@@ -114,13 +115,37 @@ export default class CanvasRenderer {
         this.control.overwritePan(pan);        
     }
 
-    public update():void{
-        let actualPan = this.control.getPan();
+    private updateZoom():void{
 
+        let cols = this.cols; 
+        let rows = this.rows ; 
         let actualZoom = this.control.getZoom();
-
-        this.cellWidth = this.control.getZoom() * this.originalCellWidth;
         
+
+
+        this.cellWidth = actualZoom * this.originalCellWidth;
+
+        this.cols = this.canvas.width / this.cellWidth;
+        this.rows = this.canvas.height / this.cellWidth;
+
+        let move = new Position(
+            cols - this.cols,
+            rows - this.rows
+        );
+
+        this.zero = new Position(
+            Math.floor(this.cols/2),
+            Math.floor(this.rows/2)
+        );
+
+        this.pan = move;
+
+
+    }
+
+    private updatePan():void{
+        let actualPan = this.control.getPan();
+        /*
         if(false === actualPan.compare(this.pan)){
 
             var moveX = 0;
@@ -151,12 +176,33 @@ export default class CanvasRenderer {
             );
 
         }
+        */
+        this.pan = actualPan;
+
+    }
+
+    public update():void{
+        this.updateZoom();
+        this.updatePan();
+
+        $('.pan .x').text(this.pan.x);
+        $('.pan .y').text(this.pan.y);
+
+        $('.zero .x').text(this.zero.x);
+        $('.zero .y').text(this.zero.y);
+
+        $('.rows').text(this.rows);
+        $('.cols').text(this.cols);
+
+        $('.zoomLevel').text(this.control.getZoom());
+
         this.background.update(this.cellWidth, this.pan);
+
     }
 
     public render():void{
-
         this.background.render();
+
 
         const positions:Position[] = this.get();
 
@@ -170,6 +216,22 @@ export default class CanvasRenderer {
                 this.cellWidth, this.cellWidth
             );
         }
+
+        this.canvas.ctx.fillStyle = '#0f0';   
+
+        this.canvas.ctx.fillRect(
+            0,
+            149,
+            2000, 2
+        );
+
+        this.canvas.ctx.fillRect(
+            810,
+            0,
+            2,
+            400
+        );
+
 
     }    
     
