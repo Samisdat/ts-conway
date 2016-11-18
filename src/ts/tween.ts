@@ -1,53 +1,60 @@
 export default class Tween {
 
-    private from:number;
-    private to:number;
-    private current:number;
+    private start: number;
+    private end: number;
+    private current: number;
 
-    private stepInterval:number;
+    private stepInterval: number;
 
-    private steps:number;
-    private stepsDone:number = 0;
+    private steps: number;
+    private stepsDone: number = 0;
 
-    constructor(from:number, steps = 30) {
-        this.from = from;
-        this.to = from;
-        this.current = from;
+    constructor(start: number, steps = 30) {
+        this.start = start;
+        this.end = start;
+        this.current = start;
         this.steps = steps;
     }
-    
-    public setTo(to:number):void{
 
-        this.to = to;
-        this.from = this.current;
+    public equal(end: number): Boolean {
+        return end === this.end;
+    }
+    public setEnd(end: number): void {
+
+        this.end = end;
+        this.start = this.current;
 
         this.stepsDone = 0;
 
-        if(to === this.from){
+        if (end === this.start) {
             this.stepInterval = 0;
             return;
         }
 
-        const diff = to - this.from;
+        const diff = end - this.start;
 
-        this.stepInterval = diff / this.steps; 
+        this.stepInterval = diff / this.steps;
 
     }
 
-    public getFrom():number{
-        return this.from;
+    public getStart(): number {
+        return this.start;
     }
-    public getCurrent():number{
+    public getCurrent(): number {
         return this.current;
     }
-    public getTo():number{
-        return this.to;
+    public getEnd(): number {
+        return this.end;
     }
 
-    public update(){
+    public update():void {
 
-        if(this.steps <= this.stepsDone){
-            this.current = this.to;
+        if (true === this.equal(this.current)) {
+            return;
+        }
+
+        if (this.steps <= this.stepsDone) {
+            this.current = this.end;
             return;
         }
 
@@ -55,10 +62,10 @@ export default class Tween {
 
         this.stepsDone += 1;
 
-        if(this.steps === this.stepsDone){
-            this.current = this.to;
+        if (this.steps === this.stepsDone) {
+            this.current = this.end;
         }
 
     }
-    
+
 }

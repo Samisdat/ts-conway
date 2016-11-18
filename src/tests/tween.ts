@@ -12,20 +12,20 @@ describe('Tween', () => {
         let tween =  new Tween(1);
 
         expect(tween).to.be.instanceof(Tween);        
-        expect(tween.getFrom()).to.be.equal(1);                
+        expect(tween.getStart()).to.be.equal(1);                
         expect(tween.getCurrent()).to.be.equal(1);                
-        expect(tween.getTo()).to.be.equal(1);                
+        expect(tween.getEnd()).to.be.equal(1);                
 
     });
 
     it('one step', () => {
 
         let tween =  new Tween(1);
-        tween.setTo(31);
+        tween.setEnd(31);
 
-        expect(tween.getFrom()).to.be.equal(1);                
+        expect(tween.getStart()).to.be.equal(1);                
         expect(tween.getCurrent()).to.be.equal(1);                
-        expect(tween.getTo()).to.be.equal(31);                
+        expect(tween.getEnd()).to.be.equal(31);                
 
         expect(tween.getCurrent()).to.be.equal(1);                
 
@@ -38,11 +38,11 @@ describe('Tween', () => {
     it('from and to is the same', () => {
 
         let tween =  new Tween(1);
-        tween.setTo(1);
+        tween.setEnd(1);
 
-        expect(tween.getFrom()).to.be.equal(1);                
+        expect(tween.getStart()).to.be.equal(1);                
         expect(tween.getCurrent()).to.be.equal(1);                
-        expect(tween.getTo()).to.be.equal(1);                
+        expect(tween.getEnd()).to.be.equal(1);                
 
         expect(tween.getCurrent()).to.be.equal(1);                
 
@@ -60,11 +60,11 @@ describe('Tween', () => {
         var steps = 10;
 
         let tween =  new Tween(0, steps);
-        tween.setTo(10);
+        tween.setEnd(10);
 
-        expect(tween.getFrom()).to.be.equal(0);                
+        expect(tween.getStart()).to.be.equal(0);                
         expect(tween.getCurrent()).to.be.equal(0);                
-        expect(tween.getTo()).to.be.equal(10);                
+        expect(tween.getEnd()).to.be.equal(10);                
 
         for(let i = 0; i < steps; i += 1){
             expect(tween.getCurrent()).to.be.equal(i);                
@@ -86,11 +86,11 @@ describe('Tween', () => {
 
         let tween =  new Tween(0, steps);
 
-        tween.setTo(1);
+        tween.setEnd(1);
 
-        expect(tween.getFrom()).to.be.equal(0);                
+        expect(tween.getStart()).to.be.equal(0);                
         expect(tween.getCurrent()).to.be.equal(0);                
-        expect(tween.getTo()).to.be.equal(1);                
+        expect(tween.getEnd()).to.be.equal(1);                
 
         for(let i = 0; i <= steps; i += 1){
             expect(Math.round(tween.getCurrent()* 100)).to.be.equal(i);
