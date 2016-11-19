@@ -26,12 +26,12 @@ describe('Tween', () => {
         expect(tween.getStart()).to.be.equal(1);                
         expect(tween.getCurrent()).to.be.equal(1);                
         expect(tween.getEnd()).to.be.equal(31);                
-
-        expect(tween.getCurrent()).to.be.equal(1);                
+        expect(tween.getStepsDone()).to.be.equal(0);                
 
         tween.update();
-
+        
         expect(tween.getCurrent()).to.be.equal(2);                        
+        expect(tween.getStepsDone()).to.be.equal(1);                
         
     });
 
@@ -43,17 +43,15 @@ describe('Tween', () => {
         expect(tween.getStart()).to.be.equal(1);                
         expect(tween.getCurrent()).to.be.equal(1);                
         expect(tween.getEnd()).to.be.equal(1);                
-
-        expect(tween.getCurrent()).to.be.equal(1);                
+        expect(tween.getStepsDone()).to.be.equal(0);                
 
         tween.update();
 
         expect(tween.getCurrent()).to.be.equal(1);                
+        expect(tween.getStepsDone()).to.be.equal(0);                
         
         
     });
-
-    
 
     it('all steps with integer values', () => {
 
@@ -68,15 +66,18 @@ describe('Tween', () => {
 
         for(let i = 0; i < steps; i += 1){
             expect(tween.getCurrent()).to.be.equal(i);                
+            expect(tween.getStepsDone()).to.be.equal(i);                
             tween.update();
         }
         
         expect(tween.getCurrent()).to.be.equal(10);                
+        expect(tween.getStepsDone()).to.be.equal(10);                
         tween.update();
         expect(tween.getCurrent()).to.be.equal(10);                
+        expect(tween.getStepsDone()).to.be.equal(10);                
         tween.update();
         expect(tween.getCurrent()).to.be.equal(10);                
-
+        expect(tween.getStepsDone()).to.be.equal(10);                
 
     });
 
@@ -105,7 +106,5 @@ describe('Tween', () => {
 
 
     });
-
-
 
 });

@@ -19,10 +19,15 @@ export default class PositionTween{
     public equal(position: Position): Boolean {
         return (position.x === this.x.getEnd() && position.y === this.y.getEnd())  ;
     }
-    public setEnd(end: Position): void {
 
+    public setEnd(end: Position): void {
         this.x.setEnd(end.x);
         this.y.setEnd(end.y);
+    }
+
+    public overwrite(overwrite: Position): void {
+        this.x.overwrite(overwrite.x);
+        this.y.overwrite(overwrite.y);
     }
 
     public getStart(): Position {
@@ -31,6 +36,7 @@ export default class PositionTween{
             this.y.getStart(),
         );
     }
+
     public getCurrent(): Position {
         return new Position(
             this.x.getCurrent(),
@@ -49,6 +55,10 @@ export default class PositionTween{
         this.x.update();
         this.y.update();
 
+    }
+
+    public getStepsDone(): number {
+        return this.x.getStepsDone();
     }
 
 }

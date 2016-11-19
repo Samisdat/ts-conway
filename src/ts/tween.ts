@@ -19,6 +19,17 @@ export default class Tween {
     public equal(end: number): Boolean {
         return end === this.end;
     }
+
+    public overwrite(overwrite:number):void{
+
+        this.end = overwrite;
+        this.start = overwrite
+        this.current = overwrite;
+
+        this.stepsDone = 0;
+
+    }
+
     public setEnd(end: number): void {
 
         this.end = end;
@@ -67,5 +78,10 @@ export default class Tween {
         }
 
     }
+
+    public getStepsDone(): number {
+        return this.stepsDone;
+    }
+
 
 }

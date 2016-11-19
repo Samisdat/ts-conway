@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 
 import Position from './position';
+import PositionTween from './positiontween';
 
 export default class Control {
 
@@ -18,7 +19,9 @@ export default class Control {
     private minPanLeft: number = -30;
     private minPanRight: number = 30;
 
-    private pan:Position = new Position(0, 0); 
+    private positionTween:PositionTween = new PositionTween(
+        new Position(0, 0)
+    );
 
     constructor(canvasWrap: HTMLElement) {
 
@@ -117,11 +120,11 @@ export default class Control {
     }
 
     public getPan():Position{
-        return this.pan;
+        return this.positionTween.getCurrent();
     }
 
     public overwritePan(position:Position):void{
-        this.pan = position;
+        this.positionTween.overwrite(position);
     }
 
     public setPan(mode:string):void{
@@ -142,24 +145,32 @@ export default class Control {
             panX = 1;            
         }
 
-        if(this.minPanTop > this.pan.y + panY){
+        if(this.minPanTop > this.positionTween.getEnd().y + panY){
             panY = 0;
         }
-        if(this.minPanLeft > this.pan.x + panX){
+        if(this.minPanLeft > this.positionTween.getEnd().x + panX){
             panX = 0;
         }
 
-        if(this.minPanBottom < this.pan.y + panY){
+        if(this.minPanBottom < this.positionTween.getEnd().y + panY){
             panY = 0;
         }
-        if(this.minPanRight < this.pan.x + panX){
+        if(this.minPanRight < this.positionTween.getEnd().x + panX){
             panX = 0;
         }
 
         const panBy = new Position(panX, panY);
 
-        this.pan = this.pan.move(panBy);
+        const panTo = this.positionTween.getEnd().move(panBy);
 
+        this.positionTween.setEnd(panTo);
+    }
+
+    public update():void{
+        this.positionTween.update();
+
+        console.log(this.positionTween.getStepsDone(), this.positionTween.getCurrent().x, this.positionTween.getStart().x, this.positionTween.getEnd().x)
+        
     }
 
 }
