@@ -7,17 +7,11 @@ module.exports = function(grunt){
 
         var done = this.async();
 
+        var sourcemaps = grunt.file.expand('./testing/ts/**.map');
+
         lcovSourcemap(
             "./coverage/lcov.info", 
-            [
-                './testing/ts/cell.js.map',
-                './testing/ts/frontend.js.map',
-                './testing/ts/habitat.js.map',
-                './testing/ts/livingcell.js.map',
-                './testing/ts/neighbours.js.map',
-                './testing/ts/position.js.map',                
-                './testing/ts/pattern.js.map'                
-            ],
+            sourcemaps,
             "./testing/src/", 
             "./"
         ).then(function (lcov) {
