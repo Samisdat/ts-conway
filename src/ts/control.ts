@@ -3,6 +3,8 @@ import * as $ from 'jquery';
 import Position from './position';
 import PositionTween from './positiontween';
 import Tween from './tween';
+import PositionBound from './positionbound';
+import Bound from './bound';
 
 export default class Control {
 
@@ -10,20 +12,19 @@ export default class Control {
 
     private control:JQuery;
 
-    private maxZoom: number = 10;
-    private minZoom: number = 0.2;
-
     private zoomTween:Tween = new Tween(1, 10);
 
-    private minPanTop: number = -30;
-    private minPanBottom: number = 30;
-    private minPanLeft: number = -30;
-    private minPanRight: number = 30;
+    private zoomBound: Bound = new Bound(0.2, 10);
 
     private positionTween:PositionTween = new PositionTween(
         new Position(0, 0),
         10
     );
+
+    private positionBound: PositionBound = new PositionBound(
+        new Position(-30, -30),
+        new Position( 30,  30)
+    ); 
 
     constructor(canvasWrap: HTMLElement) {
 
@@ -115,13 +116,10 @@ export default class Control {
             modifier = -1 * modifier;
         }
 
-        if(this.minZoom <= this.zoomTween.getEnd() + modifier && this.maxZoom >= this.zoomTween.getEnd() + modifier){
-            this.zoomTween.setEnd(
-                Math.round( (this.zoomTween.getEnd() + modifier) * 10 ) / 10
-            );
-            
-        }
-
+        this.zoomTween.setEnd(
+            this.zoomBound.confine(Math.round( (this.zoomTween.getEnd() + modifier) * 10 ) / 10)
+        );
+        
     }
 
     public getPan():Position{
@@ -150,31 +148,20 @@ export default class Control {
             panX = 1;            
         }
 
-        if(this.minPanTop > this.positionTween.getEnd().y + panY){
-            panY = 0;
-        }
-        if(this.minPanLeft > this.positionTween.getEnd().x + panX){
-            panX = 0;
-        }
-
-        if(this.minPanBottom < this.positionTween.getEnd().y + panY){
-            panY = 0;
-        }
-        if(this.minPanRight < this.positionTween.getEnd().x + panX){
-            panX = 0;
-        }
-
         const panBy = new Position(panX, panY);
 
         const panTo = this.positionTween.getEnd().move(panBy);
 
-        this.positionTween.setEnd(panTo);
+        this.positionTween.setEnd(
+            this.positionBound.confine(panTo)
+        );
     }
 
     public update():void{
         this.positionTween.update();
         this.zoomTween.update();
 
+        console.log(this.positionTween.getStepsDone(), this.positionTween.getCurrent().x, this.positionTween.getStart().x, this.positionTween.getEnd().x)
         console.log(this.zoomTween.getStepsDone(), this.zoomTween.getCurrent(), this.zoomTween.getStart(), this.zoomTween.getEnd())
         
     }
