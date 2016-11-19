@@ -29,11 +29,6 @@ export default class CanvasRenderer implements Renderable{
 
     private control:Control;
 
-    private pan:Position;
-
-    private panStep:number = 0.05;
-    private zoomStep:number = 0.05;
-
     private checkerboard:Checkerboard;
 
     private bgColors = {
@@ -44,8 +39,6 @@ export default class CanvasRenderer implements Renderable{
     constructor($element: JQuery) {
 
         this.control = new Control($element.get(0));
-
-        this.pan = this.control.getPan();
 
         this.cellWidth = this.control.getZoom() * this.originalCellWidth;
 
