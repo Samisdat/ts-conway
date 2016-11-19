@@ -1,19 +1,37 @@
 import Position from './position';
 import Canvas from './canvas';
 
-export default class Checkerboard {
+import Control from './control';
+
+import {Renderable} from './renderable';
+
+export default class Checkerboard implements Renderable{
 
     private canvas: Canvas;
+    private control: Control;
+
     private darkColor: string;
     private lightColor: string;
 
-    private cellWidth: number;
+    public originalCellWidth:number = 20;
+    public cellWidth:number;
+
     private pan: Position;
 
     private startColors:string[][];
 
-    constructor(canvas: Canvas, darkColor:string, lightColor:string) {
+    constructor(
+        canvas: Canvas, 
+        control: Control,
+        originalCellWidth: number,
+        darkColor:string, 
+        lightColor:string
+    ) {
+
         this.canvas = canvas;
+        this.control = control;
+        this.originalCellWidth = originalCellWidth;
+        this.cellWidth = this.originalCellWidth * this.control.getZoom();
 
         this.darkColor = darkColor;
         this.lightColor = lightColor;
@@ -24,9 +42,10 @@ export default class Checkerboard {
         ];
     }
 
-    public update(cellWidth:number, pan: Position){
-        this.cellWidth = cellWidth;
-        this.pan = pan;
+    public update():void{
+
+        this.cellWidth = this.originalCellWidth * this.control.getZoom();
+        this.pan = this.control.getPan();
     }
 
     private getStartColor():{ background: string; foreground: string; }{

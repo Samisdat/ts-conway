@@ -6,7 +6,9 @@ import Control from './control';
 import Checkerboard from './checkerboard';
 import Canvas from './canvas';
 
-export default class CanvasRenderer {
+import {Renderable} from './renderable';
+
+export default class CanvasRenderer implements Renderable{
 
     private $element:JQuery;
 
@@ -32,7 +34,7 @@ export default class CanvasRenderer {
     private panStep:number = 0.05;
     private zoomStep:number = 0.05;
 
-    private background:Checkerboard;
+    private checkerboard:Checkerboard;
 
     private bgColors = {
         dark: '#000',
@@ -51,7 +53,15 @@ export default class CanvasRenderer {
 
         this.setHabitat();
 
-        this.background = new Checkerboard(this.canvas, '#D46A6A', '#FFAAAA');
+        this.checkerboard = new Checkerboard(
+            this.canvas, 
+            this.control,
+            this.originalCellWidth,
+            '#D46A6A', 
+            '#FFAAAA'
+
+        );
+
     }
 
     private setCanvas($element: JQuery):void{
@@ -73,7 +83,7 @@ export default class CanvasRenderer {
 
         const ctx = canvas.getContext('2d');
         ctx.canvas.width = canvasWidth;
-        ctx.canvas.height =canvasHeight;
+        ctx.canvas.height = canvasHeight;
 
         this.canvas = new Canvas(ctx);
 
@@ -121,8 +131,6 @@ export default class CanvasRenderer {
         let rows = this.rows ; 
         let actualZoom = this.control.getZoom();
         
-
-
         this.cellWidth = actualZoom * this.originalCellWidth;
 
         this.cols = this.canvas.width / this.cellWidth;
@@ -138,70 +146,22 @@ export default class CanvasRenderer {
             Math.floor(this.rows/2)
         );
 
-        this.pan = move;
 
-
-    }
-
-    private updatePan():void{
-        let actualPan = this.control.getPan();
-        /*
-        if(false === actualPan.compare(this.pan)){
-
-            var moveX = 0;
-            var moveY = 0;
-
-            if(this.pan.x > actualPan.x){
-                moveX = -1 * this.panStep;
-            }
-            else if(this.pan.x < actualPan.x){
-                moveX = this.panStep;
-            }
-
-            if(this.pan.y > actualPan.y){
-                moveY = -1 * this.panStep;
-            }
-            else if(this.pan.y < actualPan.y){
-                moveY = this.panStep;
-            }
-
-
-            const move = new Position(moveX, moveY);
-
-            this.pan = this.pan.move(move);
-
-            this.pan = new Position(
-                Math.round(this.pan.x * 1000) / 1000,
-                Math.round(this.pan.y * 1000) / 1000,
-            );
-
-        }
-        */
-        this.pan = actualPan;
 
     }
 
     public update():void{
+        
+        this.control.update();
+
         this.updateZoom();
-        this.updatePan();
 
-        $('.pan .x').text(this.pan.x);
-        $('.pan .y').text(this.pan.y);
-
-        $('.zero .x').text(this.zero.x);
-        $('.zero .y').text(this.zero.y);
-
-        $('.rows').text(this.rows);
-        $('.cols').text(this.cols);
-
-        $('.zoomLevel').text(this.control.getZoom());
-
-        this.background.update(this.cellWidth, this.pan);
+        this.checkerboard.update();
 
     }
 
     public render():void{
-        this.background.render();
+        this.checkerboard.render();
 
 
         const positions:Position[] = this.get();
@@ -270,7 +230,7 @@ export default class CanvasRenderer {
     public map(position:Position):Position{
 
         let mapped = this.zero.move(position);
-        let moved = mapped.move(this.pan);
+        let moved = mapped.move(this.control.getPan());
 
         return moved;
     }

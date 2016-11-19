@@ -2,6 +2,7 @@ import * as $ from 'jquery';
 
 import Position from './position';
 import PositionTween from './positiontween';
+import Tween from './tween';
 
 export default class Control {
 
@@ -12,7 +13,7 @@ export default class Control {
     private maxZoom: number = 10;
     private minZoom: number = 0.2;
 
-    private zoom: number = 1;
+    private zoomTween:Tween = new Tween(1, 10);
 
     private minPanTop: number = -30;
     private minPanBottom: number = 30;
@@ -20,7 +21,8 @@ export default class Control {
     private minPanRight: number = 30;
 
     private positionTween:PositionTween = new PositionTween(
-        new Position(0, 0)
+        new Position(0, 0),
+        10
     );
 
     constructor(canvasWrap: HTMLElement) {
@@ -96,16 +98,16 @@ export default class Control {
     }
 
     public getZoom():number{
-        return this.zoom;
+        return this.zoomTween.getCurrent();
     }
     public setZoom(mode:string){
 
         let modifier = 1;
 
-        if(1 > this.zoom){
+        if(1 > this.zoomTween.getEnd()){
             modifier = 0.1
         }
-        else if(1 === this.zoom && 'zoom-out' === mode){
+        else if(1 === this.zoomTween.getEnd() && 'zoom-out' === mode){
             modifier = 0.1
         }
 
@@ -113,8 +115,11 @@ export default class Control {
             modifier = -1 * modifier;
         }
 
-        if(this.minZoom <= this.zoom + modifier && this.maxZoom >= this.zoom + modifier){
-            this.zoom = Math.round( (this.zoom + modifier) * 10 ) / 10;;
+        if(this.minZoom <= this.zoomTween.getEnd() + modifier && this.maxZoom >= this.zoomTween.getEnd() + modifier){
+            this.zoomTween.setEnd(
+                Math.round( (this.zoomTween.getEnd() + modifier) * 10 ) / 10
+            );
+            
         }
 
     }
@@ -168,8 +173,9 @@ export default class Control {
 
     public update():void{
         this.positionTween.update();
+        this.zoomTween.update();
 
-        console.log(this.positionTween.getStepsDone(), this.positionTween.getCurrent().x, this.positionTween.getStart().x, this.positionTween.getEnd().x)
+        console.log(this.zoomTween.getStepsDone(), this.zoomTween.getCurrent(), this.zoomTween.getStart(), this.zoomTween.getEnd())
         
     }
 
