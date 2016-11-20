@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import Position from '../ts/position';
-import PositionBound from '../ts/positionbound';
+import BoundPosition from '../ts/boundposition';
 
 describe('PositionBound', () => {
 
@@ -10,19 +10,19 @@ describe('PositionBound', () => {
 
     it('can be created', () => {
 
-        let bound = new PositionBound(
+        let bound = new BoundPosition(
             new Position(-2, -2),
             new Position(2, 2)
         );
 
-        expect(bound).to.be.instanceof(PositionBound);
+        expect(bound).to.be.instanceof(BoundPosition);
 
     });
 
     it('create fails when right is not right from left ', () => {
 
         const createBound = function () {
-            let bound = new PositionBound(
+            let bound = new BoundPosition(
                 new Position(2, 0),
                 new Position(-2, 0)
             );
@@ -35,7 +35,7 @@ describe('PositionBound', () => {
     it('create fails when bottom is not below from top', () => {
 
         const createBound = function () {
-            let bound = new PositionBound(
+            let bound = new BoundPosition(
                 new Position(1, 2),
                 new Position(2, 1)
             );
@@ -47,7 +47,7 @@ describe('PositionBound', () => {
 
     it('within', () => {
 
-        let bound = new PositionBound(
+        let bound = new BoundPosition(
             new Position(-2, -2),
             new Position(2, 2)
         );
@@ -70,7 +70,7 @@ describe('PositionBound', () => {
 
     it('confine', () => {
 
-        let bound = new PositionBound(
+        let bound = new BoundPosition(
             new Position(-2, -2),
             new Position(2, 2)
         );

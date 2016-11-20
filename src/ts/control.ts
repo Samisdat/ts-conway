@@ -1,9 +1,9 @@
 import * as $ from 'jquery';
 
 import Position from './position';
-import PositionTween from './positiontween';
+import TweenPosition from './tweenposition';
 import Tween from './tween';
-import PositionBound from './positionbound';
+import BoundPosition from './boundposition';
 import Bound from './bound';
 
 export default class Control {
@@ -23,12 +23,12 @@ export default class Control {
 
     private zoomBound: Bound = new Bound(0.2, 10);
 
-    private positionTween: PositionTween = new PositionTween(
+    private positionTween: TweenPosition = new TweenPosition(
         new Position(0, 0),
         10
     );
 
-    private positionBound: PositionBound = new PositionBound(
+    private positionBound: BoundPosition = new BoundPosition(
         new Position(-30, -30),
         new Position(30, 30)
     );

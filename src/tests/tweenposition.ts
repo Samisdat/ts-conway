@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import Position from '../ts/position';
-import PositionTween from '../ts/positiontween';
+import TweenPosition from '../ts/tweenposition';
 
 describe('PositionTween', () => {
 
@@ -10,11 +10,11 @@ describe('PositionTween', () => {
 
     it('can be created', () => {
 
-        let tween = new PositionTween(
+        let tween = new TweenPosition(
             new Position(1, 1)
         );
 
-        expect(tween).to.be.instanceof(PositionTween);
+        expect(tween).to.be.instanceof(TweenPosition);
         expect(tween.getStart()).to.be.deep.equal(new Position(1, 1));
         expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 1));
         expect(tween.getEnd()).to.be.deep.equal(new Position(1, 1));
@@ -23,7 +23,7 @@ describe('PositionTween', () => {
 
     it('one step', () => {
 
-        let tween = new PositionTween(
+        let tween = new TweenPosition(
             new Position(0, 0)
         );
         tween.setEnd(
@@ -42,7 +42,7 @@ describe('PositionTween', () => {
 
     it('from and to is the same', () => {
 
-        let tween = new PositionTween(
+        let tween = new TweenPosition(
             new Position(0, 0)
         );
         tween.setEnd(
@@ -63,7 +63,7 @@ describe('PositionTween', () => {
 
         var steps = 10;
 
-        let tween = new PositionTween(
+        let tween = new TweenPosition(
             new Position(0, 0),
             steps
         );
@@ -93,7 +93,7 @@ describe('PositionTween', () => {
 
         var steps = 100;
 
-        let tween = new PositionTween(
+        let tween = new TweenPosition(
             new Position(0, 0),
             steps
         );
