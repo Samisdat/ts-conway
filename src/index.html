@@ -16,17 +16,21 @@
     	#conway{
 			position:absolute;
 			top:0px;			
+			left:0px;			
     		width:100%;
     		height:300px;
 			background: red;
     	}
+		#conway canvas{
+			cursor: move;
+		}
 		#conway .control .pan{
 			position:absolute;
 			bottom:10px;
 			left:10px;
 			width:90px;
 			height:90px;
-			background: blue;
+			cursor: move;
 		}
 
 		#conway .control .pan div{
@@ -36,6 +40,7 @@
 			background: yellow;
 			text-align:center;
 			line-height:30px;
+			cursor: pointer;
 		}
 
 		#conway .control .pan div.top{
@@ -64,7 +69,6 @@
 			right:10px;
 			width:30px;
 			height:90px;
-			background: blue;
 		}
 
 		#conway .control .zoom div{
