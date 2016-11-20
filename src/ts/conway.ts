@@ -3,15 +3,14 @@ import * as $ from 'jquery';
 import Position from './position';
 import Habitat from './habitat';
 import Frontend from './frontend';
-import CanvasRenderer from './canvas-renderer'
 
 $(document).ready(function(){
 
-    let renderer = new CanvasRenderer(
+    let frontend = new Frontend(
         $('#conway')
     );
 
-    const habitat = renderer.getHabitat();
+    const habitat = frontend.getHabitat();
 
     habitat.seed(
         new Position(-1, 0)
@@ -25,15 +24,14 @@ $(document).ready(function(){
 
     let loop = function(){
 
-        renderer.update();
-        renderer.render();
+        frontend.update();
+        frontend.render();
 
         window.requestAnimationFrame(loop);
-        //window.setTimeout(loop, 500)    
     }
 
     loop();
 
-    renderer.elapse();
+    frontend.elapse();
 
   });
