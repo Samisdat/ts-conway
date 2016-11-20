@@ -3,9 +3,9 @@ import Canvas from './canvas';
 
 import Control from './control';
 
-import {Renderable} from './renderable';
+import { Renderable } from './renderable';
 
-export default class Checkerboard implements Renderable{
+export default class Checkerboard implements Renderable {
 
     private canvas: Canvas;
     private control: Control;
@@ -13,19 +13,19 @@ export default class Checkerboard implements Renderable{
     private darkColor: string;
     private lightColor: string;
 
-    public originalCellWidth:number = 20;
-    public cellWidth:number;
+    public originalCellWidth: number = 20;
+    public cellWidth: number;
 
     private pan: Position;
 
-    private startColors:string[][];
+    private startColors: string[][];
 
     constructor(
-        canvas: Canvas, 
+        canvas: Canvas,
         control: Control,
         originalCellWidth: number,
-        darkColor:string, 
-        lightColor:string
+        darkColor: string,
+        lightColor: string
     ) {
 
         this.canvas = canvas;
@@ -42,20 +42,20 @@ export default class Checkerboard implements Renderable{
         ];
     }
 
-    public update():void{
+    public update(): void {
 
         this.cellWidth = this.originalCellWidth * this.control.getZoom();
         this.pan = this.control.getPan();
     }
 
-    private getStartColor():{ background: string; foreground: string; }{
+    private getStartColor(): { background: string; foreground: string; } {
         let colors = {
             background: '',
             foreground: ''
         }
 
-        const y = (0 > this.pan.y) ? Math.ceil(this.pan.y) : Math.floor(this.pan.y); 
-        const x = (0 > this.pan.x) ? Math.ceil(this.pan.x) : Math.floor(this.pan.x); 
+        const y = (0 > this.pan.y) ? Math.ceil(this.pan.y) : Math.floor(this.pan.y);
+        const x = (0 > this.pan.x) ? Math.ceil(this.pan.x) : Math.floor(this.pan.x);
 
         const rowIndex = Math.abs(y % 2);
         const colIndex = Math.abs(x % 2);
@@ -66,11 +66,11 @@ export default class Checkerboard implements Renderable{
         return colors;
     }
 
-    public render():void{
+    public render(): void {
 
         const colors = this.getStartColor();
-    
-        this.canvas.ctx.fillStyle = colors.background;   
+
+        this.canvas.ctx.fillStyle = colors.background;
         this.canvas.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
         const rows = Math.floor(this.canvas.height / this.cellWidth);
@@ -78,20 +78,20 @@ export default class Checkerboard implements Renderable{
 
         const x = this.pan.x % 1;
         const y = this.pan.y % 1;
-        
+
         const xStart = x - rows;
         const xStop = xStart + cols + rows;
 
         const yStart = this.pan.y;
         const yStop = yStart + rows;
 
-        this.canvas.ctx.fillStyle = colors.foreground;   
+        this.canvas.ctx.fillStyle = colors.foreground;
 
-        let positions:Position[] = [];
+        let positions: Position[] = [];
 
-        for(let col = -1; col < cols + 2; col += 2){
+        for (let col = -1; col < cols + 2; col += 2) {
 
-            for(let row = -1; row < rows + 2; row += 1){
+            for (let row = -1; row < rows + 2; row += 1) {
 
                 const offset = -1 * Math.abs(row % 2)
 
@@ -102,18 +102,18 @@ export default class Checkerboard implements Renderable{
 
         var move = new Position(x, y);
 
-        for(let position of positions){
+        for (let position of positions) {
             position = position.move(move);
-            
+
             this.canvas.ctx.fillRect(
-                position.x * this.cellWidth,  
-                position.y * this.cellWidth, 
-                this.cellWidth, 
+                position.x * this.cellWidth,
+                position.y * this.cellWidth,
+                this.cellWidth,
                 this.cellWidth
             );
 
         }
 
     }
-    
+
 }

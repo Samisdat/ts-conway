@@ -10,25 +10,25 @@ describe('Frontend', () => {
     it('can be created', () => {
 
         let frontend = new Frontend(
-            25, 
-            10, 
+            25,
+            10,
             new Habitat()
         );
 
-        expect(frontend).to.be.instanceof(Frontend);        
+        expect(frontend).to.be.instanceof(Frontend);
 
     });
 
     it('seeding top right corner', () => {
 
         let frontend = new Frontend(
-            3, 
-            3, 
+            3,
+            3,
             new Habitat()
         );
 
         expect(frontend.get()).to.be.deep.equal([]);
-        
+
         /** 
          * seeding
          * X00
@@ -52,13 +52,13 @@ describe('Frontend', () => {
     it('seeding top right corner and pan one', () => {
 
         let frontend = new Frontend(
-            3, 
-            3, 
+            3,
+            3,
             new Habitat()
         );
 
         expect(frontend.get()).to.be.deep.equal([]);
-        
+
         /** 
          * seeding
          * X00
@@ -99,13 +99,13 @@ describe('Frontend', () => {
     it('seeding all corners', () => {
 
         let frontend = new Frontend(
-            3, 
-            3, 
+            3,
+            3,
             new Habitat()
         );
 
         expect(frontend.get()).to.be.deep.equal([]);
-        
+
         /** 
          * seeding
          * X0X
@@ -150,13 +150,13 @@ describe('Frontend', () => {
     it('elapse with a blinker', () => {
 
         let frontend = new Frontend(
-            3, 
-            3, 
+            3,
+            3,
             new Habitat()
         );
 
         expect(frontend.get()).to.be.deep.equal([]);
-        
+
         frontend.seed(
             new Position(1, 0)
         );
@@ -166,7 +166,7 @@ describe('Frontend', () => {
         frontend.seed(
             new Position(1, 2)
         );
-        
+
         expect(frontend.get()).to.be.deep.equal([
             new Position(1, 0),
             new Position(1, 1),
@@ -180,8 +180,8 @@ describe('Frontend', () => {
             new Position(1, 1),
             new Position(0, 1),
             new Position(2, 1)
-        ]);        
-        
+        ]);
+
         console.log(frontend.toString());
         frontend.getHabitat().elapse();
 
@@ -191,7 +191,7 @@ describe('Frontend', () => {
             new Position(1, 2)
         ]);
 
-        console.log(frontend.toString()); 
+        console.log(frontend.toString());
 
     });
 

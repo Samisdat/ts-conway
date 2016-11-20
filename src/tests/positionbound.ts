@@ -10,19 +10,19 @@ describe('PositionBound', () => {
 
     it('can be created', () => {
 
-        let bound =  new PositionBound(
+        let bound = new PositionBound(
             new Position(-2, -2),
             new Position(2, 2)
         );
 
-        expect(bound).to.be.instanceof(PositionBound);        
+        expect(bound).to.be.instanceof(PositionBound);
 
     });
 
     it('create fails when right is not right from left ', () => {
 
-        const createBound = function(){
-            let bound =  new PositionBound(
+        const createBound = function () {
+            let bound = new PositionBound(
                 new Position(2, 0),
                 new Position(-2, 0)
             );
@@ -34,8 +34,8 @@ describe('PositionBound', () => {
 
     it('create fails when bottom is not below from top', () => {
 
-        const createBound = function(){
-            let bound =  new PositionBound(
+        const createBound = function () {
+            let bound = new PositionBound(
                 new Position(1, 2),
                 new Position(2, 1)
             );
@@ -47,47 +47,47 @@ describe('PositionBound', () => {
 
     it('within', () => {
 
-            let bound =  new PositionBound(
-                new Position(-2, -2),
-                new Position(2, 2)
-            );
+        let bound = new PositionBound(
+            new Position(-2, -2),
+            new Position(2, 2)
+        );
 
-        expect(bound.isWithin(new Position(-3, -3))).to.be.false;        
-        expect(bound.isWithin(new Position(-2, -3))).to.be.false;        
-        expect(bound.isWithin(new Position(-3, -2))).to.be.false;        
+        expect(bound.isWithin(new Position(-3, -3))).to.be.false;
+        expect(bound.isWithin(new Position(-2, -3))).to.be.false;
+        expect(bound.isWithin(new Position(-3, -2))).to.be.false;
 
-        expect(bound.isWithin(new Position(-2, -2))).to.be.true;        
-        expect(bound.isWithin(new Position(-1, -1))).to.be.true;        
-        expect(bound.isWithin(new Position(0, 0))).to.be.true;        
-        expect(bound.isWithin(new Position(1, 1))).to.be.true;        
-        expect(bound.isWithin(new Position(2, 2))).to.be.true;        
+        expect(bound.isWithin(new Position(-2, -2))).to.be.true;
+        expect(bound.isWithin(new Position(-1, -1))).to.be.true;
+        expect(bound.isWithin(new Position(0, 0))).to.be.true;
+        expect(bound.isWithin(new Position(1, 1))).to.be.true;
+        expect(bound.isWithin(new Position(2, 2))).to.be.true;
 
-        expect(bound.isWithin(new Position(3, 2))).to.be.false;        
-        expect(bound.isWithin(new Position(2, 3))).to.be.false;        
-        expect(bound.isWithin(new Position(3, 3))).to.be.false;        
+        expect(bound.isWithin(new Position(3, 2))).to.be.false;
+        expect(bound.isWithin(new Position(2, 3))).to.be.false;
+        expect(bound.isWithin(new Position(3, 3))).to.be.false;
 
     });
 
     it('confine', () => {
 
-        let bound =  new PositionBound(
+        let bound = new PositionBound(
             new Position(-2, -2),
             new Position(2, 2)
         );
 
-        expect(bound.confine(new Position(-3, -3))).to.be.deep.equal( new Position(-2, -2) );
-        expect(bound.confine(new Position(-2, -3))).to.be.deep.equal( new Position(-2, -2) );
-        expect(bound.confine(new Position(-3, -2))).to.be.deep.equal( new Position(-2, -2) );
+        expect(bound.confine(new Position(-3, -3))).to.be.deep.equal(new Position(-2, -2));
+        expect(bound.confine(new Position(-2, -3))).to.be.deep.equal(new Position(-2, -2));
+        expect(bound.confine(new Position(-3, -2))).to.be.deep.equal(new Position(-2, -2));
 
-        expect(bound.confine(new Position(-2, -2))).to.be.deep.equal( new Position(-2, -2) );
-        expect(bound.confine(new Position(-1, -1))).to.be.deep.equal( new Position(-1, -1) );
-        expect(bound.confine(new Position(0, 0))).to.be.deep.equal( new Position(0, 0) );
-        expect(bound.confine(new Position(1, 1))).to.be.deep.equal( new Position(1, 1) );
-        expect(bound.confine(new Position(2, 2))).to.be.deep.equal( new Position(2, 2) );
+        expect(bound.confine(new Position(-2, -2))).to.be.deep.equal(new Position(-2, -2));
+        expect(bound.confine(new Position(-1, -1))).to.be.deep.equal(new Position(-1, -1));
+        expect(bound.confine(new Position(0, 0))).to.be.deep.equal(new Position(0, 0));
+        expect(bound.confine(new Position(1, 1))).to.be.deep.equal(new Position(1, 1));
+        expect(bound.confine(new Position(2, 2))).to.be.deep.equal(new Position(2, 2));
 
-        expect(bound.confine(new Position(3, 2))).to.be.deep.equal( new Position(2, 2) );
-        expect(bound.confine(new Position(2, 3))).to.be.deep.equal( new Position(2, 2) );
-        expect(bound.confine(new Position(3, 3))).to.be.deep.equal( new Position(2, 2) );
+        expect(bound.confine(new Position(3, 2))).to.be.deep.equal(new Position(2, 2));
+        expect(bound.confine(new Position(2, 3))).to.be.deep.equal(new Position(2, 2));
+        expect(bound.confine(new Position(3, 3))).to.be.deep.equal(new Position(2, 2));
 
     });
 

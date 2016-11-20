@@ -6,19 +6,19 @@ import Control from './control';
 import Checkerboard from './checkerboard';
 import Canvas from './canvas';
 
-import {Renderable} from './renderable';
+import { Renderable } from './renderable';
 
-export default class CanvasRenderer implements Renderable{
+export default class CanvasRenderer implements Renderable {
 
-    private $element:JQuery;
+    private $element: JQuery;
 
-    private canvas:Canvas;
+    private canvas: Canvas;
 
-    private canvasWidth:number;
-    private canvasHeight:number;
+    private canvasWidth: number;
+    private canvasHeight: number;
 
-    public originalCellWidth:number = 20;
-    public cellWidth:number;
+    public originalCellWidth: number = 20;
+    public cellWidth: number;
 
     private habitat: Habitat;
 
@@ -27,9 +27,9 @@ export default class CanvasRenderer implements Renderable{
 
     private zero: Position;
 
-    private control:Control;
+    private control: Control;
 
-    private checkerboard:Checkerboard;
+    private checkerboard: Checkerboard;
 
     private bgColors = {
         dark: '#000',
@@ -47,25 +47,25 @@ export default class CanvasRenderer implements Renderable{
         this.setHabitat();
 
         this.checkerboard = new Checkerboard(
-            this.canvas, 
+            this.canvas,
             this.control,
             this.originalCellWidth,
-            '#D46A6A', 
+            '#D46A6A',
             '#FFAAAA'
 
         );
 
     }
 
-    private setCanvas($element: JQuery):void{
+    private setCanvas($element: JQuery): void {
 
-        if(undefined === $element.get(0)){
+        if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');
         }
 
         this.$element = $element;
 
-        if(0 === this.$element.find('canvas').length){
+        if (0 === this.$element.find('canvas').length) {
             this.$element.append($('<canvas>'));
         }
 
@@ -90,40 +90,40 @@ export default class CanvasRenderer implements Renderable{
         this.rows = this.canvas.height / this.cellWidth;
 
         this.zero = new Position(
-            Math.floor(this.cols/2),
-            Math.floor(this.rows/2)
+            Math.floor(this.cols / 2),
+            Math.floor(this.rows / 2)
         );
-        
+
         let panX = 0;
         let panY = 0;
 
-        if(0 === this.rows % 2){
+        if (0 === this.rows % 2) {
             panY = -0.5;
-        }            
+        }
 
-        if(0 === this.cols % 2){
+        if (0 === this.cols % 2) {
             panX = -0.5;
-        }             
-         
+        }
+
         let pan = new Position(
             panX,
             panY
-        );        
+        );
 
         pan = new Position(
             0,
             0
         );
 
-        this.control.overwritePan(pan);        
+        this.control.overwritePan(pan);
     }
 
-    private updateZoom():void{
+    private updateZoom(): void {
 
-        let cols = this.cols; 
-        let rows = this.rows ; 
+        let cols = this.cols;
+        let rows = this.rows;
         let actualZoom = this.control.getZoom();
-        
+
         this.cellWidth = actualZoom * this.originalCellWidth;
 
         this.cols = this.canvas.width / this.cellWidth;
@@ -135,16 +135,14 @@ export default class CanvasRenderer implements Renderable{
         );
 
         this.zero = new Position(
-            Math.floor(this.cols/2),
-            Math.floor(this.rows/2)
+            Math.floor(this.cols / 2),
+            Math.floor(this.rows / 2)
         );
-
-
 
     }
 
-    public update():void{
-        
+    public update(): void {
+
         this.control.update();
 
         this.updateZoom();
@@ -153,15 +151,15 @@ export default class CanvasRenderer implements Renderable{
 
     }
 
-    public render():void{
+    public render(): void {
         this.checkerboard.render();
 
 
-        const positions:Position[] = this.get();
+        const positions: Position[] = this.get();
 
-        this.canvas.ctx.fillStyle = this.bgColors.dark;   
+        this.canvas.ctx.fillStyle = this.bgColors.dark;
 
-        for(let position of positions){
+        for (let position of positions) {
 
             this.canvas.ctx.fillRect(
                 position.x * this.cellWidth,
@@ -170,7 +168,7 @@ export default class CanvasRenderer implements Renderable{
             );
         }
 
-        this.canvas.ctx.fillStyle = '#0f0';   
+        this.canvas.ctx.fillStyle = '#0f0';
 
         this.canvas.ctx.fillRect(
             0,
@@ -185,34 +183,34 @@ export default class CanvasRenderer implements Renderable{
             400
         );
 
+    }
 
-    }    
-    
     public getHabitat(): Habitat {
         return this.habitat;
-    }    
+    }
 
-    private setHabitat():void {
+    private setHabitat(): void {
         this.habitat = new Habitat();
-    }    
-    
+    }
+
     public getPan(): Position {
         return this.control.getPan();
     }
 
     public setPan(position: Position): void {
         this.control.overwritePan(position);
-    } 
+    }
 
     public panBy(position: Position): void {
         this.control.getPan().move(position);
-    }    
-    public seed(position:Position):void {
+    }
+
+    public seed(position: Position): void {
         position = this.reverseMap(position);
         this.habitat.seed(position);
     }
 
-    private reverseMap(position:Position):Position{
+    private reverseMap(position: Position): Position {
 
         position = position.move(this.zero.inverse());
         position = position.move(this.control.getPan().inverse());
@@ -220,7 +218,7 @@ export default class CanvasRenderer implements Renderable{
         return position;
     }
 
-    public map(position:Position):Position{
+    public map(position: Position): Position {
 
         let mapped = this.zero.move(position);
         let moved = mapped.move(this.control.getPan());
@@ -228,28 +226,29 @@ export default class CanvasRenderer implements Renderable{
         return moved;
     }
 
-    public get():Position[] {
+    public get(): Position[] {
 
-        var mapped:Position[] = [];     
+        var mapped: Position[] = [];
 
-        var living:Position[] = this.habitat.get();
+        var living: Position[] = this.habitat.get();
 
-        for(let position of living){
+        for (let position of living) {
             let map = this.map(position);
 
             mapped.push(map);
-            
+
         }
 
         return mapped;
     }
 
-    public elapse():void {
+    public elapse(): void {
 
         window.setInterval(() => {
             this.habitat.elapse();
-            }
-            ,600
-        );    
+        }
+            , 600
+        );
     }
+
 }

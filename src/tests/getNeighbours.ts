@@ -10,17 +10,17 @@ describe('getNeighbours', () => {
 
     it('is a function', () => {
 
-        expect(getNeighbours).to.be.instanceof(Function);        
+        expect(getNeighbours).to.be.instanceof(Function);
 
     });
 
     it('returns all neighbours', () => {
 
         let position = new Position(3, 3);
-        let neighbours =  getNeighbours(position);
+        let neighbours = getNeighbours(position);
 
         expect(neighbours.length).to.be.equal(8);
-        
+
         expect(neighbours[0]).to.be.deep.equal(new Position(2, 2));
         expect(neighbours[1]).to.be.deep.equal(new Position(3, 2));
         expect(neighbours[2]).to.be.deep.equal(new Position(4, 2));

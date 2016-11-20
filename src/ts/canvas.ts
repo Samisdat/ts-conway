@@ -7,15 +7,16 @@ export default class Canvas {
         this.canvasContext = canvasContext;
     }
 
-    get ctx():CanvasRenderingContext2D{
+    get ctx(): CanvasRenderingContext2D {
         return this.canvasContext;
     }
-    get width():number{
+    
+    get width(): number {
         return this.canvasContext.canvas.width;
     }
 
-    get height():number{
+    get height(): number {
         return this.canvasContext.canvas.height;
-    }    
-    
+    }
+
 }

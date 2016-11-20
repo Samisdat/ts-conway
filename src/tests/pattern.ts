@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 
-
 import Position from '../ts/position';
 
 import Pattern from '../ts/pattern';
@@ -12,15 +11,15 @@ describe('Pattern', () => {
 
     it('can be created', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 0, 0] ,
-                [ 1, 0, 0] 
+                [0, 0, 0],
+                [1, 0, 0]
             ]
         );
 
-        expect(pattern).to.be.instanceof(Pattern);        
+        expect(pattern).to.be.instanceof(Pattern);
 
     });
 
@@ -30,8 +29,8 @@ describe('Pattern', () => {
             new Pattern(
                 'Scottish',
                 [
-                    [ 0, 0, 0] ,
-                    [ 1, 0]
+                    [0, 0, 0],
+                    [1, 0]
                 ]
             );
         };
@@ -42,11 +41,11 @@ describe('Pattern', () => {
 
     it('get width and height', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 0, 0],
-                [ 1, 0, 0] 
+                [0, 0, 0],
+                [1, 0, 0]
             ]
         );
 
@@ -57,12 +56,12 @@ describe('Pattern', () => {
 
     it('get', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 0, 0],
-                [ 1, 0, 0], 
-                [ 0, 0, 0] 
+                [0, 0, 0],
+                [1, 0, 0],
+                [0, 0, 0]
             ]
         );
 
@@ -71,15 +70,15 @@ describe('Pattern', () => {
         );
 
     });
-    
+
     it('mirrorHorizontal simple', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 0, 0],
-                [ 1, 0, 0], 
-                [ 0, 0, 0] 
+                [0, 0, 0],
+                [1, 0, 0],
+                [0, 0, 0]
             ]
         );
 
@@ -92,11 +91,11 @@ describe('Pattern', () => {
 
     it('mirrorHorizontal', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 1, 0, 0],
-                [ 0, 1, 0, 0] 
+                [0, 1, 0, 0],
+                [0, 1, 0, 0]
             ]
         );
 
@@ -113,12 +112,12 @@ describe('Pattern', () => {
 
     it('mirrorVertical simple', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 1, 0],
-                [ 0, 0, 0], 
-                [ 0, 0, 0] 
+                [0, 1, 0],
+                [0, 0, 0],
+                [0, 0, 0]
             ]
         );
         pattern.mirrorVertical();
@@ -130,13 +129,13 @@ describe('Pattern', () => {
 
     it('mirrorVertical', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 0, 0, 0, 0],
-                [ 0, 1, 1, 0], 
-                [ 0, 0, 0, 0], 
-                [ 0, 0, 0, 0] 
+                [0, 0, 0, 0],
+                [0, 1, 1, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
             ]
         );
         pattern.mirrorVertical();
@@ -152,11 +151,11 @@ describe('Pattern', () => {
 
     it('rotate throw when angle is not a multiple of 90', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 1, 0],
-                [ 0, 0]
+                [1, 0],
+                [0, 0]
             ]
         );
 
@@ -166,7 +165,7 @@ describe('Pattern', () => {
         pattern.rotate(270);
         pattern.rotate(360);
 
-        let invalid = function(){
+        let invalid = function () {
             pattern.rotate(1);
         };
 
@@ -176,11 +175,11 @@ describe('Pattern', () => {
 
     it('rotate throw when angle is not a multiple of 90', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 1, 0],
-                [ 0, 0]
+                [1, 0],
+                [0, 0]
             ]
         );
 
@@ -207,12 +206,12 @@ describe('Pattern', () => {
 
     it('rotate 90', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 1, 0, 0],
-                [ 0, 0, 1], 
-                [ 1, 0, 0] 
+                [1, 0, 0],
+                [0, 0, 1],
+                [1, 0, 0]
             ]
         );
 
@@ -224,18 +223,18 @@ describe('Pattern', () => {
                 new Position(2, 0),
                 new Position(1, 2)
             ]
-        );  
+        );
 
     });
 
     it('rotate -90', () => {
 
-        let pattern =  new Pattern(
+        let pattern = new Pattern(
             'Scottish',
             [
-                [ 1, 0, 0],
-                [ 1, 0, 0], 
-                [ 1, 0, 0] 
+                [1, 0, 0],
+                [1, 0, 0],
+                [1, 0, 0]
             ]
         );
 
@@ -247,9 +246,8 @@ describe('Pattern', () => {
                 new Position(1, 2),
                 new Position(2, 2)
             ]
-        );  
+        );
 
     });
-    
 
 });

@@ -7,7 +7,7 @@ export default class LivingCell extends Cell {
         super(position);
 
         this.elapse();
-        
+
     }
 
 }

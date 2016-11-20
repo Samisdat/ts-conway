@@ -14,11 +14,11 @@ export default class Cell {
 
     get x(): Number {
         return this.position.x;
-    }    
+    }
 
     get y(): Number {
         return this.position.y;
-    }    
+    }
 
     isAlive(): Boolean {
         return (true === this.nowliving);
@@ -29,13 +29,12 @@ export default class Cell {
     };
 
     elapse(): void {
-        if(true === this.thenLiving){
+        if (true === this.thenLiving) {
             this.nowliving = true;
         }
-        else{
+        else {
             this.nowliving = false;
         }
     };
-    
-    
+
 }

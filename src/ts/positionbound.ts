@@ -3,16 +3,16 @@ import Bound from './bound';
 
 export default class PositionBound {
 
-    private x:Bound;
-    private y:Bound;
+    private x: Bound;
+    private y: Bound;
 
-    constructor(topLeft:Position, bottomRight: Position) {
+    constructor(topLeft: Position, bottomRight: Position) {
 
-        if(bottomRight.x < topLeft.x){
+        if (bottomRight.x < topLeft.x) {
             throw new Error('bottomRight must be right from topLeft');
         }
 
-        if(bottomRight.y < topLeft.y){
+        if (bottomRight.y < topLeft.y) {
             throw new Error('bottomRight must be below from topLeft');
         }
 
@@ -21,19 +21,17 @@ export default class PositionBound {
 
     }
 
-    public isWithin(test:Position):Boolean{
+    public isWithin(test: Position): Boolean {
         return (this.x.isWithin(test.x) && this.y.isWithin(test.y));
     }
 
-    public confine(value:Position):Position{
+    public confine(value: Position): Position {
 
         return new Position(
             this.x.confine(value.x),
             this.y.confine(value.y)
         );
 
-
     }
-
 
 }

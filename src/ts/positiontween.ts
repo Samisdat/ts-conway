@@ -1,13 +1,13 @@
 import Position from './position';
 import Tween from './tween';
 
-export default class PositionTween{
+export default class PositionTween {
 
     private steps: number;
 
     private x: Tween;
     private y: Tween;
-   
+
     constructor(start: Position, steps = 30) {
 
         this.steps = steps;
@@ -17,7 +17,7 @@ export default class PositionTween{
     }
 
     public equal(position: Position): Boolean {
-        return (position.x === this.x.getEnd() && position.y === this.y.getEnd())  ;
+        return (position.x === this.x.getEnd() && position.y === this.y.getEnd());
     }
 
     public setEnd(end: Position): void {
@@ -50,7 +50,7 @@ export default class PositionTween{
         );
     }
 
-    public update():void {
+    public update(): void {
 
         this.x.update();
         this.y.update();

@@ -11,18 +11,18 @@ export default class Habitat {
 
     }
 
-    private isLiving(position:Position): Boolean{
+    private isLiving(position: Position): Boolean {
 
         let isLiving = false;
 
-        for(let cell of this.cells){
+        for (let cell of this.cells) {
 
-            if(cell.x === position.x && cell.y === position.y){
+            if (cell.x === position.x && cell.y === position.y) {
 
-                if(true === cell.isAlive()){
+                if (true === cell.isAlive()) {
                     isLiving = true;
                 }
-                
+
                 break;
             }
         }
@@ -30,26 +30,26 @@ export default class Habitat {
         return isLiving;
     }
 
-    private countLivingNeighbours(position: Position): number{
+    private countLivingNeighbours(position: Position): number {
 
         let livingNeighbours: number = 0;
 
-        let neighbours:Position[] = getNeighbours(position);
+        let neighbours: Position[] = getNeighbours(position);
 
-        for(let neighbour of neighbours){
+        for (let neighbour of neighbours) {
             var isLiving = this.isLiving(neighbour);
 
-            if(true === isLiving){
+            if (true === isLiving) {
                 livingNeighbours += 1;
             }
 
-        }             
+        }
 
         return livingNeighbours;
 
     };
 
-    private applyRules():void{
+    private applyRules(): void {
         /**
          * there are four rules
          * 1) Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -64,11 +64,11 @@ export default class Habitat {
          *  Thats the second loop                 
          */
 
-        for(let cell of this.cells){
-            
-            var livingNeighbours =  this.countLivingNeighbours(cell.position);
-            
-            if(2 === livingNeighbours || 3 === livingNeighbours){
+        for (let cell of this.cells) {
+
+            var livingNeighbours = this.countLivingNeighbours(cell.position);
+
+            if (2 === livingNeighbours || 3 === livingNeighbours) {
                 continue;
             }
 
@@ -78,34 +78,34 @@ export default class Habitat {
 
         let createCellsAt = {};
 
-        for(let cell of this.cells){
-            
+        for (let cell of this.cells) {
+
             let neighbours = getNeighbours(cell.position);
 
-            for(let neighbour of neighbours){
+            for (let neighbour of neighbours) {
 
-                var livingNeighbours =  this.countLivingNeighbours(neighbour);
-                
-                if(3 === livingNeighbours){
+                var livingNeighbours = this.countLivingNeighbours(neighbour);
+
+                if (3 === livingNeighbours) {
                     createCellsAt[neighbour.x + '-' + neighbour.y] = neighbour;
                 }
 
             }
         }
-        
-        for(let pos in createCellsAt){
-            let positionOfNewCell:Position = createCellsAt[pos];
+
+        for (let pos in createCellsAt) {
+            let positionOfNewCell: Position = createCellsAt[pos];
             this.cells.push(new Cell(positionOfNewCell));
         }
 
     };
 
-    private removeBodies():void{
+    private removeBodies(): void {
 
-        let cleaned:Cell[] = [];
+        let cleaned: Cell[] = [];
 
-        for(let cell of this.cells){
-            if(true === cell.isAlive()){
+        for (let cell of this.cells) {
+            if (true === cell.isAlive()) {
                 cleaned.push(cell);
             }
         }
@@ -114,11 +114,11 @@ export default class Habitat {
 
     };
 
-    public elapse():void {
+    public elapse(): void {
 
         this.applyRules();
 
-        for(let cell of this.cells){
+        for (let cell of this.cells) {
             cell.elapse();
         }
 
@@ -127,27 +127,27 @@ export default class Habitat {
     }
 
 
-    public seed(position:Position):void {
+    public seed(position: Position): void {
         this.cells.push(new LivingCell(position));
     }
 
     public getAllCells(): Cell[] {
-        
+
         return this.cells;
-    
+
     }
-    
+
     get(): Position[] {
 
         var living: Position[] = [];
 
-        for(let cell of this.cells){
-            if(true === cell.isAlive()){
+        for (let cell of this.cells) {
+            if (true === cell.isAlive()) {
                 living.push(cell.position);
             }
         };
 
         return living;
-    }   
-    
+    }
+
 }

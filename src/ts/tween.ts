@@ -10,17 +10,21 @@ export default class Tween {
     private stepsDone: number = 0;
 
     constructor(start: number, steps = 30) {
+
         this.start = start;
         this.end = start;
         this.current = start;
         this.steps = steps;
+
     }
 
     public equal(end: number): Boolean {
+
         return end === this.end;
+
     }
 
-    public overwrite(overwrite:number):void{
+    public overwrite(overwrite: number): void {
 
         this.end = overwrite;
         this.start = overwrite
@@ -49,16 +53,24 @@ export default class Tween {
     }
 
     public getStart(): number {
+
         return this.start;
-    }
-    public getCurrent(): number {
-        return this.current;
-    }
-    public getEnd(): number {
-        return this.end;
+
     }
 
-    public update():void {
+    public getCurrent(): number {
+
+        return this.current;
+
+    }
+
+    public getEnd(): number {
+
+        return this.end;
+
+    }
+
+    public update(): void {
 
         if (true === this.equal(this.current)) {
             return;
@@ -80,8 +92,9 @@ export default class Tween {
     }
 
     public getStepsDone(): number {
-        return this.stepsDone;
-    }
 
+        return this.stepsDone;
+
+    }
 
 }
