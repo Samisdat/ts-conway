@@ -10,6 +10,13 @@ export default class Control {
 
     private readonly canvasWrap: HTMLElement;
 
+    private readonly originalCellWidth:number;
+
+    private offset: JQueryCoordinates = {
+        left: 0,
+        top: 0
+    };
+
     private control: JQuery;
 
     private zoomTween: Tween = new Tween(1, 10);
@@ -26,9 +33,11 @@ export default class Control {
         new Position(30, 30)
     );
 
-    constructor(canvasWrap: HTMLElement) {
+    constructor(canvasWrap: HTMLElement, originalCellWidth:number) {
 
         this.canvasWrap = canvasWrap;
+
+        this.originalCellWidth = originalCellWidth
 
         this.createControl();
         this.createPanControl();
@@ -96,6 +105,48 @@ export default class Control {
                 control.setZoom(value);
             }
         });
+
+        $(this.canvasWrap).on('mousedown', 'canvas', (evt) => {
+            $(this.canvasWrap).addClass('mousedown');
+
+            this.offset = {
+                left: evt.clientX,
+                top: evt.clientY
+            };
+
+        });
+
+        $(this.canvasWrap).on('mouseup', 'canvas', (evt) => {
+            $(this.canvasWrap).removeClass('mousedown');
+        });
+
+        $(this.canvasWrap).on('mousemove', 'canvas', (evt) => {
+
+            let offset:JQueryCoordinates = {
+                left: evt.clientX - this.offset.left,
+                top: evt.clientY - this.offset.top
+            };
+
+            offset.left = offset.left / (this.getZoom() * this.originalCellWidth);
+            offset.top = offset.top / (this.getZoom() * this.originalCellWidth);
+
+            if(true === $(this.canvasWrap).hasClass('mousedown')){
+
+                let position = this.positionTween.getCurrent().move(
+                    new Position(offset.left, offset.top)
+                );
+
+                this.positionTween.overwrite(position);
+
+            }
+
+            this.offset = {
+                left: evt.clientX,
+                top: evt.clientY
+            };            
+
+        });
+
     }
 
     public getZoom(): number {
@@ -160,10 +211,6 @@ export default class Control {
     public update(): void {
         this.positionTween.update();
         this.zoomTween.update();
-
-        console.log(this.positionTween.getStepsDone(), this.positionTween.getCurrent().x, this.positionTween.getStart().x, this.positionTween.getEnd().x)
-        console.log(this.zoomTween.getStepsDone(), this.zoomTween.getCurrent(), this.zoomTween.getStart(), this.zoomTween.getEnd())
-
     }
 
 }

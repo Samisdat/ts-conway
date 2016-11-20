@@ -38,7 +38,10 @@ export default class CanvasRenderer implements Renderable {
 
     constructor($element: JQuery) {
 
-        this.control = new Control($element.get(0));
+        this.control = new Control(
+            $element.get(0),
+            this.originalCellWidth
+        );
 
         this.cellWidth = this.control.getZoom() * this.originalCellWidth;
 
