@@ -3,7 +3,8 @@ var clean = {
         'dist/'
     ],
     testing: [
-        'testing/', 
+        'dist/javascript/src/', 
+        'dist/javascript/tests/', 
         'coverage/' 
     ],
     coverage: [
