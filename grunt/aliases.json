@@ -19,12 +19,10 @@
     "coverage": {
         "description": "run tests and generate coverage report",
         "tasks": [
-            "clean:testing",
             "clean:coverage",
-        	"ts:testing",
+            "clean:testing",
             "mocha_istanbul:coverage",
-            "remapIstanbul",
-            "lcov"
+            "typescript-remap-reports"
         ]
     },
     "run": {
