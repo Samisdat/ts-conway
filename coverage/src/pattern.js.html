@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src\pattern.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> pattern.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>67/67</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>14/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>66/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">31×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">89×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var position_1 = require("./position");
+var Pattern = (function () {
+    function Pattern(name, matrix) {
+        this.positions = [];
+        this.setPattern(matrix);
+    }
+    Pattern.prototype.validatePattern = function (matrix) {
+        var lengths = [];
+        for (var _i = 0, matrix_1 = matrix; _i &lt; matrix_1.length; _i++) {
+            var row = matrix_1[_i];
+            lengths.push(row.length);
+        }
+        lengths = lengths.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+        if (1 !== lengths.length) {
+            throw new Error('all rows must contain the same ammout of cols');
+        }
+        this.height = matrix.length;
+        this.width = matrix[0].length;
+    };
+    Pattern.prototype.setPattern = function (matrix) {
+        this.validatePattern(matrix);
+        for (var row = 0; row &lt; matrix.length; row += 1) {
+            for (var col = 0; col &lt; matrix[row].length; col += 1) {
+                if (1 === matrix[row][col]) {
+                    this.positions.push(new position_1.default(col, row));
+                }
+            }
+        }
+    };
+    Pattern.prototype.get = function () {
+        return this.positions;
+    };
+    Pattern.prototype.getWidth = function () {
+        return this.width;
+    };
+    Pattern.prototype.getHeight = function () {
+        return this.height;
+    };
+    Pattern.prototype.mirrorVertical = function () {
+        for (var i = 0, x = this.positions.length; i &lt; x; i += 1) {
+            this.positions[i] = new position_1.default(this.positions[i].x, this.width - 1 - this.positions[i].y);
+        }
+    };
+    Pattern.prototype.mirrorHorizontal = function () {
+        for (var i = 0, x = this.positions.length; i &lt; x; i += 1) {
+            this.positions[i] = new position_1.default(this.width - 1 - this.positions[i].x, this.positions[i].y);
+        }
+    };
+    Pattern.prototype.rotate90 = function () {
+        var tmp = [];
+        for (var i = 0; i &lt; this.height; i += 1) {
+            tmp.push(Array.apply(0, Array(this.width)).map(function () { return 0; }));
+        }
+        for (var _i = 0, _a = this.positions; _i &lt; _a.length; _i++) {
+            var position = _a[_i];
+            tmp[position.y][position.x] = 1;
+        }
+        var rotate = [];
+        for (var x = 0; x &lt; this.width; x += 1) {
+            var row = [];
+            for (var y = 0; y &lt; this.height; y += 1) {
+                row.push(tmp[y][x]);
+            }
+            rotate.push(row.reverse());
+        }
+        this.positions = [];
+        for (var y = 0; y &lt; rotate.length; y += 1) {
+            for (var x = 0; x &lt; rotate[y].length; x += 1) {
+                if (1 === rotate[y][x]) {
+                    this.positions.push(new position_1.default(x, y));
+                }
+            }
+        }
+    };
+    Pattern.prototype.getRotateSteps = function (angle) {
+        var by90 = (angle % 360) / 90;
+        if (0 &lt;= by90) {
+            return by90;
+        }
+        return 4 + by90;
+    };
+    ;
+    Pattern.prototype.rotate = function (angle) {
+        if (0 !== angle % 90) {
+            throw new Error('angle must be 0 or a multiple of 90');
+        }
+        var by90 = this.getRotateSteps(angle);
+        for (var i = 0; i &lt; by90; i += 1) {
+            this.rotate90();
+        }
+    };
+    return Pattern;
+}());
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Pattern;
+//# sourceMappingURL=pattern.js.map</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Nov 22 2016 00:23:37 GMT+0100 (Mitteleuropäische Zeit)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

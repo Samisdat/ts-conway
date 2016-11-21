@@ -21,6 +21,7 @@
         "tasks": [
             "clean:coverage",
             "clean:testing",
+        	"ts:testing",        	
             "mocha_istanbul:coverage",
             "typescript-remap-reports"
         ]

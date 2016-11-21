@@ -1,6 +1,5 @@
 node_modules/
 .tscache/
-coverage/
 html-report/
 dist/
 testing/
