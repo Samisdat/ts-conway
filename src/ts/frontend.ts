@@ -8,7 +8,7 @@ import Canvas from './canvas';
 
 import { Renderable } from './renderable';
 
-export default class CanvasRenderer implements Renderable {
+export default class Frontend implements Renderable {
 
     private $element: JQuery;
 
