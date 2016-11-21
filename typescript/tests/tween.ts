@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Tween from '../ts/tween';
+import Tween from '../src/tween';
 
 describe('Tween', () => {
 

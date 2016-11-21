@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import Position from '../ts/position';
+import Position from '../src/position';
 
-import Pattern from '../ts/pattern';
+import Pattern from '../src/pattern';
 
 describe('Pattern', () => {
 

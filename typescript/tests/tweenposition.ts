@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import Position from '../ts/position';
-import TweenPosition from '../ts/tweenposition';
+import Position from '../src/position';
+import TweenPosition from '../src/tweenposition';
 
 describe('PositionTween', () => {
 

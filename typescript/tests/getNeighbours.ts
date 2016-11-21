@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import Position from '../ts/position';
-import getNeighbours from '../ts/neighbours';
+import Position from '../src/position';
+import getNeighbours from '../src/neighbours';
 
 describe('getNeighbours', () => {
 

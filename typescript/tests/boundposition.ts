@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import Position from '../ts/position';
-import BoundPosition from '../ts/boundposition';
+import Position from '../src/position';
+import BoundPosition from '../src/boundposition';
 
 describe('PositionBound', () => {
 
