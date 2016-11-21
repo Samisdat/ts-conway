@@ -2,10 +2,10 @@
 var mochaIstanbul = {
     coverage: {
         src: [
-            'testing/**/*.js'
+            'dist/javascript/tests/**/*.js'
         ],
         options:{
-			reportFormats: ['json', 'lcov']        	
+			reportFormats: ['json', 'html']        	
         }
 
     }

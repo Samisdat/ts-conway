@@ -9,7 +9,7 @@ var mocha = {
     },
     'typescript': {
         src: [
-            'testing/**/*.js'
+            'dist/javascript/tests/**/*.js'
         ]
     }
 };
