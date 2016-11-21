@@ -4,3 +4,4 @@ html-report/
 dist/
 testing/
 coverage/
+.baseDir.ts
