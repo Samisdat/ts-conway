@@ -52,7 +52,7 @@ export default class Checkerboard implements Renderable {
         let colors = {
             background: '',
             foreground: ''
-        }
+        };
 
         const y = (0 > this.pan.y) ? Math.ceil(this.pan.y) : Math.floor(this.pan.y);
         const x = (0 > this.pan.x) ? Math.ceil(this.pan.x) : Math.floor(this.pan.x);
@@ -93,14 +93,14 @@ export default class Checkerboard implements Renderable {
 
             for (let row = -1; row < rows + 2; row += 1) {
 
-                const offset = -1 * Math.abs(row % 2)
+                const offset = -1 * Math.abs(row % 2);
 
                 let tilePos = new Position(col + offset, row);
                 positions.push(tilePos);
             }
         }
 
-        var move = new Position(x, y);
+        let move = new Position(x, y);
 
         for (let position of positions) {
             position = position.move(move);

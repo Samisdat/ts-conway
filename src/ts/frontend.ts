@@ -231,9 +231,9 @@ export default class Frontend implements Renderable {
 
     public get(): Position[] {
 
-        var mapped: Position[] = [];
+        let mapped: Position[] = [];
 
-        var living: Position[] = this.habitat.get();
+        let living: Position[] = this.habitat.get();
 
         for (let position of living) {
             let map = this.map(position);

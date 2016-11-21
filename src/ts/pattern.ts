@@ -98,7 +98,7 @@ export default class Pattern {
         for (let i = 0; i < this.height; i += 1) {
             tmp.push(
                 Array.apply(0, Array(this.width)).map(function () { return 0; })
-            )
+            );
         }
 
         for (let position of this.positions) {
@@ -115,9 +115,9 @@ export default class Pattern {
 
             for (let y = 0; y < this.height; y += 1) {
 
-                row.push(tmp[y][x])
+                row.push(tmp[y][x]);
             }
-            rotate.push(row.reverse())
+            rotate.push(row.reverse());
         }
 
         this.positions = [];

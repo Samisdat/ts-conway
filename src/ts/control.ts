@@ -37,7 +37,7 @@ export default class Control {
 
         this.canvasWrap = canvasWrap;
 
-        this.originalCellWidth = originalCellWidth
+        this.originalCellWidth = originalCellWidth;
 
         this.createControl();
         this.createPanControl();
@@ -62,7 +62,7 @@ export default class Control {
         element.attr('data-value', value);
         element.append($('<i class="fa fa-' + icon + '">'));
 
-        return element
+        return element;
     }
 
     private createPanControl(): void {
@@ -157,10 +157,10 @@ export default class Control {
         let modifier = 1;
 
         if (1 > this.zoomTween.getEnd()) {
-            modifier = 0.1
+            modifier = 0.1;
         }
         else if (1 === this.zoomTween.getEnd() && 'zoom-out' === mode) {
-            modifier = 0.1
+            modifier = 0.1;
         }
 
         if ('zoom-out' === mode) {

@@ -37,7 +37,7 @@ export default class Habitat {
         let neighbours: Position[] = getNeighbours(position);
 
         for (let neighbour of neighbours) {
-            var isLiving = this.isLiving(neighbour);
+            let isLiving = this.isLiving(neighbour);
 
             if (true === isLiving) {
                 livingNeighbours += 1;
@@ -66,7 +66,7 @@ export default class Habitat {
 
         for (let cell of this.cells) {
 
-            var livingNeighbours = this.countLivingNeighbours(cell.position);
+            let livingNeighbours = this.countLivingNeighbours(cell.position);
 
             if (2 === livingNeighbours || 3 === livingNeighbours) {
                 continue;
@@ -84,7 +84,7 @@ export default class Habitat {
 
             for (let neighbour of neighbours) {
 
-                var livingNeighbours = this.countLivingNeighbours(neighbour);
+                let livingNeighbours = this.countLivingNeighbours(neighbour);
 
                 if (3 === livingNeighbours) {
                     createCellsAt[neighbour.x + '-' + neighbour.y] = neighbour;
@@ -139,7 +139,7 @@ export default class Habitat {
 
     get(): Position[] {
 
-        var living: Position[] = [];
+        let living: Position[] = [];
 
         for (let cell of this.cells) {
             if (true === cell.isAlive()) {

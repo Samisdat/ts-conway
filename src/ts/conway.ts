@@ -28,7 +28,7 @@ $(document).ready(function(){
         frontend.render();
 
         window.requestAnimationFrame(loop);
-    }
+    };
 
     loop();
 

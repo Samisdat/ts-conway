@@ -27,7 +27,7 @@ export default class Tween {
     public overwrite(overwrite: number): void {
 
         this.end = overwrite;
-        this.start = overwrite
+        this.start = overwrite;
         this.current = overwrite;
 
         this.stepsDone = 0;

@@ -5,7 +5,8 @@
   "repository": "git@github.com:Samisdat/conway.git",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "lint": ".\\node_modules\\.bin\\tslint -c tslint.json .\\src\\ts\\**.ts -t stylish"
   },
   "author": "samisdat",
   "license": "MIT",
@@ -32,6 +33,7 @@
     "remap-istanbul": "^0.7.0",
     "source-map-support": "^0.4.5",
     "time-grunt": "^1.4.0",
+    "tslint": "^4.0.1",
     "typescript": "^2.1.1"
   }
 }
