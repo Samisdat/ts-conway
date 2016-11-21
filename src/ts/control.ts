@@ -10,7 +10,7 @@ export default class Control {
 
     private readonly canvasWrap: HTMLElement;
 
-    private readonly originalCellWidth:number;
+    private readonly originalCellWidth: number;
 
     private offset: JQueryCoordinates = {
         left: 0,
@@ -33,7 +33,7 @@ export default class Control {
         new Position(30, 30)
     );
 
-    constructor(canvasWrap: HTMLElement, originalCellWidth:number) {
+    constructor(canvasWrap: HTMLElement, originalCellWidth: number) {
 
         this.canvasWrap = canvasWrap;
 
@@ -122,7 +122,7 @@ export default class Control {
 
         $(this.canvasWrap).on('mousemove', 'canvas', (evt) => {
 
-            let offset:JQueryCoordinates = {
+            let offset: JQueryCoordinates = {
                 left: evt.clientX - this.offset.left,
                 top: evt.clientY - this.offset.top
             };
@@ -130,7 +130,7 @@ export default class Control {
             offset.left = offset.left / (this.getZoom() * this.originalCellWidth);
             offset.top = offset.top / (this.getZoom() * this.originalCellWidth);
 
-            if(true === $(this.canvasWrap).hasClass('mousedown')){
+            if (true === $(this.canvasWrap).hasClass('mousedown')) {
 
                 let position = this.positionTween.getCurrent().move(
                     new Position(offset.left, offset.top)
@@ -143,7 +143,7 @@ export default class Control {
             this.offset = {
                 left: evt.clientX,
                 top: evt.clientY
-            };            
+            };
 
         });
 

@@ -10,7 +10,7 @@ export default class Canvas {
     get ctx(): CanvasRenderingContext2D {
         return this.canvasContext;
     }
-    
+
     get width(): number {
         return this.canvasContext.canvas.width;
     }
