@@ -5,7 +5,7 @@ import Control from './control';
 
 import { Renderable } from './renderable';
 
-export default class Checkerboard implements Renderable {
+export default class Checkerboard{
 
     private canvas: Canvas;
     private control: Control;
@@ -17,6 +17,7 @@ export default class Checkerboard implements Renderable {
     public cellWidth: number;
 
     private pan: Position;
+    private offset: Position = new Position(0, 0);
 
     private startColors: string[][];
 
@@ -42,10 +43,11 @@ export default class Checkerboard implements Renderable {
         ];
     }
 
-    public update(): void {
+    public update(offset: Position): void {
 
         this.cellWidth = this.originalCellWidth * this.control.getZoom();
         this.pan = this.control.getPan();
+        this.offset = offset;
     }
 
     private getStartColor(): { background: string; foreground: string; } {
@@ -54,8 +56,10 @@ export default class Checkerboard implements Renderable {
             foreground: ''
         };
 
-        const y = (0 > this.pan.y) ? Math.ceil(this.pan.y) : Math.floor(this.pan.y);
-        const x = (0 > this.pan.x) ? Math.ceil(this.pan.x) : Math.floor(this.pan.x);
+        const position = this.pan;
+
+        const y = (0 > position.y) ? Math.ceil(position.y) : Math.floor(position.y);
+        const x = (0 > position.x) ? Math.ceil(position.x) : Math.floor(position.x);
 
         const rowIndex = Math.abs(y % 2);
         const colIndex = Math.abs(x % 2);
@@ -76,14 +80,10 @@ export default class Checkerboard implements Renderable {
         const rows = Math.floor(this.canvas.height / this.cellWidth);
         const cols = Math.floor(this.canvas.width / this.cellWidth);
 
-        const x = this.pan.x % 1;
-        const y = this.pan.y % 1;
+        const position = this.pan.move(this.offset);
 
-        const xStart = x - rows;
-        const xStop = xStart + cols + rows;
-
-        const yStart = this.pan.y;
-        const yStop = yStart + rows;
+        const x = position.x % 1;
+        const y = position.y % 1;
 
         this.canvas.ctx.fillStyle = colors.foreground;
 
