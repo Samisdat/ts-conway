@@ -31,6 +31,8 @@ export default class Frontend implements Renderable {
 
     private checkerboard: Checkerboard;
 
+    private offset: Position = new Position(0, 0);
+
     private bgColors = {
         dark: '#000',
         light: '#fff'
@@ -57,6 +59,35 @@ export default class Frontend implements Renderable {
             '#FFAAAA'
 
         );
+
+    }
+
+    private center(){
+
+        this.cols = this.canvas.width / this.cellWidth;
+        this.rows = this.canvas.height / this.cellWidth;
+
+        this.zero = new Position(
+            Math.floor(this.cols / 2),
+            Math.floor(this.rows / 2)
+        );
+
+        let position = new Position(
+            (this.cols % 1) / 2,
+            (this.rows % 1) / 2
+        );
+
+        if(0 === Math.floor(this.rows) % 2){
+            const correct = new Position(0, -0.5);
+            position = position.move(correct); 
+        }
+
+        if(0 === Math.floor(this.cols) % 2){
+            const correct = new Position(-0.5, 0);
+            position = position.move(correct); 
+        }
+
+        this.offset = position;
 
     }
 
@@ -89,36 +120,8 @@ export default class Frontend implements Renderable {
             height: canvasHeight + 'px'
         });
 
-        this.cols = this.canvas.width / this.cellWidth;
-        this.rows = this.canvas.height / this.cellWidth;
-
-        this.zero = new Position(
-            Math.floor(this.cols / 2),
-            Math.floor(this.rows / 2)
-        );
-
-        let panX = 0;
-        let panY = 0;
-
-        if (0 === this.rows % 2) {
-            panY = -0.5;
-        }
-
-        if (0 === this.cols % 2) {
-            panX = -0.5;
-        }
-
-        let pan = new Position(
-            panX,
-            panY
-        );
-
-        pan = new Position(
-            0,
-            0
-        );
-
-        this.control.overwritePan(pan);
+        this.center();
+        
     }
 
     private updateZoom(): void {
@@ -128,20 +131,7 @@ export default class Frontend implements Renderable {
         let actualZoom = this.control.getZoom();
 
         this.cellWidth = actualZoom * this.originalCellWidth;
-
-        this.cols = this.canvas.width / this.cellWidth;
-        this.rows = this.canvas.height / this.cellWidth;
-
-        let move = new Position(
-            cols - this.cols,
-            rows - this.rows
-        );
-
-        this.zero = new Position(
-            Math.floor(this.cols / 2),
-            Math.floor(this.rows / 2)
-        );
-
+        this.center();
     }
 
     public update(): void {
@@ -150,13 +140,14 @@ export default class Frontend implements Renderable {
 
         this.updateZoom();
 
-        this.checkerboard.update();
+        this.checkerboard.update(this.offset);
 
     }
 
     public render(): void {
         this.checkerboard.render();
 
+        /*
 
         const positions: Position[] = this.get();
 
@@ -175,16 +166,19 @@ export default class Frontend implements Renderable {
 
         this.canvas.ctx.fillRect(
             0,
-            149,
-            2000, 2
+            (this.canvas.height - 2)/ 2,
+            this.canvas.width, 
+            2
         );
 
         this.canvas.ctx.fillRect(
-            810,
+            (this.canvas.width - 2 )/2,
             0,
             2,
-            400
+            this.canvas.height
         );
+
+        */
 
     }
 
@@ -225,6 +219,7 @@ export default class Frontend implements Renderable {
 
         let mapped = this.zero.move(position);
         let moved = mapped.move(this.control.getPan());
+        moved = moved.move(this.offset);
 
         return moved;
     }
