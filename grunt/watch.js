@@ -6,7 +6,7 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
         development: {
             files: [
                 'src/**/*.html',
-                'src/**/*.ts',
+                'typescript/**/*.ts',
             ],
             tasks: [
                 'copy:html',
