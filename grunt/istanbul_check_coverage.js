@@ -5,7 +5,7 @@ var check_coverage = {
             coverageFolder: 'coverage*', // will check both coverage folders and merge the coverage results
             check: {
                 statements: 95,
-                branches: 95,
+                branches: 80,
                 functions: 95,
                 lines: 95                
             }                    	
