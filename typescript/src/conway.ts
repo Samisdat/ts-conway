@@ -28,6 +28,8 @@ $(document).ready(function(){
         frontend.render();
 
         window.requestAnimationFrame(loop);
+
+        //window.setTimeout(loop, 1000);
     };
 
     loop();
