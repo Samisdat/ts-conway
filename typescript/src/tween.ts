@@ -76,11 +76,6 @@ export default class Tween {
             return;
         }
 
-        if (this.steps <= this.stepsDone) {
-            this.current = this.end;
-            return;
-        }
-
         this.current += this.stepInterval;
 
         this.stepsDone += 1;
