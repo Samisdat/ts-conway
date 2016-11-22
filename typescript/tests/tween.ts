@@ -89,6 +89,7 @@ describe('Tween', () => {
 
         tween.setEnd(1);
 
+        expect(tween.equal(1)).to.be.true;
         expect(tween.getStart()).to.be.equal(0);
         expect(tween.getCurrent()).to.be.equal(0);
         expect(tween.getEnd()).to.be.equal(1);
@@ -106,5 +107,27 @@ describe('Tween', () => {
 
 
     });
+
+    it('overwrite', () => {
+
+        let tween = new Tween(1);
+        tween.setEnd(31);
+
+        tween.update();
+
+        expect(tween.getStart()).to.be.equal(1);
+        expect(tween.getEnd()).to.be.equal(31);
+        expect(tween.getCurrent()).to.be.equal(2);
+        expect(tween.getStepsDone()).to.be.equal(1);
+
+        tween.overwrite(5);
+
+        expect(tween.getStart()).to.be.equal(5);
+        expect(tween.getEnd()).to.be.equal(5);
+        expect(tween.getCurrent()).to.be.equal(5);
+        expect(tween.getStepsDone()).to.be.equal(0);
+
+    });
+    
 
 });

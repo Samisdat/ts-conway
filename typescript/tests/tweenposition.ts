@@ -120,4 +120,48 @@ describe('PositionTween', () => {
 
     });
 
+    it('equal', () => {
+
+        let positionA = new Position(-5, 5); 
+        let positionB = new Position(-5, 5); 
+        let positionC = new Position(-5, 5); 
+        let positionD = new Position(2, 3); 
+
+        let tween = new TweenPosition(
+            positionA
+        );
+
+        tween.setEnd(positionB);
+
+        expect(tween.equal(positionC)).to.be.true;
+        expect(tween.equal(positionD)).to.be.false;
+
+    });
+
+    it('overwrite', () => {
+
+        let tween = new TweenPosition(
+            new Position(0, 0)
+        );
+        tween.setEnd(
+            new Position(30, 60)
+        );
+
+
+        tween.update();
+        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
+        expect(tween.getEnd()).to.be.deep.equal(new Position(30, 60));
+        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getStepsDone()).to.be.equal(1);
+
+        tween.overwrite(new Position(5, 10));
+
+        expect(tween.getStart()).to.be.deep.equal(new Position(5, 10));
+        expect(tween.getEnd()).to.be.deep.equal(new Position(5, 10));
+        expect(tween.getCurrent()).to.be.deep.equal(new Position(5, 10));
+        expect(tween.getStepsDone()).to.be.equal(0);
+
+    });
+    
+
 });

@@ -34,6 +34,35 @@ describe('Position', () => {
 
     });
 
+    it('inverse', () => {
+
+        let position = new Position(2, 3);
+
+        let inversed = position.inverse();
+
+        expect(inversed.x).to.be.equal(-2);
+        expect(inversed.y).to.be.equal(-3);
+
+        inversed = inversed.inverse();
+
+        expect(inversed.x).to.be.equal(2);
+        expect(inversed.y).to.be.equal(3);
+
+    });
+
+    it('compare', () => {
+
+        let positionA = new Position(2, 2);
+        let positionB = new Position(2, 2);
+        let positionC = new Position(4, 4);
+
+        expect(positionA.compare(positionB)).to.be.true;
+        expect(positionA.compare(positionC)).to.be.false;
+
+
+    });
+
+
     it('get neighbours', () => {
 
         let position = new Position(3, 3);
@@ -53,4 +82,6 @@ describe('Position', () => {
 
 
     });
+    
+
 });
