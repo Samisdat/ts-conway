@@ -5,9 +5,11 @@ var mochaIstanbul = {
             'dist/javascript/tests/**/*.js'
         ],
         options:{
-			reportFormats: ['json', 'html']
+			reportFormats: ['json']
         }
     }
 };
+
+//node_modules\.bin\istanbul report --include=coverage\typescript\coverage-final.json text-summary
 
 module.exports = mochaIstanbul;
