@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
-    "lint": ".\\node_modules\\.bin\\tslint -c tslint.json .\\src\\ts\\**.ts -t stylish"
+    "lint": ".\\node_modules\\.bin\\tslint -c tslint.json .\\typescript\\**\\*.ts -t stylish"
   },
   "author": "samisdat",
   "license": "MIT",
