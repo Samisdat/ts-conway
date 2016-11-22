@@ -27,4 +27,41 @@ export default class Position {
         return (position.x === this.x && position.y === this.y);
 
     }
+
+    public getNeighbours(): Position[] {
+
+        let neighbours: Position[] = [];
+
+        // neighbours on bottom
+        neighbours.push(
+            new Position(this.x - 1, this.y - 1)
+        );
+        neighbours.push(
+            new Position(this.x, this.y - 1)
+        );
+        neighbours.push(
+            new Position(this.x + 1, this.y - 1)
+        );
+
+        // neighbours on the left and on the right
+        neighbours.push(
+            new Position(this.x - 1, this.y)
+        );
+        neighbours.push(
+            new Position(this.x + 1, this.y)
+        );
+
+        // neighbours on top
+        neighbours.push(
+            new Position(this.x - 1, this.y + 1)
+        );
+        neighbours.push(
+            new Position(this.x, this.y + 1)
+        );
+        neighbours.push(
+            new Position(this.x + 1, this.y + 1)
+        );
+
+        return neighbours;
+    }    
 }

@@ -1,5 +1,4 @@
 import Position from './position';
-import getNeighbours from './neighbours';
 import Cell from './cell';
 import LivingCell from './livingcell';
 
@@ -34,7 +33,7 @@ export default class Habitat {
 
         let livingNeighbours: number = 0;
 
-        let neighbours: Position[] = getNeighbours(position);
+        let neighbours: Position[] = position.getNeighbours();
 
         for (let neighbour of neighbours) {
             let isLiving = this.isLiving(neighbour);
@@ -80,7 +79,7 @@ export default class Habitat {
 
         for (let cell of this.cells) {
 
-            let neighbours = getNeighbours(cell.position);
+            let neighbours = cell.position.getNeighbours();
 
             for (let neighbour of neighbours) {
 
