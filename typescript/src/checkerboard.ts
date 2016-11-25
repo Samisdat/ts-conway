@@ -18,6 +18,7 @@ export default class Checkerboard{
 
     private pan: Position;
     private offset: Position = new Position(0, 0);
+    private zero: Position = new Position(0, 0);
 
     private startColors: string[][];
 
@@ -43,11 +44,12 @@ export default class Checkerboard{
         ];
     }
 
-    public update(offset: Position): void {
+    public update(zero: Position, offset: Position): void {
 
         this.cellWidth = this.originalCellWidth * this.control.getZoom();
         this.pan = this.control.getPan();
         this.offset = offset;
+        this.zero = zero;
     }
 
     private getStartColor(): { background: string; foreground: string; } {
@@ -67,10 +69,13 @@ export default class Checkerboard{
         colors.background = this.startColors[rowIndex][colIndex];
         colors.foreground = (this.darkColor === colors.background) ? this.lightColor : this.darkColor;
 
+        colors.background = this.darkColor;
+        colors.foreground = this.lightColor;
+
         return colors;
     }
 
-    public render(): void {
+    public render(): void{
 
         const colors = this.getStartColor();
 
@@ -86,6 +91,101 @@ export default class Checkerboard{
         const y = position.y % 1;
 
         this.canvas.ctx.fillStyle = colors.foreground;
+
+        let start = this.zero.move(this.offset).move(this.pan);
+
+        while(-2 < start.x){
+
+            let byX = -2; 
+            let byY = 0; 
+            
+            const move = new Position(byX, byY);
+
+            start = start.move(move);
+
+        }   
+        
+        while(-2 < start.y){
+
+            let byX = 0; 
+            let byY = -2; 
+            
+            const move = new Position(byX, byY);
+
+            start = start.move(move);
+
+        }
+        
+        let pointer = new Position(start.x, start.y);
+
+        for(var row = 0; row < rows + 6; row += 1){
+
+            for(var col = 0; col < cols + 6 ; col += 2){
+
+                this.canvas.ctx.fillRect(
+                    pointer.x * this.cellWidth,
+                    pointer.y * this.cellWidth,
+                    this.cellWidth,
+                    this.cellWidth
+                );
+                pointer = pointer.move(new Position(2, 0));            
+            }
+            pointer = new Position(start.x, start.y);
+
+            let offsetX = 0;
+            if(0 !== row % 2){
+                offsetX = 1;
+            }
+
+            pointer = pointer.move(new Position(offsetX, row));            
+        }
+
+        /*
+        if(cols < start.x){
+            while(this.zero.x < start.x){
+                start = start.move(new Position(-2, 0));
+            }
+        }
+
+        if(rows < start.y){
+            start = start.move(new Position(0, -2));
+        }
+
+        this.canvas.ctx.fillRect(
+            start.x * this.cellWidth,
+            start.y * this.cellWidth,
+            this.cellWidth,
+            this.cellWidth
+        );
+
+        // left
+        while(start.x > 0){
+            start = start.move(new Position(-2, 0));
+
+            this.canvas.ctx.fillRect(
+                start.x * this.cellWidth,
+                start.y * this.cellWidth,
+                this.cellWidth,
+                this.cellWidth
+            );
+                        
+        }
+
+        // right
+        while(start.x < cols){
+            start = start.move(new Position(2, 0));
+            
+            this.canvas.ctx.fillRect(
+                start.x * this.cellWidth,
+                start.y * this.cellWidth,
+                this.cellWidth,
+                this.cellWidth
+            );
+                        
+        }
+
+
+        /*
 
         let positions: Position[] = [];
 
@@ -113,6 +213,7 @@ export default class Checkerboard{
             );
 
         }
+        */
 
     }
 

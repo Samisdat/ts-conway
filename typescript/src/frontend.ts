@@ -17,7 +17,7 @@ export default class Frontend implements Renderable {
     private canvasWidth: number;
     private canvasHeight: number;
 
-    public originalCellWidth: number = 20;
+    public originalCellWidth: number = 80;
     public cellWidth: number;
 
     private habitat: Habitat;
@@ -140,7 +140,7 @@ export default class Frontend implements Renderable {
 
         this.updateZoom();
 
-        this.checkerboard.update(this.offset);
+        this.checkerboard.update(this.zero, this.offset);
 
     }
 
