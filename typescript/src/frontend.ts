@@ -147,7 +147,7 @@ export default class Frontend implements Renderable {
     public render(): void {
         this.checkerboard.render();
 
-        /*
+
 
         const positions: Position[] = this.get();
 
@@ -178,7 +178,7 @@ export default class Frontend implements Renderable {
             this.canvas.height
         );
 
-        */
+
 
     }
 
