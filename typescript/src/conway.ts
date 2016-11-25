@@ -2,9 +2,12 @@ import * as $ from 'jquery';
 
 import Position from './position';
 import Habitat from './habitat';
+import Patterns from './patterns';
 import Frontend from './frontend';
 
 $(document).ready(function(){
+
+    const patterns = new Patterns();
 
     let frontend = new Frontend(
         $('#conway')
@@ -12,15 +15,7 @@ $(document).ready(function(){
 
     const habitat = frontend.getHabitat();
 
-    habitat.seed(
-        new Position(-1, 0)
-    );
-    habitat.seed(
-        new Position(0, 0)
-    );
-    habitat.seed(
-        new Position(1, 0)
-    );
+    habitat.seedPattern(patterns.get('guns_and_eaters'));
 
     let loop = function(){
 
@@ -35,5 +30,9 @@ $(document).ready(function(){
     loop();
 
     frontend.elapse();
+
+    $(window).resize(()=>{
+        frontend.resize();
+    });
 
   });
