@@ -94,22 +94,19 @@ export default class Checkerboard{
 
         let start = this.zero.move(this.offset).move(this.pan);
 
-        while(-2 < start.x){
-
-            let byX = -2; 
-            let byY = 0; 
-            
-            const move = new Position(byX, byY);
-
-            start = start.move(move);
-
-        }   
-        
-        while(-2 < start.y){
+        while(-2 < start.x || -2 < start.y){
 
             let byX = 0; 
-            let byY = -2; 
-            
+            let byY = 0; 
+
+            if(-2 < start.x){
+                byX = -2;
+            } 
+
+            if(-2 < start.y){
+                byY = -2;
+            }
+
             const move = new Position(byX, byY);
 
             start = start.move(move);
@@ -139,81 +136,6 @@ export default class Checkerboard{
 
             pointer = pointer.move(new Position(offsetX, row));            
         }
-
-        /*
-        if(cols < start.x){
-            while(this.zero.x < start.x){
-                start = start.move(new Position(-2, 0));
-            }
-        }
-
-        if(rows < start.y){
-            start = start.move(new Position(0, -2));
-        }
-
-        this.canvas.ctx.fillRect(
-            start.x * this.cellWidth,
-            start.y * this.cellWidth,
-            this.cellWidth,
-            this.cellWidth
-        );
-
-        // left
-        while(start.x > 0){
-            start = start.move(new Position(-2, 0));
-
-            this.canvas.ctx.fillRect(
-                start.x * this.cellWidth,
-                start.y * this.cellWidth,
-                this.cellWidth,
-                this.cellWidth
-            );
-                        
-        }
-
-        // right
-        while(start.x < cols){
-            start = start.move(new Position(2, 0));
-            
-            this.canvas.ctx.fillRect(
-                start.x * this.cellWidth,
-                start.y * this.cellWidth,
-                this.cellWidth,
-                this.cellWidth
-            );
-                        
-        }
-
-
-        /*
-
-        let positions: Position[] = [];
-
-        for (let col = -1; col < cols + 2; col += 2) {
-
-            for (let row = -1; row < rows + 2; row += 1) {
-
-                const offset = -1 * Math.abs(row % 2);
-
-                let tilePos = new Position(col + offset, row);
-                positions.push(tilePos);
-            }
-        }
-
-        let move = new Position(x, y);
-
-        for (let position of positions) {
-            position = position.move(move);
-
-            this.canvas.ctx.fillRect(
-                position.x * this.cellWidth,
-                position.y * this.cellWidth,
-                this.cellWidth,
-                this.cellWidth
-            );
-
-        }
-        */
 
     }
 
