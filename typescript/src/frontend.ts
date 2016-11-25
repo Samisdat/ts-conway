@@ -17,7 +17,7 @@ export default class Frontend implements Renderable {
     private canvasWidth: number;
     private canvasHeight: number;
 
-    public originalCellWidth: number = 80;
+    public originalCellWidth: number = 20;
     public cellWidth: number;
 
     private habitat: Habitat;
