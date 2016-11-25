@@ -54,7 +54,21 @@ export default class Pattern {
     }
 
     public get() {
-        return this.positions;
+
+        const move = new Position(
+            -1 * Math.floor(this.width / 2),
+            -1 * Math.floor(this.height / 2)
+        );
+
+        var positions:Position[] = [];
+
+        for(let position of this.positions){
+            positions.push(
+                position.move(move)
+            );
+        }
+
+        return positions;
     }
 
     public getWidth(): number {
