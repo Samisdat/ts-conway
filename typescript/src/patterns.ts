@@ -161,4 +161,14 @@ const patterns = {
 
 export default class Patterns {
 
+    public get(name:string):Pattern{
+
+        if(undefined === patterns[name]){
+            throw new Error('unkown pattern ' + name);
+        }
+        
+        return new Pattern(name, patterns[name]);
+
+    }
+
 }
