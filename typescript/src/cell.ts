@@ -12,6 +12,9 @@ export default class Cell {
         this.position = position;
     }
 
+    /**
+     * Getter for x allows access like position.x
+     */
     get x(): Number {
         return this.position.x;
     }
