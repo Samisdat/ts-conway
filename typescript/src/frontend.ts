@@ -40,6 +40,16 @@ export default class Frontend implements Renderable {
 
     constructor($element: JQuery) {
 
+        if (undefined === $element.get(0)) {
+            throw new Error('jquery selector does not match an element');
+        }
+
+        this.$element = $element;
+
+        if (0 === this.$element.find('canvas').length) {
+            this.$element.append($('<canvas>'));
+        }
+
         this.control = new Control(
             $element.get(0),
             this.originalCellWidth
@@ -93,20 +103,10 @@ export default class Frontend implements Renderable {
 
     private setCanvas($element: JQuery): void {
 
-        if (undefined === $element.get(0)) {
-            throw new Error('jquery selector does not match an element');
-        }
-
-        this.$element = $element;
-
-        if (0 === this.$element.find('canvas').length) {
-            this.$element.append($('<canvas>'));
-        }
-
-        const canvas = this.$element.find('canvas').get(0) as HTMLCanvasElement;
-
         const canvasWidth = this.$element.width();
         const canvasHeight = this.$element.height();
+
+        const canvas = this.$element.find('canvas').get(0) as HTMLCanvasElement;
 
         const ctx = canvas.getContext('2d');
         ctx.canvas.width = canvasWidth;
@@ -122,6 +122,11 @@ export default class Frontend implements Renderable {
 
         this.center();
         
+    }
+
+    public resize():void{
+        console.log(this.$element.width(), this.$element.height());
+        this.setCanvas(this.$element);
     }
 
     private updateZoom(): void {
@@ -146,8 +151,6 @@ export default class Frontend implements Renderable {
 
     public render(): void {
         this.checkerboard.render();
-
-
 
         const positions: Position[] = this.get();
 
@@ -245,7 +248,7 @@ export default class Frontend implements Renderable {
         window.setInterval(() => {
             this.habitat.elapse();
         }
-            , 600
+            , 200
         );
     }
 
