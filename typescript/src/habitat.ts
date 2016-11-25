@@ -1,6 +1,7 @@
 import Position from './position';
 import Cell from './cell';
 import LivingCell from './livingcell';
+import Pattern from './pattern';
 
 export default class Habitat {
 
@@ -128,6 +129,16 @@ export default class Habitat {
 
     public seed(position: Position): void {
         this.cells.push(new LivingCell(position));
+    }
+
+    public seedPattern(pattern: Pattern): void {
+
+        const positions = pattern.get(); 
+
+        for (let position of positions) {
+            this.cells.push(new LivingCell(position));
+        }
+
     }
 
     public getAllCells(): Cell[] {
