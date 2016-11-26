@@ -1,4 +1,5 @@
 import Position from './position';
+import GridCell from './grid-cell';
 
 export default class Grid {
 
@@ -7,7 +8,9 @@ export default class Grid {
     private zero:Position;
     private offset:Position;
 
-    private cells: string[][];
+    private cells: GridCell[];
+
+    private map:{} = {};
 
     constructor(rows:number, cols:number, zero = new Position(0,0)) {
 
@@ -38,18 +41,34 @@ export default class Grid {
 
         for(let y = 0; y < this.rows; y += 1){
             
-            let row:string[] = [];
-
             for(let x = 0; x < this.cols; x += 1){
-                row.push('');
+                if(undefined === this.map[x]){
+                    this.map[x] = {};
+                }
+                this.map[x][y] = this.cells.length;
+                this.cells.push(new GridCell(x, y));
             }
-            this.cells.push(row);
         }
 
     }
 
+    public getWidth():number{
+        return this.cols;
+    }
+
+    public getHeight():number{
+        return this.rows;
+    }
+
     public getCells(){
         return this.cells;
+    }
+
+    public getCell(col:number, row:number):GridCell{
+
+        const index = this.map[col][row];
+
+        return this.cells[index];
     }
 
     public getZero(){
