@@ -1,19 +1,17 @@
+import { GridCellType } from './grid-cell-types/grid-cell-type';
+import CheckerboardDark from './grid-cell-types/checkerboard-dark';
+import CheckerboardLight from './grid-cell-types/checkerboard-light';
+
 import Grid from './grid';
 
 export default class Checkerboard{
 
-    private darkColor: string;
-    private lightColor: string;
+    private darkColor: CheckerboardDark = new CheckerboardDark();
+    private lightColor: CheckerboardLight = new CheckerboardLight();
 
-    private startColors: string[][];
+    private startColors: GridCellType[][];
 
-    constructor(
-        darkColor: string,
-        lightColor: string
-    ) {
-
-        this.darkColor = darkColor;
-        this.lightColor = lightColor;
+    constructor() {
 
         this.startColors = [
             [this.darkColor, this.lightColor],
@@ -23,102 +21,23 @@ export default class Checkerboard{
 
     public update(grid:Grid): void {
         
-        const cells = grid.getCells();
+        let firstColorOfRow:GridCellType = this.lightColor;
 
-        for(let i = 0, x = cells.length; i < x; i += 2){
-            cells[i].setColor(this.lightColor);
+        let color:GridCellType = firstColorOfRow;
+    
+        for(let row = 0; row < grid.getHeight(); row += 1){
+            
+            for(let col = 0; col < grid.getWidth(); col += 1){
+                
+                grid.getCell(col, row).setType(color);
+
+                color = (this.lightColor === color) ? this.darkColor: this.lightColor;
+                
+            }
+            firstColorOfRow = (this.lightColor === firstColorOfRow) ? this.darkColor: this.lightColor;
+            color = firstColorOfRow;
         }
 
-    }
-
-    /*
-    private getStartColor(): { background: string; foreground: string; } {
-        let colors = {
-            background: '',
-            foreground: ''
-        };
-
-        const position = this.pan;
-
-        const y = (0 > position.y) ? Math.ceil(position.y) : Math.floor(position.y);
-        const x = (0 > position.x) ? Math.ceil(position.x) : Math.floor(position.x);
-
-        const rowIndex = Math.abs(y % 2);
-        const colIndex = Math.abs(x % 2);
-
-        colors.background = this.startColors[rowIndex][colIndex];
-        colors.foreground = (this.darkColor === colors.background) ? this.lightColor : this.darkColor;
-
-        colors.background = this.darkColor;
-        colors.foreground = this.lightColor;
-
-        return colors;
-    }
-    */
-
-    public render(): void{
-
-        /*
-        const colors = this.getStartColor();
-
-        this.canvas.ctx.fillStyle = colors.background;
-        this.canvas.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-        const rows = Math.floor(this.canvas.height / this.cellWidth);
-        const cols = Math.floor(this.canvas.width / this.cellWidth);
-
-        const position = this.pan.move(this.offset);
-
-        const x = position.x % 1;
-        const y = position.y % 1;
-
-        this.canvas.ctx.fillStyle = colors.foreground;
-
-        let start = this.zero.move(this.offset).move(this.pan);
-
-        while(-2 < start.x || -2 < start.y){
-
-            let byX = 0; 
-            let byY = 0; 
-
-            if(-2 < start.x){
-                byX = -2;
-            } 
-
-            if(-2 < start.y){
-                byY = -2;
-            }
-
-            const move = new Position(byX, byY);
-
-            start = start.move(move);
-
-        }
-        
-        let pointer = new Position(start.x, start.y);
-
-        for(var row = 0; row < rows + 6; row += 1){
-
-            for(var col = 0; col < cols + 6 ; col += 2){
-
-                this.canvas.ctx.fillRect(
-                    pointer.x * this.cellWidth,
-                    pointer.y * this.cellWidth,
-                    this.cellWidth,
-                    this.cellWidth
-                );
-                pointer = pointer.move(new Position(2, 0));            
-            }
-            pointer = new Position(start.x, start.y);
-
-            let offsetX = 0;
-            if(0 !== row % 2){
-                offsetX = 1;
-            }
-
-            pointer = pointer.move(new Position(offsetX, row));            
-        }
-        */
     }
 
 }

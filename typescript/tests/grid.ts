@@ -19,6 +19,8 @@ describe('Grid', () => {
 
         expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
         expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
+        expect(grid.getWidth()).to.be.deep.equal(3);
+        expect(grid.getHeight()).to.be.deep.equal(3);
 
         const cells = grid.getCells();
                 
@@ -31,6 +33,8 @@ describe('Grid', () => {
         let grid = new Grid(4, 3);
         expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
         expect(grid.getOffset()).to.be.deep.equal(new Position(0, -0.5));
+        expect(grid.getWidth()).to.be.deep.equal(3);
+        expect(grid.getHeight()).to.be.deep.equal(6);
 
         const cells = grid.getCells();
                 
@@ -43,6 +47,8 @@ describe('Grid', () => {
         let grid = new Grid(3, 4);
         expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
         expect(grid.getOffset()).to.be.deep.equal(new Position(-0.5, 0));
+        expect(grid.getWidth()).to.be.deep.equal(6);
+        expect(grid.getHeight()).to.be.deep.equal(3);
 
         const cells = grid.getCells();
                 

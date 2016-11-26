@@ -1,9 +1,11 @@
+import { GridCellType } from './grid-cell-types/grid-cell-type';
+
 export default class GridCell {
 
     private row: number;
     private col: number;
 
-    private color:string;
+    private type:GridCellType;
 
     constructor(col:number, row:number) {
 
@@ -20,13 +22,16 @@ export default class GridCell {
         return this.col;
     }
 
-    public setColor(color:string):void{
-        this.color = color;
+    public setType(type:GridCellType):void{
+        this.type = type;
+    }
+
+    public getType():GridCellType{
+        return this.type;
     }
 
     public getColor():string{
-        return this.color;
+        return this.type.toHex();
     }
-
 
 }
