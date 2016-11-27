@@ -15,7 +15,6 @@ export default class Grid {
     constructor(rows:number, cols:number, zero = new Position(0,0)) {
 
         let offset = new Position(0, 0);
-        console.log(rows, cols);
 
         const remainderRows = rows % 1;
         const remainderCols = cols % 1;
@@ -27,7 +26,7 @@ export default class Grid {
         
         rows = Math.ceil(rows);
         cols = Math.ceil(cols);
-        console.log(rows, cols);
+
 
         if(0 === rows % 2){
             rows += 2;
@@ -44,7 +43,7 @@ export default class Grid {
 
         this.zero = zero;
         this.offset = offset;
-        console.log(rows, cols, this.offset);
+
         this.createGrid();
     }
 
