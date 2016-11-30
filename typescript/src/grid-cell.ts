@@ -1,11 +1,12 @@
 import { GridCellType } from './grid-cell-types/grid-cell-type';
+import NoType from './grid-cell-types/no-type';
 
 export default class GridCell {
 
     private row: number;
     private col: number;
 
-    private type:GridCellType;
+    private type:GridCellType = new NoType();
 
     constructor(col:number, row:number) {
 
