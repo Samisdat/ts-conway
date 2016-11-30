@@ -19,6 +19,11 @@ export default class Control {
 
     private control: JQuery;
 
+    private left: JQuery;
+    private right: JQuery;
+    private top: JQuery;
+    private bottom: JQuery;
+
     private zoomTween: Tween = new Tween(1, 10);
 
     private zoomBound: Bound = new Bound(0.2, 10);
@@ -29,8 +34,8 @@ export default class Control {
     );
 
     private positionBound: BoundPosition = new BoundPosition(
-        new Position(-30, -30),
-        new Position(30, 30)
+        new Position(-2, -2),
+        new Position(2, 2)
     );
 
     constructor(canvasWrap: HTMLElement, originalCellWidth: number) {
@@ -75,6 +80,11 @@ export default class Control {
         $(pan).append(this.getControlElement('pan', 'left', 'arrow-left'));
         $(pan).append(this.getControlElement('pan', 'right', 'arrow-right'));
 
+        this.left = $(pan).find('.left');
+        this.right = $(pan).find('.right');
+        this.top = $(pan).find('.top');
+        this.bottom = $(pan).find('.bottom');
+
         this.control.append(pan);
     }
 
@@ -91,18 +101,18 @@ export default class Control {
 
     private addEventListener(): void {
 
-        const control = this;
+        $(this.canvasWrap).on('click', '.control div[data-action]', (evt) => {
 
-        $(this.canvasWrap).on('click', '.control div[data-action]', function () {
+            const target:JQuery = $(evt.currentTarget);
 
-            let action = $(this).data('action');
-            let value = $(this).data('value');
+            let action = target.data('action');
+            let value = target.data('value');
 
             if ('pan' === action) {
-                control.setPan(value);
+                this.setPan(target);
             }
             else if ('zoom' === action) {
-                control.setZoom(value);
+                this.setZoom(value);
             }
         });
 
@@ -181,7 +191,9 @@ export default class Control {
         this.positionTween.overwrite(position);
     }
 
-    public setPan(mode: string): void {
+    public setPan(target:JQuery): void {
+
+        let mode = target.data('value');
 
         let panX = 0;
         let panY = 0;
@@ -203,9 +215,91 @@ export default class Control {
 
         const panTo = this.positionTween.getEnd().move(panBy);
 
+        this.updateState(mode, panTo):
+
         this.positionTween.setEnd(
             this.positionBound.confine(panTo)
         );
+    }
+
+    private updateState(mode:string, panTo:Position):void{
+
+        if ('top' === mode) {
+            if(true === this.positionBound.isWithin(panTo)){
+                this.top.removeClass('inactive');
+            }
+            else{
+                this.top.addClass('inactive');            
+            }
+
+            panTo = panTo.move(new Position(0, 1)); 
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.bottom.removeClass('inactive');
+            }
+            else{
+                this.bottom.addClass('inactive');            
+            }
+
+        }
+        else if ('bottom' === mode) {
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.bottom.removeClass('inactive');
+            }
+            else{
+                this.bottom.addClass('inactive');            
+            }
+
+            panTo = panTo.move(new Position(0, -1)); 
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.top.removeClass('inactive');
+            }
+            else{
+                this.top.addClass('inactive');            
+            }
+
+        }
+        else if ('left' === mode) {
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.left.removeClass('inactive');
+            }
+            else{
+                this.left.addClass('inactive');            
+            }
+
+            panTo = panTo.move(new Position(1, 0)); 
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.right.removeClass('inactive');
+            }
+            else{
+                this.right.addClass('inactive');            
+            }
+
+        }
+        else if ('right' === mode) {
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.right.removeClass('inactive');
+            }
+            else{
+                this.right.addClass('inactive');            
+            }
+
+            panTo = panTo.move(new Position(-1, 0)); 
+
+            if(true === this.positionBound.isWithin(panTo)){
+                this.left.removeClass('inactive');
+            }
+            else{
+                this.left.addClass('inactive');            
+            }
+
+        }
+
     }
 
     public update(): void {
