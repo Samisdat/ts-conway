@@ -54,8 +54,8 @@ export default class Frontend {
 
 
         this.grid = new Grid(
-            this.wrapper.height() / this.cellWidth, 
-            this.wrapper.width() / this.cellWidth 
+            this.wrapper.width() / this.cellWidth, 
+            this.wrapper.height() / this.cellWidth 
         );  
 
         checkerboard.update(this.grid);

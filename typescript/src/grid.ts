@@ -3,6 +3,9 @@ import GridCell from './grid-cell';
 
 export default class Grid {
 
+    private orginalRows:number;
+    private orginalCols:number;
+
     private rows:number;
     private cols:number;
     private zero:Position;
@@ -12,36 +15,34 @@ export default class Grid {
 
     private map:{} = {};
 
-    constructor(rows:number, cols:number, zero = new Position(0,0)) {
+    constructor(cols:number, rows:number, zero = new Position(0,0)) {
+        this.orginalCols = cols;
+        this.orginalRows = rows;
+        this.zero = zero;
 
         let offset = new Position(0, 0);
 
-        const remainderRows = rows % 1;
-        const remainderCols = cols % 1;
+        cols = Math.ceil(cols) + 2;
+        rows = Math.ceil(rows) + 2;
 
-        offset = offset.move(new Position(
-             -0.5 * remainderCols,
-             -0.5 * remainderRows
-        ));            
-        
-        rows = Math.ceil(rows);
-        cols = Math.ceil(cols);
-
-
-        if(0 === rows % 2){
-            rows += 2;
-            offset = offset.move(new Position(0, -0.5));            
+        if(0 === Math.ceil(this.orginalCols )% 2){
+            offset = offset.move(new Position(0.5, 0));            
         }
 
-        if(0 === cols % 2){
-            cols += 2;
-            offset = offset.move(new Position(-0.5, 0));            
+        if(0 === Math.ceil(this.orginalRows )% 2){
+            offset = offset.move(new Position(0, 0.5));            
         }
 
-        this.rows = rows;
         this.cols = cols;
+        this.rows = rows;
 
-        this.zero = zero;
+        offset = offset.move(
+            new Position(
+                0.5 * ( this.orginalCols - this.cols ), 
+                0.5 * ( this.orginalRows - this.rows )
+            )
+        );
+
         this.offset = offset;
 
         this.createGrid();
