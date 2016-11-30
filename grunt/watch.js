@@ -6,13 +6,12 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
         development: {
             files: [
                 'src/**/*.html',
-                'typescript/**/*.ts',
+                'dist/javascript/src/**/*.js',
             ],
             tasks: [
                 'copy:html',
                 'copy:fontawesome_css',
                 'copy:fontawesome_font',
-                'ts:production',
                 'browserify'
             ],
             options: {
