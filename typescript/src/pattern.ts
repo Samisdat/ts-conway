@@ -53,8 +53,9 @@ export default class Pattern {
 
     }
 
-    public get() {
-
+    public get():Position[] {
+        return this.positions;
+        /*
         const move = new Position(
             -1 * Math.floor(this.width / 2),
             -1 * Math.floor(this.height / 2)
@@ -69,6 +70,7 @@ export default class Pattern {
         }
 
         return positions;
+        */
     }
 
     public getWidth(): number {
