@@ -8,7 +8,9 @@ export default class Habitat {
     private cells: Cell[] = [];
 
     constructor() {
-
+        setInterval(() => {
+            this.elapse();
+        }, 1000);
     }
 
     private isLiving(position: Position): Boolean {
