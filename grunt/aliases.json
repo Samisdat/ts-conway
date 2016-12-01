@@ -11,12 +11,10 @@
 	"test": {
         "description": "run tests",
         "tasks": [
-            "clean:testing",
-        	"ts:testing",        	
             "mochaTest:typescript"
         ]
     },
-    "coverage": {
+    "cover": {
         "description": "run tests and generate coverage report",
         "tasks": [
             "clean:coverage",
@@ -30,11 +28,9 @@
     "run": {
         "description": "build and run local server ",
         "tasks": [
-            "clean:production",
             "copy:html",
             "copy:fontawesome_css",
             "copy:fontawesome_font",
-            "ts:production",
             "browserify",
             "connect",      
             "watch"
