@@ -1,11 +1,5 @@
 import { expect } from 'chai';
 
-var jsdom = require('jsdom');
-var document = jsdom.jsdom();
-var window = document.defaultView;
-
-var $ = require('jquery')(window);
-
 import Canvas from '../src/canvas';
 
 describe.skip('Canvas', () => {

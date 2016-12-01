@@ -1,12 +1,5 @@
 import { expect } from 'chai';
 
-import jsdom = require('jsdom');
-var document = jsdom.jsdom('<html><body></body></html>');
-var window = document.parentWindow;
-global.window = window
-console.log(global.window)
-global.$ = require('jquery')(window);
-
 import Frontend from '../src/frontend';
 
 describe('Frontend', () => {
