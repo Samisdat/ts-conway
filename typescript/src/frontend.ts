@@ -55,10 +55,9 @@ export default class Frontend {
             this.originalCellWidth
         );
 
-        console.log(this.wrapper.width(), this.cellWidth, this.wrapper.width() / this.cellWidth)
         this.grid = new Grid(
-            this.wrapper.width() / this.cellWidth, 
-            this.wrapper.height() / this.cellWidth 
+            this.wrapper.width() / this.cellWidth * this.control.getZoom(), 
+            this.wrapper.height() / this.cellWidth * this.control.getZoom() 
         );  
 
         this.loop();
@@ -91,6 +90,12 @@ export default class Frontend {
         }
 
         this.offset = position;
+
+        this.grid = new Grid(
+            this.wrapper.width() / this.cellWidth * this.control.getZoom(), 
+            this.wrapper.height() / this.cellWidth * this.control.getZoom() 
+        );  
+        
 
     }
 
