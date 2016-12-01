@@ -27,6 +27,9 @@ export default class Frontend {
 
     private grid: Grid;
 
+    private checkerBoard:CheckerBoard;
+    private canvasRenderer:CanvasRenderer;
+
     constructor($element: JQuery) {
 
         if (undefined === $element.get(0)) {
@@ -39,9 +42,9 @@ export default class Frontend {
 
         this.wrapper = $element;
 
-        let checkerboard = new CheckerBoard();
+        this.checkerBoard = new CheckerBoard();
 
-        let canvasRenderer = new CanvasRenderer(
+        this.canvasRenderer = new CanvasRenderer(
             this.wrapper
         );
 
@@ -52,19 +55,13 @@ export default class Frontend {
             this.originalCellWidth
         );
 
-
+        console.log(this.wrapper.width(), this.cellWidth, this.wrapper.width() / this.cellWidth)
         this.grid = new Grid(
             this.wrapper.width() / this.cellWidth, 
             this.wrapper.height() / this.cellWidth 
         );  
 
-        checkerboard.update(this.grid);
-
-        this.center();
-        this.update();
-
-        canvasRenderer.update(this.cellWidth, this.grid);
-        canvasRenderer.render();
+        this.loop();
         
     }
 
@@ -135,6 +132,26 @@ export default class Frontend {
             this.grid.getCell(position.x, position.y).setType(new LivingCell());
 
         }
+
+    }
+
+    public loop(){
+
+        this.control.update();
+
+        this.center();
+        
+        this.checkerBoard.update(this.grid);
+
+        this.update();
+
+
+        this.canvasRenderer.update(this.cellWidth, this.grid, this.control.getPan());
+        this.canvasRenderer.render();
+
+        window.requestAnimationFrame(() => {
+            this.loop();
+        });
 
     }
 
