@@ -215,7 +215,7 @@ export default class Control {
 
         const panTo = this.positionTween.getEnd().move(panBy);
 
-        this.updateState(mode, panTo):
+        this.updateState(mode, panTo);
 
         this.positionTween.setEnd(
             this.positionBound.confine(panTo)
