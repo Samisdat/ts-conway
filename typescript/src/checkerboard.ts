@@ -25,9 +25,9 @@ export default class Checkerboard{
 
         let color:GridCellType = firstColorOfRow;
     
-        for(let row = 0; row < grid.getHeight(); row += 1){
+        for(let row = 0; row < grid.getRows(); row += 1){
             
-            for(let col = 0; col < grid.getWidth(); col += 1){
+            for(let col = 0; col < grid.getCols(); col += 1){
                 
                 grid.getCell(col, row).setType(color);
 

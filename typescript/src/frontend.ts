@@ -14,7 +14,7 @@ export default class Frontend {
     private wrapper: JQuery;
     private control: Control;
 
-    public originalCellWidth: number = 50   ;
+    public originalCellWidth: number = 100;
     public cellWidth: number;
 
     private habitat: Habitat = new Habitat();
@@ -56,9 +56,10 @@ export default class Frontend {
         );
 
         this.grid = new Grid(
-            this.wrapper.width() / this.cellWidth * this.control.getZoom(), 
-            this.wrapper.height() / this.cellWidth * this.control.getZoom() 
-        );  
+            this.wrapper.width(), 
+            this.wrapper.height(), 
+            this.cellWidth * this.control.getZoom() 
+        );          
 
         this.loop();
         
@@ -92,10 +93,10 @@ export default class Frontend {
         this.offset = position;
 
         this.grid = new Grid(
-            this.wrapper.width() / this.cellWidth * this.control.getZoom(), 
-            this.wrapper.height() / this.cellWidth * this.control.getZoom() 
-        );  
-        
+            this.wrapper.width(), 
+            this.wrapper.height(), 
+            this.cellWidth * this.control.getZoom() 
+        );          
 
     }
 
@@ -125,7 +126,7 @@ export default class Frontend {
     }
 
     private update(): void{
-
+        /*
         const cells = this.get();
 
         for(let cell of cells){
@@ -137,7 +138,7 @@ export default class Frontend {
             this.grid.getCell(position.x, position.y).setType(new LivingCell());
 
         }
-
+        */
     }
 
     public loop(){

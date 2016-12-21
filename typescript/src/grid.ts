@@ -3,6 +3,11 @@ import GridCell from './grid-cell';
 
 export default class Grid {
 
+    private width:number;
+    private height:number;
+    private cellDimension:number;
+
+
     private orginalRows:number;
     private orginalCols:number;
 
@@ -15,61 +20,111 @@ export default class Grid {
 
     private map:{} = {};
 
-    constructor(cols:number, rows:number, zero = new Position(0,0)) {
-        this.orginalCols = cols;
-        this.orginalRows = rows;
+    constructor(width:number, height:number, cellDimension: number, zero = new Position(0,0)) {
+
+        this.width = width;
+        this.height = height;        
+        this.cellDimension = cellDimension;
+
+        this.rows = width / cellDimension;
+        this.cols = height / cellDimension;
+
         this.zero = zero;
 
-        let offset = new Position(0, 0);
-
-        cols = Math.ceil(cols) + 2;
-        rows = Math.ceil(rows) + 2;
-
-        if(0 === Math.ceil(this.orginalCols )% 2){
-            offset = offset.move(new Position(0.5, 0));            
-        }
-
-        if(0 === Math.ceil(this.orginalRows )% 2){
-            offset = offset.move(new Position(0, 0.5));            
-        }
-
-        this.cols = cols;
-        this.rows = rows;
-
-        offset = offset.move(
-            new Position(
-                0.5 * ( this.orginalCols - this.cols ), 
-                0.5 * ( this.orginalRows - this.rows )
-            )
-        );
-
-        this.offset = offset;
+        this.map = {};
 
         this.createGrid();
+    }
+
+
+    private createRow(rowStart: Position){
+
+        let colPosition = new Position(
+            rowStart.x,
+            rowStart.y
+        );
+
+        while(colPosition.x < this.orginalCols){
+
+            let x = colPosition.x + -1* this.offset.x;
+            let y = colPosition.y + -1* this.offset.y;
+
+            if(undefined === this.map[x]){
+                this.map[x] = {};
+            }
+            this.map[x][y] = this.cells.length;
+
+            this.cells.push(
+                new GridCell(
+                    colPosition
+                )
+            );
+
+            colPosition = colPosition.move(
+                new Position(1, 0)
+            );
+
+        }
+
     }
 
     private createGrid():void{
 
         this.cells = [];
 
-        for(let y = 0; y < this.rows; y += 1){
-            
-            for(let x = 0; x < this.cols; x += 1){
-                if(undefined === this.map[x]){
-                    this.map[x] = {};
-                }
-                this.map[x][y] = this.cells.length;
-                this.cells.push(new GridCell(x, y));
-            }
-        }
+        // first quadrant
 
+        const end = new Position(
+            Math.ceil((this.cols -1) / 2),
+            Math.ceil((this.rows - 1)  / 2)
+        );
+
+        let start = new Position(
+            -1 * end.x,
+            -1 * end.y
+        );
+
+        while(start.y < this.rows/ 2){
+
+            while(start.x < this.cols/ 2){
+
+                if(undefined === this.map[start.x]){
+                    this.map[start.x] = {};
+                }
+
+                this.map[start.x][start.y] = this.cells.length;
+
+                this.cells.push(new GridCell(start))
+
+                start = start.move(new Position(1, 0));
+                
+            }
+
+            start = new Position(-1 * end.x, start.y + 1);
+            
+        }
+        console.log(this.map)
     }
 
     public getWidth():number{
-        return this.cols;
+        return this.width;
     }
 
     public getHeight():number{
+        return this.height;
+    }
+
+    /**
+     * @TODO For even grids this is wrong
+     */
+    public getCols():number{
+        return this.cols;
+    }
+
+    /**
+     * @TODO For even grids this is wrong
+     */
+    public getRows():number{
         return this.rows;
     }
 

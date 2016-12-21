@@ -3,19 +3,111 @@ import { expect } from 'chai';
 import Position from '../src/position';
 import Canvas from '../src/canvas';
 
+import GridCell from '../src/grid-cell';
 import Grid from '../src/grid';
 
 describe('Grid', () => {
 
     it('can be created', () => {
 
-        let grid = new Grid(3, 3);
+        let grid = new Grid(300, 300, 100);
 
         expect(grid).to.be.instanceof(Grid);
 
     });
 
     it('can be created', () => {
+
+        let grid = new Grid(300, 300, 90);
+
+        expect(grid).to.be.instanceof(Grid);
+
+    });
+
+    it('can be created', () => {
+
+        let grid = new Grid(400, 400, 100);
+
+        expect(grid).to.be.instanceof(Grid);
+
+    });
+
+    it.skip('odd -> number of rows and cols', () => {
+
+        let grid = new Grid(300, 300, 100);
+
+        expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
+        expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
+        
+        expect(grid.getWidth()).to.be.deep.equal(300);
+        expect(grid.getHeight()).to.be.deep.equal(300);
+        expect(grid.getCols()).to.be.deep.equal(3);
+        expect(grid.getRows()).to.be.deep.equal(3);
+
+        const cells = grid.getCells();
+                
+        expect(cells.length).to.be.equal(9);
+
+    });
+
+    it.skip('odd -> number of rows and cols', () => {
+
+        let grid = new Grid(300, 300, 100, new Position(1,0));
+
+        expect(grid.getZero()).to.be.deep.equal(new Position(1, 0));
+        expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
+        
+        expect(grid.getWidth()).to.be.deep.equal(300);
+        expect(grid.getHeight()).to.be.deep.equal(300);
+        expect(grid.getCols()).to.be.deep.equal(3);
+        expect(grid.getRows()).to.be.deep.equal(3);
+
+        const cells = grid.getCells();
+                
+        expect(cells.length).to.be.equal(9);
+
+    });
+
+    it.skip('3.5 -> number of rows and cols', () => {
+
+        let grid = new Grid(350, 350, 100);
+
+        expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
+        expect(grid.getOffset()).to.be.deep.equal(new Position(-0.75, -0.75));
+        
+        expect(grid.getWidth()).to.be.deep.equal(350);
+        expect(grid.getHeight()).to.be.deep.equal(350);
+        expect(grid.getCols()).to.be.deep.equal(6);
+        expect(grid.getRows()).to.be.deep.equal(6);
+
+        const cells = grid.getCells();
+                
+        expect(cells.length).to.be.equal(25);
+
+    });
+
+    it.skip('even -> number of rows and cols', () => {
+
+        let grid = new Grid(400, 400, 100);
+
+        //expect(grid.getZero()).to.be.deep.equal(new Position(0, 0));
+        expect(grid.getOffset()).to.be.deep.equal(new Position(-0.5, -0.5));
+        
+        expect(grid.getWidth()).to.be.deep.equal(400);
+        expect(grid.getHeight()).to.be.deep.equal(400);
+        expect(grid.getCols()).to.be.deep.equal(6);
+        expect(grid.getRows()).to.be.deep.equal(6);
+
+
+        const cells = grid.getCells();
+                
+        expect(cells.length).to.be.equal(25);
+
+    });
+
+
+    /*
+    it.skip('can be created', () => {
 
         let grid = new Grid(3.3, 3.3);
 
