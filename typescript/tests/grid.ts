@@ -8,23 +8,29 @@ import Grid from '../src/grid';
 
 describe('Grid', () => {
 
-    it('can be created', () => {
+    it('odd number of cols and rows ', () => {
 
-        let grid = new Grid(300, 300, 100);
+        let grid = new Grid(3, 3, 1);
 
         expect(grid).to.be.instanceof(Grid);
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(3);
+        expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
 
     });
 
-    it('can be created', () => {
+    it('even number of cols and rows ', () => {
 
-        let grid = new Grid(300, 300, 90);
+        let grid = new Grid(4, 4, 1);
 
         expect(grid).to.be.instanceof(Grid);
+        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).to.be.equal(5);
+        expect(grid.getOffset()).to.be.deep.equal(new Position(-0.5, -0.5));
 
     });
 
-    it('can be created', () => {
+    it.skip('can be created', () => {
 
         let grid = new Grid(400, 400, 100);
 

@@ -7,14 +7,15 @@ export default class Grid {
     private height:number;
     private cellDimension:number;
 
-
     private orginalRows:number;
     private orginalCols:number;
 
     private rows:number;
     private cols:number;
+
     private zero:Position;
-    private offset:Position;
+
+    private offset:Position = new Position(0, 0);
 
     private cells: GridCell[];
 
@@ -26,8 +27,22 @@ export default class Grid {
         this.height = height;        
         this.cellDimension = cellDimension;
 
-        this.rows = width / cellDimension;
-        this.cols = height / cellDimension;
+        this.cols = width / cellDimension;
+        this.rows = height / cellDimension;
+
+        if(0 === this.cols % 2){
+            this.cols += 1;
+            this.offset = this.offset.move(
+                new Position(-0.5, 0)
+            );
+        }
+
+        if(0 === this.rows % 2){
+            this.rows += 1;
+            this.offset = this.offset.move(
+                new Position(0, -0.5)
+            );
+        }
 
         this.zero = zero;
 
@@ -103,7 +118,7 @@ export default class Grid {
             start = new Position(-1 * end.x, start.y + 1);
             
         }
-        console.log(this.map)
+
     }
 
     public getWidth():number{
