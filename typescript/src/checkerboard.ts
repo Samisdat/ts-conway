@@ -2,6 +2,8 @@ import { GridCellType } from './grid-cell-types/grid-cell-type';
 import CheckerboardDark from './grid-cell-types/checkerboard-dark';
 import CheckerboardLight from './grid-cell-types/checkerboard-light';
 
+import Position from './position';
+
 import Grid from './grid';
 
 export default class Checkerboard{
@@ -20,7 +22,41 @@ export default class Checkerboard{
     }
 
     public update(grid:Grid): void {
+
+        const end = new Position(
+            Math.ceil((grid.getCols() -1) / 2),
+            Math.ceil((grid.getRows() - 1)  / 2)
+        );
+
+        let start = new Position(
+            -1 * end.x,
+            -1 * end.y
+        );
+
+        let firstColorOfRow:GridCellType = this.lightColor;
+
+        let color:GridCellType = firstColorOfRow;
         
+        while(start.y < grid.getRows()/ 2){
+
+            while(start.x < grid.getCols()/ 2){
+
+                grid.getCell(start.x, start.y).setType(color);
+
+                color = (this.lightColor === color) ? this.darkColor: this.lightColor;
+                
+                start = start.move(new Position(1, 0));
+                
+            }
+
+            firstColorOfRow = (this.lightColor === firstColorOfRow) ? this.darkColor: this.lightColor;
+            color = firstColorOfRow;
+
+            start = new Position(-1 * end.x, start.y + 1);
+            
+        }
+        
+        /*
         let firstColorOfRow:GridCellType = this.lightColor;
 
         let color:GridCellType = firstColorOfRow;
@@ -37,6 +73,7 @@ export default class Checkerboard{
             firstColorOfRow = (this.lightColor === firstColorOfRow) ? this.darkColor: this.lightColor;
             color = firstColorOfRow;
         }
+        */
 
     }
 
