@@ -27,22 +27,33 @@ export default class Grid {
         this.height = height;        
         this.cellDimension = cellDimension;
 
-        this.cols = width / cellDimension;
-        this.rows = height / cellDimension;
+        const rawCols = width / cellDimension;
+        const rawRows = height / cellDimension;
+
+        this.cols = rawCols;
+        this.rows = rawRows;
+
+        if(0 !== this.cols % 1){
+            this.cols = Math.ceil(this.cols);
+        }
+
+        if(0 !== this.rows % 1){
+            this.rows = Math.ceil(this.rows);
+        }
 
         if(0 === this.cols % 2){
             this.cols += 1;
-            this.offset = this.offset.move(
-                new Position(-0.5, 0)
-            );
         }
 
         if(0 === this.rows % 2){
             this.rows += 1;
-            this.offset = this.offset.move(
-                new Position(0, -0.5)
-            );
         }
+
+        this.offset = new Position(
+            (rawCols - this.cols) /2,
+            (rawRows - this.rows) /2
+        );
+
 
         this.zero = zero;
 
@@ -119,7 +130,7 @@ export default class Grid {
             
         }
 
-    }
+        }
 
     public getWidth():number{
         return this.width;

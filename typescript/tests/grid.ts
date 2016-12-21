@@ -10,7 +10,7 @@ describe('Grid', () => {
 
     it('odd number of cols and rows ', () => {
 
-        let grid = new Grid(3, 3, 1);
+        let grid = new Grid(300, 300, 100);
 
         expect(grid).to.be.instanceof(Grid);
         expect(grid.getCols()).to.be.equal(3);
@@ -19,9 +19,21 @@ describe('Grid', () => {
 
     });
 
+    it('odd number of cols and rows ', () => {
+
+        let grid = new Grid(320, 320, 100);
+
+        expect(grid).to.be.instanceof(Grid);
+        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).to.be.equal(5);
+        expect(grid.getOffset().x).to.be.closeTo(-0.9, 0.000000000000001);                                                       
+        expect(grid.getOffset().y).to.be.closeTo(-0.9, 0.000000000000001);                                                       
+
+    });
+
     it('even number of cols and rows ', () => {
 
-        let grid = new Grid(4, 4, 1);
+        let grid = new Grid(400, 400, 100);
 
         expect(grid).to.be.instanceof(Grid);
         expect(grid.getCols()).to.be.equal(5);
@@ -29,6 +41,19 @@ describe('Grid', () => {
         expect(grid.getOffset()).to.be.deep.equal(new Position(-0.5, -0.5));
 
     });
+
+    it('even number of cols and rows ', () => {
+
+        let grid = new Grid(420, 420, 100);
+
+        expect(grid).to.be.instanceof(Grid);
+        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).to.be.equal(5);
+        expect(grid.getOffset().x).to.be.closeTo(-0.4, 0.000000000000001);                                                       
+        expect(grid.getOffset().y).to.be.closeTo(-0.4, 0.000000000000001);                                                       
+
+    });
+
 
     it.skip('can be created', () => {
 
