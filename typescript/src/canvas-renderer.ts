@@ -86,11 +86,12 @@ export default class CanvasRenderer {
             this.canvas.ctx.fillStyle = color;
 
             this.canvas.ctx.fillRect(
-                cell.x * this.cellWidth + this.grid.getOffset().x * this.cellWidth,
-                cell.y * this.cellWidth + this.grid.getOffset().y * this.cellWidth,
+                this.grid.getWidth() / 2 + cell.x * this.cellWidth - this.cellWidth / 2 ,
+                this.grid.getHeight() / 2 + cell.y * this.cellWidth - this.cellWidth / 2 ,
                 this.cellWidth,
                 this.cellWidth
             );
+
         }
     }
 
