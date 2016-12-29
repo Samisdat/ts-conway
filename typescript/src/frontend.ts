@@ -126,24 +126,12 @@ export default class Frontend {
     }
 
     private update(): void{
-        /*
-        const cells = this.get();
 
-        for(let cell of cells){
-            const position = new Position(
-                Math.floor(cell.x),
-                Math.floor(cell.y)
-            );
-            
-            this.grid.getCell(position.x, position.y).setType(new LivingCell());
-
-        }
-        */
     }
 
     public loop(){
 
-        this.control.update();
+        this.control.update();  
 
         this.center();
         
