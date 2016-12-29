@@ -173,4 +173,8 @@ export default class Grid {
         return this.offset;
     }
 
+    public getCellDimension():number{
+        return this.cellDimension;
+    }
+
 }
