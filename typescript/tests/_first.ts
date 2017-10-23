@@ -8,5 +8,3 @@ let window = document.defaultView;
 
 global.window = window
 global.$ = require('jquery');
-global.vf = {};
-declare var vf:any;

@@ -15,6 +15,7 @@
     "@types/chai": "^3.5.2",
     "@types/jquery": "^2.0.48",
     "@types/mocha": "^2.2.43",
+    "@types/node": "^8.0.46",
     "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.2.0",
