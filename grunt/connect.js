@@ -5,8 +5,8 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
     var connect = {
         dist: {
             options: {
-                port: 4444,
-                hostname: '127.0.0.1',
+                port: 80,
+                hostname: '0.0.0.0',
                 keepalive: false,
                 base: 'dist',
                 livereload: true,
