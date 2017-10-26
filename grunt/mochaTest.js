@@ -9,7 +9,7 @@ var mocha = {
     },
     'typescript': {
         src: [
-            'dist/javascript/tests/**/*.js'
+            './typescript/tests/boundposition.ts'
         ]
     }
 };
