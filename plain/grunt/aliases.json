@@ -1,13 +1,5 @@
 {
 	"default": [],
-
-	"tsc": {
-        "description": "compile",
-        "tasks": [
-            "clean:production",
-        	"ts:production"        	
-        ]
-    },
 	"test": {
         "description": "run tests",
         "tasks": [
@@ -18,23 +10,7 @@
         "description": "run tests and generate coverage report",
         "tasks": [
             "clean:coverage",
-            "clean:testing",
-        	"ts:testing",        	
-            "mocha_istanbul:coverage",
-            "typescript-remap-reports",
-            "istanbul_check_coverage:default"
+            "exec:nyc"
         ]
-    },
-    "run": {
-        "description": "build and run local server ",
-        "tasks": [
-            "copy:html",
-            "copy:fontawesome_css",
-            "copy:fontawesome_font",
-			"ts:production",
-            "browserify",
-            "connect",      
-            "watch"
-        ]
-    }    
+    }
 }
