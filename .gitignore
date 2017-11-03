@@ -5,3 +5,4 @@ dist/
 testing/
 coverage/
 .baseDir.ts
+plain/.nyc_output/
