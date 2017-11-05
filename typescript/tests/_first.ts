@@ -4,9 +4,10 @@
 
 /// <reference path="../src/global.d.ts" />
 
-import jsdom = require('jsdom');
-let document = jsdom.jsdom('<html><body></body></html>');
-let window = document.defaultView;
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
 
-global.window = window
+global.window = new JSDOM('<html><body></body></html>');
+global.document = window.window;
+
 global.$ = require('jquery');
