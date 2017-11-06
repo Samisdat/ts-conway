@@ -3,7 +3,7 @@ var clean = {
         'dist/'
     ],
     coverage: [
-        'coberage/'
+        'coverage/'
     ]
 };
 
