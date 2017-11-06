@@ -42,17 +42,17 @@
   },
   "nyc": {
     "include": [
-      "src/*.ts",
-      "src/**/*.ts"
+      "typescript/src/*.ts",
+      "typescript/src/**/*.ts"
     ],
     "exclude": [
-      "typings"
+      "typings",
+	  "node_modules"
     ],
     "extension": [
       ".ts"
     ],
     "require": [
-      "ts-node/register"
     ],
     "reporter": [
       "json",

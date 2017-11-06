@@ -17,12 +17,8 @@
     "cover": {
         "description": "run tests and generate coverage report",
         "tasks": [
-            "clean:coverage",
-            "clean:testing",
-        	"ts:testing",        	
-            "mocha_istanbul:coverage",
-            "typescript-remap-reports",
-            "istanbul_check_coverage:default"
+            "clean:coverage",	
+            "exec:nyc"
         ]
     },
     "run": {

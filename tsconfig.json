@@ -3,6 +3,7 @@
         "module": "commonjs",
         "sourceMap": true,
         "target": "es2015",
-        "isolatedModules": false
+        "isolatedModules": false,
+		"typeRoots": ["node_modules/@types"]
     }
 }
