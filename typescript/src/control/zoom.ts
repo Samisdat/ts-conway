@@ -8,9 +8,12 @@ import Bound from '../bound';
 
 import Control from './control';
 
-export default class ZoomControl extends Control{
+export default class ZoomControl extends Control {
 
     private control: JQuery;
+
+    private zoomIn: JQuery;
+    private zoomOut: JQuery;
 
     private zoomTween: Tween = new Tween(1, 10);
 
@@ -32,24 +35,28 @@ export default class ZoomControl extends Control{
         const zoom = $('<div>');
         zoom.addClass('zoom');
 
-        $(zoom).append(this.getControlElement('zoom', 'zoom-in', 'search-plus'));
-        $(zoom).append(this.getControlElement('zoom', 'zoom-out', 'search-minus'));
+        this.zoomIn = this.getControlElement('zoom', 'zoom-in', 'search-plus');
+        this.zoomOut = this.getControlElement('zoom', 'zoom-out', 'search-minus');
+
+        $(zoom).append(this.zoomIn);
+        $(zoom).append(this.zoomOut);
 
         this.control.append(zoom);
     }
 
     public addEventListener(): void {
 
-        $(this.control).on('click', 'div[data-action]', (evt) => {
+        $(this.control).on('click', '.zoom-in, .zoom-out', (evt) => {
 
-            const target:JQuery = $(evt.currentTarget);
+            const target: JQuery = $(evt.currentTarget);
 
             let action = target.data('action');
             let value = target.data('value');
 
             if ('zoom' === action) {
-                this.setZoom(value, target);
+                this.setZoom(value);
             }
+
         });
 
     }
@@ -58,7 +65,7 @@ export default class ZoomControl extends Control{
         return this.zoomTween.getCurrent();
     }
 
-    public setZoom(mode: string, button: JQuery) {
+    public setZoom(mode: string) {
 
         let modifier = 1;
 
@@ -75,13 +82,22 @@ export default class ZoomControl extends Control{
 
         const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
 
-        if(true === this.zoomBound.isWithin(nextZoom)){
-            button.removeClass('inactive');
+        console.log(nextZoom, this.zoomBound.isAbove(nextZoom), this.zoomBound.isWithin(nextZoom))
+
+        if (false === this.zoomBound.isAbove(nextZoom)) {
+            this.zoomIn.removeClass('inactive');
         }
-        else{
-            button.addClass('inactive');
+        else {
+            this.zoomIn.addClass('inactive');
         }
-        
+
+        if (false === this.zoomBound.isBelow(nextZoom)) {
+            this.zoomOut.removeClass('inactive');
+        }
+        else {
+            this.zoomOut.addClass('inactive');
+        }
+
         this.zoomTween.setEnd(
             this.zoomBound.confine(nextZoom)
         );

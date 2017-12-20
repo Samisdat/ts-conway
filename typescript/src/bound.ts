@@ -17,6 +17,14 @@ export default class Bound {
         return (test >= this.min && test <= this.max);
     }
 
+    public isBelow(test: number): Boolean {
+        return (test < this.min);
+    }
+
+    public isAbove(test: number): Boolean {
+        return (test > this.max);
+    }
+    
     public confine(value: number): number {
 
         if (value < this.min) {
