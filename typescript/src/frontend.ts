@@ -140,7 +140,6 @@ export default class Frontend {
 
         this.update();
 
-
         this.canvasRenderer.update(this.cellWidth, this.grid);
         this.canvasRenderer.render();
 
