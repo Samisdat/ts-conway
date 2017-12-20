@@ -6,7 +6,9 @@ import Tween from '../tween';
 import BoundPosition from '../boundposition';
 import Bound from '../bound';
 
-export default class Control {
+import ZoomControl from './zoom';
+
+export default class MainControl {
 
     private readonly canvasWrap: HTMLElement;
 
@@ -18,6 +20,8 @@ export default class Control {
     };
 
     private control: JQuery;
+
+    private zoomControl:ZoomControl;
 
     private left: JQuery;
     private right: JQuery;
@@ -90,13 +94,8 @@ export default class Control {
 
     private createZoomControl(): void {
 
-        const zoom = $('<div>');
-        zoom.addClass('zoom');
-
-        $(zoom).append(this.getControlElement('zoom', 'zoom-in', 'search-plus'));
-        $(zoom).append(this.getControlElement('zoom', 'zoom-out', 'search-minus'));
-
-        this.control.append(zoom);
+        this.zoomControl = new ZoomControl(this.control);
+        
     }
 
     private addEventListener(): void {
@@ -110,9 +109,6 @@ export default class Control {
 
             if ('pan' === action) {
                 this.setPan(target);
-            }
-            else if ('zoom' === action) {
-                this.setZoom(value, target);
             }
         });
 
@@ -160,36 +156,7 @@ export default class Control {
     }
 
     public getZoom(): number {
-        return this.zoomTween.getCurrent();
-    }
-    public setZoom(mode: string, button: JQuery) {
-
-        let modifier = 1;
-
-        if (1 > this.zoomTween.getEnd()) {
-            modifier = 0.1;
-        }
-        else if (1 === this.zoomTween.getEnd() && 'zoom-out' === mode) {
-            modifier = 0.1;
-        }
-
-        if ('zoom-out' === mode) {
-            modifier = -1 * modifier;
-        }
-
-        const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
-
-        if(true === this.zoomBound.isWithin(nextZoom)){
-            button.removeClass('inactive');
-        }
-        else{
-            button.addClass('inactive');
-        }
-        
-        this.zoomTween.setEnd(
-            this.zoomBound.confine(nextZoom)
-        );
-
+        return this.zoomControl.getZoom();
     }
 
     public getPan(): Position {
@@ -313,7 +280,7 @@ export default class Control {
 
     public update(): void {
         this.positionTween.update();
-        this.zoomTween.update();
+        this.zoomControl.update();
     }
 
 }
