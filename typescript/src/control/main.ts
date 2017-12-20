@@ -18,9 +18,9 @@ export default class MainControl {
 
     private control: JQuery;
 
-    private zoomControl:ZoomControl;
+    private zoomControl: ZoomControl;
 
-    private panControl:PanControl;
+    private panControl: PanControl;
 
     constructor(canvasWrap: HTMLElement, originalCellWidth: number) {
 
@@ -46,11 +46,11 @@ export default class MainControl {
     private createPanControl(): void {
 
         this.panControl = new PanControl(
-        this.canvasWrap, 
-        this.control, 
+        this.canvasWrap,
+        this.control,
         this.originalCellWidth,
         this.zoomControl
-                
+
         );
 
     }
@@ -58,7 +58,7 @@ export default class MainControl {
     private createZoomControl(): void {
 
         this.zoomControl = new ZoomControl(this.control);
-        
+
     }
 
     public getZoom(): number {

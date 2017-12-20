@@ -20,14 +20,14 @@ describe('Habitat', () => {
 
     it('seed a cell', () => {
 
-        var habitat = new Habitat();
+        let habitat = new Habitat();
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
             new Position(0, 1)
         );
 
-        var cells = habitat.getAllCells();
+        let cells = habitat.getAllCells();
         expect(cells.length).to.be.equal(1);
         expect(cells[0].x).to.be.equal(0);
         expect(cells[0].y).to.be.equal(1);
@@ -36,7 +36,7 @@ describe('Habitat', () => {
 
     it('elapse with one cell', () => {
 
-        var habitat = new Habitat();
+        let habitat = new Habitat();
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
@@ -49,7 +49,7 @@ describe('Habitat', () => {
 
     it('elapse with a blinker', () => {
 
-        var habitat = new Habitat();
+        let habitat = new Habitat();
         expect(habitat.get()).to.be.deep.equal([]);
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 

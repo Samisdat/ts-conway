@@ -15,7 +15,7 @@ export default abstract class Control {
     abstract createControl(): void;
 
     abstract addEventListener(): void;
-        
-    abstract update():void;
+
+    abstract update(): void;
 
 }

@@ -1,6 +1,6 @@
 import Pattern from './pattern';
 
-// taken from 
+// taken from
 // http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 const patterns = {
     // debug
@@ -77,11 +77,11 @@ const patterns = {
         [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     ],
-    //Spaceships
+    // Spaceships
     glider: [
         [0, 1, 0],
         [0, 0, 1],
-        [1, 1, 1] 
+        [1, 1, 1]
     ],
     lightweight_spaceship: [
         [0, 1, 0, 0, 1],
@@ -89,7 +89,7 @@ const patterns = {
         [1, 0, 0, 0, 1],
         [1, 1, 1, 1, 0]
     ],
-    //Methuselahs
+    // Methuselahs
     r_pentomino: [
         [0, 1, 1],
         [1, 1, 0],
@@ -114,7 +114,7 @@ const patterns = {
         [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] 
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ],
     exhibit_infinite_growth_1: [
         [0, 0, 0, 0, 0, 0, 1, 0],
@@ -161,12 +161,12 @@ const patterns = {
 
 export default class Patterns {
 
-    public get(name:string):Pattern{
+    public get(name: string): Pattern {
 
-        if(undefined === patterns[name]){
+        if (undefined === patterns[name]) {
             throw new Error('unkown pattern ' + name);
         }
-        
+
         return new Pattern(name, patterns[name]);
 
     }

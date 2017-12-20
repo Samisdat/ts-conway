@@ -7,7 +7,7 @@ export default class GridCell {
 
     private position: Position;
 
-    private type:GridCellType = new NoType();
+    private type: GridCellType = new NoType();
 
     constructor(position: Position) {
 
@@ -15,22 +15,22 @@ export default class GridCell {
 
     }
 
-    public setType(type:GridCellType):void{
+    public setType(type: GridCellType): void {
         this.type = type;
     }
 
-    public getType():GridCellType{
+    public getType(): GridCellType {
         return this.type;
     }
 
-    public getColor():string{
+    public getColor(): string {
         return this.type.toHex();
     }
 
-    get x():number{
+    get x(): number {
         return this.position.x;
     }
-    get y():number{
+    get y(): number {
         return this.position.y;
     }
 }

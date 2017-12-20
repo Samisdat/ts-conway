@@ -53,7 +53,7 @@ export default class Pattern {
 
     }
 
-    public get():Position[] {
+    public get(): Position[] {
         return this.positions;
         /*
         const move = new Position(
@@ -159,7 +159,7 @@ export default class Pattern {
         }
 
         return 4 + by90;
-    };
+    }
 
     public rotate(angle: number): void {
 

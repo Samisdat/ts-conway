@@ -55,7 +55,7 @@ describe('Tween', () => {
 
     it('all steps with integer values', () => {
 
-        var steps = 10;
+        let steps = 10;
 
         let tween = new Tween(0, steps);
         tween.setEnd(10);
@@ -83,7 +83,7 @@ describe('Tween', () => {
 
     it('all steps with float values', () => {
 
-        var steps = 100;
+        let steps = 100;
 
         let tween = new Tween(0, steps);
 
@@ -128,6 +128,6 @@ describe('Tween', () => {
         expect(tween.getStepsDone()).to.be.equal(0);
 
     });
-    
+
 
 });

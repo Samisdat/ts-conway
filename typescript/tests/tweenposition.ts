@@ -61,7 +61,7 @@ describe('PositionTween', () => {
 
     it('all steps with integer values', () => {
 
-        var steps = 10;
+        let steps = 10;
 
         let tween = new TweenPosition(
             new Position(0, 0),
@@ -91,7 +91,7 @@ describe('PositionTween', () => {
 
     it('all steps with float values', () => {
 
-        var steps = 100;
+        let steps = 100;
 
         let tween = new TweenPosition(
             new Position(0, 0),
@@ -122,10 +122,10 @@ describe('PositionTween', () => {
 
     it('equal', () => {
 
-        let positionA = new Position(-5, 5); 
-        let positionB = new Position(-5, 5); 
-        let positionC = new Position(-5, 5); 
-        let positionD = new Position(2, 3); 
+        let positionA = new Position(-5, 5);
+        let positionB = new Position(-5, 5);
+        let positionC = new Position(-5, 5);
+        let positionD = new Position(2, 3);
 
         let tween = new TweenPosition(
             positionA
@@ -162,6 +162,6 @@ describe('PositionTween', () => {
         expect(tween.getStepsDone()).to.be.equal(0);
 
     });
-    
+
 
 });

@@ -39,8 +39,8 @@ describe('Grid', () => {
         expect(grid.getCols()).to.be.equal(5);
         expect(grid.getRows()).to.be.equal(5);
 
-        expect(grid.getOffset().x).to.be.closeTo(-0.9, 0.000000000000001);                                                       
-        expect(grid.getOffset().y).to.be.closeTo(-0.9, 0.000000000000001);                                                       
+        expect(grid.getOffset().x).to.be.closeTo(-0.9, 0.000000000000001);
+        expect(grid.getOffset().y).to.be.closeTo(-0.9, 0.000000000000001);
 
         const cells = grid.getCells();
         expect(cells.length).to.be.equal(25);
@@ -55,7 +55,7 @@ describe('Grid', () => {
 
         expect(grid.getWidth()).to.be.deep.equal(400);
         expect(grid.getHeight()).to.be.deep.equal(400);
-        
+
         expect(grid.getCols()).to.be.equal(5);
         expect(grid.getRows()).to.be.equal(5);
 
@@ -78,8 +78,8 @@ describe('Grid', () => {
         expect(grid.getCols()).to.be.equal(5);
         expect(grid.getRows()).to.be.equal(5);
 
-        expect(grid.getOffset().x).to.be.closeTo(-0.4, 0.000000000000001);                                                       
-        expect(grid.getOffset().y).to.be.closeTo(-0.4, 0.000000000000001);                                                       
+        expect(grid.getOffset().x).to.be.closeTo(-0.4, 0.000000000000001);
+        expect(grid.getOffset().y).to.be.closeTo(-0.4, 0.000000000000001);
 
         const cells = grid.getCells();
         expect(cells.length).to.be.equal(25);

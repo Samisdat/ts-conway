@@ -63,8 +63,8 @@ export default class Position {
         );
 
         return neighbours;
-    }    
-    public clone():Position{
+    }
+    public clone(): Position {
         return new Position(
             this.x,
             this.y

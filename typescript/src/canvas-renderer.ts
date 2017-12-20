@@ -51,7 +51,7 @@ export default class CanvasRenderer {
             width: canvasWidth + 'px',
             height: canvasHeight + 'px'
         });
-        
+
     }
 
 
@@ -65,7 +65,7 @@ export default class CanvasRenderer {
     public render(): void {
 
         this.canvas.ctx.fillStyle = this.bgColors.dark;
-        const cellDimension:number = this.grid.getCellDimension();
+        const cellDimension: number = this.grid.getCellDimension();
 
         this.canvas.ctx.fillRect(
             0,
@@ -80,10 +80,10 @@ export default class CanvasRenderer {
 
             const color = cell.getColor();
 
-            if(undefined === color){
+            if (undefined === color) {
                 continue;
             }
-            
+
             this.canvas.ctx.fillStyle = color;
 
             let x = this.grid.getWidth() / 2 + cell.x * cellDimension - cellDimension / 2;

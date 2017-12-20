@@ -39,13 +39,13 @@ export default class PanControl extends Control {
         new Position(2, 2)
     );
 
-    private zoomControl:ZoomControl;
+    private zoomControl: ZoomControl;
 
     constructor(
-        canvasWrap: HTMLElement, 
-        controllWrap: JQuery, 
+        canvasWrap: HTMLElement,
+        controllWrap: JQuery,
         originalCellWidth: number,
-        zoomControl:ZoomControl
+        zoomControl: ZoomControl
 
     ) {
 
@@ -54,7 +54,7 @@ export default class PanControl extends Control {
         this.canvasWrap = canvasWrap;
 
         this.originalCellWidth = originalCellWidth;
-        
+
         this.control = controllWrap;
 
         this.zoomControl = zoomControl;
@@ -179,8 +179,6 @@ export default class PanControl extends Control {
     }
 
     private updateState(mode: string, panTo: Position): void {
-
-        console.log(this.right)
 
         if ('top' === mode) {
             if (true === this.positionBound.isWithin(panTo)) {

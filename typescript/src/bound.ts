@@ -24,7 +24,7 @@ export default class Bound {
     public isAbove(test: number): Boolean {
         return (test > this.max);
     }
-    
+
     public confine(value: number): number {
 
         if (value < this.min) {

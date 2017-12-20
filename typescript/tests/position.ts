@@ -82,6 +82,6 @@ describe('Position', () => {
 
 
     });
-    
+
 
 });

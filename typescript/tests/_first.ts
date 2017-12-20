@@ -4,7 +4,7 @@
 
 /// <reference path="../src/global.d.ts" />
 
-const jsdom = require("jsdom");
+const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
 global.window = new JSDOM('<html><body></body></html>');

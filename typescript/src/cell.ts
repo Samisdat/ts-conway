@@ -25,11 +25,11 @@ export default class Cell {
 
     isAlive(): Boolean {
         return (true === this.nowliving);
-    };
+    }
 
     kill(): void {
         this.thenLiving = false;
-    };
+    }
 
     elapse(): void {
         if (true === this.thenLiving) {
@@ -38,6 +38,6 @@ export default class Cell {
         else {
             this.nowliving = false;
         }
-    };
+    }
 
 }

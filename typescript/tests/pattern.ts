@@ -25,7 +25,7 @@ describe('Pattern', () => {
 
     it('construct fails with row of uneven length', () => {
 
-        var createPattern = () => {
+        let createPattern = () => {
             new Pattern(
                 'Scottish',
                 [
@@ -215,7 +215,7 @@ describe('Pattern', () => {
             ]
         );
 
-        pattern.rotate(90)
+        pattern.rotate(90);
 
         expect(pattern.get()).to.be.deep.equal(
             [
@@ -238,7 +238,7 @@ describe('Pattern', () => {
             ]
         );
 
-        pattern.rotate(-90)
+        pattern.rotate(-90);
 
         expect(pattern.get()).to.be.deep.equal(
             [

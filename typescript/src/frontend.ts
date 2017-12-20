@@ -27,8 +27,8 @@ export default class Frontend {
 
     private grid: Grid;
 
-    private checkerBoard:CheckerBoard;
-    private canvasRenderer:CanvasRenderer;
+    private checkerBoard: CheckerBoard;
+    private canvasRenderer: CanvasRenderer;
 
     constructor($element: JQuery) {
 
@@ -56,16 +56,16 @@ export default class Frontend {
         );
 
         this.grid = new Grid(
-            this.wrapper.width(), 
-            this.wrapper.height(), 
-            this.cellWidth * this.control.getZoom() 
-        );          
+            this.wrapper.width(),
+            this.wrapper.height(),
+            this.cellWidth * this.control.getZoom()
+        );
 
         this.loop();
-        
+
     }
 
-    private center(){
+    private center() {
 
         this.cols = this.wrapper.width() / this.cellWidth;
         this.rows = this.wrapper.height() / this.cellWidth;
@@ -80,24 +80,24 @@ export default class Frontend {
             (this.rows % 1) / 2
         );
 
-        if(0 === Math.floor(this.rows) % 2){
+        if (0 === Math.floor(this.rows) % 2) {
             const correct = new Position(0, -0.5);
-            position = position.move(correct); 
+            position = position.move(correct);
         }
 
-        if(0 === Math.floor(this.cols) % 2){
+        if (0 === Math.floor(this.cols) % 2) {
             const correct = new Position(-0.5, 0);
-            position = position.move(correct); 
+            position = position.move(correct);
         }
 
         this.offset = position;
 
         this.grid = new Grid(
-            this.wrapper.width(), 
-            this.wrapper.height(), 
+            this.wrapper.width(),
+            this.wrapper.height(),
             this.cellWidth * this.control.getZoom(),
             this.control.getPan()
-        );          
+        );
 
     }
 
@@ -126,16 +126,16 @@ export default class Frontend {
         return mapped;
     }
 
-    private update(): void{
+    private update(): void {
 
     }
 
-    public loop(){
+    public loop() {
 
-        this.control.update();  
+        this.control.update();
 
         this.center();
-        
+
         this.checkerBoard.update(this.grid);
 
         this.update();

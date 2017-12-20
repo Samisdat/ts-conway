@@ -22,7 +22,7 @@ describe('Patterns', () => {
     it('construct fails with unkown pattern', () => {
 
         var createPattern = () => {
-    
+
             let patterns = new Patterns();
             patterns.get('foobar');
         };
@@ -46,7 +46,7 @@ describe('Patterns', () => {
                 new Position(2, 1)
             ]
         );
-        
+
     });
 
 });

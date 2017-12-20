@@ -12,17 +12,17 @@ describe.skip('Frontend', () => {
 
         $('body').append(
             $('<div id="conway">')
-        );        
+        );
 
         const frontend = new Frontend($('#conway'));
-        
+
         expect(frontend).to.be.instanceof(Frontend);
 
     });
 
     it('creation fails with not dom elem', () => {
 
-        let createFrontend = function(){
+        let createFrontend = function() {
             const frontend = new Frontend($('#conway'));
         };
 
