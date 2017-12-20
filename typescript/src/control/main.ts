@@ -1,10 +1,10 @@
 import * as $ from 'jquery';
 
-import Position from './position';
-import TweenPosition from './tweenposition';
-import Tween from './tween';
-import BoundPosition from './boundposition';
-import Bound from './bound';
+import Position from '../position';
+import TweenPosition from '../tweenposition';
+import Tween from '../tween';
+import BoundPosition from '../boundposition';
+import Bound from '../bound';
 
 export default class Control {
 

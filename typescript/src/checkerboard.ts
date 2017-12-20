@@ -25,8 +25,6 @@ export default class Checkerboard{
 
         const cells = grid.getCells();
 
-        console.log(cells);
-
         for(let cell of cells){
             const x = cell.x;
             const y = cell.y;

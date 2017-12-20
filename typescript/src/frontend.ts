@@ -3,7 +3,7 @@ import * as $ from 'jquery';
 import Grid from './grid';
 import CheckerBoard from './checkerboard';
 import CanvasRenderer from './canvas-renderer';
-import Control from './control';
+import Control from './control/main';
 import Habitat from './habitat';
 import Patterns from './patterns';
 import Position from './position';
