@@ -6,3 +6,4 @@ testing/
 coverage/
 .baseDir.ts
 plain/.nyc_output/
+.nyc_output
