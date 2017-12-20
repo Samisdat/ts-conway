@@ -112,7 +112,7 @@ export default class Control {
                 this.setPan(target);
             }
             else if ('zoom' === action) {
-                this.setZoom(value);
+                this.setZoom(value, target);
             }
         });
 
@@ -162,7 +162,7 @@ export default class Control {
     public getZoom(): number {
         return this.zoomTween.getCurrent();
     }
-    public setZoom(mode: string) {
+    public setZoom(mode: string, button: JQuery) {
 
         let modifier = 1;
 
@@ -177,8 +177,17 @@ export default class Control {
             modifier = -1 * modifier;
         }
 
+        const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
+
+        if(true === this.zoomBound.isWithin(nextZoom)){
+            button.removeClass('inactive');
+        }
+        else{
+            button.addClass('inactive');
+        }
+        
         this.zoomTween.setEnd(
-            this.zoomBound.confine(Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10)
+            this.zoomBound.confine(nextZoom)
         );
 
     }
