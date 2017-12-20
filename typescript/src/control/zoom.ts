@@ -17,7 +17,7 @@ export default class ZoomControl extends Control {
 
     private zoomTween: Tween = new Tween(1, 10);
 
-    private zoomBound: Bound = new Bound(0.2, 10);
+    private zoomBound: Bound = new Bound(0.1, 2);
 
     constructor(controllWrap: JQuery) {
 
