@@ -95,7 +95,8 @@ export default class Frontend {
         this.grid = new Grid(
             this.wrapper.width(), 
             this.wrapper.height(), 
-            this.cellWidth * this.control.getZoom() 
+            this.cellWidth * this.control.getZoom(),
+            this.control.getPan()
         );          
 
     }
