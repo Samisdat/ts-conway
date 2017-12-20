@@ -36,6 +36,34 @@ describe('Bound', () => {
 
     });
 
+    it('is above', () => {
+
+        let bound = new Bound(-2, 2);
+
+        expect(bound.isAbove(-3)).to.be.false;
+        expect(bound.isAbove(-2)).to.be.false;
+        expect(bound.isAbove(-1)).to.be.false;
+        expect(bound.isAbove(0)).to.be.false;
+        expect(bound.isAbove(1)).to.be.false;
+        expect(bound.isAbove(2)).to.be.false;
+        expect(bound.isAbove(3)).to.be.true;
+
+    });
+
+    it('is below', () => {
+
+        let bound = new Bound(-2, 2);
+
+        expect(bound.isBelow(-3)).to.be.true;
+        expect(bound.isBelow(-2)).to.be.false;
+        expect(bound.isBelow(-1)).to.be.false;
+        expect(bound.isBelow(0)).to.be.false;
+        expect(bound.isBelow(1)).to.be.false;
+        expect(bound.isBelow(2)).to.be.false;
+        expect(bound.isBelow(3)).to.be.false;
+
+    });
+
     it('confine', () => {
 
         let bound = new Bound(-2, 2);
