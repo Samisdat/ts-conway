@@ -82,8 +82,6 @@ export default class ZoomControl extends Control {
 
         const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
 
-        console.log(nextZoom, this.zoomBound.isAbove(nextZoom), this.zoomBound.isWithin(nextZoom))
-
         if (false === this.zoomBound.isAbove(nextZoom)) {
             this.zoomIn.removeClass('inactive');
         }

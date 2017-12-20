@@ -73,7 +73,7 @@ export default class PanControl extends Control {
         this.bottom = this.getControlElement('pan', 'bottom', 'arrow-down');
         this.left = this.getControlElement('pan', 'left', 'arrow-left');
         this.right = this.getControlElement('pan', 'right', 'arrow-right');
-        console.log($(this.right));
+
         $(pan).append(this.top);
         $(pan).append(this.bottom);
         $(pan).append(this.left);
