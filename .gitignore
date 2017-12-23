@@ -8,3 +8,4 @@ coverage/
 plain/.nyc_output/
 .nyc_output
 last-change.txt
+typedoc
