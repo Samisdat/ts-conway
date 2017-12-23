@@ -16,7 +16,7 @@
     "@types/chai": "^4.0.4",
     "@types/jquery": "^2.0.48",
     "@types/mocha": "^2.2.44",
-    "@types/node": "^8.0.46",
+    "@types/node": "^8.5.2",
     "chai": "^4.1.2",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.2.0",
@@ -33,9 +33,9 @@
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.5.2",
     "mocha": "^4.0.1",
-    "nyc": "^11.3.0",
+    "nyc": "^11.4.1",
     "time-grunt": "^1.4.0",
-    "ts-node": "^3.3.0",
+    "ts-node": "^4.0.2",
     "tsdoc": "0.0.4",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3"
@@ -47,13 +47,12 @@
     ],
     "exclude": [
       "typings",
-	  "node_modules"
+      "node_modules"
     ],
     "extension": [
       ".ts"
     ],
-    "require": [
-    ],
+    "require": [],
     "reporter": [
       "json",
       "html"
