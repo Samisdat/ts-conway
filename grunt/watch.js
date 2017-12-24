@@ -21,7 +21,7 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
         },
         livetest:{
             files: [
-                './typescript/tests/**/*.ts'
+                './typescript/**/*.ts'
             ],
             tasks: [
             ],
