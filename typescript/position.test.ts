@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Position from '../src/position';
+import Position from './position';
 
 describe('Position', () => {
 

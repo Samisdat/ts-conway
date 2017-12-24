@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 
-import Position from '../src/position';
-import Canvas from '../src/canvas';
+import Position from './position';
+import Canvas from './canvas';
 
-import GridCell from '../src/grid-cell';
-import Grid from '../src/grid';
+import GridCell from './grid-cell';
+import Grid from './grid';
 
 describe('Grid', () => {
 

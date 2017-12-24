@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
-import Position from '../src/position';
-import LivingCell from '../src/grid-cell-types/living-cell';
+import Position from './position';
+import LivingCell from './grid-cell-types/living-cell';
 
-import GridCell from '../src/grid-cell';
+import GridCell from './grid-cell';
 
 
 describe('GridCell', () => {

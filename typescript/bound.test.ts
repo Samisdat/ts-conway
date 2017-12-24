@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Bound from '../src/bound';
+import Bound from './bound';
 
 describe('Bound', () => {
 

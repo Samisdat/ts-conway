@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import Position from '../src/position';
+import Position from './position';
 
-import Cell from '../src/cell';
+import Cell from './cell';
 
 describe('Cell', () => {
 

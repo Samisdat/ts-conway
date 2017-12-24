@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
-import Position from '../src/position';
+import Position from './position';
 
-import Pattern from '../src/pattern';
+import Pattern from './pattern';
 
 describe('Pattern', () => {
 

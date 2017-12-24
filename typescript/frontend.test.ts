@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Frontend from '../src/frontend';
+import Frontend from './frontend';
 
 describe.skip('Frontend', () => {
 

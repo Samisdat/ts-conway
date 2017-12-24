@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 
-import CheckerboardDark from '../src/grid-cell-types/checkerboard-dark';
-import CheckerboardLight from '../src/grid-cell-types/checkerboard-light';
+import CheckerboardDark from './grid-cell-types/checkerboard-dark';
+import CheckerboardLight from './grid-cell-types/checkerboard-light';
 
-import Grid from '../src/grid';
-import Checkerboard from '../src/checkerboard';
+import Grid from './grid';
+import Checkerboard from './checkerboard';
 
 describe('Checkerboard', () => {
 
