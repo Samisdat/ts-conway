@@ -2,7 +2,7 @@
  * While this test is named _first.ts it while run as first test and is used to setup jQuery
  */
 
-/// <reference path="../src/global.d.ts" />
+/// <reference path="./global.d.ts" />
 
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;

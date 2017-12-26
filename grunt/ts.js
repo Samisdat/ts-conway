@@ -4,7 +4,7 @@ var ts = {
 		target: 'es5'			
 	},
 	production: {
-		src: ['typescript/src/**/*.ts'], 
+		src: ['typescript/**/*.ts'], 
  		outDir: 'dist/javascript/src',
 	},
 	testing: {

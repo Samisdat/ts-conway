@@ -7,7 +7,7 @@ import Control from './control/main';
 import Habitat from './habitat';
 import Patterns from './patterns';
 import Position from './position';
-import LivingCell from '../src/grid-cell-types/living-cell';
+import LivingCell from './grid-cell-types/living-cell';
 
 export default class Frontend {
 
