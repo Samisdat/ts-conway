@@ -62,38 +62,6 @@ export default class Grid {
         this.createGrid();
     }
 
-
-    private createRow(rowStart: Position) {
-
-        let colPosition = new Position(
-            rowStart.x,
-            rowStart.y
-        );
-
-        while (colPosition.x < this.orginalCols) {
-
-            let x = colPosition.x + -1 * this.offset.x;
-            let y = colPosition.y + -1 * this.offset.y;
-
-            if (undefined === this.map[x]) {
-                this.map[x] = {};
-            }
-            this.map[x][y] = this.cells.length;
-
-            this.cells.push(
-                new GridCell(
-                    colPosition
-                )
-            );
-
-            colPosition = colPosition.move(
-                new Position(1, 0)
-            );
-
-        }
-
-    }
-
     private createGrid(): void {
 
         this.cells = [];
