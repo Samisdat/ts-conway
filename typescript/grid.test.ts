@@ -86,4 +86,24 @@ describe('Grid', () => {
 
     });
 
+    it('3 cols and 3 rows without offset ', () => {
+
+        let grid = new Grid(300, 300, 100);
+
+        expect(grid).to.be.instanceof(Grid);
+
+        expect(grid.getWidth()).to.be.deep.equal(300);
+        expect(grid.getHeight()).to.be.deep.equal(300);
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(3);
+
+        expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
+
+        const cells = grid.getCells();
+        expect(cells.length).to.be.equal(9);
+
+    });
+
+    
 });

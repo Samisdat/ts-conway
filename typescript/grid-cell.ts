@@ -6,12 +6,14 @@ import Position from './position';
 export default class GridCell {
 
     private position: Position;
+    private gridOffset: Position;
 
     private type: GridCellType = new NoType();
 
-    constructor(position: Position) {
+    constructor(position: Position, gridOffset: Position ) {
 
         this.position = position;
+        this.gridOffset = gridOffset;
 
     }
 

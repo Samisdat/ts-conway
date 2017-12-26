@@ -120,7 +120,12 @@ export default class Grid {
 
                 this.map[start.x][start.y] = this.cells.length;
 
-                this.cells.push(new GridCell(start));
+                this.cells.push(
+                    new GridCell(
+                        start,
+                        this.zero
+                    )
+                );
 
                 start = start.move(new Position(1, 0));
 
@@ -130,7 +135,7 @@ export default class Grid {
 
         }
 
-        }
+    }
 
     public getWidth(): number {
         return this.width;
