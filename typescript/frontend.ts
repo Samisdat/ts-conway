@@ -1,7 +1,6 @@
 import * as $ from 'jquery';
 
 import Grid from './grid';
-import CheckerBoard from './checkerboard';
 import CanvasRenderer from './canvas-renderer';
 import Control from './control/main';
 import Habitat from './habitat';
@@ -27,7 +26,6 @@ export default class Frontend {
 
     private grid: Grid;
 
-    private checkerBoard: CheckerBoard;
     private canvasRenderer: CanvasRenderer;
 
     constructor($element: JQuery) {
@@ -41,8 +39,6 @@ export default class Frontend {
 
 
         this.wrapper = $element;
-
-        this.checkerBoard = new CheckerBoard();
 
         this.canvasRenderer = new CanvasRenderer(
             this.wrapper
@@ -135,8 +131,6 @@ export default class Frontend {
         this.control.update();
 
         this.center();
-
-        this.checkerBoard.update(this.grid);
 
         this.update();
 
