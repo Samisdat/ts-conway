@@ -23,6 +23,9 @@ module.exports = function (grunt) {
 
     let lastChange = fs.readFileSync('./last-change.txt', { encoding: 'utf8' });
 
+    lastChange = lastChange.replace('.test', '');
+    lastChange = lastChange.replace('.ts', '.test.ts');
+
     mocha["typescript-last-change"].src = lastChange;
 
     /**
