@@ -1,3 +1,7 @@
 export interface GridCellType {
-    toHex(): string;
+
+    name: string;
+
+    hex: string;
+    
 }

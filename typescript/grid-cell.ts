@@ -62,7 +62,7 @@ export default class GridCell {
     }
 
     public getColor(): string {
-        return this.type.toHex();
+        return this.type.hex;
     }
 
     get x(): number {

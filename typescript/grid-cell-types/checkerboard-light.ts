@@ -1,7 +1,12 @@
 import { GridCellType } from './grid-cell-type';
 
 export default class CheckerboardLight implements GridCellType {
-    public toHex(): string {
+ 
+    get name():string{
+        return 'checkerboard-light'
+    }
+
+    get hex(): string {
         return '#FFAAAA';
     }
 }

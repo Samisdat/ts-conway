@@ -1,12 +1,12 @@
 import { GridCellType } from './grid-cell-type';
 
-export default class NoType implements GridCellType {
-
+export default class Center implements GridCellType {
+ 
     get name():string{
-        return 'none'
+        return 'center'
     }
 
     get hex(): string {
-        return undefined;
+        return '#ff0000';
     }
 }

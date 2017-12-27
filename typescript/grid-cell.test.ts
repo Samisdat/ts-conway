@@ -32,36 +32,36 @@ describe('GridCell', () => {
 
     it('get checkerboard color', () => {
 
-        let gridCell: GridCell;
+        let gridCell: GridCell; 
 
         gridCell = new GridCell(new Position(-1, -1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(lightColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
 
         gridCell = new GridCell(new Position(0, -1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(darkColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
 
         gridCell = new GridCell(new Position(1, -1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(lightColor.toHex());
-        
+        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+
         gridCell = new GridCell(new Position(-1, 0), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(darkColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
 
         gridCell = new GridCell(new Position(0, 0), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(lightColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
 
         gridCell = new GridCell(new Position(1, 0), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(darkColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
 
         gridCell = new GridCell(new Position(-1, 1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(lightColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
 
         gridCell = new GridCell(new Position(0, 1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(darkColor.toHex());
+        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
 
         gridCell = new GridCell(new Position(1, 1), new Position(0, 0));
-        expect(gridCell.getColor()).to.be.equal(lightColor.toHex());
-        
-        
+        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+
+
     });
 
     it('getGridOffset', () => {
