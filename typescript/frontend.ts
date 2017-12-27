@@ -13,7 +13,7 @@ export default class Frontend {
     private wrapper: JQuery;
     private control: Control;
 
-    public originalCellWidth: number = 100;
+    public originalCellWidth: number = 25;
     public cellWidth: number;
 
     private habitat: Habitat = new Habitat();
