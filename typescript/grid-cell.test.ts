@@ -64,11 +64,24 @@ describe('GridCell', () => {
 
     });
 
-    it('getGridOffset', () => {
+    it('get relative and absolute position', () => {
 
-        let gridCell = new GridCell(new Position(0, 0), new Position(1, 1));
+        let gridCell: GridCell;
 
-        expect(gridCell.getGridOffset()).to.be.deep.equal(new Position(1, 1));
+        gridCell = new GridCell(new Position(0, 0), new Position(0, 0));
+
+        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
+        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(0, 0));
+
+        gridCell = new GridCell(new Position(0, 0), new Position(2, 3));
+
+        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
+        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(-2, -3));
+
+        gridCell = new GridCell(new Position(0, 0), new Position(-2, -3));
+
+        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
+        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(2, 3));
 
     });
 

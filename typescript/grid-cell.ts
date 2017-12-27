@@ -12,15 +12,20 @@ import Position from './position';
 
 export default class GridCell {
 
-    private position: Position;
+    public readonly relativePosition: Position;
+    public readonly absolutePosition: Position;
     private gridOffset: Position;
 
     private type: GridCellType = new NoType();
 
     constructor(position: Position, gridOffset: Position) {
 
-        this.position = position;
-        this.gridOffset = gridOffset;
+        this.relativePosition = position;
+
+        this.absolutePosition = new Position(
+            this.relativePosition.x - gridOffset.x,
+            this.relativePosition.y - gridOffset.y
+        );
 
         this.setCheckerboardColor();
 
@@ -28,13 +33,8 @@ export default class GridCell {
 
     private setCheckerboardColor(): void {
 
-        const absolutePosition = new Position(
-            this.position.x - this.gridOffset.x,
-            this.position.y - this.gridOffset.y
-        );
-
-        const x = absolutePosition.x;
-        const y = absolutePosition.y;
+        const x = this.absolutePosition.x;
+        const y = this.absolutePosition.y;
 
         this.setType(darkColor);
 
@@ -66,13 +66,10 @@ export default class GridCell {
     }
 
     get x(): number {
-        return this.position.x;
+        return this.relativePosition.x;
     }
     get y(): number {
-        return this.position.y;
+        return this.relativePosition.y;
     }
 
-    public getGridOffset(): Position {
-        return this.gridOffset;
-    }
 }
