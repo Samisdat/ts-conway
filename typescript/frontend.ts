@@ -13,7 +13,7 @@ export default class Frontend {
     private wrapper: JQuery;
     private control: Control;
 
-    public originalCellWidth: number = 25;
+    public originalCellWidth: number = 100;
     public cellWidth: number;
 
     private habitat: Habitat = new Habitat();
@@ -35,7 +35,7 @@ export default class Frontend {
         }
 
         const patterns = new Patterns();
-        this.habitat.seedPattern(patterns.get('blinker'));
+        //this.habitat.seedPattern(patterns.get('blinker'));
         this.habitat.startAging();
 
         this.wrapper = $element;
