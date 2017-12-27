@@ -5,6 +5,9 @@ import Cell from './cell';
 
 import Habitat from './habitat';
 
+import Patterns from './patterns';
+
+
 describe('Habitat', () => {
 
     beforeEach(function () {
@@ -90,6 +93,24 @@ describe('Habitat', () => {
         ]);
 
         expect(habitat.getAllCells().length).to.be.equal(3);
+
+    });
+
+    it('seed a pattern', () => {
+
+        const patterns = new Patterns();
+
+        let habitat = new Habitat();
+        expect(habitat.get()).to.be.deep.equal([]);
+        expect(habitat.getAllCells()).to.be.deep.equal([]);
+
+        habitat.seedPattern(patterns.get('blinker'));
+
+        expect(habitat.get()).to.be.deep.equal([
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0)
+        ]);
 
     });
 
