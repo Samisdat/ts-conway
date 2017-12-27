@@ -8,6 +8,9 @@ export default class Habitat {
     private cells: Cell[] = [];
 
     constructor() {
+    }
+
+    public startAging(generationDuration = 1000):void{
         setInterval(() => {
             this.elapse();
         }, 1000);

@@ -1,6 +1,8 @@
 import Position from './position';
 import GridCell from './grid-cell';
 
+import Habitat from './habitat';
+
 export default class Grid {
 
     private width: number;
@@ -21,7 +23,13 @@ export default class Grid {
 
     private map: {} = {};
 
-    constructor(width: number, height: number, cellDimension: number, zero = new Position(0, 0)) {
+    constructor(
+        habitat: Habitat,
+        width: number,
+        height: number,
+        cellDimension: number,
+        zero = new Position(0, 0)
+    ) {
 
         this.width = width;
         this.height = height;
@@ -60,6 +68,13 @@ export default class Grid {
         this.map = {};
 
         this.createGrid();
+
+        for(let positionWithLivingCells of habitat.get()){
+            const cellIndex = this.map[positionWithLivingCells.x][positionWithLivingCells.y];
+
+            this.cells[cellIndex].setType(livingCell);
+
+        }
     }
 
     private createGrid(): void {

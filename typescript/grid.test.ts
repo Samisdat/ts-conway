@@ -6,11 +6,21 @@ import Canvas from './canvas';
 import GridCell from './grid-cell';
 import Grid from './grid';
 
+import Habitat from './habitat';
+
 describe('Grid', () => {
+
+    let habitat: Habitat;
+
+    before(() => {
+
+        habitat = new Habitat();
+
+    });
 
     it('odd number of cols and rows ', () => {
 
-        let grid = new Grid(300, 300, 100);
+        let grid = new Grid(habitat, 300, 300, 100);
 
         expect(grid).to.be.instanceof(Grid);
 
@@ -29,7 +39,7 @@ describe('Grid', () => {
 
     it('odd number of cols and rows ', () => {
 
-        let grid = new Grid(320, 320, 100);
+        let grid = new Grid(habitat, 320, 320, 100);
 
         expect(grid).to.be.instanceof(Grid);
 
@@ -49,7 +59,7 @@ describe('Grid', () => {
 
     it('even number of cols and rows ', () => {
 
-        let grid = new Grid(400, 400, 100);
+        let grid = new Grid(habitat, 400, 400, 100);
 
         expect(grid).to.be.instanceof(Grid);
 
@@ -68,7 +78,7 @@ describe('Grid', () => {
 
     it('even number of cols and rows ', () => {
 
-        let grid = new Grid(420, 420, 100);
+        let grid = new Grid(habitat, 420, 420, 100);
 
         expect(grid).to.be.instanceof(Grid);
 
@@ -88,7 +98,7 @@ describe('Grid', () => {
 
     it('3 cols and 3 rows without offset ', () => {
 
-        let grid = new Grid(300, 300, 100);
+        let grid = new Grid(habitat, 300, 300, 100);
 
         expect(grid).to.be.instanceof(Grid);
 

@@ -36,7 +36,7 @@ export default class Frontend {
 
         const patterns = new Patterns();
         this.habitat.seedPattern(patterns.get('blinker'));
-
+        this.habitat.startAging();
 
         this.wrapper = $element;
 
@@ -52,6 +52,7 @@ export default class Frontend {
         );
 
         this.grid = new Grid(
+            this.habitat,
             this.wrapper.width(),
             this.wrapper.height(),
             this.cellWidth * this.control.getZoom()
@@ -89,6 +90,7 @@ export default class Frontend {
         this.offset = position;
 
         this.grid = new Grid(
+            this.habitat,            
             this.wrapper.width(),
             this.wrapper.height(),
             this.cellWidth * this.control.getZoom(),
