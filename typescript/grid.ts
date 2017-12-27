@@ -84,7 +84,10 @@ export default class Grid {
 
         const centerIndex = this.map[0][0];
 
-        this.cells[centerIndex].setType(centerCell);
+        if ('living' !== this.cells[centerIndex].getType().name) {
+            this.cells[centerIndex].setType(centerCell);
+
+        }
 
 
     }
