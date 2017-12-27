@@ -119,8 +119,69 @@ describe('Grid', () => {
 
     });
 
-    it('it has one living cell after seeding one', () => {
+    it('has checkerboard pattern', () => {
+        
+        let grid = new Grid(habitat, 300, 300, 100);
 
+        expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(-1, 1).getType().name).to.be.equal('checkerboard-light');
+
+        expect(grid.getCell(0, -1).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(0, 1).getType().name).to.be.equal('checkerboard-dark');
+
+        expect(grid.getCell(1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-light');
+
+    });
+
+    it('has moving checkerboard pattern', () => {
+        
+        let grid = new Grid(habitat, 300, 300, 100, new Position(1, 0));
+
+        expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(-1, 1).getType().name).to.be.equal('checkerboard-dark');
+
+        expect(grid.getCell(0, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 1).getType().name).to.be.equal('checkerboard-light');
+
+        expect(grid.getCell(1, -1).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-dark');
+
+        grid = new Grid(habitat, 300, 300, 100, new Position(2, 0));
+
+        expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(-1, 1).getType().name).to.be.equal('checkerboard-light');
+
+        expect(grid.getCell(0, -1).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(0, 1).getType().name).to.be.equal('checkerboard-dark');
+
+        expect(grid.getCell(1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-light');
+
+        grid = new Grid(habitat, 300, 300, 100, new Position(1, 1));
+
+        expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(-1, 1).getType().name).to.be.equal('checkerboard-light');
+
+        expect(grid.getCell(0, -1).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(0, 1).getType().name).to.be.equal('checkerboard-dark');
+
+        expect(grid.getCell(1, -1).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-light');
+        
+    });
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
