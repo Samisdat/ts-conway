@@ -8,6 +8,10 @@ import Grid from './grid';
 
 import Habitat from './habitat';
 
+import CheckerboardDark from './grid-cell-types/checkerboard-dark';
+import CheckerboardLight from './grid-cell-types/checkerboard-light';
+import LivingCell from './grid-cell-types/living-cell';
+
 describe('Grid', () => {
 
     let habitat: Habitat;
@@ -115,5 +119,36 @@ describe('Grid', () => {
 
     });
 
-    
+    it('it has one living cell after seeding one', ()=>{
+
+        expect(habitat.getAllCells()).to.be.deep.equal([]);
+
+        habitat.seed(
+            new Position(0, 0)
+        );
+
+        expect(habitat.get()).to.be.deep.equal([new Position(0, 0)]);
+
+        let grid = new Grid(habitat, 300, 300, 100);
+
+        expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
+
+        const cells = grid.getCells();
+        expect(cells.length).to.be.equal(9);
+
+        let countLiving = 0;
+        for(let cell of cells){
+            
+            if('living' === cell.getType().name){
+                countLiving += 1;
+                expect(cell.x).to.be.deep.equal(0);
+                expect(cell.y).to.be.deep.equal(0);
+                
+            }
+        }
+
+        expect(countLiving).to.be.equal(1);
+
+    });
+
 });

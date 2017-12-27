@@ -3,6 +3,12 @@ import GridCell from './grid-cell';
 
 import Habitat from './habitat';
 
+import LivingCell from './grid-cell-types/living-cell';
+import CenterCell from './grid-cell-types/center';
+
+const livingCell: LivingCell = new LivingCell();
+const centerCell: CenterCell = new CenterCell();
+
 export default class Grid {
 
     private width: number;
@@ -75,6 +81,12 @@ export default class Grid {
             this.cells[cellIndex].setType(livingCell);
 
         }
+
+        const centerIndex = this.map[0][0];
+
+        this.cells[centerIndex].setType(centerCell);
+    
+
     }
 
     private createGrid(): void {
