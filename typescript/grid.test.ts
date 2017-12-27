@@ -182,6 +182,68 @@ describe('Grid', () => {
         expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-light');
         
     });
+
+    it('has moving checkerboard pattern', () => {
+        
+        let grid:Grid;
+        /*
+        grid = new Grid(habitat, 3, 1, 1, new Position(-2, 0));
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(1);
+
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');        
+
+        grid = new Grid(habitat, 3, 1, 1, new Position(-1, 0));
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(1);
+
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('center');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-light');
+
+        grid = new Grid(habitat, 3, 1, 1, new Position(0, 0));
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(1);
+
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('center');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
+        */
+        grid = new Grid(habitat, 3, 1, 1, new Position(1, 0));
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(1);
+
+        expect(grid.getZero()).to.be.deep.equal(new Position(1, 0));
+        
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('center');
+
+        expect(grid.getCell(-1, 0).relativePosition).to.deep.equal(new Position(-1, 0));
+        expect(grid.getCell(0, 0).relativePosition).to.deep.equal(new Position(0, 0));
+        expect(grid.getCell(1, 0).relativePosition).to.deep.equal(new Position(1, 0));
+
+        expect(grid.getCell(-1, 0).absolutePosition).to.deep.equal(new Position(-2, 0));
+        expect(grid.getCell(0, 0).absolutePosition).to.deep.equal(new Position(-1, 0));
+        expect(grid.getCell(1, 0).absolutePosition).to.deep.equal(new Position(0, 0));
+        
+        /*
+        grid = new Grid(habitat, 3, 1, 1, new Position(2, 0));
+
+        expect(grid.getCols()).to.be.equal(3);
+        expect(grid.getRows()).to.be.equal(1);
+
+        expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
+        expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
+        expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
+        */
+    });
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
