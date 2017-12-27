@@ -10,7 +10,7 @@ export default class Habitat {
     constructor() {
     }
 
-    public startAging(generationDuration = 1000):void{
+    public startAging(generationDuration = 1000): void {
         setInterval(() => {
             this.elapse();
         }, 1000);

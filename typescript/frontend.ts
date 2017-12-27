@@ -90,7 +90,7 @@ export default class Frontend {
         this.offset = position;
 
         this.grid = new Grid(
-            this.habitat,            
+            this.habitat,
             this.wrapper.width(),
             this.wrapper.height(),
             this.cellWidth * this.control.getZoom(),

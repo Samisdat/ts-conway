@@ -26,7 +26,7 @@ export default class GridCell {
 
     }
 
-    private setCheckerboardColor():void{
+    private setCheckerboardColor(): void {
 
         const absolutePosition = new Position(
             this.position.x - this.gridOffset.x,
@@ -50,7 +50,7 @@ export default class GridCell {
             }
         }
 
-        
+
     }
 
     public setType(type: GridCellType): void {
@@ -73,6 +73,6 @@ export default class GridCell {
     }
 
     public getGridOffset(): Position {
-        return this.gridOffset
+        return this.gridOffset;
     }
 }

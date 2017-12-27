@@ -32,7 +32,7 @@ describe('GridCell', () => {
 
     it('get checkerboard color', () => {
 
-        let gridCell: GridCell; 
+        let gridCell: GridCell;
 
         gridCell = new GridCell(new Position(-1, -1), new Position(0, 0));
         expect(gridCell.getColor()).to.be.equal(lightColor.hex);

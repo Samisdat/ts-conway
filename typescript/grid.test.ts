@@ -119,7 +119,7 @@ describe('Grid', () => {
 
     });
 
-    it('it has one living cell after seeding one', ()=>{
+    it('it has one living cell after seeding one', () => {
 
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
@@ -137,13 +137,13 @@ describe('Grid', () => {
         expect(cells.length).to.be.equal(9);
 
         let countLiving = 0;
-        for(let cell of cells){
-            
-            if('living' === cell.getType().name){
+        for (let cell of cells) {
+
+            if ('living' === cell.getType().name) {
                 countLiving += 1;
                 expect(cell.x).to.be.deep.equal(0);
                 expect(cell.y).to.be.deep.equal(0);
-                
+
             }
         }
 

@@ -75,7 +75,7 @@ export default class Grid {
 
         this.createGrid();
 
-        for(let positionWithLivingCells of habitat.get()){
+        for (let positionWithLivingCells of habitat.get()) {
             const cellIndex = this.map[positionWithLivingCells.x][positionWithLivingCells.y];
 
             this.cells[cellIndex].setType(livingCell);
@@ -85,7 +85,7 @@ export default class Grid {
         const centerIndex = this.map[0][0];
 
         this.cells[centerIndex].setType(centerCell);
-    
+
 
     }
 
@@ -97,7 +97,7 @@ export default class Grid {
 
         const end = new Position(
             Math.ceil((this.cols - 1) / 2),
-            Math.ceil((this.rows - 1)  / 2)
+            Math.ceil((this.rows - 1) / 2)
         );
 
         let start = new Position(
