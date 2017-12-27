@@ -99,6 +99,16 @@ export default class CanvasRenderer {
                 cellDimension
             );
 
+            this.canvas.ctx.fillStyle = '#000000';
+            
+            const absolute = cell.absolutePosition;
+            this.canvas.ctx.font = '10px sans-serif';
+            this.canvas.ctx.fillText(absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);   
+            
+            const relative = cell.relativePosition;
+            
+            this.canvas.ctx.fillText(relative.x + '/' + relative.y, x, (y + 30), cellDimension);            
+
         }
     }
 
