@@ -4,6 +4,15 @@ export default class Position {
     public readonly  y: number;
 
     constructor(x: number, y: number) {
+
+        if(-0 === x){
+            x = 0;
+        }
+
+        if(-0 === y){
+            y = 0;
+        }
+        
         this.x = x;
         this.y = y;
     }
