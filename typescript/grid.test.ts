@@ -22,7 +22,7 @@ describe('Grid', () => {
 
     });
 
-    it('odd number of cols and rows ', () => {
+    it.skip('odd number of cols and rows ', () => {
 
         let grid = new Grid(habitat, 300, 300, 100);
 
@@ -41,7 +41,7 @@ describe('Grid', () => {
 
     });
 
-    it('odd number of cols and rows ', () => {
+    it.skip('odd number of cols and rows ', () => {
 
         let grid = new Grid(habitat, 320, 320, 100);
 
@@ -61,7 +61,7 @@ describe('Grid', () => {
 
     });
 
-    it('even number of cols and rows ', () => {
+    it.skip('even number of cols and rows ', () => {
 
         let grid = new Grid(habitat, 400, 400, 100);
 
@@ -80,7 +80,7 @@ describe('Grid', () => {
 
     });
 
-    it('even number of cols and rows ', () => {
+    it.skip('even number of cols and rows ', () => {
 
         let grid = new Grid(habitat, 420, 420, 100);
 
@@ -100,7 +100,7 @@ describe('Grid', () => {
 
     });
 
-    it('3 cols and 3 rows without offset ', () => {
+    it.skip('3 cols and 3 rows without offset ', () => {
 
         let grid = new Grid(habitat, 300, 300, 100);
 
@@ -119,7 +119,7 @@ describe('Grid', () => {
 
     });
 
-    it('has checkerboard pattern', () => {
+    it.skip('has checkerboard pattern', () => {
         
         let grid = new Grid(habitat, 300, 300, 100);
 
@@ -137,7 +137,7 @@ describe('Grid', () => {
 
     });
 
-    it('has moving checkerboard pattern', () => {
+    it.skip('has moving checkerboard pattern', () => {
         
         let grid = new Grid(habitat, 300, 300, 100, new Position(1, 0));
 
@@ -244,6 +244,9 @@ describe('Grid', () => {
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
         */
     });
+    
+    it.skip('it has one living cell after seeding one', () => {
+
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
