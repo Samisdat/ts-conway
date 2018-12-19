@@ -10,14 +10,12 @@ COPY package.json .
 RUN npm install -g grunt-cli
 RUN npm install
 
-RUN ls -la /tmp/conway
-
 RUN mkdir -p /home/conway
 
-WORKDIR /home/conway
+mv /tmp/conway/node_modules /home/conway/
+mv /tmp/conway/package.json /home/conway/
 
-RUN mv /tmp/conway/node_modules /home/conway/
-RUN mv /tmp/conway/package.json /home/conway/
+WORKDIR /home/conway
 
 COPY grunt/ grunt
 COPY src/ src
