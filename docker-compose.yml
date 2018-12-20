@@ -5,14 +5,5 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./grunt:/home/conway/grunt
-      - ./src:/home/conway/src
-      - ./typescript:/home/conway/typescript
-      - ./node_modules:/home/conway/node_modules
-      - ./.eslintignore:/home/conway/.eslintignore
-      - ./.eslintrc:/home/conway/.eslintrc
-      - ./Gruntfile.js:/home/conway/Gruntfile.js
-      - ./last-change.txt:/home/conway/last-change.txt
-      - ./tsconfig.json:/home/conway/tsconfig.json
-      - ./tsdoc.json:/home/conway/tsdoc.json
-      - ./tslint.json:/home/conway/tslint.json
+      - .:/home/conway/
+      - /home/conway/node_modules
