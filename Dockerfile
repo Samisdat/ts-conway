@@ -12,8 +12,8 @@ RUN npm install
 
 RUN mkdir -p /home/conway
 
-mv /tmp/conway/node_modules /home/conway/
-mv /tmp/conway/package.json /home/conway/
+RUN mv /tmp/conway/node_modules /home/conway/
+RUN mv /tmp/conway/package.json /home/conway/
 
 WORKDIR /home/conway
 
