@@ -35,7 +35,7 @@ export default class Frontend {
         }
 
         const patterns = new Patterns();
-        //this.habitat.seedPattern(patterns.get('blinker'));
+        this.habitat.seedPattern(patterns.get('blinker'));
         this.habitat.startAging();
 
         this.wrapper = $element;
