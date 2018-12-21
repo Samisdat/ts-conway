@@ -10,3 +10,4 @@ plain/.nyc_output/
 last-change.txt
 typedoc
 .idea/
+package-lock.json
