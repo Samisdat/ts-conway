@@ -87,11 +87,9 @@ export default class CanvasRenderer {
             this.canvas.ctx.fillStyle = color;
 
             let x = this.grid.getWidth() / 2 + cell.x * cellDimension - cellDimension / 2;
-            x += this.grid.getZero().x * cellDimension;
 
             let y = this.grid.getHeight() / 2 + cell.y * cellDimension - cellDimension / 2;
-            y += this.grid.getZero  ().y * cellDimension;
-
+           
             this.canvas.ctx.fillRect(
                 x,
                 y,
