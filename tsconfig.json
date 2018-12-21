@@ -1,9 +1,17 @@
 {
     "compilerOptions":{
+        "baseUrl": "typescript",
         "module": "commonjs",
         "sourceMap": true,
-        "target": "es2015",
-        "isolatedModules": false,
+        "target": "ES5",
+        "outFile": "dist/conway.js",
 		"typeRoots": ["node_modules/@types"]
-    }
+    },
+    "include": [
+        "**/*.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.test.ts"
+    ]
 }
