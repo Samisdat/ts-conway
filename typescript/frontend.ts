@@ -51,13 +51,6 @@ export default class Frontend {
             this.originalCellWidth
         );
 
-        this.grid = new Grid(
-            this.habitat,
-            this.wrapper.width(),
-            this.wrapper.height(),
-            this.cellWidth * this.control.getZoom()
-        );
-
         this.loop();
 
     }
