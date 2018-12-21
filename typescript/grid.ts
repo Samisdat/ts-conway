@@ -79,7 +79,7 @@ export default class Grid {
 
         for (let positionWithLivingCells of habitat.get()) {
 
-            const cellIndex = this.relativeMap[positionWithLivingCells.x][positionWithLivingCells.y];
+            const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
 
             this.cells[cellIndex].setType(livingCell);
 
