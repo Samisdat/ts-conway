@@ -12,7 +12,7 @@ import PanControl from './pan';
 
 export default class MainControl {
 
-    private readonly canvasWrap: HTMLElement;
+    private readonly canvasWrap: Element;
 
     private readonly originalCellWidth: number;
 
@@ -22,7 +22,7 @@ export default class MainControl {
 
     private panControl: PanControl;
 
-    constructor(canvasWrap: HTMLElement, originalCellWidth: number) {
+    constructor(canvasWrap: Element, originalCellWidth: number) {
 
         this.canvasWrap = canvasWrap;
 

@@ -13,7 +13,7 @@ import ZoomControl from './zoom';
 
 export default class PanControl extends Control {
 
-    private readonly canvasWrap: HTMLElement;
+    private readonly canvasWrap: Element;
 
     private readonly originalCellWidth: number;
 
@@ -42,7 +42,7 @@ export default class PanControl extends Control {
     private zoomControl: ZoomControl;
 
     constructor(
-        canvasWrap: HTMLElement,
+        canvasWrap: Element,
         controllWrap: JQuery,
         originalCellWidth: number,
         zoomControl: ZoomControl
