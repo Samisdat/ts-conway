@@ -31,7 +31,7 @@ export default class PanControl extends Control {
 
     private positionTween: TweenPosition = new TweenPosition(
         new Position(0, 0),
-        10
+        1
     );
 
     private positionBound: BoundPosition = new BoundPosition(
