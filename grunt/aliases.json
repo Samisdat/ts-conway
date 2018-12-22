@@ -21,15 +21,24 @@
             "exec:nyc"
         ]
     },
+    "build": {
+        "description": "build and run local server ",
+        "tasks": [
+            "copy:html",
+            "copy:fontawesome_css",
+            "copy:fontawesome_font",
+            "browserify:dist"
+        ]
+    },
     "run": {
         "description": "build and run local server ",
         "tasks": [
             "copy:html",
             "copy:fontawesome_css",
             "copy:fontawesome_font",
-	        "browserify:dist",
-            "connect",      
+            "browserify:dist",
+            "connect",
             "watch"
         ]
-    }    
+    }
 }

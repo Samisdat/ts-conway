@@ -28,6 +28,8 @@ COPY tsconfig.json .
 COPY tsdoc.json .
 COPY tslint.json .
 
-CMD ["tail", "-f" , "/dev/null"]
+RUN touch last-change.txt
+
+CMD ["grunt" , "build"]
 
 EXPOSE 80

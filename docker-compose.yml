@@ -7,3 +7,4 @@ services:
     volumes:
       - .:/home/conway/
       - /home/conway/node_modules
+    command: ["grunt", "run"]
