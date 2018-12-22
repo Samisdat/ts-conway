@@ -24,7 +24,6 @@ COPY typescript/ typescript
 COPY .eslintignore .
 COPY .eslintrc .
 COPY Gruntfile.js .
-COPY last-change.txt .
 COPY tsconfig.json .
 COPY tsdoc.json .
 COPY tslint.json .
