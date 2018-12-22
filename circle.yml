@@ -1,31 +1,14 @@
-## Customize the test machine
-machine:
-  timezone:
-    Europe/Berlin # Set the timezone
-  node:
-    version: v6.1.0
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-general:
-  branches:
-    only:
-      - develop
-      - master
+      # build the application image
+      - run: docker build --tag samisdat/conway .
 
-## Customize dependencies
-dependencies:
-  override:
-    - npm install -g grunt-cli
-    - npm install -g codeclimate-test-reporter
-    - npm install
-
-## The Build process itself
-compile:
-  override:
-    - grunt tsc
-
-## Customize test commands
-test:
-  override:
-    - grunt coverage
-  post:
-    - CODECLIMATE_REPO_TOKEN=$CODECLIMATE_REPO_TOKEN codeclimate-test-reporter < coverage/lcov-mapped.info
+      # deploy the image
+      - run: docker push samisdat/conway

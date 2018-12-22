@@ -1,14 +1,15 @@
 var ts = {
+	options: {
+		sourceMap: true,
+		target: 'es5'			
+	},
 	production: {
-		options: {
-			sourceMap: false
-		},
-		src: ['lib/**/*.ts'], 
- 		outDir: 'javascript/lib',
+		src: ['typescript/**/*.ts'], 
+ 		outDir: 'dist/javascript/src',
 	},
 	testing: {
-		src: ['tests/**/*.ts'], 
- 		outDir: 'javascript/testing',
+		src: ['typescript/**/*.ts'], 
+ 		outDir: 'dist/javascript',
 	}	
 };
 

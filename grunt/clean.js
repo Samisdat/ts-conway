@@ -1,13 +1,9 @@
 var clean = {
     production: [
-        'javascript/lib/'
-    ],
-    testing: [
-        'coverage/',
-        'javascript/testing/'
+        'dist/'
     ],
     coverage: [
-        'html-report/'
+        'coverage/'
     ]
 };
 

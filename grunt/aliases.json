@@ -11,20 +11,34 @@
 	"test": {
         "description": "run tests",
         "tasks": [
-            "clean:testing",
-        	"ts:testing",        	
             "mochaTest:typescript"
         ]
     },
-    "coverage": {
+    "cover": {
         "description": "run tests and generate coverage report",
         "tasks": [
-            "clean:testing",
-            "clean:coverage",
-        	"ts:testing",
-            "mocha_istanbul:coverage",
-            "remapIstanbul",
-            "lcov"
+            "clean:coverage",	
+            "exec:nyc"
+        ]
+    },
+    "build": {
+        "description": "build and run local server ",
+        "tasks": [
+            "copy:html",
+            "copy:fontawesome_css",
+            "copy:fontawesome_font",
+            "browserify:dist"
+        ]
+    },
+    "run": {
+        "description": "build and run local server ",
+        "tasks": [
+            "copy:html",
+            "copy:fontawesome_css",
+            "copy:fontawesome_font",
+            "browserify:dist",
+            "connect",
+            "watch"
         ]
     }
 }

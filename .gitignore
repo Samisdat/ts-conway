@@ -1,7 +1,13 @@
 node_modules/
 .tscache/
-coverage/
 html-report/
-javascript/**/*.js
-javascript/**/*.map
-tests/.baseDir.ts
+dist/
+testing/
+coverage/
+.baseDir.ts
+plain/.nyc_output/
+.nyc_output
+last-change.txt
+typedoc
+.idea/
+package-lock.json

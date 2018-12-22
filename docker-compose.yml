@@ -1,0 +1,10 @@
+version: '3'
+services:
+  conway:
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - .:/home/conway/
+      - /home/conway/node_modules
+    command: ["grunt", "run"]
