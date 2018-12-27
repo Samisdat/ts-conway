@@ -10,5 +10,8 @@ jobs:
       # build the application image
       - run: docker build --tag samisdat/conway .
 
+      # lint
+      - run: docker run samisdat/conway grunt lint
+
       # deploy the image
       - run: docker push samisdat/conway

@@ -1,11 +1,17 @@
 {
 	"default": [],
 
-	"tsc": {
+    "lint": {
+        "description": "linting",
+        "tasks": [
+            "tslint"
+        ]
+    },
+    "tsc": {
         "description": "compile",
         "tasks": [
             "clean:production",
-        	"ts:production"        	
+            "ts:production"
         ]
     },
 	"test": {
