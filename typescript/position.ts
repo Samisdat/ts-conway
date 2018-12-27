@@ -5,14 +5,14 @@ export default class Position {
 
     constructor(x: number, y: number) {
 
-        if(-0 === x){
+        if (-0 === x) {
             x = 0;
         }
 
-        if(-0 === y){
+        if (-0 === y) {
             y = 0;
         }
-        
+
         this.x = x;
         this.y = y;
     }

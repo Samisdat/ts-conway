@@ -182,14 +182,14 @@ export default class Grid {
 
     public getCellByAbsolutePosition(x: number, y: number): GridCell {
 
-        if(undefined === this.absoluteMap[x]){
+        if (undefined === this.absoluteMap[x]) {
             return undefined;
         }
 
-        if(undefined === this.absoluteMap[x][y]){
+        if (undefined === this.absoluteMap[x][y]) {
             return undefined;
         }
-        
+
         const index = this.absoluteMap[x][y];
 
         return this.cells[index];
