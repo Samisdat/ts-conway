@@ -43,8 +43,8 @@
   },
   "nyc": {
     "include": [
-      "typescript/src/*.ts",
-      "typescript/src/**/*.ts"
+      "typescript/*.ts",
+      "typescript/**/*.ts"
     ],
     "exclude": [
       "typings",
@@ -55,6 +55,7 @@
     ],
     "require": [],
     "reporter": [
+      "lcov",
       "json",
       "html"
     ],

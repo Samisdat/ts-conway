@@ -14,7 +14,7 @@ jobs:
             chmod +x ./cc-test-reporter
 
       - run:
-          name: Run tests
+          name: Build image
           command: |
             ./cc-test-reporter before-build
             docker build --tag samisdat/conway .
@@ -27,7 +27,10 @@ jobs:
       - run:
           name: Test and coverage
           command: |
-            docker run samisdat/conway grunt coverage
+            docker run --name coverage samisdat/conway grunt coverage
+            docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
+            docker rm -f coverage
+            ls -la
 
       # deploy the image
       - run: docker push samisdat/conway
