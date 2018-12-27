@@ -7,14 +7,27 @@ jobs:
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-      # build image
-      - run: docker build --tag samisdat/conway .
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
 
-      # lint
-      - run: docker run samisdat/conway grunt lint
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+            docker build --tag samisdat/conway .
 
-      # test and coverage
-      - run: docker run samisdat/conway grunt coverage
+      - run:
+          name: Linting
+          command: |
+            docker run samisdat/conway grunt lint
+
+      - run:
+          name: Test and coverage
+          command: |
+            docker run samisdat/conway grunt coverage
 
       # deploy the image
       - run: docker push samisdat/conway
