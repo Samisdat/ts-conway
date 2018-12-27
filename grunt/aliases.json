@@ -20,7 +20,7 @@
             "mochaTest:typescript"
         ]
     },
-    "cover": {
+    "coverage": {
         "description": "run tests and generate coverage report",
         "tasks": [
             "clean:coverage",	

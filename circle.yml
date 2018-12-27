@@ -13,8 +13,8 @@ jobs:
       # lint
       - run: docker run samisdat/conway grunt lint
 
-      # lint
-      - run: docker run samisdat/conway grunt test
+      # test and coverage
+      - run: docker run samisdat/conway grunt coverage
 
       # deploy the image
       - run: docker push samisdat/conway
