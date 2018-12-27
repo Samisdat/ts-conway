@@ -56,7 +56,7 @@
     "require": [],
     "reporter": [
       "lcov",
-      "json",
+      "text-summary",
       "html"
     ],
     "all": true
