@@ -4,7 +4,7 @@ import Position from './position';
 
 import Pattern from './pattern';
 
-describe('Pattern', () => {
+describe.skip('Pattern', () => {
 
     beforeEach(function () {
     });
