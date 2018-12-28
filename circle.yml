@@ -32,7 +32,8 @@ jobs:
             docker run --name coverage samisdat/conway grunt coverage
             docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
             docker rm -f coverage
-            ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
+            ./cc-test-reporter format-coverage -t lcov ./lcov.info
+            ./cc-test-reporter upload-coverage
 
       # deploy the image
       - run: docker push samisdat/conway
