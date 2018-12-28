@@ -1,6 +1,8 @@
 version: 2
 jobs:
   build:
+    environment:
+      CC_TEST_REPORTER_ID: a2eee04856f9e1b946a0c9099df775d3b875673a832681593e9bca8f4f204535
     machine: true
     steps:
       - checkout
@@ -16,7 +18,6 @@ jobs:
       - run:
           name: Build image
           command: |
-            ./cc-test-reporter before-build
             docker build --tag samisdat/conway .
 
       - run:
@@ -27,10 +28,11 @@ jobs:
       - run:
           name: Test and coverage
           command: |
+            ./cc-test-reporter before-build
             docker run --name coverage samisdat/conway grunt coverage
             docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
             docker rm -f coverage
-            ls -la
+           ./cc-test-reporter after-build --coverage-input-type lcov --exit-code $?
 
       # deploy the image
       - run: docker push samisdat/conway
