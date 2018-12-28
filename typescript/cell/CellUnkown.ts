@@ -1,12 +1,12 @@
 import { GridCellType } from './grid-cell-type';
 
-export default class LivingCell implements GridCellType {
+export default class CellUnkown implements GridCellType {
 
     get name(): string {
-        return 'living';
+        return 'none';
     }
 
     get hex(): string {
-        return '#000000';
+        return undefined;
     }
 }

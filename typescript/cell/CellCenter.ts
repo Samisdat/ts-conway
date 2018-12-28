@@ -1,6 +1,6 @@
 import { GridCellType } from './grid-cell-type';
 
-export default class Center implements GridCellType {
+export default class CellCenter implements GridCellType {
 
     get name(): string {
         return 'center';

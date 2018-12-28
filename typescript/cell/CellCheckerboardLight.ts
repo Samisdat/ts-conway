@@ -1,6 +1,6 @@
 import { GridCellType } from './grid-cell-type';
 
-export default class CheckerboardLight implements GridCellType {
+export default class CellCheckerboardLight implements GridCellType {
 
     get name(): string {
         return 'checkerboard-light';

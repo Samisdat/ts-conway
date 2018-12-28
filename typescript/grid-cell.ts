@@ -1,11 +1,11 @@
-import { GridCellType } from './grid-cell-types/grid-cell-type';
-import NoType from './grid-cell-types/no-type';
+import { GridCellType } from './cell/grid-cell-type';
+import CellUnkown from './cell/CellUnkown';
 
-import CheckerboardDark from './grid-cell-types/checkerboard-dark';
-import CheckerboardLight from './grid-cell-types/checkerboard-light';
+import CellCheckerboardDark from './cell/CellCheckerboardDark';
+import CellCheckerboardLight from './cell/CellCheckerboardLight';
 
-const darkColor: CheckerboardDark = new CheckerboardDark();
-const lightColor: CheckerboardLight = new CheckerboardLight();
+const darkColor: CellCheckerboardDark = new CellCheckerboardDark();
+const lightColor: CellCheckerboardLight = new CellCheckerboardLight();
 
 
 import Position from './position';
@@ -16,7 +16,7 @@ export default class GridCell {
     public readonly absolutePosition: Position;
     private gridOffset: Position;
 
-    private type: GridCellType = new NoType();
+    private type: GridCellType = new CellUnkown();
 
     constructor(position: Position, gridOffset: Position) {
 
