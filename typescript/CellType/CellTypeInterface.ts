@@ -1,4 +1,4 @@
-export interface GridCellType {
+export interface CellTypeInterface {
 
     name: string;
 

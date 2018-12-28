@@ -1,6 +1,6 @@
-import { GridCellType } from './grid-cell-type';
+import { CellTypeInterface } from './CellTypeInterface';
 
-export default class CellCheckerboardDark implements GridCellType {
+export class CellTypeCheckerboardDark implements CellTypeInterface {
 
     get name(): string {
         return 'checkerboard-dark';

@@ -1,20 +1,20 @@
 import { expect } from 'chai';
 
-import CellLiving from '@cell/CellLiving';
+import { CellTypeLiving } from 'CellType/CellTypeLiving';
 
-describe('CellLiving', () => {
+describe('CellTypeLiving', () => {
 
     it('can be created', () => {
 
-        let cellType = new CellLiving;
+        let cellType = new CellTypeLiving;
 
-        expect(cellType).to.be.instanceof(CellLiving);
+        expect(cellType).to.be.instanceof(CellTypeLiving);
 
     });
 
     it('can retrieve name', () => {
 
-        let cellType = new CellLiving;
+        let cellType = new CellTypeLiving;
 
         expect(cellType.name).to.be.equal('living');
 
@@ -22,7 +22,7 @@ describe('CellLiving', () => {
 
     it('can retrieve color', () => {
 
-        let cellType = new CellLiving;
+        let cellType = new CellTypeLiving;
 
         expect(cellType.hex).to.be.equal('#000000');
 

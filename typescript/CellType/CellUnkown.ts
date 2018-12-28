@@ -1,6 +1,6 @@
-import { GridCellType } from './grid-cell-type';
+import { CellTypeInterface } from './CellTypeInterface';
 
-export default class CellUnkown implements GridCellType {
+export class CellUnkown implements CellTypeInterface {
 
     get name(): string {
         return 'none';

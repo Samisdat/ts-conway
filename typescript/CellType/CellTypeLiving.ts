@@ -1,6 +1,6 @@
-import { GridCellType } from './grid-cell-type';
+import { CellTypeInterface } from './CellTypeInterface';
 
-export default class CellLiving implements GridCellType {
+export class CellTypeLiving implements CellTypeInterface {
 
     get name(): string {
         return 'living';
