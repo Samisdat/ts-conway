@@ -1,6 +1,9 @@
 {
     "compilerOptions":{
         "baseUrl": "typescript",
+        "paths": {
+            "CellType/*": ["CellType/*"]
+        },
         "module": "commonjs",
         "sourceMap": true,
         "target": "ES5",

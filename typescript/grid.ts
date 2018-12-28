@@ -3,11 +3,11 @@ import GridCell from './grid-cell';
 
 import Habitat from './habitat';
 
-import LivingCell from './grid-cell-types/living-cell';
-import CenterCell from './grid-cell-types/center';
+import { CellTypeLiving } from 'CellType/CellTypeLiving';
+import { CellTypesCenter } from 'CellType/CellTypesCenter';
 
-const livingCell: LivingCell = new LivingCell();
-const centerCellType: CenterCell = new CenterCell();
+const livingCell: CellTypeLiving = new CellTypeLiving();
+const centerCellType: CellTypesCenter = new CellTypesCenter();
 
 export default class Grid {
 
@@ -77,6 +77,7 @@ export default class Grid {
 
         this.createGrid();
 
+        /*
         for (let positionWithLivingCells of habitat.get()) {
 
             const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
@@ -84,6 +85,7 @@ export default class Grid {
             this.cells[cellIndex].setType(livingCell);
 
         }
+        */
 
         const centerCell = this.getCellByAbsolutePosition(0, 0);
         if (undefined !== centerCell && 'living' !== centerCell.getType().name) {

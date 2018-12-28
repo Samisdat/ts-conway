@@ -8,9 +8,9 @@ import Grid from './grid';
 
 import Habitat from './habitat';
 
-import CheckerboardDark from './grid-cell-types/checkerboard-dark';
-import CheckerboardLight from './grid-cell-types/checkerboard-light';
-import LivingCell from './grid-cell-types/living-cell';
+import CellTypeCheckerboardDark from './CellType/CellTypeCheckerboardDark';
+import CellTypeCheckerboardLight from './CellType/CellTypeCheckerboardLight';
+import CellTypeLiving from './CellType/CellTypeLiving';
 
 describe('Grid', () => {
 
@@ -245,7 +245,7 @@ describe('Grid', () => {
         */
     });
 
-    it.skip('it has one living cell after seeding one', () => {
+    it.skip('it has one living CellType after seeding one', () => {
 
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 

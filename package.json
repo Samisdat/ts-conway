@@ -36,8 +36,9 @@
     "mocha": "^4.0.1",
     "nyc": "^11.4.1",
     "time-grunt": "^1.4.0",
-    "tsify": "^4.0.1",
     "ts-node": "^4.0.2",
+    "tsconfig-paths": "^3.7.0",
+    "tsify": "^4.0.1",
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
     "typescript": "^3.2.2"
@@ -48,6 +49,7 @@
       "typescript/**/*.ts"
     ],
     "exclude": [
+      "typescript/**/*test.ts",
       "typings",
       "node_modules"
     ],

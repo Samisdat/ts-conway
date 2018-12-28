@@ -7,7 +7,10 @@ module.exports = function (grunt) {
     var mocha = {
         options: {
             quiet: false,
-            require: "ts-node/register"
+            require: [
+                'ts-node/register',
+                'tsconfig-paths/register'
+            ]
         },
         'typescript': {
             src: [
