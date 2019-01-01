@@ -6,9 +6,9 @@ import { Tween } from '../tween';
 import { BoundPosition } from '../boundposition';
 import { Bound } from '../bound';
 
-import { Control } from './control';
+import { ControlAbstract } from './ControlAbstract';
 
-export class ZoomControl extends Control {
+export class ZoomControl extends ControlAbstract {
 
     private control: JQuery;
 

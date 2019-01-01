@@ -6,12 +6,12 @@ import { Tween } from '../tween';
 import { BoundPosition } from '../boundposition';
 import { Bound } from '../bound';
 
-import { Control } from './control';
+import { ControlAbstract } from './ControlAbstract';
 
-import { ZoomControl } from './zoom';
+import { ZoomControl } from './ControlZoom';
 
 
-export class PanControl extends Control {
+export class PanControl extends ControlAbstract {
 
     private readonly canvasWrap: Element;
 

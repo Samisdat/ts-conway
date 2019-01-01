@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 
 import { Grid } from './grid';
 import { CanvasRenderer } from './canvas-renderer';
-import { MainControl } from './control/main';
+import { MainControl } from './control/ControlMain';
 import { Habitat  } from './habitat';
 import { Patterns } from './patterns';
 import { Position } from './position';

@@ -6,9 +6,9 @@ import { Tween } from '../tween';
 import { BoundPosition } from '../boundposition';
 import { Bound } from '../bound';
 
-import { ZoomControl } from './zoom';
+import { ZoomControl } from './ControlZoom';
 
-import { PanControl } from './pan';
+import { PanControl } from './ControlPan';
 
 export class MainControl {
 

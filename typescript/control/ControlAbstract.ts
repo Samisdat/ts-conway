@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 
-export abstract class Control {
+export abstract class ControlAbstract {
 
     protected getControlElement(action: string, value: string, icon: string): JQuery {
         const element = $('<div>');
