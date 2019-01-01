@@ -4,6 +4,23 @@ import { Frontend } from './frontend';
 
 describe.skip('Frontend', () => {
 
+    before(()=>{
+
+        const { JSDOM } = require( 'jsdom' );
+        const jsdom = new JSDOM( '<html><body></body></html>' );
+
+        const { window } = jsdom;
+        const { document } = window;
+
+        global.$ = global.jQuery = require( 'jquery' )( window );
+
+        global.window = window;
+        global.document = document;
+
+
+
+    });
+
     afterEach( () => {
         $('body').html('');
     });
