@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import { Position } from '../position';
 
 
-import {GridCell} from '@Grid/GridCell';
+import {GridCell} from 'Grid/GridCell';
 
-import {CellTypeCheckerboardDark, CellTypeCheckerboardLight} from '@CellType/index';
+import {CellTypeCheckerboardDark, CellTypeCheckerboardLight} from 'CellType/index';
 
 const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
 const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();

@@ -1,4 +1,4 @@
-import { CellTypeInterface } from '@CellType/CellTypeInterface';
+import { CellTypeInterface } from 'CellType/CellTypeInterface';
 
 export class CellTypesCenter implements CellTypeInterface {
 

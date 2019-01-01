@@ -1,4 +1,4 @@
-import { CellTypeCheckerboardLight, CellTypeCheckerboardDark, CellUnkown, CellTypeInterface } from '@CellType/index';
+import { CellTypeCheckerboardLight, CellTypeCheckerboardDark, CellUnkown, CellTypeInterface } from 'CellType/index';
 
 const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
 const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();

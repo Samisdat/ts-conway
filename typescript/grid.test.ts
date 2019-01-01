@@ -8,8 +8,8 @@ import { Grid } from './grid';
 
 import { Habitat } from './habitat';
 
-import {CellTypeCheckerboardDark} from '@CellType/CellTypeCheckerboardDark';
-import {CellTypeCheckerboardLight} from '@CellType/CellTypeCheckerboardLight';
+import {CellTypeCheckerboardDark} from 'CellType/CellTypeCheckerboardDark';
+import {CellTypeCheckerboardLight} from 'CellType/CellTypeCheckerboardLight';
 import {CellTypeLiving} from './CellType/CellTypeLiving';
 
 describe('Grid', () => {

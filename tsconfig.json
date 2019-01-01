@@ -1,14 +1,16 @@
 {
     "compilerOptions":{
-        "baseUrl": "typescript",
+        "rootDirs":["typescript"],
+        "baseUrl": "./",
         "paths": {
-            "@CellType/*": ["CellType/*"],
-            "@Grid/*": ["Grid/*"]
+            "CellType/*": ["typescript/CellType/*"],
+            "Grid/*": ["typescript/Grid/*"]
         },
-        "module": "commonjs",
+        "module": "CommonJS",
+        "moduleResolution": "node",
+        "outDir": "./dist/",
         "sourceMap": true,
         "target": "ES5",
-        "outFile": "dist/conway.js",
 		"typeRoots": ["node_modules/@types"]
     },
     "include": [
