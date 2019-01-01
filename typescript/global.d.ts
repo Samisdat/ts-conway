@@ -3,5 +3,6 @@ declare namespace NodeJS {
     window: any;
     document: any;
     $: any;
+    jQuery:any;
   }
 }
