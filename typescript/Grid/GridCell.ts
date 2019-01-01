@@ -1,8 +1,4 @@
-import { CellTypeInterface } from 'CellType/CellTypeInterface';
-import { CellUnkown } from 'CellType/CellUnkown';
-
-import { CellTypeCheckerboardDark } from 'CellType/CellTypeCheckerboardDark';
-import { CellTypeCheckerboardLight } from 'CellType/CellTypeCheckerboardLight';
+import { CellTypeCheckerboardLight, CellTypeCheckerboardDark, CellUnkown, CellTypeInterface } from '@CellType/index';
 
 const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
 const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
@@ -10,7 +6,7 @@ const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
 
 import Position from '../position';
 
-export default class GridCell {
+export class GridCell {
 
     public readonly relativePosition: Position;
     public readonly absolutePosition: Position;
