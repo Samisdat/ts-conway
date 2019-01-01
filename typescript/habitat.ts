@@ -1,9 +1,9 @@
-import Position from './position';
-import Cell from './cell';
-import LivingCell from './livingcell';
-import Pattern from './pattern';
+import { Position } from './position';
+import { Cell } from './cell';
+import { LivingCell } from './livingcell';
+import { Pattern } from './pattern';
 
-export default class Habitat {
+export class Habitat {
 
     private cells: Cell[] = [];
 

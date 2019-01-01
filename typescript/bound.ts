@@ -1,4 +1,4 @@
-export default class Bound {
+export class Bound {
 
     private min: number;
     private max: number;

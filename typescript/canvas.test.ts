@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Canvas from './canvas';
+import { Canvas } from './canvas';
 
 describe.skip('Canvas', () => {
 /*

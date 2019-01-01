@@ -1,14 +1,14 @@
 import * as $ from 'jquery';
 
-import Position from '../position';
-import TweenPosition from '../tweenposition';
-import Tween from '../tween';
-import BoundPosition from '../boundposition';
-import Bound from '../bound';
+import { Position } from '../position';
+import { TweenPosition } from '../tweenposition';
+import { Tween } from '../tween';
+import { BoundPosition } from '../boundposition';
+import { Bound } from '../bound';
 
-import Control from './control';
+import { Control } from './control';
 
-export default class ZoomControl extends Control {
+export class ZoomControl extends Control {
 
     private control: JQuery;
 

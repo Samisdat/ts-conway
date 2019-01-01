@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 
 
-import Position from '../src/position';
+import { Position } from '../src/position';
 import Pattern from '../src/pattern';
 import Patterns from '../src/Patterns';
 

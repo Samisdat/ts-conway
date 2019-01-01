@@ -4,7 +4,7 @@ const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
 const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
 
 
-import Position from '../position';
+import { Position } from '../position';
 
 export class GridCell {
 

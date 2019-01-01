@@ -2,7 +2,8 @@
     "compilerOptions":{
         "baseUrl": "typescript",
         "paths": {
-            "CellType/*": ["CellType/*"]
+            "@CellType/*": ["CellType/*"],
+            "@Grid/*": ["Grid/*"]
         },
         "module": "commonjs",
         "sourceMap": true,
@@ -14,7 +15,6 @@
         "**/*.ts"
     ],
     "exclude": [
-        "node_modules",
-        "**/*.test.ts"
+        "node_modules"
     ]
 }

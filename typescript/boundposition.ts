@@ -1,7 +1,7 @@
-import Position from './position';
-import Bound from './bound';
+import { Position } from './position';
+import { Bound } from './bound';
 
-export default class BoundPosition {
+export class BoundPosition {
 
     private x: Bound;
     private y: Bound;

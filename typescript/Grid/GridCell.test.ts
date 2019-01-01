@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Position from '../position';
+import { Position } from '../position';
 
 
 import {GridCell} from '@Grid/GridCell';

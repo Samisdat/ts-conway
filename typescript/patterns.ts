@@ -1,4 +1,4 @@
-import Pattern from './pattern';
+import { Pattern } from './pattern';
 
 // taken from
 // http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
@@ -159,7 +159,7 @@ const patterns = {
     ]
 };
 
-export default class Patterns {
+export class Patterns {
 
     public get(name: string): Pattern {
 

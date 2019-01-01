@@ -1,4 +1,4 @@
-export default class Position {
+export class Position {
 
     public readonly  x: number;
     public readonly  y: number;

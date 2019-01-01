@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import Tween from './tween';
+import { Tween } from './tween';
 
 describe('Tween', () => {
 

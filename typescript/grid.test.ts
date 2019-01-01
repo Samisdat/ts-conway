@@ -1,16 +1,16 @@
 import { expect } from 'chai';
 
-import Position from './position';
-import Canvas from './canvas';
+import { Position } from './position';
+import { Canvas } from './canvas';
 
-import GridCell from './grid-cell';
-import Grid from './grid';
+import { GridCell } from './Grid/GridCell';
+import { Grid } from './grid';
 
-import Habitat from './habitat';
+import { Habitat } from './habitat';
 
-import CellTypeCheckerboardDark from './CellType/CellTypeCheckerboardDark';
-import CellTypeCheckerboardLight from './CellType/CellTypeCheckerboardLight';
-import CellTypeLiving from './CellType/CellTypeLiving';
+import {CellTypeCheckerboardDark} from '@CellType/CellTypeCheckerboardDark';
+import {CellTypeCheckerboardLight} from '@CellType/CellTypeCheckerboardLight';
+import {CellTypeLiving} from './CellType/CellTypeLiving';
 
 describe('Grid', () => {
 

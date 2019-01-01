@@ -1,9 +1,9 @@
 import * as $ from 'jquery';
 
-import Grid from './grid';
-import Canvas from './canvas';
+import { Grid } from './grid';
+import { Canvas } from './canvas';
 
-export default class CanvasRenderer {
+export class CanvasRenderer {
 
     private $element: JQuery;
 

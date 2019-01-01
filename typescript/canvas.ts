@@ -1,5 +1,5 @@
 
-export default class Canvas {
+export class Canvas {
 
     private canvasContext: CanvasRenderingContext2D;
 

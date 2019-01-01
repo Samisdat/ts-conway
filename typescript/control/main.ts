@@ -1,16 +1,16 @@
 import * as $ from 'jquery';
 
-import Position from '../position';
-import TweenPosition from '../tweenposition';
-import Tween from '../tween';
-import BoundPosition from '../boundposition';
-import Bound from '../bound';
+import { Position } from '../position';
+import { TweenPosition } from '../tweenposition';
+import { Tween } from '../tween';
+import { BoundPosition } from '../boundposition';
+import { Bound } from '../bound';
 
-import ZoomControl from './zoom';
+import { ZoomControl } from './zoom';
 
-import PanControl from './pan';
+import { PanControl } from './pan';
 
-export default class MainControl {
+export class MainControl {
 
     private readonly canvasWrap: Element;
 

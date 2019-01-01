@@ -1,4 +1,4 @@
-export default class Tween {
+export class Tween {
 
     private start: number;
     private end: number;

@@ -1,7 +1,7 @@
-import Position from './position';
-import Tween from './tween';
+import { Position } from './position';
+import { Tween } from './tween';
 
-export default class TweenPosition {
+export class TweenPosition {
 
     private steps: number;
 

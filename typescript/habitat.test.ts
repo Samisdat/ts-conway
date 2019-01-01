@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import Position from './position';
-import Cell from './cell';
+import { Position } from './position';
+import { Cell } from './cell';
 
-import Habitat from './habitat';
+import { Habitat } from './habitat';
 
-import Patterns from './patterns';
+import { Patterns } from './patterns';
 
 
 describe('Habitat', () => {

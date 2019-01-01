@@ -1,18 +1,18 @@
 import * as $ from 'jquery';
 
-import Grid from './grid';
-import CanvasRenderer from './canvas-renderer';
-import Control from './control/main';
-import Habitat from './habitat';
-import Patterns from './patterns';
-import Position from './position';
+import { Grid } from './grid';
+import { CanvasRenderer } from './canvas-renderer';
+import { MainControl } from './control/main';
+import { Habitat  } from './habitat';
+import { Patterns } from './patterns';
+import { Position } from './position';
 
 import { CellTypeLiving } from 'CellType/CellTypeLiving';
 
-export default class Frontend {
+export class Frontend {
 
     private wrapper: JQuery;
-    private control: Control;
+    private control: MainControl;
 
     public originalCellWidth: number = 100;
     public cellWidth: number;
@@ -47,7 +47,7 @@ export default class Frontend {
 
         this.cellWidth = this.originalCellWidth;
 
-        this.control = new Control(
+        this.control = new MainControl(
             this.wrapper.get(0),
             this.originalCellWidth
         );

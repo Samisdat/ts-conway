@@ -1,6 +1,6 @@
-import Position from './position';
+import { Position } from './position';
 
-export default class Pattern {
+export class Pattern {
 
     private positions: Position[] = [];
 

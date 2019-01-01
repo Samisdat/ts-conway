@@ -1,6 +1,6 @@
-import Position from './position';
+import { Position } from './position';
 
-export default class Cell {
+export class Cell {
 
     public readonly position: Position;
 

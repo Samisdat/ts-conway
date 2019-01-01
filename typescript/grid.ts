@@ -1,15 +1,15 @@
-import Position from './position';
-import GridCell from './grid-cell';
+import { Position } from './position';
+import { GridCell } from './Grid/GridCell';
 
-import Habitat from './habitat';
+import { Habitat } from './habitat';
 
-import { CellTypeLiving } from 'CellType/CellTypeLiving';
-import { CellTypesCenter } from 'CellType/CellTypesCenter';
+import { CellTypeLiving } from '@CellType/CellTypeLiving';
+import { CellTypesCenter } from '@CellType/CellTypesCenter';
 
 const livingCell: CellTypeLiving = new CellTypeLiving();
 const centerCellType: CellTypesCenter = new CellTypesCenter();
 
-export default class Grid {
+export class Grid {
 
     private width: number;
     private height: number;
