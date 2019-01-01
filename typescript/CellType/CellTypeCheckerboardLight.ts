@@ -1,12 +1,9 @@
-import { CellTypeInterface } from './CellTypeInterface';
+import { CellTypeInterface } from '@CellType/CellTypeInterface';
 
 export class CellTypeCheckerboardLight implements CellTypeInterface {
 
-    get name(): string {
-        return 'checkerboard-light';
-    }
+    public readonly name:string = 'checkerboard-light';
 
-    get hex(): string {
-        return '#FFAAAA';
-    }
+    public readonly hex: string = '#FFAAAA';
+
 }

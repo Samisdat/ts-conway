@@ -1,12 +1,9 @@
-import { CellTypeInterface } from './CellTypeInterface';
+import { CellTypeInterface } from '@CellType/CellTypeInterface';
 
 export class CellTypesCenter implements CellTypeInterface {
 
-    get name(): string {
-        return 'center';
-    }
+    public readonly name: string = 'center';
 
-    get hex(): string {
-        return '#ff0000';
-    }
+    public readonly hex: string = '#ff0000';
+
 }

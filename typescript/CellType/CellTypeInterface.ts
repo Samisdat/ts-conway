@@ -1,7 +1,7 @@
 export interface CellTypeInterface {
 
-    name: string;
+    readonly name: string;
 
-    hex: string;
+    readonly hex: string;
 
 }

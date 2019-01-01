@@ -1,12 +1,9 @@
-import { CellTypeInterface } from './CellTypeInterface';
+import { CellTypeInterface } from '@CellType/CellTypeInterface';
 
 export class CellUnkown implements CellTypeInterface {
 
-    get name(): string {
-        return 'none';
-    }
+    public readonly name: string = 'none';
 
-    get hex(): string {
-        return undefined;
-    }
+    public readonly hex: string = undefined;
+
 }

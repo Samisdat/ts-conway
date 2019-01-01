@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { CellTypeLiving } from 'CellType/CellTypeLiving';
+import { CellTypeLiving } from '@CellType/CellTypeLiving';
 
 describe('CellTypeLiving', () => {
 
