@@ -20,7 +20,7 @@ describe('Patterns', () => {
 
     it('construct fails with unkown pattern', () => {
 
-        var createPattern = () => {
+        let createPattern = () => {
 
             let patterns = new Patterns();
             patterns.get('foobar');
@@ -30,7 +30,7 @@ describe('Patterns', () => {
 
     });
 
-    it('can get blinker', () =>{
+    it('can get blinker', () => {
 
         let patterns = new Patterns();
 

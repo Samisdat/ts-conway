@@ -4,7 +4,7 @@ import { Frontend } from './frontend';
 
 describe.skip('Frontend', () => {
 
-    before(()=>{
+    before(() => {
 
         const { JSDOM } = require( 'jsdom' );
         const jsdom = new JSDOM( '<html><body></body></html>' );
