@@ -84,7 +84,7 @@ export class PanControl extends ControlAbstract {
 
     public addEventListener(): void {
 
-        $(this.canvasWrap).on('click', '.control div[data-action]', (evt) => {
+        $(this.canvasWrap).on('click', '.Control div[data-action]', (evt) => {
 
             const target: JQuery = $(evt.currentTarget);
 
@@ -164,7 +164,7 @@ export class PanControl extends ControlAbstract {
             panX = -1;
         }
         else if ('right' === mode) {
-            panX = 1;
+            panX = 0.5;
         }
 
         const panBy = new Position(panX, panY);
