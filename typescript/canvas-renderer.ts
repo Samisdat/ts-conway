@@ -1,4 +1,6 @@
-declare var $: JQueryStatic;
+//declare var $: JQueryStatic;
+
+import * as $ from 'jquery';
 
 import { Grid } from './grid';
 import { Canvas } from './canvas';
