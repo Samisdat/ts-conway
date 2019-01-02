@@ -34,6 +34,20 @@ describe('Position', () => {
 
     });
 
+    it('clone', () => {
+
+        let position = new Position(1, 2);
+
+        let cloned = position.clone();
+
+        expect(cloned).to.be.instanceof(Position);
+
+        expect(cloned.x).to.be.equal(1);
+        expect(cloned.y).to.be.equal(2);
+
+
+    });
+
     it('inverse', () => {
 
         let position = new Position(2, 3);
