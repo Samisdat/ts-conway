@@ -1,10 +1,9 @@
-/*
 import { expect } from 'chai';
 
 
-import { Position } from '../src/position';
-import Pattern from '../src/pattern';
-import Patterns from '../src/Patterns';
+import { Position } from './position';
+import { Pattern  } from './pattern';
+import { Patterns  } from './patterns';
 
 describe('Patterns', () => {
 
@@ -41,13 +40,13 @@ describe('Patterns', () => {
 
         expect(blinker.get()).to.be.deep.equal(
             [
-                new Position(0, 1),
-                new Position(1, 1),
-                new Position(2, 1)
+                new Position(-1, 0),
+                new Position(0, 0),
+                new Position(1, 0)
             ]
         );
+
 
     });
 
 });
-*/
