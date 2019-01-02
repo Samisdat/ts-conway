@@ -7,8 +7,6 @@ import { Habitat  } from './habitat';
 import { Patterns } from './patterns';
 import { Position } from './position';
 
-import { CellTypeLiving } from 'CellType/CellTypeLiving';
-
 export class Frontend {
 
     private wrapper: JQuery;
