@@ -6,10 +6,10 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
         dist: {
             options: {
                 port: 80,
-                hostname: '0.0.0.0',
                 keepalive: false,
                 base: 'dist',
-                livereload: true,
+                hostname: '0.0.0.0',
+                livereload: 35729,
                 protocol: 'http',
             }
         }

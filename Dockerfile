@@ -32,4 +32,4 @@ RUN touch last-change.txt
 
 CMD ["grunt" , "build"]
 
-EXPOSE 80
+EXPOSE 80 35729
