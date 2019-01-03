@@ -7,61 +7,60 @@ import { CellTypesCenter } from 'CellType/CellTypesCenter';
 
 const centerCellType: CellTypesCenter = new CellTypesCenter();
 
-export class Grid {
-
-    private width: number;
-    private height: number;
-    private cellDimension: number;
-
-    private orginalRows: number;
-    private orginalCols: number;
+export class NewGrid {
 
     private rows: number;
     private cols: number;
 
-    private zero: Position;
+    private sourcePosition: Position;
 
-    private offset: Position = new Position(0, 0);
-
-    private cells: GridCell[];
-
-    private relativeMap: {} = {};
-    private absoluteMap: {} = {};
+    private offset = new Position(0,0);
 
     constructor(
-        habitat: Habitat,
-        width: number,
-        height: number,
-        cellDimension: number,
-        zero = new Position(0, 0)
+        rows: number,
+        cols: number,
+        sourcePosition: Position
     ) {
 
-        this.width = width;
-        this.height = height;
-        this.cellDimension = cellDimension;
+        this.rows = rows;
+        this.cols = cols;
 
-        const rawCols = width / cellDimension;
-        const rawRows = height / cellDimension;
+        this.sourcePosition = sourcePosition;
 
-        this.cols = rawCols;
-        this.rows = rawRows;
+        this.offset = new Position(
+            this.sourcePosition.x % 1,
+            this.sourcePosition.y % 1
+        );
 
-        if (0 !== this.cols % 1) {
-            this.cols = Math.ceil(this.cols);
+        if(0 !== this.offset.x){
+            this.rows += 2;
+        }
+        else if (0 === this.rows % 2) {
+
+            this.rows += 2;
+
+            if(0 === this.offset.x){
+                this.offset = this.offset.move(new Position(-0.5, 0))
+            }
+
         }
 
-        if (0 !== this.rows % 1) {
-            this.rows = Math.ceil(this.rows);
+        if(0 !== this.offset.y){
+            this.cols += 2;
+        }
+        else if (0 === this.cols % 2) {
+
+            this.cols += 2;
+
+            if(0 === this.offset.y) {
+                this.offset = this.offset.move(new Position(0, -0.5))
+            }
+
         }
 
-        if (0 === this.cols % 2) {
-            this.cols += 1;
-        }
 
-        if (0 === this.rows % 2) {
-            this.rows += 1;
-        }
 
+        /*
         this.offset = new Position(
             (rawCols - this.cols) / 2,
             (rawRows - this.rows) / 2
@@ -74,7 +73,7 @@ export class Grid {
         this.absoluteMap = {};
 
         this.createGrid();
-
+        */
         /*
         for (let positionWithLivingCells of habitat.get()) {
 
@@ -83,7 +82,6 @@ export class Grid {
             this.cells[cellIndex].setType(livingCell);
 
         }
-        */
 
         const centerCell = this.getCellByAbsolutePosition(0, 0);
         if (undefined !== centerCell && 'living' !== centerCell.getType().name) {
@@ -91,9 +89,11 @@ export class Grid {
             centerCell.setType(centerCellType);
 
         }
+       */
 
     }
 
+    /*
     private createGrid(): void {
 
         this.cells = [];
@@ -155,20 +155,25 @@ export class Grid {
         return this.height;
     }
 
-    /**
-     * @TODO For even grids this is wrong
-     */
+    */
+
+    public getSourcePosition():Position{
+        return this.sourcePosition;
+    }
+
+    public getOffset():Position{
+        return this.offset;
+    }
+
     public getCols(): number {
         return this.cols;
     }
 
-    /**
-     * @TODO For even grids this is wrong
-     */
     public getRows(): number {
         return this.rows;
     }
 
+    /*
     public getCells() {
         return this.cells;
     }
@@ -206,5 +211,6 @@ export class Grid {
     public getCellDimension(): number {
         return this.cellDimension;
     }
+    */
 
 }

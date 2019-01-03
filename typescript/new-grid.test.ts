@@ -2,25 +2,81 @@ import { expect } from 'chai';
 
 import { Position } from './position';
 
-import { Grid } from './grid';
+import { NewGrid } from './new-grid';
 
-import { Habitat } from './habitat';
-
-describe('Grid', () => {
-
-    let habitat: Habitat;
+describe('NewGrid', () => {
 
     before(() => {
 
-        habitat = new Habitat();
 
     });
 
+    it('can be created', () => {
+
+        let grid = new NewGrid(2, 2, new Position(0,0));
+
+        expect(grid).to.be.instanceOf(NewGrid)
+
+    });
+
+    it('get rows/cols odd number of rows/cols', () => {
+
+        let grid = new NewGrid(3, 5, new Position(0,0));
+
+        expect(grid.getRows()).to.be.equal(3);
+        expect(grid.getCols()).to.be.equal(5);
+
+        expect(grid.getSourcePosition()).to.be.deep.equal(
+            new Position(0,0)
+        );
+
+        expect(grid.getOffset()).to.be.deep.equal(
+            new Position(0,0)
+        );
+
+    });
+
+    it('get rows/cols even number of cols', () => {
+
+        let grid = new NewGrid(2, 4, new Position(0,0));
+
+        expect(grid.getRows()).to.be.equal(4);
+        expect(grid.getCols()).to.be.equal(6);
+
+        expect(grid.getSourcePosition()).to.be.deep.equal(
+            new Position(0,0)
+        );
+
+        expect(grid.getOffset()).to.be.deep.equal(
+            new Position(-0.5,-0.5)
+        );
+
+    });
+
+    it('get rows/cols odd number of rows/cols with offset', () => {
+
+        let grid = new NewGrid(3, 5, new Position(-1.5,0));
+
+        expect(grid.getRows()).to.be.equal(5);
+        expect(grid.getCols()).to.be.equal(5);
+
+        expect(grid.getSourcePosition()).to.be.deep.equal(
+            new Position(-1.5,0)
+        );
+
+        expect(grid.getOffset()).to.be.deep.equal(
+            new Position(-0.5,0)
+        );
+
+    });
+
+
+    /*
     it.skip('odd number of cols and rows ', () => {
 
-        let grid = new Grid(habitat, 300, 300, 100);
+        let grid = new NewGrid(habitat, 300, 300, 100);
 
-        expect(grid).to.be.instanceof(Grid);
+        expect(grid).to.be.instanceof(NewGrid);
 
         expect(grid.getWidth()).to.be.deep.equal(300);
         expect(grid.getHeight()).to.be.deep.equal(300);
@@ -37,9 +93,9 @@ describe('Grid', () => {
 
     it.skip('odd number of cols and rows ', () => {
 
-        let grid = new Grid(habitat, 320, 320, 100);
+        let grid = new NewGrid(habitat, 320, 320, 100);
 
-        expect(grid).to.be.instanceof(Grid);
+        expect(grid).to.be.instanceof(NewGrid);
 
         expect(grid.getWidth()).to.be.deep.equal(320);
         expect(grid.getHeight()).to.be.deep.equal(320);
@@ -57,9 +113,9 @@ describe('Grid', () => {
 
     it.skip('even number of cols and rows ', () => {
 
-        let grid = new Grid(habitat, 400, 400, 100);
+        let grid = new NewGrid(habitat, 400, 400, 100);
 
-        expect(grid).to.be.instanceof(Grid);
+        expect(grid).to.be.instanceof(NewGrid);
 
         expect(grid.getWidth()).to.be.deep.equal(400);
         expect(grid.getHeight()).to.be.deep.equal(400);
@@ -76,9 +132,9 @@ describe('Grid', () => {
 
     it.skip('even number of cols and rows ', () => {
 
-        let grid = new Grid(habitat, 420, 420, 100);
+        let grid = new NewGrid(habitat, 420, 420, 100);
 
-        expect(grid).to.be.instanceof(Grid);
+        expect(grid).to.be.instanceof(NewGrid);
 
         expect(grid.getWidth()).to.be.deep.equal(420);
         expect(grid.getHeight()).to.be.deep.equal(420);
@@ -96,9 +152,9 @@ describe('Grid', () => {
 
     it.skip('3 cols and 3 rows without offset ', () => {
 
-        let grid = new Grid(habitat, 300, 300, 100);
+        let grid = new NewGrid(habitat, 300, 300, 100);
 
-        expect(grid).to.be.instanceof(Grid);
+        expect(grid).to.be.instanceof(NewGrid);
 
         expect(grid.getWidth()).to.be.deep.equal(300);
         expect(grid.getHeight()).to.be.deep.equal(300);
@@ -115,7 +171,7 @@ describe('Grid', () => {
 
     it.skip('has checkerboard pattern', () => {
 
-        let grid = new Grid(habitat, 300, 300, 100);
+        let grid = new NewGrid(habitat, 300, 300, 100);
 
         expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
@@ -133,7 +189,7 @@ describe('Grid', () => {
 
     it.skip('has moving checkerboard pattern', () => {
 
-        let grid = new Grid(habitat, 300, 300, 100, new Position(1, 0));
+        let grid = new NewGrid(habitat, 300, 300, 100, new Position(1, 0));
 
         expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-dark');
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-light');
@@ -147,7 +203,7 @@ describe('Grid', () => {
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-dark');
 
-        grid = new Grid(habitat, 300, 300, 100, new Position(2, 0));
+        grid = new NewGrid(habitat, 300, 300, 100, new Position(2, 0));
 
         expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
@@ -161,7 +217,7 @@ describe('Grid', () => {
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
         expect(grid.getCell(1, 1).getType().name).to.be.equal('checkerboard-light');
 
-        grid = new Grid(habitat, 300, 300, 100, new Position(1, 1));
+        grid = new NewGrid(habitat, 300, 300, 100, new Position(1, 1));
 
         expect(grid.getCell(-1, -1).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
@@ -179,9 +235,9 @@ describe('Grid', () => {
 
     it('has moving checkerboard pattern', () => {
 
-        let grid: Grid;
+        let grid: NewGrid;
         /*
-        grid = new Grid(habitat, 3, 1, 1, new Position(-2, 0));
+        grid = new NewGrid(habitat, 3, 1, 1, new Position(-2, 0));
 
         expect(grid.getCols()).to.be.equal(3);
         expect(grid.getRows()).to.be.equal(1);
@@ -190,7 +246,7 @@ describe('Grid', () => {
         expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
 
-        grid = new Grid(habitat, 3, 1, 1, new Position(-1, 0));
+        grid = new NewGrid(habitat, 3, 1, 1, new Position(-1, 0));
 
         expect(grid.getCols()).to.be.equal(3);
         expect(grid.getRows()).to.be.equal(1);
@@ -199,7 +255,7 @@ describe('Grid', () => {
         expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-dark');
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-light');
 
-        grid = new Grid(habitat, 3, 1, 1, new Position(0, 0));
+        grid = new NewGrid(habitat, 3, 1, 1, new Position(0, 0));
 
         expect(grid.getCols()).to.be.equal(3);
         expect(grid.getRows()).to.be.equal(1);
@@ -207,8 +263,8 @@ describe('Grid', () => {
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
         expect(grid.getCell(0, 0).getType().name).to.be.equal('center');
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
-        */
-        grid = new Grid(habitat, 3, 1, 1, new Position(1, 0));
+        *//*
+        grid = new NewGrid(habitat, 3, 1, 1, new Position(1, 0));
 
         expect(grid.getCols()).to.be.equal(3);
         expect(grid.getRows()).to.be.equal(1);
@@ -228,7 +284,7 @@ describe('Grid', () => {
         expect(grid.getCell(1, 0).absolutePosition).to.deep.equal(new Position(0, 0));
 
         /*
-        grid = new Grid(habitat, 3, 1, 1, new Position(2, 0));
+        grid = new NewGrid(habitat, 3, 1, 1, new Position(2, 0));
 
         expect(grid.getCols()).to.be.equal(3);
         expect(grid.getRows()).to.be.equal(1);
@@ -236,7 +292,7 @@ describe('Grid', () => {
         expect(grid.getCell(-1, 0).getType().name).to.be.equal('checkerboard-dark');
         expect(grid.getCell(0, 0).getType().name).to.be.equal('checkerboard-light');
         expect(grid.getCell(1, 0).getType().name).to.be.equal('checkerboard-dark');
-        */
+        *//*
     });
 
     it.skip('it has one living CellType after seeding one', () => {
@@ -249,7 +305,7 @@ describe('Grid', () => {
 
         expect(habitat.get()).to.be.deep.equal([new Position(0, 0)]);
 
-        let grid = new Grid(habitat, 300, 300, 100);
+        let grid = new NewGrid(habitat, 300, 300, 100);
 
         expect(grid.getOffset()).to.be.deep.equal(new Position(0, 0));
 
@@ -270,5 +326,6 @@ describe('Grid', () => {
         expect(countLiving).to.be.equal(1);
 
     });
+    */
 
 });
