@@ -36,6 +36,11 @@ module.exports = function (grunt) {
      */
     grunt.event.on('watch', function (action, filepath) {
 
+        if(0 === grunt.file.match('typescript/**/*.ts', filepath).length){
+            grunt.log.writeln('not a typescript file');
+            return;
+        }
+
         fs.writeFileSync('./last-change.txt', filepath, { encoding: 'utf8' });
 
         grunt.task.run('exec:liveTest');
