@@ -162,7 +162,14 @@ export class PanControl extends ControlAbstract {
             panX = -1;
         }
         else if ('right' === mode) {
-            panX = 0.5;
+
+            if('conway1' === this.canvasWrap.id){
+                panX = 0.5;
+            }
+            else{
+                panX = 1;
+            }
+
         }
 
         const panBy = new Position(panX, panY);
