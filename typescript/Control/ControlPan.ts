@@ -82,7 +82,7 @@ export class PanControl extends ControlAbstract {
 
     public addEventListener(): void {
 
-        $(this.canvasWrap).on('click', '.Control div[data-action]', (evt) => {
+        $(this.canvasWrap).on('click', '.control div[data-action]', (evt) => {
 
             const target: JQuery = $(evt.currentTarget);
 
