@@ -28,32 +28,20 @@
 
     	#conway1{
 			position: absolute;
-			top:100px;
-			left:100px;
-    		width:300px;
+			top:50px;
+			left:50px;
+    		width:450px;
     		height:300px;
 			margin: 0px;
     	}
     	#conway2{
 			position: absolute;
-			top:100px;
-			left:450px;
-    		width:250px;
-    		height:250px;
-			margin: 0px;
-			display: none;
-    	}
-    	#conway3{
-    		width:250px;
-    		height:300px;
-			display: none;
-    	}
-    	#conway4{
+			top:50px;
+			left:550px;
     		width:300px;
-    		height:250px;
-			display: none;
-    	}
-		
+    		height:300px;
+			margin: 0px;
+		}
 		.conway canvas{
 			cursor: move;
 			z-index: 5;
@@ -156,10 +144,16 @@
 			top:60px;
 			left:00px;
 		}
-		.dmp{
-			clear: both;
-			margin-top:350px;
+
+		#sync{
+			position:absolute;
+			top:50px;
+			left:900px;
+			width:200px;
+			height: 200px;
+			background: blue;
 		}
+
     </style>
 </head>
 
@@ -179,32 +173,19 @@
 	</div>
 </div>
 
-<div id="conway3" class="conway">
-	<div class="checkAxix">
-		<div class="x"></div>
-		<div class="y"></div>
+<div id="sync" class="conway">
+	<div class="control">
+		<div class="zoom">
+			<div class="zoom-in" data-action="zoom" data-value="zoom-in"><i class="fa fa-search-plus"></i></div>
+			<div class="zoom-out" data-action="zoom" data-value="zoom-out"><i class="fa fa-search-minus"></i></div>
+		</div>
+		<div class="pan">
+			<div class="top" data-action="pan" data-value="top"><i class="fa fa-arrow-up"></i></div>
+			<div class="bottom" data-action="pan" data-value="bottom"><i class="fa fa-arrow-down"></i></div>
+			<div class="left" data-action="pan" data-value="left"><i class="fa fa-arrow-left"></i></div>
+			<div class="right" data-action="pan" data-value="right"><i class="fa fa-arrow-right"></i></div>
+		</div>
 	</div>
-</div>
-
-<div id="conway4" class="conway">
-	<div class="checkAxix">
-		<div class="x"></div>
-		<div class="y"></div>
-	</div>
-</div>
-
-<div class="dmp">
-	<div>rows: <span class="rows"></span></div>
-	<div>cols: <span class="cols"></span></div>
-	<div class="pan">
-		<div>x: <span class="x"></span></div>
-		<div>y: <span class="y"></span></div>
-	</div>
-	<div class="zero">
-		<div>x: <span class="x"></span></div>
-		<div>y: <span class="y"></span></div>
-	</div>
-	<div>zoom<span class="zoomLevel"></span></div>
 </div>
 
 <script src="/conway.js"></script>
