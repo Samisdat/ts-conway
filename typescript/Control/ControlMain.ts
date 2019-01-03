@@ -42,11 +42,10 @@ export class MainControl {
     private createPanControl(): void {
 
         this.panControl = new PanControl(
-        this.canvasWrap,
-        this.control,
-        this.originalCellWidth,
-        this.zoomControl
-
+            this.canvasWrap,
+            this.control,
+            this.originalCellWidth,
+            this.zoomControl
         );
 
     }
