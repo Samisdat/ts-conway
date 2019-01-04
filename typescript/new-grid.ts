@@ -16,6 +16,8 @@ export class NewGrid {
 
     private offset = new Position(0,0);
 
+    private cells: GridCell[] = [];
+
     constructor(
         rows: number,
         cols: number,
@@ -57,6 +59,52 @@ export class NewGrid {
             }
 
         }
+
+
+        // create rows
+
+        let relativePointer = new Position(0,0).move(this.offset);
+        let absolutePointer = this.sourcePosition.clone();
+
+
+        relativePointer = relativePointer.move(
+            new Position(
+                -1 * Math.floor(this.rows/2),
+                -1 * Math.floor(this.cols/2)
+            )
+        );
+
+        const moveRight = new Position(
+            1,
+            0
+        );
+
+        // @TODO Use Bounds
+
+        for(let top = 0; top < this.cols; top += 1){
+
+            for(let right = 0; right < this.rows; right += 1){
+                console.log(relativePointer);
+
+                relativePointer = relativePointer.move(
+                    moveRight
+                );
+
+            }
+
+            relativePointer = new Position(
+                -1 * Math.floor(this.rows/2),
+                relativePointer.y + 1
+            )
+
+        }
+
+
+
+        new GridCell(
+            relativePointer,
+            absolutePointer
+        )
 
 
 
