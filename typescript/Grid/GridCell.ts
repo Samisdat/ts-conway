@@ -14,14 +14,11 @@ export class GridCell {
 
     private type: CellTypeInterface = new CellUnkown();
 
-    constructor(position: Position, gridOffset: Position) {
+    constructor(relativePosition: Position, absolutePosition: Position) {
 
-        this.relativePosition = position;
+        this.relativePosition = relativePosition;
 
-        this.absolutePosition = new Position(
-            this.relativePosition.x - gridOffset.x,
-            this.relativePosition.y - gridOffset.y
-        );
+        this.absolutePosition = absolutePosition;
 
         this.setCheckerboardColor();
 

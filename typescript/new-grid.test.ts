@@ -11,61 +11,78 @@ describe('NewGrid', () => {
 
     });
 
-    it.skip('can be created', () => {
+    it('can be created', () => {
 
-        let grid = new NewGrid(2, 2, new Position(0,0));
+        let grid = new NewGrid(2, 2, new Position(0, 0));
 
-        expect(grid).to.be.instanceOf(NewGrid)
+        expect(grid).to.be.instanceOf(NewGrid);
 
     });
 
     it('get rows/cols odd number of rows/cols', () => {
 
-        let grid = new NewGrid(3, 5, new Position(0,0));
+        let grid = new NewGrid(3, 5, new Position(0, 0));
 
         expect(grid.getRows()).to.be.equal(3);
         expect(grid.getCols()).to.be.equal(5);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
-            new Position(0,0)
+            new Position(0, 0)
         );
 
         expect(grid.getOffset()).to.be.deep.equal(
-            new Position(0,0)
+            new Position(0, 0)
         );
 
     });
 
-    it.skip('get rows/cols even number of cols', () => {
+    it('get rows/cols even number of cols', () => {
 
-        let grid = new NewGrid(2, 4, new Position(0,0));
+        let grid = new NewGrid(2, 4, new Position(0, 0));
 
         expect(grid.getRows()).to.be.equal(4);
         expect(grid.getCols()).to.be.equal(6);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
-            new Position(0,0)
+            new Position(0, 0)
         );
 
         expect(grid.getOffset()).to.be.deep.equal(
-            new Position(-0.5,-0.5)
+            new Position(-0.5, -0.5)
         );
 
     });
 
-    it.skip('get rows/cols odd number of rows/cols with offset', () => {
+    it('get rows/cols odd number of rows/cols with integer offset', () => {
 
-        let grid = new NewGrid(3, 5, new Position(-1.5,-2.5));
+        let grid = new NewGrid(3, 5, new Position(-1, -2));
+
+        expect(grid.getRows()).to.be.equal(3);
+        expect(grid.getCols()).to.be.equal(5);
+
+        expect(grid.getSourcePosition()).to.be.deep.equal(
+            new Position(-1, -2)
+        );
+
+        expect(grid.getOffset()).to.be.deep.equal(
+            new Position(0, 0)
+        );
+
+    });
+
+    it('get rows/cols odd number of rows/cols with decimal offset', () => {
+
+        let grid = new NewGrid(3, 5, new Position(-1.5, -2.5));
 
         expect(grid.getRows()).to.be.equal(5);
         expect(grid.getCols()).to.be.equal(7);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
-            new Position(-1.5,-2.5)
+            new Position(-1.5, -2.5)
         );
 
         expect(grid.getOffset()).to.be.deep.equal(
-            new Position(-0.5,-0.5)
+            new Position(-0.5, -0.5)
         );
 
     });

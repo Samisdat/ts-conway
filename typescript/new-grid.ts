@@ -14,7 +14,7 @@ export class NewGrid {
 
     private sourcePosition: Position;
 
-    private offset = new Position(0,0);
+    private offset = new Position(0, 0);
 
     private cells: GridCell[] = [];
 
@@ -34,28 +34,28 @@ export class NewGrid {
             this.sourcePosition.y % 1
         );
 
-        if(0 !== this.offset.x){
+        if (0 !== this.offset.x) {
             this.rows += 2;
         }
         else if (0 === this.rows % 2) {
 
             this.rows += 2;
 
-            if(0 === this.offset.x){
-                this.offset = this.offset.move(new Position(-0.5, 0))
+            if (0 === this.offset.x) {
+                this.offset = this.offset.move(new Position(-0.5, 0));
             }
 
         }
 
-        if(0 !== this.offset.y){
+        if (0 !== this.offset.y) {
             this.cols += 2;
         }
         else if (0 === this.cols % 2) {
 
             this.cols += 2;
 
-            if(0 === this.offset.y) {
-                this.offset = this.offset.move(new Position(0, -0.5))
+            if (0 === this.offset.y) {
+                this.offset = this.offset.move(new Position(0, -0.5));
             }
 
         }
@@ -63,14 +63,21 @@ export class NewGrid {
 
         // create rows
 
-        let relativePointer = new Position(0,0).move(this.offset);
+        let relativePointer = new Position(0, 0).move(this.offset);
         let absolutePointer = this.sourcePosition.clone();
-
 
         relativePointer = relativePointer.move(
             new Position(
-                -1 * Math.floor(this.rows/2),
-                -1 * Math.floor(this.cols/2)
+                -1 * Math.floor(this.rows / 2),
+                -1 * Math.floor(this.cols / 2)
+            )
+        );
+
+
+        absolutePointer = absolutePointer.move(
+            new Position(
+                -1 * Math.floor(this.rows / 2),
+                -1 * Math.floor(this.cols / 2)
             )
         );
 
@@ -81,47 +88,35 @@ export class NewGrid {
 
         // @TODO Use Bounds
 
-        for(let top = 0; top < this.cols; top += 1){
+        for (let top = 0; top < this.cols; top += 1) {
 
-            for(let right = 0; right < this.rows; right += 1){
-                console.log(relativePointer);
+            for (let right = 0; right < this.rows; right += 1) {
+
+                this.cells.push(
+                    new GridCell(
+                            relativePointer,
+                            absolutePointer
+                    )
+                );
 
                 relativePointer = relativePointer.move(
                     moveRight
                 );
 
+                absolutePointer = absolutePointer.move(moveRight);
+
             }
 
-            relativePointer = new Position(
-                -1 * Math.floor(this.rows/2),
-                relativePointer.y + 1
-            )
+            relativePointer = relativePointer.move(
+                new Position(-1 * this.rows, 1),
+            );
+
+            absolutePointer = absolutePointer.move(
+                new Position(-1 * this.rows, 1),
+            );
 
         }
 
-
-
-        new GridCell(
-            relativePointer,
-            absolutePointer
-        )
-
-
-
-        /*
-        this.offset = new Position(
-            (rawCols - this.cols) / 2,
-            (rawRows - this.rows) / 2
-        );
-
-
-        this.zero = zero;
-
-        this.relativeMap = {};
-        this.absoluteMap = {};
-
-        this.createGrid();
-        */
         /*
         for (let positionWithLivingCells of habitat.get()) {
 
@@ -205,11 +200,11 @@ export class NewGrid {
 
     */
 
-    public getSourcePosition():Position{
+    public getSourcePosition(): Position {
         return this.sourcePosition;
     }
 
-    public getOffset():Position{
+    public getOffset(): Position {
         return this.offset;
     }
 
