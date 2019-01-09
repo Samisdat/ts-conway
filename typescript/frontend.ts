@@ -1,18 +1,20 @@
 import * as $ from 'jquery';
 
-import { Grid } from './grid';
 import { CanvasRenderer } from './canvas-renderer';
 import { MainControl } from './Control/ControlMain';
 import { Habitat  } from './habitat';
 import { Patterns } from './patterns';
 import { Position } from './position';
+import {NewGrid} from './new-grid';
+import {GridCreator} from 'Grid/GridCreator';
+import {GridDimension} from 'Grid/GridDimension';
 
 export class Frontend {
 
     private wrapper: JQuery;
     private control: MainControl;
 
-    public originalCellWidth: number = 100;
+    public originalCellWidth: number = 50;
     public cellWidth: number;
 
     private habitat: Habitat = new Habitat();
@@ -23,7 +25,7 @@ export class Frontend {
     private zero: Position;
     private offset: Position;
 
-    private grid: Grid;
+    private newGrid: NewGrid;
 
     private canvasRenderer: CanvasRenderer;
 
@@ -81,13 +83,26 @@ export class Frontend {
 
         this.offset = position;
 
-        this.grid = new Grid(
-            this.habitat,
+        const cols = Math.ceil(this.wrapper.width() / this.cellWidth / this.control.getZoom());
+        const rows = Math.ceil(this.wrapper.height() / this.cellWidth / this.control.getZoom());
+
+        console.log(rows, cols);
+        console.log(this.cellWidth * this.control.getZoom());
+
+        const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),
-            this.cellWidth * this.control.getZoom(),
-            this.control.getPan()
+            this.cellWidth,
+            this.control.getPan(),
+            this.control.getZoom()
         );
+
+        this.newGrid = new NewGrid(
+            new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
+            gridCreator.getSourcePosition(),
+            gridCreator.getOffset()
+        );
+
 
     }
 
@@ -128,12 +143,15 @@ export class Frontend {
 
         this.update();
 
-        this.canvasRenderer.update(this.cellWidth, this.grid);
+
+        this.canvasRenderer.update(this.cellWidth * this.control.getZoom(), this.newGrid);
         this.canvasRenderer.render();
+
 
         window.requestAnimationFrame(() => {
             this.loop();
         });
+
 
     }
 

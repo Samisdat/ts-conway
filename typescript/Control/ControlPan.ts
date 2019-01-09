@@ -163,10 +163,10 @@ export class PanControl extends ControlAbstract {
         }
         else if ('right' === mode) {
 
-            if('conway1' === this.canvasWrap.id){
+            if ('conway1' !== this.canvasWrap.id) {
                 panX = 0.5;
             }
-            else{
+            else {
                 panX = 1;
             }
 

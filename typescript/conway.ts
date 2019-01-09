@@ -6,7 +6,9 @@ $(document).ready(function() {
 
     new Frontend($('#conway1'));
 
+    // $('.control').hide();
     new Frontend($('#conway2'));
+    /*
 
     $('#sync').find('.pan .top').click(() => {
         $('#conway1 .pan .top, #conway2 .pan .top').click();
@@ -31,5 +33,6 @@ $(document).ready(function() {
     $('#sync').find('.zoom-out').click(() => {
         $('#conway1 .zoom-out, #conway2 .zoom-out').click();
     });
+    */
 
 });

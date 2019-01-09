@@ -1,9 +1,10 @@
-//declare var $: JQueryStatic;
+// declare var $: JQueryStatic;
 
 import * as $ from 'jquery';
 
-import { Grid } from './grid';
 import { Canvas } from './canvas';
+import {NewGrid} from './new-grid';
+import {Position} from './position';
 
 export class CanvasRenderer {
 
@@ -12,7 +13,8 @@ export class CanvasRenderer {
     private canvas: Canvas;
 
     private cellWidth: number;
-    private grid: Grid;
+
+    private newGrid: NewGrid;
 
     private bgColors = {
         dark: '#D46A6A',
@@ -57,17 +59,19 @@ export class CanvasRenderer {
     }
 
 
-    public update(cellWidth: number, grid: Grid): void {
+    public update(cellWidth: number,  newGrid: NewGrid): void {
 
         this.cellWidth = cellWidth;
-        this.grid = grid;
+
+        this.newGrid = newGrid;
 
     }
 
-    public render(): void {
+    /*
+    public _render(): void {
 
         this.canvas.ctx.fillStyle = this.bgColors.dark;
-        const cellDimension: number = this.grid.getCellDimension();
+        const cellDimension: number = 100;
 
         this.canvas.ctx.fillRect(
             0,
@@ -110,6 +114,66 @@ export class CanvasRenderer {
             this.canvas.ctx.fillText(relative.x + '/' + relative.y, x, (y + 30), cellDimension);
 
         }
+    }
+    */
+
+    public render(): void {
+
+        this.canvas.ctx.fillStyle = this.bgColors.dark;
+        const cellDimension: number = this.cellWidth;
+
+        this.canvas.ctx.fillRect(
+            0,
+            0,
+            this.canvas.width,
+            this.canvas.height
+        );
+
+        const center = new Position(
+            this.canvas.width / 2,
+            this.canvas.height / 2
+        );
+
+        console.log(this.newGrid.getRows());
+        console.log(this.newGrid.getCols());
+        console.log(this.newGrid.getCells()[0]);
+
+        // const cells = [this.newGrid.getCells()[4]];
+        const cells = this.newGrid.getCells();
+
+        console.log(cells);
+
+        for (let cell of cells) {
+
+            console.log(cell.x);
+
+            const color = cell.getColor();
+
+            this.canvas.ctx.fillStyle = color;
+
+            // let x = this.grid.getWidth() / 2 + cell.x * cellDimension - cellDimension / 2;
+
+            // let y = this.grid.getHeight() / 2 + cell.y * cellDimension - cellDimension / 2;
+
+            this.canvas.ctx.fillRect(
+                cell.x * cellDimension + center.x - cellDimension / 2,
+                cell.y * cellDimension + center.y - cellDimension / 2,
+                cellDimension,
+                cellDimension
+            );
+
+            this.canvas.ctx.fillStyle = '#000000';
+
+            const absolute = cell.absolutePosition;
+            this.canvas.ctx.font = '10px sans-serif';
+            // this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
+
+            const relative = cell.relativePosition;
+
+            // this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
+
+        }
+
     }
 
 }
