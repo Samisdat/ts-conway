@@ -3,7 +3,7 @@
 import * as $ from 'jquery';
 
 import { Canvas } from './canvas';
-import {NewGrid} from './new-grid';
+import {Grid} from './Grid';
 import {Position} from './position';
 
 export class CanvasRenderer {
@@ -14,7 +14,7 @@ export class CanvasRenderer {
 
     private cellWidth: number;
 
-    private newGrid: NewGrid;
+    private newGrid: Grid;
 
     private bgColors = {
         dark: '#D46A6A',
@@ -59,7 +59,7 @@ export class CanvasRenderer {
     }
 
 
-    public update(cellWidth: number,  newGrid: NewGrid): void {
+    public update(cellWidth: number,  newGrid: Grid): void {
 
         this.cellWidth = cellWidth;
 
@@ -143,13 +143,13 @@ export class CanvasRenderer {
 
             this.canvas.ctx.fillStyle = color;
 
-            // let x = this.grid.getWidth() / 2 + cell.x * cellDimension - cellDimension / 2;
+            let x =  cell.x * cellDimension + center.x - cellDimension / 2;
 
-            // let y = this.grid.getHeight() / 2 + cell.y * cellDimension - cellDimension / 2;
+            let y = cell.y * cellDimension + center.y - cellDimension / 2;
 
             this.canvas.ctx.fillRect(
-                cell.x * cellDimension + center.x - cellDimension / 2,
-                cell.y * cellDimension + center.y - cellDimension / 2,
+                x,
+                y,
                 cellDimension,
                 cellDimension
             );
@@ -158,11 +158,11 @@ export class CanvasRenderer {
 
             const absolute = cell.absolutePosition;
             this.canvas.ctx.font = '10px sans-serif';
-            // this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
+            this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
 
             const relative = cell.relativePosition;
 
-            // this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
+            this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
 
         }
 

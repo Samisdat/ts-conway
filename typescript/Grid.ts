@@ -8,7 +8,7 @@ import {GridDimension} from 'Grid/GridDimension';
 
 const centerCellType: CellTypesCenter = new CellTypesCenter();
 
-export class NewGrid {
+export class Grid {
 
     private gridDimension: GridDimension;
     private sourcePosition: Position;

@@ -2,10 +2,10 @@ import { expect } from 'chai';
 
 import { Position } from './position';
 
-import { NewGrid } from './new-grid';
+import { Grid } from './Grid';
 import {GridDimension} from 'Grid/GridDimension';
 
-describe('NewGrid', () => {
+describe('Grid', () => {
 
     before(() => {
 
@@ -14,13 +14,13 @@ describe('NewGrid', () => {
 
     it('can be created', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 5),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid).to.be.instanceOf(NewGrid);
+        expect(grid).to.be.instanceOf(Grid);
 
     });
 
@@ -28,7 +28,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(2, 3),
                 new Position(0.5, 0),
                 new Position(0, 0)
@@ -40,7 +40,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(3, 2),
                 new Position(0, 0.5),
                 new Position(0, 0)
@@ -56,7 +56,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(-1.1, 0)
@@ -68,7 +68,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(1.1, 0)
@@ -84,7 +84,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(0, -1.1)
@@ -96,7 +96,7 @@ describe('NewGrid', () => {
 
         expect(() => {
 
-            new NewGrid(
+            new Grid(
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(0, 1.1)
@@ -111,7 +111,7 @@ describe('NewGrid', () => {
 
     it('get rows/cols odd number of rows/cols', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
                 new GridDimension(3, 5),
                 new Position(0, 0),
                 new Position(0, 0)
@@ -134,7 +134,7 @@ describe('NewGrid', () => {
 
     it('get rows/cols odd number of rows/cols with integer offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(0, 0)
@@ -155,7 +155,7 @@ describe('NewGrid', () => {
 
     it('get rows/cols odd number of rows/cols with decimal offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(-0.5, -0.5)
@@ -176,7 +176,7 @@ describe('NewGrid', () => {
 
     it('get relative and absolute positions', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(1, 1),
             new Position(-1, -2),
             new Position(0, 0)
@@ -201,7 +201,7 @@ describe('NewGrid', () => {
 
     it('get cell with offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(-0.5, 0)
@@ -227,7 +227,7 @@ describe('NewGrid', () => {
 
     it('get cells positions without offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -264,7 +264,7 @@ describe('NewGrid', () => {
 
     it('get cells positions with offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(-0.5, -0.5)
@@ -301,7 +301,7 @@ describe('NewGrid', () => {
 
     it('get cells positions without offset 0/1', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 1),
             new Position(0, 0)
@@ -347,7 +347,7 @@ describe('NewGrid', () => {
 
     it('get cells positions without offset 1/0', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(1, 0),
             new Position(0, 0)
@@ -393,7 +393,7 @@ describe('NewGrid', () => {
 
     it('get cells coordinates without offset', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -425,7 +425,7 @@ describe('NewGrid', () => {
 
         const xOffset = -0.5;
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(xOffset, 0)
@@ -457,7 +457,7 @@ describe('NewGrid', () => {
 
         const yOffset = -0.5;
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, yOffset)
@@ -487,7 +487,7 @@ describe('NewGrid', () => {
 
     it('relative center can be retrieved', () => {
 
-        let grid = new NewGrid(
+        let grid = new Grid(
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(0, 0)
@@ -497,7 +497,7 @@ describe('NewGrid', () => {
             new Position(0, 0)
         );
 
-        grid = new NewGrid(
+        grid = new Grid(
             new GridDimension(3, 1),
             new Position(0, 0),
             new Position(0, 0)
@@ -507,7 +507,7 @@ describe('NewGrid', () => {
             new Position(1, 0)
         );
 
-        grid = new NewGrid(
+        grid = new Grid(
             new GridDimension(1, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -518,7 +518,7 @@ describe('NewGrid', () => {
         );
 
 
-        grid = new NewGrid(
+        grid = new Grid(
             new GridDimension(2, 2),
             new Position(0, 0),
             new Position(0, 0)
@@ -528,7 +528,7 @@ describe('NewGrid', () => {
             new Position(1, 1)
         );
 
-        grid = new NewGrid(
+        grid = new Grid(
             new GridDimension(4, 4),
             new Position(0, 0),
             new Position(0, 0)

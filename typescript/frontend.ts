@@ -5,7 +5,7 @@ import { MainControl } from './Control/ControlMain';
 import { Habitat  } from './habitat';
 import { Patterns } from './patterns';
 import { Position } from './position';
-import {NewGrid} from './new-grid';
+import {Grid} from './Grid';
 import {GridCreator} from 'Grid/GridCreator';
 import {GridDimension} from 'Grid/GridDimension';
 
@@ -25,7 +25,7 @@ export class Frontend {
     private zero: Position;
     private offset: Position;
 
-    private newGrid: NewGrid;
+    private newGrid: Grid;
 
     private canvasRenderer: CanvasRenderer;
 
@@ -94,7 +94,9 @@ export class Frontend {
             this.control.getZoom()
         );
 
-        this.newGrid = new NewGrid(
+        console.log(gridCreator)
+
+        this.newGrid = new Grid(
             new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
             gridCreator.getSourcePosition(),
             gridCreator.getOffset()
