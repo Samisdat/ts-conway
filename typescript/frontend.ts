@@ -86,9 +86,6 @@ export class Frontend {
         const cols = Math.ceil(this.wrapper.width() / this.cellWidth / this.control.getZoom());
         const rows = Math.ceil(this.wrapper.height() / this.cellWidth / this.control.getZoom());
 
-        console.log(rows, cols);
-        console.log(this.cellWidth * this.control.getZoom());
-
         const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),

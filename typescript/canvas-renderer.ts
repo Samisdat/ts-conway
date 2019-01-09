@@ -134,18 +134,10 @@ export class CanvasRenderer {
             this.canvas.height / 2
         );
 
-        console.log(this.newGrid.getRows());
-        console.log(this.newGrid.getCols());
-        console.log(this.newGrid.getCells()[0]);
-
         // const cells = [this.newGrid.getCells()[4]];
         const cells = this.newGrid.getCells();
 
-        console.log(cells);
-
         for (let cell of cells) {
-
-            console.log(cell.x);
 
             const color = cell.getColor();
 
