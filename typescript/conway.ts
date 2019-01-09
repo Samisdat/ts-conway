@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 
-import { Frontend } from './frontend';
+import { Frontend } from './Frontend';
 
 $(document).ready(function() {
 
