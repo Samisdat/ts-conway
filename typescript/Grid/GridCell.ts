@@ -17,7 +17,7 @@ export class GridCell {
     constructor(
         relativePosition: Position,
         absolutePosition: Position,
-        offset:Position
+        offset: Position
     ) {
 
         this.relativePosition = relativePosition;

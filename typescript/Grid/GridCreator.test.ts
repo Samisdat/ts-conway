@@ -12,7 +12,7 @@ describe('GridCreator', () => {
             200,
             200,
             100,
-            new Position(0,0),
+            new Position(0, 0),
             1
         );
 
@@ -26,7 +26,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(1,3),
+            new Position(1, 3),
             1
         );
 
@@ -42,7 +42,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(0.5,0.5),
+            new Position(0.5, 0.5),
             1
         );
 
@@ -58,7 +58,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(4.8,-3.3),
+            new Position(4.8, -3.3),
             1
         );
 
@@ -75,7 +75,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(0,0),
+            new Position(0, 0),
             1
         );
 
@@ -92,7 +92,7 @@ describe('GridCreator', () => {
             150,
             150,
             100,
-            new Position(0,0),
+            new Position(0, 0),
             0.5
         );
 
@@ -109,7 +109,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(-0.5,0),
+            new Position(-0.5, 0),
             1
         );
 
@@ -126,7 +126,7 @@ describe('GridCreator', () => {
             100,
             100,
             100,
-            new Position(0.5,0),
+            new Position(0.5, 0),
             1
         );
 

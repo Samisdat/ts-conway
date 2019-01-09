@@ -17,7 +17,7 @@ export class NewGrid {
 
     private cells: GridCell[] = [];
 
-    public readonly center:Position;
+    public readonly center: Position;
 
     constructor(
         gridDimension: GridDimension,
@@ -116,7 +116,7 @@ export class NewGrid {
 
     }
 
-    private ensureSourcePositionIsInteger(sourcePosition:Position) {
+    private ensureSourcePositionIsInteger(sourcePosition: Position) {
 
         if (0 !== sourcePosition.x % 1) {
             throw new Error('sourcePosition.x must be integer');

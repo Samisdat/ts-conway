@@ -237,10 +237,10 @@ describe('NewGrid', () => {
 
         expect(cells.length).to.be.equal(9);
 
-        const relativePositions:Position[] = [];
-        const absolutePositions:Position[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
-        for(const cell of cells){
+        for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
             absolutePositions.push(cell.absolutePosition);
         }
@@ -274,10 +274,10 @@ describe('NewGrid', () => {
 
         expect(cells.length).to.be.equal(9);
 
-        const relativePositions:Position[] = [];
-        const absolutePositions:Position[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
-        for(const cell of cells){
+        for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
             absolutePositions.push(cell.absolutePosition);
         }
@@ -311,10 +311,10 @@ describe('NewGrid', () => {
 
         expect(cells.length).to.be.equal(9);
 
-        const relativePositions:Position[] = [];
-        const absolutePositions:Position[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
-        for(const cell of cells){
+        for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
             absolutePositions.push(cell.absolutePosition);
         }
@@ -357,10 +357,10 @@ describe('NewGrid', () => {
 
         expect(cells.length).to.be.equal(9);
 
-        const relativePositions:Position[] = [];
-        const absolutePositions:Position[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
-        for(const cell of cells){
+        for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
             absolutePositions.push(cell.absolutePosition);
         }
@@ -379,14 +379,14 @@ describe('NewGrid', () => {
 
         expect(absolutePositions).to.be.deep.equal([
             new Position(-1 + 1, -1),
-            new Position(0 +1, -1),
-            new Position(1 +1, -1),
-            new Position(-1 +1, 0),
-            new Position(0+1, 0),
-            new Position(1+1, 0),
-            new Position(-1+1, 1),
-            new Position(0+1, 1),
-            new Position(1+1, 1)
+            new Position(0 + 1, -1),
+            new Position(1 + 1, -1),
+            new Position(-1 + 1, 0),
+            new Position(0 + 1, 0),
+            new Position(1 + 1, 0),
+            new Position(-1 + 1, 1),
+            new Position(0 + 1, 1),
+            new Position(1 + 1, 1)
         ]);
 
     });
@@ -399,9 +399,9 @@ describe('NewGrid', () => {
             new Position(0, 0)
         );
 
-        const coordinates:Position[] = [];
+        const coordinates: Position[] = [];
 
-        for(const cell of grid.getCells()){
+        for (const cell of grid.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -431,9 +431,9 @@ describe('NewGrid', () => {
             new Position(xOffset, 0)
         );
 
-        const coordinates:Position[] = [];
+        const coordinates: Position[] = [];
 
-        for(const cell of grid.getCells()){
+        for (const cell of grid.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -463,9 +463,9 @@ describe('NewGrid', () => {
             new Position(0, yOffset)
         );
 
-        const coordinates:Position[] = [];
+        const coordinates: Position[] = [];
 
-        for(const cell of grid.getCells()){
+        for (const cell of grid.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -485,7 +485,7 @@ describe('NewGrid', () => {
 
     });
 
-    it('relative center can be retrieved', ()=>{
+    it('relative center can be retrieved', () => {
 
         let grid = new NewGrid(
             new GridDimension(1, 1),

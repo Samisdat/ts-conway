@@ -3,26 +3,26 @@ import { Position } from '../position';
 export class GridCreator {
 
 
-    public readonly canvasWidth:number;
-    public readonly canvasHeigth:number;
-    public readonly originalCellWidthAndHeight:number;
-    public readonly cellWidthAndHeight:number;
-    public readonly pan:Position;
+    public readonly canvasWidth: number;
+    public readonly canvasHeigth: number;
+    public readonly originalCellWidthAndHeight: number;
+    public readonly cellWidthAndHeight: number;
+    public readonly pan: Position;
 
-    public readonly sourcePosition:Position;
-    public readonly offset:Position;
+    public readonly sourcePosition: Position;
+    public readonly offset: Position;
 
     public readonly zoom: number;
 
-    private rows:number;
-    private cols:number;
+    private rows: number;
+    private cols: number;
 
     constructor(
-        canvasWidth:number,
-        canvasHeigth:number,
-        cellWidthAndHeight:number,
-        pan:Position,
-        zoom:number
+        canvasWidth: number,
+        canvasHeigth: number,
+        cellWidthAndHeight: number,
+        pan: Position,
+        zoom: number
     ) {
         this.canvasWidth = canvasWidth;
         this.canvasHeigth = canvasHeigth;
@@ -39,42 +39,42 @@ export class GridCreator {
         this.sourcePosition = this.pan.clone().move(this.offset.inverse());
 
         this.cellWidthAndHeight = this.originalCellWidthAndHeight * this.getZoom();
-        
+
         this.rows = Math.ceil(this.canvasWidth / this.cellWidthAndHeight);
 
-        if(0 !== this.offset.x){
+        if (0 !== this.offset.x) {
             this.rows += 1;
         }
 
         this.cols = Math.ceil(this.canvasHeigth / this.cellWidthAndHeight);
 
-        if(0 !== this.offset.y){
+        if (0 !== this.offset.y) {
             this.cols += 1;
         }
 
     }
 
-    public getRows():number{
+    public getRows(): number {
         return this.rows;
     }
 
-    public getCols():number{
+    public getCols(): number {
         return this.cols;
     }
 
-    public getPan():Position{
+    public getPan(): Position {
         return this.pan;
     }
 
-    public getSourcePosition():Position{
+    public getSourcePosition(): Position {
         return this.sourcePosition;
     }
 
-    public getOffset():Position{
+    public getOffset(): Position {
         return this.offset;
     }
 
-    public getZoom():number{
+    public getZoom(): number {
         return this.zoom;
     }
 
