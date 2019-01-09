@@ -29,7 +29,7 @@ export class PanControl extends ControlAbstract {
 
     private positionTween: TweenPosition = new TweenPosition(
         new Position(0, 0),
-        1
+        10
     );
 
     private positionBound: BoundPosition = new BoundPosition(
@@ -162,14 +162,7 @@ export class PanControl extends ControlAbstract {
             panX = -1;
         }
         else if ('right' === mode) {
-
-            if ('conway1' !== this.canvasWrap.id) {
-                panX = 0.5;
-            }
-            else {
-                panX = 1;
-            }
-
+            panX = 1;
         }
 
         const panBy = new Position(panX, panY);
