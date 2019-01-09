@@ -86,6 +86,23 @@ describe('GridCreator', () => {
 
     });
 
+    it('in the middle one cell and left and right one cutted cell', () => {
+
+        let gridCreator = new GridCreator(
+            100,
+            100,
+            75,
+            new Position(0, 0),
+            1
+        );
+
+        expect(gridCreator.getRows()).to.be.equal(3);
+        expect(gridCreator.getCols()).to.be.equal(3);
+        expect(gridCreator.getPan()).to.be.deep.equal(new Position(0, 0));
+        expect(gridCreator.getZoom()).to.be.equal(1);
+
+    });
+
     it('zoom a little', () => {
 
         let gridCreator = new GridCreator(
@@ -113,7 +130,7 @@ describe('GridCreator', () => {
             1
         );
 
-        expect(gridCreator.getRows()).to.be.equal(2);
+        expect(gridCreator.getRows()).to.be.equal(3);
         expect(gridCreator.getCols()).to.be.equal(1);
         expect(gridCreator.getPan()).to.be.deep.equal(new Position(-0.5, 0));
         expect(gridCreator.getZoom()).to.be.equal(1);
@@ -130,7 +147,7 @@ describe('GridCreator', () => {
             1
         );
 
-        expect(gridCreator.getRows()).to.be.equal(2);
+        expect(gridCreator.getRows()).to.be.equal(3);
         expect(gridCreator.getCols()).to.be.equal(1);
         expect(gridCreator.getPan()).to.be.deep.equal(new Position(0.5, 0));
         expect(gridCreator.getZoom()).to.be.equal(1);

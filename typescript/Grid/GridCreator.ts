@@ -42,14 +42,22 @@ export class GridCreator {
 
         this.rows = Math.ceil(this.canvasWidth / this.cellWidthAndHeight);
 
-        if (0 !== this.offset.x) {
+        if(0 === this.rows % 2){
             this.rows += 1;
+        }
+
+        if (0 !== this.offset.x) {
+            this.rows += 2;
         }
 
         this.cols = Math.ceil(this.canvasHeigth / this.cellWidthAndHeight);
 
-        if (0 !== this.offset.y) {
+        if(0 === this.cols % 2){
             this.cols += 1;
+        }
+
+        if (0 !== this.offset.y) {
+            this.cols += 2;
         }
 
     }
