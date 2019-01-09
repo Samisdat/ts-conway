@@ -4,67 +4,59 @@ import { GridCell } from './Grid/GridCell';
 import { Habitat } from './habitat';
 
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
+import {GridDimension} from 'Grid/GridDimension';
 
 const centerCellType: CellTypesCenter = new CellTypesCenter();
 
 export class NewGrid {
 
-    private rows: number;
-    private cols: number;
-
+    private gridDimension: GridDimension;
     private sourcePosition: Position;
 
-    private offset = new Position(0, 0);
+    private offset: Position;
 
     private cells: GridCell[] = [];
 
+    public readonly center:Position;
+
     constructor(
-        rows: number,
-        cols: number,
-        sourcePosition: Position
+        gridDimension: GridDimension,
+        sourcePosition: Position,
+        offset: Position
     ) {
 
-        this.ensureRows(rows);
-        this.ensureCols(cols);
+        this.ensureSourcePositionIsInteger(sourcePosition);
+        this.ensureOffsetBetweenMinusOneAndOne(offset);
 
-        this.rows = rows;
-        this.cols = cols;
+        this.gridDimension = gridDimension;
 
         this.sourcePosition = sourcePosition;
 
-        this.offset = new Position(
-            this.sourcePosition.x % 1,
-            this.sourcePosition.y % 1
-        );
-
-        if (0 !== this.offset.x) {
-            this.rows += 2;
-        }
-
-        if (0 !== this.offset.y) {
-            this.cols += 2;
-        }
+        this.offset = offset;
 
         // create rows
 
         let relativePointer = new Position(0, 0);
-        let absolutePointer = this.sourcePosition.move(this.offset);
+        let absolutePointer = this.sourcePosition;
 
-        console.log(relativePointer);
-        console.log(absolutePointer);
-
-        relativePointer = relativePointer.move(
+        this.center = relativePointer.clone().move(
             new Position(
-                -1 * Math.floor(this.rows / 2),
-                -1 * Math.floor(this.cols / 2)
+                Math.floor(this.gridDimension.rows / 2),
+                Math.floor(this.gridDimension.cols / 2)
             )
         );
 
+        relativePointer = relativePointer.move(
+            new Position(
+                -1 * Math.floor(this.gridDimension.rows / 2),
+                -1 * Math.floor(this.gridDimension.cols / 2)
+            )
+        );
 
         absolutePointer = absolutePointer.move(
             new Position(
-                -1 * Math.floor(this.rows / 2),
-                -1 * Math.floor(this.cols / 2)
+                -1 * Math.floor(this.gridDimension.rows / 2),
+                -1 * Math.floor(this.gridDimension.cols / 2)
             )
         );
 
@@ -75,14 +67,15 @@ export class NewGrid {
 
         // @TODO Use Bounds
 
-        for (let top = 0; top < this.cols; top += 1) {
+        for (let top = 0; top < this.gridDimension.cols; top += 1) {
 
-            for (let right = 0; right < this.rows; right += 1) {
+            for (let right = 0; right < this.gridDimension.rows; right += 1) {
 
                 this.cells.push(
                     new GridCell(
                             relativePointer,
-                            absolutePointer
+                            absolutePointer,
+                            this.offset
                     )
                 );
 
@@ -95,11 +88,11 @@ export class NewGrid {
             }
 
             relativePointer = relativePointer.move(
-                new Position(-1 * this.rows, 1),
+                new Position(-1 * this.gridDimension.rows, 1),
             );
 
             absolutePointer = absolutePointer.move(
-                new Position(-1 * this.rows, 1),
+                new Position(-1 * this.gridDimension.rows, 1),
             );
 
         }
@@ -123,19 +116,27 @@ export class NewGrid {
 
     }
 
-    private ensureRows(rows:number){
+    private ensureSourcePositionIsInteger(sourcePosition:Position) {
 
-        if(0 === rows % 2){
-            throw new Error('not yet implemented');
+        if (0 !== sourcePosition.x % 1) {
+            throw new Error('sourcePosition.x must be integer');
+        }
+        if (0 !== sourcePosition.y % 1) {
+            throw new Error('sourcePosition.y must be integer');
         }
 
     }
 
-    private ensureCols(cols:number){
+    private ensureOffsetBetweenMinusOneAndOne(offset: Position) {
 
-        if(0 === cols % 2){
-            throw new Error('not yet implemented');
+        if (1 < Math.abs(offset.x )) {
+            throw new Error('offset.x must be between -1 and 1');
         }
+
+        if (1 < Math.abs(offset.y)) {
+            throw new Error('offset.y must be between -1 and 1');
+        }
+
 
     }
 
@@ -148,11 +149,11 @@ export class NewGrid {
     }
 
     public getCols(): number {
-        return this.cols;
+        return this.gridDimension.cols;
     }
 
     public getRows(): number {
-        return this.rows;
+        return this.gridDimension.rows;
     }
 
     public getCells() {

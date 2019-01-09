@@ -10,15 +10,21 @@ export class GridCell {
 
     public readonly relativePosition: Position;
     public readonly absolutePosition: Position;
-    private gridOffset: Position;
+    public readonly offset: Position;
 
     private type: CellTypeInterface = new CellUnkown();
 
-    constructor(relativePosition: Position, absolutePosition: Position) {
+    constructor(
+        relativePosition: Position,
+        absolutePosition: Position,
+        offset:Position
+    ) {
 
         this.relativePosition = relativePosition;
 
         this.absolutePosition = absolutePosition;
+
+        this.offset = offset;
 
         this.setCheckerboardColor();
 
@@ -59,10 +65,10 @@ export class GridCell {
     }
 
     get x(): number {
-        return this.relativePosition.x;
+        return this.relativePosition.x + this.offset.x;
     }
     get y(): number {
-        return this.relativePosition.y;
+        return this.relativePosition.y + this.offset.y;
     }
 
 }
