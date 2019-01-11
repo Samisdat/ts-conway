@@ -67,56 +67,6 @@ export class CanvasRenderer {
 
     }
 
-    /*
-    public _render(): void {
-
-        this.canvas.ctx.fillStyle = this.bgColors.dark;
-        const cellDimension: number = 100;
-
-        this.canvas.ctx.fillRect(
-            0,
-            0,
-            this.canvas.width,
-            this.canvas.height
-        );
-
-        const cells = this.grid.getCells();
-
-        for (let cell of cells) {
-
-            const color = cell.getColor();
-
-            if (undefined === color) {
-                continue;
-            }
-
-            this.canvas.ctx.fillStyle = color;
-
-            let x = this.grid.getWidth() / 2 + cell.x * cellDimension - cellDimension / 2;
-
-            let y = this.grid.getHeight() / 2 + cell.y * cellDimension - cellDimension / 2;
-
-            this.canvas.ctx.fillRect(
-                x,
-                y,
-                cellDimension,
-                cellDimension
-            );
-
-            this.canvas.ctx.fillStyle = '#000000';
-
-            const absolute = cell.absolutePosition;
-            this.canvas.ctx.font = '10px sans-serif';
-            this.canvas.ctx.fillText(absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
-
-            const relative = cell.relativePosition;
-
-            this.canvas.ctx.fillText(relative.x + '/' + relative.y, x, (y + 30), cellDimension);
-
-        }
-    }
-    */
-
     public render(): void {
 
         this.canvas.ctx.fillStyle = this.bgColors.dark;
