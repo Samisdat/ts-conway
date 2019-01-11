@@ -18,18 +18,6 @@ module.exports = function(grunt) { // eslint-disable-line no-unused-vars
                 nospawn: true,
                 livereload: true
             }
-        },
-        livetest:{
-            files: [
-                './typescript/**/*.ts'
-            ],
-            tasks: [
-            ],
-            options: {
-                spawn: false,
-                livereload: false
-            }
-            
         }
     };
 

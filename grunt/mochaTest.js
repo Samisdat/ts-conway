@@ -16,36 +16,8 @@ module.exports = function (grunt) {
             src: [
                 './typescript/**/*.test.ts'
             ]
-        },
-        'typescript-last-change': {
-            src: [
-
-            ]
         }
     };
-
-    let lastChange = fs.readFileSync('./last-change.txt', { encoding: 'utf8' });
-
-    lastChange = lastChange.replace('.test', '');
-    lastChange = lastChange.replace('.ts', '.test.ts');
-
-    mocha["typescript-last-change"].src = lastChange;
-
-    /**
-     * Write last changed file into last-change.txt
-     */
-    grunt.event.on('watch', function (action, filepath) {
-
-        if(0 === grunt.file.match('typescript/**/*.ts', filepath).length){
-            grunt.log.writeln('not a typescript file');
-            return;
-        }
-
-        fs.writeFileSync('./last-change.txt', filepath, { encoding: 'utf8' });
-
-        grunt.task.run('exec:liveTest');
-
-    });
 
     return mocha;
 
