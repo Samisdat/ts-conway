@@ -1,19 +1,30 @@
 import { Position } from './position';
 import { Cell } from './cell';
-import { LivingCell } from './livingcell';
+import { LivingCell } from './conway/livingcell';
 import { Pattern } from './pattern';
+import {Config} from './Config';
 
 export class Habitat {
 
+    private generationDuration: number
+
     private cells: Cell[] = [];
 
-    constructor() {
+    constructor(generationDuration:number) {
+
+        this.generationDuration = generationDuration;
+
     }
 
-    public startAging(generationDuration = 1000): void {
-        setInterval(() => {
-            this.elapse();
-        }, generationDuration);
+    public startAging(): void {
+
+        setInterval(
+            () => {
+                this.elapse();
+            },
+            this.generationDuration
+        );
+
     }
 
     private isLiving(position: Position): Boolean {

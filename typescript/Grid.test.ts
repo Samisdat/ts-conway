@@ -12,7 +12,7 @@ describe('Grid', () => {
     let habitat: Habitat;
     before(() => {
 
-        habitat = new Habitat();
+        habitat = new Habitat(1000);
 
     });
 

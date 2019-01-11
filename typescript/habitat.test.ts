@@ -14,7 +14,7 @@ describe('Habitat', () => {
 
     it('can be created', () => {
 
-        let habitat = new Habitat();
+        let habitat = new Habitat(1000);
 
         expect(habitat).to.be.instanceof(Habitat);
 
@@ -22,7 +22,7 @@ describe('Habitat', () => {
 
     it('seed a cell', () => {
 
-        let habitat = new Habitat();
+        let habitat = new Habitat(1000);
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
@@ -38,7 +38,7 @@ describe('Habitat', () => {
 
     it('elapse with one cell', () => {
 
-        let habitat = new Habitat();
+        let habitat = new Habitat(1000);
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
         habitat.seed(
@@ -51,7 +51,7 @@ describe('Habitat', () => {
 
     it('elapse with a blinker', () => {
 
-        let habitat = new Habitat();
+        let habitat = new Habitat(1000);
         expect(habitat.get()).to.be.deep.equal([]);
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 
@@ -99,7 +99,7 @@ describe('Habitat', () => {
 
         const patterns = new Patterns();
 
-        let habitat = new Habitat();
+        let habitat = new Habitat(1000);
         expect(habitat.get()).to.be.deep.equal([]);
         expect(habitat.getAllCells()).to.be.deep.equal([]);
 

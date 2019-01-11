@@ -7,7 +7,8 @@ $(document).ready(function() {
 
     const config = new Config(
         '#conway',
-        50
+        10,
+        300
     );
 
     new Frontend(config);

@@ -16,7 +16,7 @@ export class Frontend {
     private wrapper: JQuery;
     private control: MainControl;
 
-    private habitat: Habitat = new Habitat();
+    private habitat: Habitat;
 
     private canvasRenderer: CanvasRenderer;
 
@@ -30,6 +30,7 @@ export class Frontend {
             throw new Error('jquery selector does not match an element');
         }
 
+        this.habitat = new Habitat(config.generationDuration);
         const patterns = new Patterns();
         this.habitat.seedPattern(patterns.get('blinker'));
 

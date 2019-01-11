@@ -32,7 +32,7 @@ describe.skip('Frontend', () => {
             $('<div id="conway">')
         );
 
-        const frontend = new Frontend(new Config('#conway', 50));
+        const frontend = new Frontend(new Config('#conway', 50,500));
 
         expect(frontend).to.be.instanceof(Frontend);
 
@@ -41,7 +41,7 @@ describe.skip('Frontend', () => {
     it('creation fails with not dom elem', () => {
 
         let createFrontend = function() {
-            const frontend = new Frontend(new Config('#conway', 50));
+            const frontend = new Frontend(new Config('#conway', 50, 500));
         };
 
         expect(createFrontend).to.throw(Error, 'jquery selector does not match an element');
