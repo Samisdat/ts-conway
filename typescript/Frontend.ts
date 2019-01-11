@@ -19,13 +19,8 @@ export class Frontend {
 
     private habitat: Habitat = new Habitat();
 
-    private cols: number;
-    private rows: number;
-
     private zero: Position;
     private offset: Position;
-
-    private newGrid: Grid;
 
     private canvasRenderer: CanvasRenderer;
 
@@ -37,7 +32,6 @@ export class Frontend {
 
         const patterns = new Patterns();
         this.habitat.seedPattern(patterns.get('blinker'));
-        this.habitat.startAging();
 
         this.wrapper = $element;
 
@@ -54,54 +48,7 @@ export class Frontend {
 
         this.loop();
 
-    }
-
-    private center() {
-
-        this.cols = this.wrapper.width() / this.cellWidth;
-        this.rows = this.wrapper.height() / this.cellWidth;
-
-        this.zero = new Position(
-            Math.floor(this.cols / 2),
-            Math.floor(this.rows / 2)
-        );
-
-        let position = new Position(
-            (this.cols % 1) / 2,
-            (this.rows % 1) / 2
-        );
-
-        if (0 === Math.floor(this.rows) % 2) {
-            const correct = new Position(0, -0.5);
-            position = position.move(correct);
-        }
-
-        if (0 === Math.floor(this.cols) % 2) {
-            const correct = new Position(-0.5, 0);
-            position = position.move(correct);
-        }
-
-        this.offset = position;
-
-        const cols = Math.ceil(this.wrapper.width() / this.cellWidth / this.control.getZoom());
-        const rows = Math.ceil(this.wrapper.height() / this.cellWidth / this.control.getZoom());
-
-        const gridCreator = new GridCreator(
-            this.wrapper.width(),
-            this.wrapper.height(),
-            this.cellWidth,
-            this.control.getPan(),
-            this.control.getZoom()
-        );
-
-        console.log(gridCreator)
-
-        this.newGrid = new Grid(
-            this.habitat,
-            new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
-            gridCreator.getSourcePosition(),
-            gridCreator.getOffset()
-        );
+        this.habitat.startAging();
 
 
     }
@@ -133,20 +80,33 @@ export class Frontend {
 
     private update(): void {
 
+        this.control.update();
+
+        const gridCreator = new GridCreator(
+            this.wrapper.width(),
+            this.wrapper.height(),
+            this.originalCellWidth,
+            this.control.getPan(),
+            this.control.getZoom()
+        );
+
+        const newGrid = new Grid(
+            this.habitat,
+            new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
+            gridCreator.getSourcePosition(),
+            gridCreator.getOffset()
+        );
+
+        this.canvasRenderer.update(this.cellWidth * this.control.getZoom(), newGrid);
+
+        this.canvasRenderer.render();
+
+
     }
 
     public loop() {
 
-        this.control.update();
-
-        this.center();
-
         this.update();
-
-
-        this.canvasRenderer.update(this.cellWidth * this.control.getZoom(), this.newGrid);
-        this.canvasRenderer.render();
-
 
         window.requestAnimationFrame(() => {
             this.loop();
