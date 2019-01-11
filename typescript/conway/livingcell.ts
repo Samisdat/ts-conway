@@ -1,5 +1,5 @@
-import { Cell } from './cell';
-import { Position } from './position';
+import { Cell } from '../cell';
+import { Position } from '../position';
 
 export class LivingCell extends Cell {
 

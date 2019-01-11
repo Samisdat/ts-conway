@@ -1,5 +1,5 @@
 import { Position } from './position';
-import { Cell } from './cell';
+import { Cell } from './conway/cell';
 import { LivingCell } from './conway/livingcell';
 import { Pattern } from './pattern';
 import {Config} from './Config';
