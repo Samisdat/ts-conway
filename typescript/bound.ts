@@ -1,6 +1,7 @@
 export class Bound {
 
     private min: number;
+
     private max: number;
 
     constructor(min: number, max: number) {

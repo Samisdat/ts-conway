@@ -1,12 +1,10 @@
 import { Position } from './position';
 import { GridCell } from './Grid/GridCell';
-
 import { Habitat } from './habitat';
-
 import { CellTypeLiving } from 'CellType/CellTypeLiving';
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
-import {GridDimension} from 'Grid/GridDimension';
-import {IntegerPosition} from './IntegerPosition';
+import { GridDimension } from 'Grid/GridDimension';
+import { IntegerPosition } from './IntegerPosition';
 
 const cellTypesCenter: CellTypesCenter = new CellTypesCenter();
 const cellTypeLiving: CellTypeLiving = new CellTypeLiving();
@@ -24,15 +22,13 @@ export class Grid {
 
     public readonly center: IntegerPosition;
 
-    private relativeMap: {} = {};
     private absoluteMap: {} = {};
 
     constructor(
         habitat: Habitat,
         gridDimension: GridDimension,
         sourcePosition: IntegerPosition,
-        offset: Position,
-        fixer = new Position(0, 0)
+        offset: Position
     ) {
 
         this.ensureOffsetBetweenMinusOneAndOne(offset);
@@ -64,7 +60,6 @@ export class Grid {
             )
         );
 
-
         absolutePointer = absolutePointer.move(
             new Position(
                 -1 * Math.floor(this.gridDimension.rows / 2),
@@ -90,6 +85,7 @@ export class Grid {
                 );
 
                 const absolutePosition = gridCell.absolutePosition;
+
                 if (undefined === this.absoluteMap[absolutePosition.x]) {
                     this.absoluteMap[absolutePosition.x] = {};
                 }
@@ -124,14 +120,12 @@ export class Grid {
 
         }
 
-
         const centerCell = this.getCellByAbsolutePosition(0, 0);
         if (undefined !== centerCell && 'living' !== centerCell.getType().name) {
 
             centerCell.setType(cellTypesCenter);
 
         }
-
 
     }
 
@@ -180,8 +174,6 @@ export class Grid {
         return undefined;
 
     }
-
-
 
     public getCellByAbsolutePosition(x: number, y: number): GridCell {
 

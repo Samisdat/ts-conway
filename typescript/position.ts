@@ -73,6 +73,7 @@ export class Position {
 
         return neighbours;
     }
+
     public clone(): Position {
         return new Position(
             this.x,

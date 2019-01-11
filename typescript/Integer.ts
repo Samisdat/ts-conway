@@ -4,7 +4,6 @@ export class Integer {
 
     constructor(value: number) {
 
-
         this.ensureInteger(value);
 
         this.value = value;
@@ -18,6 +17,5 @@ export class Integer {
         }
 
     }
-
 
 }

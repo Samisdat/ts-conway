@@ -74,7 +74,6 @@ export class Frontend {
 
         this.canvasRenderer.render();
 
-
     }
 
     public loop() {
@@ -84,7 +83,6 @@ export class Frontend {
         window.requestAnimationFrame(() => {
             this.loop();
         });
-
 
     }
 

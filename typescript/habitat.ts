@@ -13,7 +13,7 @@ export class Habitat {
     public startAging(generationDuration = 1000): void {
         setInterval(() => {
             this.elapse();
-        }, 1000);
+        }, generationDuration);
     }
 
     private isLiving(position: Position): Boolean {

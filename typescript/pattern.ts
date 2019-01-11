@@ -54,6 +54,7 @@ export class Pattern {
     }
 
     public get(): Position[] {
+
         const move = new Position(
             -1 * Math.floor(this.width / 2),
             -1 * Math.floor(this.height / 2)
