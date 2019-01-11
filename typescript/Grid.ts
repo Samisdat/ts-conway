@@ -114,6 +114,13 @@ export class Grid {
 
         for (let positionWithLivingCells of habitat.get()) {
 
+            if(undefined === this.absoluteMap[positionWithLivingCells.x]){
+                continue;
+            }
+            if(undefined === this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y]){
+                continue;
+            }
+
             const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
 
             this.cells[cellIndex].setType(cellTypeLiving);
