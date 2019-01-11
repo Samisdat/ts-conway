@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 
 import {GridCreator} from 'Grid/GridCreator';
-import {Position} from '../position';
-import {IntegerPosition} from '../IntegerPosition';
+import {Position} from '../Conway/position';
+import {IntegerPosition} from '../Conway/IntegerPosition';
 
 
 describe('GridCreator', () => {

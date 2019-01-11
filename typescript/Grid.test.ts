@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import { Position } from './position';
+import { Position } from './Conway/position';
 
 import { Grid } from './Grid';
 import {GridDimension} from 'Grid/GridDimension';
-import {Habitat} from './habitat';
-import {IntegerPosition} from './IntegerPosition';
+import {Habitat} from './Conway/habitat';
+import {IntegerPosition} from './Conway/IntegerPosition';
 
 describe('Grid', () => {
 

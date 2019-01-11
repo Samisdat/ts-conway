@@ -1,13 +1,13 @@
 import * as $ from 'jquery';
 
-import { CanvasRenderer } from './canvas-renderer';
-import { MainControl } from './Control/ControlMain';
-import { Habitat  } from './habitat';
-import { Patterns } from './patterns';
-import { Grid} from './Grid';
+import { CanvasRenderer } from '../canvas-renderer';
+import { MainControl } from '../Control/ControlMain';
+import { Habitat  } from '../Conway/habitat';
+import { Patterns } from '../Conway/patterns';
+import { Grid} from '../Grid';
 import { GridCreator} from 'Grid/GridCreator';
 import { GridDimension } from 'Grid/GridDimension';
-import { Config } from './Config';
+import { Config } from '../Config';
 
 export class Frontend {
 
@@ -31,6 +31,7 @@ export class Frontend {
         }
 
         this.habitat = new Habitat(config.generationDuration);
+
         const patterns = new Patterns();
         this.habitat.seedPattern(patterns.get('guns_and_eaters'));
 

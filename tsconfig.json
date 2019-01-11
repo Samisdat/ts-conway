@@ -3,6 +3,7 @@
         "rootDirs":["typescript"],
         "baseUrl": "./",
         "paths": {
+            "Conway/*": ["typescript/Conway/*"],
             "CellType/*": ["typescript/CellType/*"],
             "Grid/*": ["typescript/Grid/*"]
         },

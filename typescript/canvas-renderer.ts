@@ -4,7 +4,7 @@ import * as $ from 'jquery';
 
 import { Canvas } from './canvas';
 import {Grid} from './Grid';
-import {Position} from './position';
+import {Position} from './Conway/position';
 
 export class CanvasRenderer {
 

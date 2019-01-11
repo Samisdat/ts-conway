@@ -1,6 +1,6 @@
 import * as $ from 'jquery';
 
-import { Position } from '../position';
+import { Position } from '../Conway/position';
 
 import { ZoomControl } from './ControlZoom';
 

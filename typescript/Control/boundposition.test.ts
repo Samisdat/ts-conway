@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { Position } from './position';
+import { Position } from '../Conway/position';
 import { BoundPosition } from './boundposition';
 
 describe('PositionBound', () => {

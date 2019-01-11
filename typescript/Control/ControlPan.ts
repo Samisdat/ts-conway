@@ -1,8 +1,8 @@
 import * as $ from 'jquery';
 
-import { Position } from '../position';
-import { TweenPosition } from '../tweenposition';
-import { BoundPosition } from '../boundposition';
+import { Position } from '../Conway/position';
+import { TweenPosition } from '../Conway/tweenposition';
+import { BoundPosition } from './boundposition';
 
 import { ControlAbstract } from './ControlAbstract';
 

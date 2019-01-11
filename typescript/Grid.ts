@@ -1,10 +1,10 @@
-import { Position } from './position';
+import { Position } from './Conway/position';
 import { GridCell } from './Grid/GridCell';
-import { Habitat } from './habitat';
+import { Habitat } from './Conway/habitat';
 import { CellTypeLiving } from 'CellType/CellTypeLiving';
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
 import { GridDimension } from 'Grid/GridDimension';
-import { IntegerPosition } from './IntegerPosition';
+import { IntegerPosition } from './Conway/IntegerPosition';
 
 const cellTypesCenter: CellTypesCenter = new CellTypesCenter();
 const cellTypeLiving: CellTypeLiving = new CellTypeLiving();

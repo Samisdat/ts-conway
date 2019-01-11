@@ -1,4 +1,4 @@
-import { Position } from './position';
+import { Position } from '../Conway/position';
 import { Bound } from './bound';
 
 export class BoundPosition {

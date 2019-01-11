@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
 
-import { Frontend } from './Frontend';
-import {Config} from './Config';
+import { Frontend } from './src/Frontend';
+import { Config } from './Config';
 
 $(document).ready(function() {
 

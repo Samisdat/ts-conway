@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { Position } from '../position';
-import { Cell } from '../cell';
+import { Position } from './position';
+import { Cell } from './cell';
 
 import { LivingCell }  from './livingcell';
 

@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
 
-import { Tween } from '../tween';
-import { Bound } from '../bound';
+import { Tween } from '../Conway/tween';
+import { Bound } from './bound';
 
 import { ControlAbstract } from './ControlAbstract';
 

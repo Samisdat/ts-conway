@@ -1,4 +1,4 @@
-import {Integer} from '../Integer';
+import {Integer} from '../Conway/Integer';
 
 export class GridDimension {
 
