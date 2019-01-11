@@ -4,6 +4,6 @@ export class CellTypeLiving implements CellTypeInterface {
 
     public readonly name: string = 'living';
 
-    public readonly hex: string = '#000000';
+    public readonly hex: string = '#DB8555';
 
 }

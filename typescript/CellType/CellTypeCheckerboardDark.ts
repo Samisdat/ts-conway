@@ -4,6 +4,6 @@ export class CellTypeCheckerboardDark implements CellTypeInterface {
 
     public readonly name = 'checkerboard-dark';
 
-    public readonly hex = '#D46A6A';
+    public readonly hex = '#DFD2AE';
 
 }

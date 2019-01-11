@@ -4,6 +4,6 @@ export class CellTypeCheckerboardLight implements CellTypeInterface {
 
     public readonly name: string = 'checkerboard-light';
 
-    public readonly hex: string = '#FFAAAA';
+    public readonly hex: string = '#EBE3CD';
 
 }

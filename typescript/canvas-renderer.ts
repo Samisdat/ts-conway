@@ -19,7 +19,7 @@ export class CanvasRenderer {
     private newGrid: Grid;
 
     private bgColors = {
-        dark: '#D46A6A',
+        dark: '#dce2c8',
         light: '#FFAAAA'
     };
 
