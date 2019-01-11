@@ -8,7 +8,7 @@ export class Config {
 
     public readonly debug: boolean;
 
-    constructor(htmlId: string, cellWidth: number, generationDuration:number, debug = false) {
+    constructor(htmlId: string, cellWidth: number, generationDuration: number, debug = false) {
 
         this.htmlId = htmlId;
 

@@ -114,10 +114,10 @@ export class Grid {
 
         for (let positionWithLivingCells of habitat.get()) {
 
-            if(undefined === this.absoluteMap[positionWithLivingCells.x]){
+            if (undefined === this.absoluteMap[positionWithLivingCells.x]) {
                 continue;
             }
-            if(undefined === this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y]){
+            if (undefined === this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y]) {
                 continue;
             }
 

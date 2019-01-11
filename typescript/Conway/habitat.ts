@@ -6,11 +6,11 @@ import {Config} from '../Config';
 
 export class Habitat {
 
-    private generationDuration: number
+    private generationDuration: number;
 
     private cells: Cell[] = [];
 
-    constructor(generationDuration:number) {
+    constructor(generationDuration: number) {
 
         this.generationDuration = generationDuration;
 

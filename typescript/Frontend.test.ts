@@ -32,7 +32,7 @@ describe.skip('Frontend', () => {
             $('<div id="Conway">')
         );
 
-        const frontend = new Frontend(new Config('#Conway', 50,500));
+        const frontend = new Frontend(new Config('#Conway', 50, 500));
 
         expect(frontend).to.be.instanceof(Frontend);
 
