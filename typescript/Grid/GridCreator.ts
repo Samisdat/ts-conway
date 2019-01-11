@@ -1,4 +1,5 @@
 import { Position } from '../position';
+import {IntegerPosition} from '../IntegerPosition';
 
 export class GridCreator {
 
@@ -36,7 +37,11 @@ export class GridCreator {
 
         );
 
-        this.sourcePosition = this.pan.clone().move(this.offset.inverse());
+        const sourcePosition = this.pan.clone().move(this.offset.inverse());
+        this.sourcePosition = new IntegerPosition(
+            sourcePosition.x,
+            sourcePosition.y
+        );
 
         this.cellWidthAndHeight = this.originalCellWidthAndHeight * this.getZoom();
 
@@ -74,7 +79,7 @@ export class GridCreator {
         return this.pan;
     }
 
-    public getSourcePosition(): Position {
+    public getSourcePosition(): IntegerPosition {
         return this.sourcePosition;
     }
 

@@ -1,28 +1,26 @@
+import {Integer} from '../Integer';
 
 export class GridDimension {
 
-    public readonly rows: number;
-    public readonly cols: number;
+    private readonly _rows: Integer;
+    private readonly _cols: Integer;
 
     constructor(rows: number, cols: number) {
-
-        this.ensureInteger(rows, 'rows');
-        this.ensureInteger(cols, 'cols');
 
         this.ensurePositiveNumber(rows, 'rows');
         this.ensurePositiveNumber(cols, 'cols');
 
-        this.rows = rows;
-        this.cols = cols;
+        this._rows = new Integer(rows);
+        this._cols = new Integer(cols);
 
     }
 
-    private ensureInteger(value: number, attributeName: string) {
+    public get rows():number{
+        return this._rows.value;
+    }
 
-        if (0 !== value % 1) {
-            throw new Error(attributeName + ' must be an integer');
-        }
-
+    public get cols():number{
+        return this._cols.value;
     }
 
     private ensurePositiveNumber(value: number, attributeName: string) {

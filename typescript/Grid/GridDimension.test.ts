@@ -30,26 +30,6 @@ describe('GridDimension', () => {
 
     });
 
-    it('throw execption for rows with decimal value', () => {
-
-        expect(() => {
-            new GridDimension(0.5, 3);
-        }).to.throw(
-            Error, 'rows must be an integer'
-        );
-
-    });
-
-    it('throw execption for cols with decimal value', () => {
-
-        expect(() => {
-            new GridDimension(2, 0.5);
-        }).to.throw(
-            Error, 'cols must be an integer'
-        );
-
-    });
-
     it('throw execption for rows value less then 1', () => {
 
         expect(() => {

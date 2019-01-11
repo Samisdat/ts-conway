@@ -5,18 +5,19 @@ const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
 
 
 import { Position } from '../position';
+import {IntegerPosition} from '../IntegerPosition';
 
 export class GridCell {
 
-    public readonly relativePosition: Position;
-    public readonly absolutePosition: Position;
+    public readonly relativePosition: IntegerPosition;
+    public readonly absolutePosition: IntegerPosition;
     public readonly offset: Position;
 
     private type: CellTypeInterface = new CellUnkown();
 
     constructor(
-        relativePosition: Position,
-        absolutePosition: Position,
+        relativePosition: IntegerPosition,
+        absolutePosition: IntegerPosition,
         offset: Position
     ) {
 

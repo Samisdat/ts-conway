@@ -3,32 +3,38 @@ import { GridCell } from './Grid/GridCell';
 
 import { Habitat } from './habitat';
 
+import { CellTypeLiving } from 'CellType/CellTypeLiving';
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
 import {GridDimension} from 'Grid/GridDimension';
+import {IntegerPosition} from './IntegerPosition';
 
-const centerCellType: CellTypesCenter = new CellTypesCenter();
+const cellTypesCenter: CellTypesCenter = new CellTypesCenter();
+const cellTypeLiving: CellTypeLiving = new CellTypeLiving();
 
 export class Grid {
 
     private readonly habitat:Habitat;
 
     private gridDimension: GridDimension;
-    private sourcePosition: Position;
+    private sourcePosition: IntegerPosition;
 
     private offset: Position;
 
     private cells: GridCell[] = [];
 
-    public readonly center: Position;
+    public readonly center: IntegerPosition;
+
+    private relativeMap: {} = {};
+    private absoluteMap: {} = {};
 
     constructor(
         habitat: Habitat,
         gridDimension: GridDimension,
-        sourcePosition: Position,
-        offset: Position
+        sourcePosition: IntegerPosition,
+        offset: Position,
+        fixer = new Position(0,0)
     ) {
 
-        this.ensureSourcePositionIsInteger(sourcePosition);
         this.ensureOffsetBetweenMinusOneAndOne(offset);
 
         this.habitat = habitat;
@@ -41,11 +47,11 @@ export class Grid {
 
         // create rows
 
-        let relativePointer = new Position(0, 0);
+        let relativePointer = new IntegerPosition(0, 0);
         let absolutePointer = this.sourcePosition;
 
         this.center = relativePointer.clone().move(
-            new Position(
+            new IntegerPosition(
                 Math.floor(this.gridDimension.rows / 2),
                 Math.floor(this.gridDimension.cols / 2)
             )
@@ -58,12 +64,15 @@ export class Grid {
             )
         );
 
+
         absolutePointer = absolutePointer.move(
             new Position(
                 -1 * Math.floor(this.gridDimension.rows / 2),
                 -1 * Math.floor(this.gridDimension.cols / 2)
             )
         );
+
+        console.log(this.gridDimension.rows)
 
         const moveRight = new Position(
             1,
@@ -76,13 +85,20 @@ export class Grid {
 
             for (let right = 0; right < this.gridDimension.rows; right += 1) {
 
-                this.cells.push(
-                    new GridCell(
-                            relativePointer,
-                            absolutePointer,
-                            this.offset
-                    )
+                const gridCell = new GridCell(
+                    relativePointer,
+                    absolutePointer,
+                    this.offset
                 );
+
+                const absolutePosition = gridCell.absolutePosition;
+                if (undefined === this.absoluteMap[absolutePosition.x]) {
+                    this.absoluteMap[absolutePosition.x] = {};
+                }
+
+                this.absoluteMap[absolutePosition.x][absolutePosition.y] = this.cells.length;
+
+                this.cells.push(gridCell);
 
                 relativePointer = relativePointer.move(
                     moveRight
@@ -93,42 +109,31 @@ export class Grid {
             }
 
             relativePointer = relativePointer.move(
-                new Position(-1 * this.gridDimension.rows, 1),
+                new IntegerPosition(-1 * this.gridDimension.rows, 1),
             );
 
             absolutePointer = absolutePointer.move(
-                new Position(-1 * this.gridDimension.rows, 1),
+                new IntegerPosition(-1 * this.gridDimension.rows, 1),
             );
 
         }
 
-        /*
         for (let positionWithLivingCells of habitat.get()) {
 
             const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
 
-            this.cells[cellIndex].setType(livingCell);
+            this.cells[cellIndex].setType(cellTypeLiving);
 
         }
+
 
         const centerCell = this.getCellByAbsolutePosition(0, 0);
         if (undefined !== centerCell && 'living' !== centerCell.getType().name) {
 
-            centerCell.setType(centerCellType);
+            centerCell.setType(cellTypesCenter);
 
         }
-       */
 
-    }
-
-    private ensureSourcePositionIsInteger(sourcePosition: Position) {
-
-        if (0 !== sourcePosition.x % 1) {
-            throw new Error('sourcePosition.x must be integer');
-        }
-        if (0 !== sourcePosition.y % 1) {
-            throw new Error('sourcePosition.y must be integer');
-        }
 
     }
 
@@ -145,7 +150,7 @@ export class Grid {
 
     }
 
-    public getSourcePosition(): Position {
+    public getSourcePosition(): IntegerPosition {
         return this.sourcePosition;
     }
 
@@ -165,13 +170,20 @@ export class Grid {
         return this.cells;
     }
 
-    /*
     public getCell(col: number, row: number): GridCell {
 
-        const index = this.relativeMap[col][row];
+        for(const cell of this.cells){
 
-        return this.cells[index];
+            if(cell.relativePosition.x === row && cell.relativePosition.y === col){
+                return cell;
+            }
+        }
+
+        return undefined;
+
     }
+
+
 
     public getCellByAbsolutePosition(x: number, y: number): GridCell {
 
@@ -187,6 +199,5 @@ export class Grid {
 
         return this.cells[index];
     }
-    */
 
 }

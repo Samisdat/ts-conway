@@ -2,6 +2,7 @@ import { expect } from 'chai';
 
 import {GridCreator} from 'Grid/GridCreator';
 import {Position} from '../position';
+import {IntegerPosition} from '../IntegerPosition';
 
 
 describe('GridCreator', () => {
@@ -31,7 +32,7 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).to.be.deep.equal(new Position(1, 3));
-        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new Position(1, 3));
+        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new IntegerPosition(1, 3));
         expect(gridCreator.getOffset()).to.be.deep.equal(new Position(0, 0));
 
     });
@@ -47,8 +48,8 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).to.be.deep.equal(new Position(0.5, 0.5));
-        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new Position(0, 0));
-        expect(gridCreator.getOffset()).to.be.deep.equal(new Position(0.5, 0.5));
+        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new IntegerPosition(0, 0));
+        expect(gridCreator.getOffset()).to.be.deep.equal(new Position(-0.5, -0.5));
 
     });
 
@@ -63,9 +64,9 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).to.be.deep.equal(new Position(4.8, -3.3));
-        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new Position(4, -3));
-        expect(gridCreator.getOffset().x).to.be.approximately(0.8, 0.0001);
-        expect(gridCreator.getOffset().y).to.be.approximately(-0.3, 0.0001);
+        expect(gridCreator.getSourcePosition()).to.be.deep.equal(new IntegerPosition(4, -3));
+        expect(gridCreator.getOffset().x).to.be.approximately(-0.8, 0.0001);
+        expect(gridCreator.getOffset().y).to.be.approximately(0.3, 0.0001);
 
     });
 
