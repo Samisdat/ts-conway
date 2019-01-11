@@ -79,7 +79,7 @@ export class GridCreator {
     }
 
     public getOffset(): Position {
-        return this.offset;
+        return this.offset.inverse();
     }
 
     public getZoom(): number {
