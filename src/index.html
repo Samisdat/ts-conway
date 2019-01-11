@@ -19,7 +19,7 @@
 			left:0px;			
     		width:100%;
     		height:300px;
-			background: red;
+			background: #dce2c8;
 			margin:0px;
 			float: left;
     	}
@@ -28,6 +28,14 @@
 			cursor: move;
 			z-index: 5;
 		}
+
+        .conway .control{
+            display: none;
+        }
+
+        .conway:hover .control{
+            display: block;
+        }
 
 		.conway .control .pan{
 			position:absolute;
@@ -38,11 +46,21 @@
 			cursor: move;
 		}
 
+        .conway .control .pan:before{
+            position:absolute;
+            top:30px;
+            left:30px;
+            width:30px;
+            height:30px;
+            background: #fff;
+            content: ' ';
+        }
+
 		.conway .control .pan div{
 			position:absolute;
 			width:30px;
 			height:30px;
-			background: yellow;
+			background: #fff;
 			text-align:center;
 			line-height:30px;
 			cursor: pointer;
@@ -59,20 +77,75 @@
 			left:30px;
 		}
 
+        .conway .control .pan div.top:before{
+            position:absolute;
+            top:-2px;
+            left:-2px;
+            right:-2px;
+            bottom:1px;
+            border-top: 2px solid rgba(0, 0, 0, 0.2);
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            border-right: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            content: ' ';
+        }
+
+
 		.conway .control .pan div.bottom{
 			top:60px;
 			left:30px;
 		}
 
+        .conway .control .pan div.bottom:before{
+            position:absolute;
+            bottom:-2px;
+            left:-2px;
+            right:-2px;
+            top:1px;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            border-right: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+            content: ' ';
+        }
+
+
 		.conway .control .pan div.left{
 			top:30px;
 			left:00px;
 		}
+        .conway .control .pan div.left:before{
+            position:absolute;
+            bottom:-2px;
+            left:-2px;
+            right:1px;
+            top:-2px;
+            border-top: 2px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            content: ' ';
+        }
+
 
 		.conway .control .pan div.right{
 			top:30px;
 			left:60px;
 		}
+
+        .conway .control .pan div.right:before{
+            position:absolute;
+            bottom:-2px;
+            left:1px;
+            right:-2px;
+            top:-2px;
+            border-top: 2px solid rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            border-right: 2px solid rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+            content: ' ';
+        }
+
 
 		.conway .control .zoom{
 			position:absolute;
@@ -80,13 +153,24 @@
 			right:10px;
 			width:30px;
 			height:90px;
+			background:#fff;
+		}
+
+		.conway .control .zoom:before{
+			position:absolute;
+			top:-3px;
+			left:-3px;
+			width:30px;
+			height:90px;
+			border: 2px solid rgba(0, 0, 0, 0.2);
+			border-radius: 2px;
+			content: ' ';
 		}
 
 		.conway .control .zoom div{
 			position:absolute;
 			width:30px;
 			height:30px;
-			background: green;
 			text-align:center;
 			line-height:30px;
 			opacity: 1;
