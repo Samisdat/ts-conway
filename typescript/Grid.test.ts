@@ -4,6 +4,7 @@ import { Position } from './position';
 
 import { Grid } from './Grid';
 import {GridDimension} from 'Grid/GridDimension';
+import {Habitat} from './habitat';
 
 describe('Grid', () => {
 
@@ -15,6 +16,7 @@ describe('Grid', () => {
     it('can be created', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 5),
             new Position(0, 0),
             new Position(0, 0)
@@ -57,6 +59,7 @@ describe('Grid', () => {
         expect(() => {
 
             new Grid(
+                habitat,
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(-1.1, 0)
@@ -69,6 +72,7 @@ describe('Grid', () => {
         expect(() => {
 
             new Grid(
+                habitat,
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(1.1, 0)
@@ -85,6 +89,7 @@ describe('Grid', () => {
         expect(() => {
 
             new Grid(
+                habitat,
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(0, -1.1)
@@ -97,6 +102,7 @@ describe('Grid', () => {
         expect(() => {
 
             new Grid(
+                habitat,
                 new GridDimension(2, 3),
                 new Position(0, 0),
                 new Position(0, 1.1)
@@ -112,6 +118,7 @@ describe('Grid', () => {
     it('get rows/cols odd number of rows/cols', () => {
 
         let grid = new Grid(
+                habitat,
                 new GridDimension(3, 5),
                 new Position(0, 0),
                 new Position(0, 0)
@@ -135,6 +142,7 @@ describe('Grid', () => {
     it('get rows/cols odd number of rows/cols with integer offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(0, 0)
@@ -156,6 +164,7 @@ describe('Grid', () => {
     it('get rows/cols odd number of rows/cols with decimal offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(-0.5, -0.5)
@@ -177,6 +186,7 @@ describe('Grid', () => {
     it('get relative and absolute positions', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(1, 1),
             new Position(-1, -2),
             new Position(0, 0)
@@ -202,6 +212,7 @@ describe('Grid', () => {
     it('get cell with offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(-0.5, 0)
@@ -228,6 +239,7 @@ describe('Grid', () => {
     it('get cells positions without offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -265,6 +277,7 @@ describe('Grid', () => {
     it('get cells positions with offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(-0.5, -0.5)
@@ -302,6 +315,7 @@ describe('Grid', () => {
     it('get cells positions without offset 0/1', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 1),
             new Position(0, 0)
@@ -348,6 +362,7 @@ describe('Grid', () => {
     it('get cells positions without offset 1/0', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(1, 0),
             new Position(0, 0)
@@ -394,6 +409,7 @@ describe('Grid', () => {
     it('get cells coordinates without offset', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -426,6 +442,7 @@ describe('Grid', () => {
         const xOffset = -0.5;
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(xOffset, 0)
@@ -458,6 +475,7 @@ describe('Grid', () => {
         const yOffset = -0.5;
 
         let grid = new Grid(
+            habitat,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, yOffset)
@@ -488,6 +506,7 @@ describe('Grid', () => {
     it('relative center can be retrieved', () => {
 
         let grid = new Grid(
+            habitat,
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(0, 0)
@@ -498,6 +517,7 @@ describe('Grid', () => {
         );
 
         grid = new Grid(
+            habitat,
             new GridDimension(3, 1),
             new Position(0, 0),
             new Position(0, 0)
@@ -508,6 +528,7 @@ describe('Grid', () => {
         );
 
         grid = new Grid(
+            habitat,
             new GridDimension(1, 3),
             new Position(0, 0),
             new Position(0, 0)
@@ -519,6 +540,7 @@ describe('Grid', () => {
 
 
         grid = new Grid(
+            habitat,
             new GridDimension(2, 2),
             new Position(0, 0),
             new Position(0, 0)
@@ -529,6 +551,7 @@ describe('Grid', () => {
         );
 
         grid = new Grid(
+            habitat,
             new GridDimension(4, 4),
             new Position(0, 0),
             new Position(0, 0)

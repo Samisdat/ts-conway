@@ -10,6 +10,8 @@ const centerCellType: CellTypesCenter = new CellTypesCenter();
 
 export class Grid {
 
+    private readonly habitat:Habitat;
+
     private gridDimension: GridDimension;
     private sourcePosition: Position;
 
@@ -20,6 +22,7 @@ export class Grid {
     public readonly center: Position;
 
     constructor(
+        habitat: Habitat,
         gridDimension: GridDimension,
         sourcePosition: Position,
         offset: Position
@@ -27,6 +30,8 @@ export class Grid {
 
         this.ensureSourcePositionIsInteger(sourcePosition);
         this.ensureOffsetBetweenMinusOneAndOne(offset);
+
+        this.habitat = habitat;
 
         this.gridDimension = gridDimension;
 

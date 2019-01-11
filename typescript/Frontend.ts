@@ -97,6 +97,7 @@ export class Frontend {
         console.log(gridCreator)
 
         this.newGrid = new Grid(
+            this.habitat,
             new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
             gridCreator.getSourcePosition(),
             gridCreator.getOffset()
