@@ -32,7 +32,7 @@ export class Frontend {
 
         this.habitat = new Habitat(config.generationDuration);
         const patterns = new Patterns();
-        this.habitat.seedPattern(patterns.get('blinker'));
+        this.habitat.seedPattern(patterns.get('guns_and_eaters'));
 
         this.wrapper = $element;
 
