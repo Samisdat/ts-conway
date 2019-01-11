@@ -4,27 +4,27 @@ import { CanvasRenderer } from './canvas-renderer';
 import { MainControl } from './Control/ControlMain';
 import { Habitat  } from './habitat';
 import { Patterns } from './patterns';
-import { Position } from './position';
-import {Grid} from './Grid';
-import {GridCreator} from 'Grid/GridCreator';
-import {GridDimension} from 'Grid/GridDimension';
+import { Grid} from './Grid';
+import { GridCreator} from 'Grid/GridCreator';
+import { GridDimension } from 'Grid/GridDimension';
+import { Config } from './Config';
 
 export class Frontend {
+
+    private config: Config;
 
     private wrapper: JQuery;
     private control: MainControl;
 
-    public originalCellWidth: number = 50;
-    public cellWidth: number;
-
     private habitat: Habitat = new Habitat();
-
-    private zero: Position;
-    private offset: Position;
 
     private canvasRenderer: CanvasRenderer;
 
-    constructor($element: JQuery) {
+    constructor(config: Config) {
+
+        this.config = config;
+
+        const $element: JQuery = $(this.config.htmlId)
 
         if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');
@@ -36,46 +36,19 @@ export class Frontend {
         this.wrapper = $element;
 
         this.canvasRenderer = new CanvasRenderer(
-            this.wrapper
+            this.wrapper,
+            this.config.debug
         );
-
-        this.cellWidth = this.originalCellWidth;
 
         this.control = new MainControl(
             this.wrapper.get(0),
-            this.originalCellWidth
+            this.config.cellWidth
         );
 
         this.loop();
 
         this.habitat.startAging();
 
-
-    }
-
-    public map(position: Position): Position {
-
-        let mapped = this.zero.move(position);
-        let moved = mapped.move(this.control.getPan());
-        moved = moved.move(this.offset);
-
-        return moved;
-    }
-
-    public get(): Position[] {
-
-        let mapped: Position[] = [];
-
-        let living: Position[] = this.habitat.get();
-
-        for (let position of living) {
-            let map = this.map(position);
-
-            mapped.push(map);
-
-        }
-
-        return mapped;
     }
 
     private update(): void {
@@ -85,7 +58,7 @@ export class Frontend {
         const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),
-            this.originalCellWidth,
+            this.config.cellWidth,
             this.control.getPan(),
             this.control.getZoom()
         );
@@ -97,7 +70,7 @@ export class Frontend {
             gridCreator.getOffset()
         );
 
-        this.canvasRenderer.update(this.cellWidth * this.control.getZoom(), newGrid);
+        this.canvasRenderer.update(this.config.cellWidth * this.control.getZoom(), newGrid);
 
         this.canvasRenderer.render();
 

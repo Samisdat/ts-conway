@@ -10,6 +10,8 @@ export class CanvasRenderer {
 
     private $element: JQuery;
 
+    private readonly debug: boolean;
+
     private canvas: Canvas;
 
     private cellWidth: number;
@@ -21,13 +23,15 @@ export class CanvasRenderer {
         light: '#FFAAAA'
     };
 
-    constructor($element: JQuery) {
+    constructor($element: JQuery, debug = false) {
 
         if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');
         }
 
         this.$element = $element;
+
+        this.debug = debug;
 
         if (0 === this.$element.find('canvas').length) {
             this.$element.append($('<canvas>'));
@@ -104,15 +108,19 @@ export class CanvasRenderer {
                 cellDimension
             );
 
-            this.canvas.ctx.fillStyle = '#000000';
+            if(true === this.debug){
 
-            const absolute = cell.absolutePosition;
-            this.canvas.ctx.font = '10px sans-serif';
-            this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
+                this.canvas.ctx.fillStyle = '#000000';
 
-            const relative = cell.relativePosition;
+                const absolute = cell.absolutePosition;
+                this.canvas.ctx.font = '10px sans-serif';
+                this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
 
-            this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
+                const relative = cell.relativePosition;
+
+                this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
+
+            }
 
         }
 
