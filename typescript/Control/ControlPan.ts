@@ -121,7 +121,7 @@ export class PanControl extends ControlAbstract {
             if (true === $(this.canvasWrap).hasClass('mousedown')) {
 
                 let position = this.positionTween.getCurrent().move(
-                    new Position(offset.left, offset.top)
+                    new Position(offset.left, offset.top).inverse()
                 );
 
                 this.positionTween.overwrite(position);
