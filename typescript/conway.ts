@@ -5,11 +5,11 @@ import { Config } from './Config';
 
 $(document).ready(function() {
 
-    const config = new Config(
-        '#conway',
-        10,
-        300
-    );
+    const  config = new Config({
+        'htmlId': '#conway',
+        'cellWidth': 10,
+        'generationDuration': 300
+    });
 
     new Frontend(config);
 

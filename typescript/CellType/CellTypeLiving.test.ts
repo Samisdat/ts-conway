@@ -1,12 +1,25 @@
 import { expect } from 'chai';
 
 import { CellTypeLiving } from 'CellType/CellTypeLiving';
+import {Config} from '../Config';
 
 describe('CellTypeLiving', () => {
 
+    let color: string;
+
+    before(() => {
+
+        const config = new Config({
+            'htmlId': 'foo'
+        });
+
+        color = config.colorLiving;
+
+    });
+
     it('can be created', () => {
 
-        let cellType = new CellTypeLiving;
+        let cellType = new CellTypeLiving(color);
 
         expect(cellType).to.be.instanceof(CellTypeLiving);
 
@@ -14,7 +27,7 @@ describe('CellTypeLiving', () => {
 
     it('can retrieve name', () => {
 
-        let cellType = new CellTypeLiving;
+        let cellType = new CellTypeLiving(color);
 
         expect(cellType.name).to.be.equal('living');
 
@@ -22,9 +35,9 @@ describe('CellTypeLiving', () => {
 
     it('can retrieve color', () => {
 
-        let cellType = new CellTypeLiving;
+        let cellType = new CellTypeLiving(color);
 
-        expect(cellType.hex).to.be.equal('#000000');
+        expect(cellType.hex).to.be.equal(color);
 
     });
 

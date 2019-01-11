@@ -1,6 +1,6 @@
 import { CellTypeInterface } from 'CellType/CellTypeInterface';
 
-export class CellUnkown implements CellTypeInterface {
+export class CellUnkown extends CellTypeInterface {
 
     public readonly name: string = 'none';
 

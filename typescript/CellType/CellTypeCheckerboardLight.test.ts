@@ -1,12 +1,26 @@
 import { expect } from 'chai';
 
 import { CellTypeCheckerboardLight } from 'CellType/CellTypeCheckerboardLight';
+import {Config} from '../Config';
 
 describe('CellTypeCheckerboardLight', () => {
 
+    let color: string;
+
+    before(() => {
+
+        const config = new Config({
+            'htmlId': 'foo'
+        });
+
+        color = config.colorCheckerboardLight;
+
+    });
+
+
     it('can be created', () => {
 
-        let cellType = new CellTypeCheckerboardLight;
+        let cellType = new CellTypeCheckerboardLight(color);
 
         expect(cellType).to.be.instanceof(CellTypeCheckerboardLight);
 
@@ -14,7 +28,7 @@ describe('CellTypeCheckerboardLight', () => {
 
     it('can retrieve name', () => {
 
-        let cellType = new CellTypeCheckerboardLight;
+        let cellType = new CellTypeCheckerboardLight(color);
 
         expect(cellType.name).to.be.equal('checkerboard-light');
 
@@ -22,9 +36,9 @@ describe('CellTypeCheckerboardLight', () => {
 
     it('can retrieve color', () => {
 
-        let cellType = new CellTypeCheckerboardLight;
+        let cellType = new CellTypeCheckerboardLight(color);
 
-        expect(cellType.hex).to.be.equal('#FFAAAA');
+        expect(cellType.hex).to.be.equal(color);
 
     });
 

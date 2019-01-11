@@ -1,9 +1,7 @@
 import { CellTypeInterface } from 'CellType/CellTypeInterface';
 
-export class CellTypeCheckerboardDark implements CellTypeInterface {
+export class CellTypeCheckerboardDark extends CellTypeInterface {
 
     public readonly name = 'checkerboard-dark';
-
-    public readonly hex = '#DFD2AE';
 
 }

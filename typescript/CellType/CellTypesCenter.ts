@@ -1,9 +1,9 @@
 import { CellTypeInterface } from 'CellType/CellTypeInterface';
 
-export class CellTypesCenter implements CellTypeInterface {
+export class CellTypesCenter extends CellTypeInterface {
 
     public readonly name: string = 'center';
 
-    public readonly hex: string = '#ff0000';
+    private readonly hex: string;
 
 }

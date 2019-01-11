@@ -1,9 +1,7 @@
 import { CellTypeInterface } from 'CellType/CellTypeInterface';
 
-export class CellTypeLiving implements CellTypeInterface {
+export class CellTypeLiving extends CellTypeInterface {
 
     public readonly name: string = 'living';
-
-    public readonly hex: string = '#DB8555';
 
 }
