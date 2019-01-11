@@ -72,8 +72,6 @@ export class Grid {
             )
         );
 
-        console.log(this.gridDimension.rows)
-
         const moveRight = new Position(
             1,
             0
