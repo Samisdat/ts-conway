@@ -1,7 +1,7 @@
 import {Position} from './position';
 import {Integer} from './Integer';
 
-export class IntegerPosition extends Position{
+export class IntegerPosition extends Position {
 
     public readonly  x: number;
     public readonly  y: number;

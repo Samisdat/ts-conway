@@ -13,7 +13,7 @@ const cellTypeLiving: CellTypeLiving = new CellTypeLiving();
 
 export class Grid {
 
-    private readonly habitat:Habitat;
+    private readonly habitat: Habitat;
 
     private gridDimension: GridDimension;
     private sourcePosition: IntegerPosition;
@@ -32,7 +32,7 @@ export class Grid {
         gridDimension: GridDimension,
         sourcePosition: IntegerPosition,
         offset: Position,
-        fixer = new Position(0,0)
+        fixer = new Position(0, 0)
     ) {
 
         this.ensureOffsetBetweenMinusOneAndOne(offset);
@@ -170,9 +170,9 @@ export class Grid {
 
     public getCell(col: number, row: number): GridCell {
 
-        for(const cell of this.cells){
+        for (const cell of this.cells) {
 
-            if(cell.relativePosition.x === row && cell.relativePosition.y === col){
+            if (cell.relativePosition.x === row && cell.relativePosition.y === col) {
                 return cell;
             }
         }

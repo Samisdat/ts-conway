@@ -108,7 +108,7 @@ export class CanvasRenderer {
                 cellDimension
             );
 
-            if(true === this.debug){
+            if (true === this.debug) {
 
                 this.canvas.ctx.fillStyle = '#000000';
 

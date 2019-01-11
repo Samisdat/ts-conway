@@ -24,7 +24,7 @@ export class Frontend {
 
         this.config = config;
 
-        const $element: JQuery = $(this.config.htmlId)
+        const $element: JQuery = $(this.config.htmlId);
 
         if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');

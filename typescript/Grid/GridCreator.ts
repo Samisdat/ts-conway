@@ -47,7 +47,7 @@ export class GridCreator {
 
         this.rows = Math.ceil(this.canvasWidth / this.cellWidthAndHeight);
 
-        if(0 === this.rows % 2){
+        if (0 === this.rows % 2) {
             this.rows += 1;
         }
 
@@ -57,7 +57,7 @@ export class GridCreator {
 
         this.cols = Math.ceil(this.canvasHeigth / this.cellWidthAndHeight);
 
-        if(0 === this.cols % 2){
+        if (0 === this.cols % 2) {
             this.cols += 1;
         }
 

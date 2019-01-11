@@ -6,7 +6,7 @@ export class Config {
 
     public readonly debug: boolean;
 
-    constructor(htmlId: string, cellWidth:number, debug = false) {
+    constructor(htmlId: string, cellWidth: number, debug = false) {
 
         this.htmlId = htmlId;
 

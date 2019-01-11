@@ -15,11 +15,11 @@ export class GridDimension {
 
     }
 
-    public get rows():number{
+    public get rows(): number {
         return this._rows.value;
     }
 
-    public get cols():number{
+    public get cols(): number {
         return this._cols.value;
     }
 
