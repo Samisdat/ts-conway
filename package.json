@@ -1,7 +1,7 @@
 {
   "name": "conway",
   "version": "0.2.0",
-  "description": "conway's game of live in typescript",
+  "description": "conway's game of life in typescript",
   "repository": "git@github.com:Samisdat/conway.git",
   "main": "index.js",
   "scripts": {
