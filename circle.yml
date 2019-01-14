@@ -29,7 +29,7 @@ jobs:
           name: Test and coverage
           command: |
             ./cc-test-reporter before-build
-            docker run --name coverage --env COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN samisdat/ts-conway /bin/sh -c "grunt coverage && grunt coveralls"
+            docker run --name coverage --env COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN samisdat/ts-conway /bin/sh -c "grunt coverage"
             docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
             docker rm -f coverage
             ./cc-test-reporter format-coverage --prefix /home/conway/ -t lcov ./lcov.info
