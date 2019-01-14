@@ -22,6 +22,7 @@ COPY src/ src
 COPY typescript/ typescript
 
 COPY .eslintignore .
+COPY .nycrc .
 COPY .eslintrc .
 COPY Gruntfile.js .
 COPY tsconfig.json .
