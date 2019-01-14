@@ -72,7 +72,7 @@ describe('GridCell', () => {
             new Position(0, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCenter);
 
         gridCell = new GridCell(
             new Position(0, 0),
