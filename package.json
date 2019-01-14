@@ -45,26 +45,5 @@
     "tslint": "^5.8.0",
     "typedoc": "^0.9.0",
     "typescript": "^3.2.2"
-  },
-  "nyc": {
-    "include": [
-      "typescript/*.ts",
-      "typescript/**/*.ts"
-    ],
-    "exclude": [
-      "typescript/**/*test.ts",
-      "typings",
-      "node_modules"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [],
-    "reporter": [
-      "lcov",
-      "text-summary",
-      "html"
-    ],
-    "all": true
   }
 }
