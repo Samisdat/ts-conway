@@ -1,11 +1,10 @@
 import { CellTypeCheckerboardLight, CellTypeCheckerboardDark, CellUnkown, CellTypeInterface } from 'CellType/index';
 
-const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
-const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
 
 
 import { Position } from '../Conway/position';
 import {IntegerPosition} from '../Conway/IntegerPosition';
+import {CellTypesFactory} from 'CellType/CellTypesFactory';
 
 export class GridCell {
 
@@ -36,20 +35,19 @@ export class GridCell {
         const x = this.absolutePosition.x;
         const y = this.absolutePosition.y;
 
-        this.setType(darkColor);
+        this.setType(CellTypesFactory.checkerboardDark());
 
         if (0 === y % 2) {
             if (0 === x % 2) {
-                this.setType(lightColor);
+                this.setType(CellTypesFactory.checkerboardLight());
             }
         }
 
         if (0 !== y % 2) {
             if (0 !== x % 2) {
-                this.setType(lightColor);
+                this.setType(CellTypesFactory.checkerboardLight());
             }
         }
-
 
     }
 

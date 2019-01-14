@@ -11,8 +11,6 @@ import { Config } from '../Config';
 
 export class Frontend {
 
-    private config: Config;
-
     private wrapper: JQuery;
     private control: MainControl;
 
@@ -20,17 +18,15 @@ export class Frontend {
 
     private canvasRenderer: CanvasRenderer;
 
-    constructor(config: Config) {
+    constructor() {
 
-        this.config = config;
-
-        const $element: JQuery = $(this.config.htmlId);
+        const $element: JQuery = $(Config.htmlId);
 
         if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');
         }
 
-        this.habitat = new Habitat(config.generationDuration);
+        this.habitat = new Habitat(Config.generationDuration);
 
         const patterns = new Patterns();
         this.habitat.seedPattern(patterns.get('guns_and_eaters'));
@@ -39,12 +35,12 @@ export class Frontend {
 
         this.canvasRenderer = new CanvasRenderer(
             this.wrapper,
-            this.config.debug
+            Config.debug
         );
 
         this.control = new MainControl(
             this.wrapper.get(0),
-            this.config.cellWidth
+            Config.cellWidth
         );
 
         this.loop();
@@ -60,7 +56,7 @@ export class Frontend {
         const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),
-            this.config.cellWidth,
+            Config.cellWidth,
             this.control.getPan(),
             this.control.getZoom()
         );
@@ -72,7 +68,7 @@ export class Frontend {
             gridCreator.getOffset()
         );
 
-        this.canvasRenderer.update(this.config.cellWidth * this.control.getZoom(), newGrid);
+        this.canvasRenderer.update(Config.cellWidth * this.control.getZoom(), newGrid);
 
         this.canvasRenderer.render();
 

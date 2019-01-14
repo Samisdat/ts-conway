@@ -5,24 +5,9 @@ import {Config} from '../Config';
 
 describe('CellTypeCheckerboardDark', () => {
 
-    let color: string;
-
-    before(() => {
-
-        const config = new Config({
-            'htmlId': 'foo'
-        });
-
-        color = config.colorCheckerboardDark;
-
-    });
+    let color: string = Config.colorCheckerboardDark;
 
     it('can be created', () => {
-
-        let config = new Config({
-            'htmlId': 'foo'
-        });
-
 
         let cellType = new CellTypeCheckerboardDark(color);
 

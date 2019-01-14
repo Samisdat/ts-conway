@@ -5,9 +5,7 @@ import { CellTypeLiving } from 'CellType/CellTypeLiving';
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
 import { GridDimension } from 'Grid/GridDimension';
 import { IntegerPosition } from './Conway/IntegerPosition';
-
-const cellTypesCenter: CellTypesCenter = new CellTypesCenter();
-const cellTypeLiving: CellTypeLiving = new CellTypeLiving();
+import {CellTypesFactory} from 'CellType/CellTypesFactory';
 
 export class Grid {
 
@@ -123,14 +121,14 @@ export class Grid {
 
             const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
 
-            this.cells[cellIndex].setType(cellTypeLiving);
+            this.cells[cellIndex].setType(CellTypesFactory.living());
 
         }
 
         const centerCell = this.getCellByAbsolutePosition(0, 0);
         if (undefined !== centerCell && 'living' !== centerCell.getType().name) {
 
-            centerCell.setType(cellTypesCenter);
+            centerCell.setType(CellTypesFactory.center());
 
         }
 

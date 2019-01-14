@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 
 import { Frontend } from './src/Frontend';
-import {Config} from './Config';
 
 describe.skip('Frontend', () => {
 
@@ -32,13 +31,7 @@ describe.skip('Frontend', () => {
             $('<div id="Conway">')
         );
 
-        const frontend = new Frontend(
-            new Config({
-                'htmlId': '#conway',
-                'cellWidth': 10,
-                'generationDuration': 300
-            })
-        );
+        const frontend = new Frontend();
 
         expect(frontend).to.be.instanceof(Frontend);
 
@@ -47,11 +40,7 @@ describe.skip('Frontend', () => {
     it('creation fails with not dom elem', () => {
 
         let createFrontend = function() {
-            const frontend = new Frontend(
-                new Config({
-                    'htmlId': '#conway'
-                })
-            );
+            const frontend = new Frontend();
         };
 
         expect(createFrontend).to.throw(Error, 'jquery selector does not match an element');

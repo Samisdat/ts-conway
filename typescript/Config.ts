@@ -1,115 +1,20 @@
-import {expect} from 'chai';
-import {GridDimension} from 'Grid/GridDimension';
+export abstract class Config {
 
-export class Config {
+    public static readonly htmlId: string = '#conway';
 
-    public readonly htmlId: string;
+    public static readonly cellWidth: number = 50;
 
-    public readonly cellWidth: number;
+    public static readonly generationDuration: number = 500;
 
-    public readonly generationDuration;
+    public static readonly debug: boolean = false;
 
-    public readonly debug: boolean;
+    public static readonly colorCheckerboardDark: string = '#DFD2AE';
 
-    public readonly colorCheckerboardDark: string;
+    public static readonly colorCheckerboardLight: string = '#EBE3CD';
 
-    public readonly colorCheckerboardLight: string;
+    public static readonly colorLiving: string = '#DB8555';
 
-    public readonly colorLiving: string;
-
-    public readonly colorCenter: string;
-
-    constructor(rawConfig: any =  {}) {
-
-        if (undefined !== rawConfig.htmlId) {
-
-            this.htmlId = rawConfig.htmlId + '';
-
-        }
-        else {
-
-            throw new Error('htmlId is mandatory');
-
-        }
-
-        if (undefined !== rawConfig.cellWidth) {
-
-            this.cellWidth = parseInt(rawConfig.cellWidth);
-
-        }
-        else {
-
-            this.cellWidth = 50;
-
-        }
-
-        if (undefined !== rawConfig.generationDuration) {
-
-            this.generationDuration = parseInt(rawConfig.generationDuration, 10);
-
-        }
-        else {
-
-            this.generationDuration = 500;
-
-        }
-
-        if (undefined !== rawConfig.debug) {
-
-            this.debug = (true === rawConfig.debug) ? true : false;
-
-        }
-        else {
-
-            this.debug = false;
-
-        }
-
-        if (undefined !== rawConfig.colorCheckerboardDark) {
-
-            this.colorCheckerboardDark = rawConfig.colorCheckerboardDark + '';
-
-        }
-        else {
-
-            this.colorCheckerboardDark = '#DFD2AE';
-
-        }
-
-        if (undefined !== rawConfig.colorCheckerboardLight) {
-
-            this.colorCheckerboardLight = rawConfig.colorCheckerboardLight + '';
-
-        }
-        else {
-
-            this.colorCheckerboardLight = '#EBE3CD';
-
-        }
-
-        if (undefined !== rawConfig.colorLiving) {
-
-            this.colorLiving = rawConfig.colorLiving + '';
-
-        }
-        else {
-
-            this.colorLiving = '#DB8555';
-
-        }
-
-        if (undefined !== rawConfig.colorCenter) {
-
-            this.colorCenter = rawConfig.colorCenter + '';
-
-        }
-        else {
-
-            this.colorCenter = '#ff0000';
-
-        }
-
-
-    }
+    public static readonly colorCenter: string = '#ff0000';
+    
 
 }

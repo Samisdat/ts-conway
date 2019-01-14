@@ -4,6 +4,8 @@ export class CellUnkown extends CellTypeInterface {
 
     public readonly name: string = 'none';
 
-    public readonly hex: string = undefined;
+    public constructor(hex = undefined) {
+        super(undefined);
+    }
 
 }

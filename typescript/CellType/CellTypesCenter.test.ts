@@ -5,17 +5,7 @@ import {Config} from '../Config';
 
 describe('CellTypesCenter', () => {
 
-    let color: string;
-
-    before(() => {
-
-        const config = new Config({
-            'htmlId': 'foo'
-        });
-
-        color = config.colorCenter;
-
-    });
+    let color: string = Config.colorCenter;
 
     it('can be created', () => {
 

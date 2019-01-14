@@ -5,17 +5,7 @@ import {Config} from '../Config';
 
 describe('CellTypeLiving', () => {
 
-    let color: string;
-
-    before(() => {
-
-        const config = new Config({
-            'htmlId': 'foo'
-        });
-
-        color = config.colorLiving;
-
-    });
+    let color: string= Config.colorLiving;
 
     it('can be created', () => {
 

@@ -4,11 +4,8 @@ import { Position } from '../Conway/position';
 
 
 import {GridCell} from 'Grid/GridCell';
+import {Config} from '../Config';
 
-import {CellTypeCheckerboardDark, CellTypeCheckerboardLight} from 'CellType/index';
-
-const darkColor: CellTypeCheckerboardDark = new CellTypeCheckerboardDark();
-const lightColor: CellTypeCheckerboardLight = new CellTypeCheckerboardLight();
 
 describe('GridCell', () => {
 
@@ -46,7 +43,7 @@ describe('GridCell', () => {
             new Position(-1, -1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
@@ -54,56 +51,56 @@ describe('GridCell', () => {
             new Position(0, 0)
         );
 
-        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, -1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(-1, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(0, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(-1, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(0, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(darkColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(lightColor.hex);
+        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
 
 
     });
