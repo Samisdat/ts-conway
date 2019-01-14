@@ -49,7 +49,7 @@ export class GridCell {
             }
         }
 
-        if(0 === x && 0 === y){
+        if (0 === x && 0 === y) {
             this.setType(CellTypesFactory.center());
         }
 

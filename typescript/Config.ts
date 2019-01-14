@@ -15,6 +15,6 @@ export abstract class Config {
     public static readonly colorLiving: string = '#DB8555';
 
     public static readonly colorCenter: string = '#ff0000';
-    
+
 
 }

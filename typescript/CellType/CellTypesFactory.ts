@@ -8,19 +8,19 @@ import {CellTypeInterface} from 'CellType/CellTypeInterface';
 /**
  * Not a real sensfull usecase, but try singleton in typescript ;)
  */
-export class CellTypesFactory{
+export class CellTypesFactory {
 
-    private static instance:CellTypesFactory;
+    private static instance: CellTypesFactory;
 
     private readonly cellTypeCheckerboardDark: CellTypeCheckerboardDark;
 
-    private readonly cellTypeCheckerboardLight:CellTypeCheckerboardLight;
+    private readonly cellTypeCheckerboardLight: CellTypeCheckerboardLight;
 
-    private readonly cellTypeLiving:CellTypeLiving;
+    private readonly cellTypeLiving: CellTypeLiving;
 
-    private readonly cellTypesCenter:CellTypesCenter;
+    private readonly cellTypesCenter: CellTypesCenter;
 
-    private constructor(){
+    private constructor() {
 
         this.cellTypeCheckerboardDark = new CellTypeCheckerboardDark(Config.colorCheckerboardDark);
         this.cellTypeCheckerboardLight = new CellTypeCheckerboardDark(Config.colorCheckerboardLight);
@@ -29,9 +29,9 @@ export class CellTypesFactory{
 
     }
 
-    public static checkerboardDark():CellTypeInterface{
+    public static checkerboardDark(): CellTypeInterface {
 
-        if(undefined === this.instance){
+        if (undefined === this.instance) {
 
             this.instance = new this();
         }
@@ -40,9 +40,9 @@ export class CellTypesFactory{
 
     }
 
-    public static checkerboardLight():CellTypeInterface{
+    public static checkerboardLight(): CellTypeInterface {
 
-        if(undefined === this.instance){
+        if (undefined === this.instance) {
 
             this.instance = new this();
         }
@@ -51,9 +51,9 @@ export class CellTypesFactory{
 
     }
 
-    public static living():CellTypeInterface{
+    public static living(): CellTypeInterface {
 
-        if(undefined === this.instance){
+        if (undefined === this.instance) {
 
             this.instance = new this();
         }
@@ -64,9 +64,9 @@ export class CellTypesFactory{
 
 
 
-    public static center():CellTypeInterface{
+    public static center(): CellTypeInterface {
 
-        if(undefined === this.instance){
+        if (undefined === this.instance) {
 
             this.instance = new this();
         }

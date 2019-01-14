@@ -16,9 +16,9 @@ describe('CellTypesFactory', () => {
     it('can retrieve a dark checkerboard type', () => {
 
 
-        console.log(CellTypesFactory.checkerboardDark())
-        console.log(CellTypesFactory.checkerboardDark())
-        console.log(CellTypesFactory.checkerboardDark())
+        console.log(CellTypesFactory.checkerboardDark());
+        console.log(CellTypesFactory.checkerboardDark());
+        console.log(CellTypesFactory.checkerboardDark());
 
     });
 

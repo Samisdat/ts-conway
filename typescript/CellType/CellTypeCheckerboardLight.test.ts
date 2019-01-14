@@ -5,7 +5,7 @@ import {Config} from '../Config';
 
 describe('CellTypeCheckerboardLight', () => {
 
-    let color: string= Config.colorCheckerboardLight;
+    let color: string = Config.colorCheckerboardLight;
 
     it('can be created', () => {
 

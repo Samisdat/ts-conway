@@ -5,7 +5,7 @@ import {Config} from '../Config';
 
 describe('CellTypeLiving', () => {
 
-    let color: string= Config.colorLiving;
+    let color: string = Config.colorLiving;
 
     it('can be created', () => {
 
