@@ -125,13 +125,6 @@ export class Grid {
 
         }
 
-        const centerCell = this.getCellByAbsolutePosition(0, 0);
-        if (undefined !== centerCell && 'living' !== centerCell.getType().name) {
-
-            centerCell.setType(CellTypesFactory.center());
-
-        }
-
     }
 
     private ensureOffsetBetweenMinusOneAndOne(offset: Position) {
