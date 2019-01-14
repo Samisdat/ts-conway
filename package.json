@@ -1,5 +1,5 @@
 {
-  "name": "conway",
+  "name": "ts-conway",
   "version": "0.2.0",
   "description": "conway's game of life in typescript",
   "repository": "git@github.com:Samisdat/conway.git",
@@ -10,7 +10,10 @@
     "tsc": "tsc --sourcemap --removeComments --target ES5 --outDir dist/javascript --rootDir typescript/ -w",
     "ts-test": "./node_modules/.bin/mocha --compilers ts:ts-node/register ./typescript/tests/*.ts"
   },
-  "author": "samisdat",
+  "author": { "name" : "Bastian Pertz",
+    "email" : "bastian@pertz.eu",
+    "url" : "http://samisdat.org/"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.0.4",
