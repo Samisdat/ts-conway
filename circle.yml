@@ -18,22 +18,22 @@ jobs:
       - run:
           name: Build image
           command: |
-            docker build --tag samisdat/conway .
+            docker build --tag samisdat/ts-conway .
 
       - run:
           name: Linting
           command: |
-            docker run samisdat/conway grunt lint
+            docker run samisdat/ts-conway grunt lint
 
       - run:
           name: Test and coverage
           command: |
             ./cc-test-reporter before-build
-            docker run --name coverage --env COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN samisdat/conway /bin/sh -c "grunt coverage && grunt coveralls"
+            docker run --name coverage --env COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN samisdat/ts-conway /bin/sh -c "grunt coverage && grunt coveralls"
             docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
             docker rm -f coverage
             ./cc-test-reporter format-coverage --prefix /home/conway/ -t lcov ./lcov.info
             ./cc-test-reporter upload-coverage
 
       # deploy the image
-      - run: docker push samisdat/conway
+      - run: docker push samisdat/ts-conway

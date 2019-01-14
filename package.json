@@ -2,7 +2,7 @@
   "name": "ts-conway",
   "version": "0.2.0",
   "description": "conway's game of life in typescript",
-  "repository": "git@github.com:Samisdat/conway.git",
+  "repository": "git@github.com:Samisdat/ts-conway.git",
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
