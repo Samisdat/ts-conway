@@ -44,6 +44,7 @@ jobs:
             docker rm -f coverage
             ./cc-test-reporter format-coverage --prefix /home/conway/ -t lcov ./lcov.info
             ./cc-test-reporter upload-coverage
+            sed -i -- 's/\/home\/conway\///g' ./lcov.info
             cat ./lcov.info
             npm install coveralls
             cat ./lcov.info | ./node_modules/coveralls/bin/coveralls.js
