@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     environment:
-      CC_TEST_REPORTER_ID: a2eee04856f9e1b946a0c9099df775d3b875673a832681593e9bca8f4f204535
+      CC_TEST_REPORTER_ID: 213f51c19c6613b4a7ce5923a8399a2b32474ad9a189150555148e1c48fb03cd
     machine: true
     steps:
       - checkout
