@@ -1,14 +1,14 @@
 {
   "name": "ts-conway",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "conway's game of life in typescript",
   "repository": "git@github.com:Samisdat/ts-conway.git",
-  "main": "index.js",
+  "main": "dist/conway.js",
   "scripts": {
+    "prepare" : "npm run build",
+    "build": "grunt build",
     "test": "grunt test",
-    "lint": ".\\node_modules\\.bin\\tslint -c tslint.json .\\typescript\\**\\*.ts -t stylish",
-    "tsc": "tsc --sourcemap --removeComments --target ES5 --outDir dist/javascript --rootDir typescript/ -w",
-    "ts-test": "./node_modules/.bin/mocha --compilers ts:ts-node/register ./typescript/tests/*.ts"
+    "lint": "grunt lint"
   },
   "author": { "name" : "Bastian Pertz",
     "email" : "bastian@pertz.eu",
