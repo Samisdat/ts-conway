@@ -121,7 +121,7 @@ export class Grid {
 
             const cellIndex = this.absoluteMap[positionWithLivingCells.x][positionWithLivingCells.y];
 
-            this.cells[cellIndex].setType(CellTypesFactory.living());
+            this.cells[cellIndex].setType(CellTypesFactory.get().living());
 
         }
 

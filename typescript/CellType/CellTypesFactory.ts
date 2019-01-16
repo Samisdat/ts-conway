@@ -23,55 +23,50 @@ export class CellTypesFactory {
     private constructor() {
 
         this.cellTypeCheckerboardDark = new CellTypeCheckerboardDark(Config.colorCheckerboardDark);
-        this.cellTypeCheckerboardLight = new CellTypeCheckerboardDark(Config.colorCheckerboardLight);
+        this.cellTypeCheckerboardLight = new CellTypeCheckerboardLight(Config.colorCheckerboardLight);
         this.cellTypeLiving = new CellTypeLiving(Config.colorLiving);
         this.cellTypesCenter = new CellTypesCenter(Config.colorCenter);
 
     }
 
-    public static checkerboardDark(): CellTypeInterface {
+    public static get():CellTypesFactory{
 
         if (undefined === this.instance) {
 
             this.instance = new this();
+
         }
 
-        return this.instance.cellTypeCheckerboardDark;
+        return this.instance;
 
     }
 
-    public static checkerboardLight(): CellTypeInterface {
+    public checkerboardDark(): CellTypeInterface {
 
-        if (undefined === this.instance) {
-
-            this.instance = new this();
-        }
-
-        return this.instance.cellTypeCheckerboardLight;
+        return this.cellTypeCheckerboardDark;
 
     }
 
-    public static living(): CellTypeInterface {
+    public checkerboardLight(): CellTypeInterface {
 
-        if (undefined === this.instance) {
 
-            this.instance = new this();
-        }
+        return this.cellTypeCheckerboardLight;
 
-        return this.instance.cellTypeLiving;
+    }
+
+    public living(): CellTypeInterface {
+
+
+        return this.cellTypeLiving;
 
     }
 
 
 
-    public static center(): CellTypeInterface {
+    public center(): CellTypeInterface {
 
-        if (undefined === this.instance) {
 
-            this.instance = new this();
-        }
-
-        return this.instance.cellTypesCenter;
+        return this.cellTypesCenter;
 
     }
 

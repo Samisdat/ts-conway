@@ -35,22 +35,22 @@ export class GridCell {
         const x = this.absolutePosition.x;
         const y = this.absolutePosition.y;
 
-        this.setType(CellTypesFactory.checkerboardDark());
+        this.setType(CellTypesFactory.get().checkerboardDark());
 
         if (0 === y % 2) {
             if (0 === x % 2) {
-                this.setType(CellTypesFactory.checkerboardLight());
+                this.setType(CellTypesFactory.get().checkerboardLight());
             }
         }
 
         if (0 !== y % 2) {
             if (0 !== x % 2) {
-                this.setType(CellTypesFactory.checkerboardLight());
+                this.setType(CellTypesFactory.get().checkerboardLight());
             }
         }
 
         if (0 === x && 0 === y) {
-            this.setType(CellTypesFactory.center());
+            this.setType(CellTypesFactory.get().center());
         }
 
     }
