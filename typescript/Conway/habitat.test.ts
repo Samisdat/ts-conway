@@ -1,10 +1,14 @@
 import { expect } from 'chai';
 
+const sinon = require('sinon');
+
 import { Position } from './position';
 
 import { Habitat } from './habitat';
 
 import { Patterns } from './patterns';
+
+import { SinonFakeTimers, SinonSandbox, SinonStub} from 'sinon';
 
 
 describe('Habitat', () => {
@@ -113,4 +117,51 @@ describe('Habitat', () => {
 
     });
 
+});
+
+describe('Habitat aging with interval', function() {
+
+    let habitat = new Habitat(50);
+
+    let sandbox: SinonSandbox;
+
+    let clock: SinonFakeTimers;
+
+    let stubElapse: SinonStub;
+
+    before(function() {
+
+        sandbox = sinon.createSandbox();
+
+        stubElapse = sandbox.stub(habitat, 'elapse' as any);
+
+        clock = sinon.useFakeTimers();
+
+    });
+
+    after(function() {
+
+        clock = sinon.restore();
+
+        sandbox.restore();
+
+    });
+
+    it('should increase position', function() {
+
+        sinon.assert.notCalled(stubElapse);
+
+        habitat.startAging();
+
+        sinon.assert.notCalled(stubElapse);
+
+        clock.tick(51);
+
+        sinon.assert.calledOnce(stubElapse);
+
+        clock.tick(51);
+
+        sinon.assert.calledTwice(stubElapse);
+
+    });
 });
