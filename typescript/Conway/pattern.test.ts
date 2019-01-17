@@ -4,7 +4,7 @@ import { Position } from './position';
 
 import { Pattern } from './pattern';
 
-describe.skip('Pattern', () => {
+describe('Pattern', () => {
 
     beforeEach(function () {
     });
@@ -54,7 +54,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('get', () => {
+    it.skip('get', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -71,7 +71,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('mirrorHorizontal simple', () => {
+    it.skip('mirrorHorizontal simple', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -89,7 +89,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('mirrorHorizontal', () => {
+    it.skip('mirrorHorizontal', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -110,7 +110,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('mirrorVertical simple', () => {
+    it.skip('mirrorVertical simple', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -127,7 +127,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('mirrorVertical', () => {
+    it.skip('mirrorVertical', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -204,7 +204,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('rotate 90', () => {
+    it.skip('rotate 90', () => {
 
         let pattern = new Pattern(
             'Scottish',
@@ -227,7 +227,7 @@ describe.skip('Pattern', () => {
 
     });
 
-    it('rotate -90', () => {
+    it.skip('rotate -90', () => {
 
         let pattern = new Pattern(
             'Scottish',
