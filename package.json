@@ -5,14 +5,15 @@
   "repository": "git@github.com:Samisdat/ts-conway.git",
   "main": "dist/conway.js",
   "scripts": {
-    "prepare" : "npm run build",
+    "prepare": "npm run build",
     "build": "grunt build",
     "test": "grunt test",
     "lint": "grunt lint"
   },
-  "author": { "name" : "Bastian Pertz",
-    "email" : "bastian@pertz.eu",
-    "url" : "http://samisdat.org/"
+  "author": {
+    "name": "Bastian Pertz",
+    "email": "bastian@pertz.eu",
+    "url": "http://samisdat.org/"
   },
   "license": "MIT",
   "devDependencies": {
