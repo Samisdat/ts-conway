@@ -2,7 +2,6 @@ import { Position } from './position';
 import { Cell } from './cell';
 import { LivingCell } from './livingcell';
 import { Pattern } from './pattern';
-import {Config} from '../Config';
 
 export class Habitat {
 
