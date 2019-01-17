@@ -29,7 +29,7 @@ export class CellTypesFactory {
 
     }
 
-    public static get():CellTypesFactory{
+    public static get(): CellTypesFactory {
 
         if (undefined === this.instance) {
 
