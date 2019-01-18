@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { Position } from 'Conway/position';
+import { Position } from '@Conway/position';
 
 describe('Position', () => {
 

@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 
-import {Integer} from './Integer';
-import {GridDimension} from 'Grid/GridDimension';
+import {Integer} from '@Conway/Integer';
 
 describe('Integer', () => {
 

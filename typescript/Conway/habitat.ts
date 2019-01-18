@@ -1,5 +1,5 @@
-import { Position } from './position';
-import { Cell } from './cell';
+import { Position } from '@Conway/position';
+import { Cell } from '@Conway/cell';
 import { LivingCell } from './livingcell';
 import { Pattern } from './pattern';
 

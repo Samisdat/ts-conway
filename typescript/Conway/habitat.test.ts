@@ -2,11 +2,11 @@ import { expect } from 'chai';
 
 const sinon = require('sinon');
 
-import { Position } from './position';
+import { Position } from '@Conway/position';
 
-import { Habitat } from './habitat';
+import { Habitat } from '@Conway/habitat';
 
-import { Patterns } from './patterns';
+import { Patterns } from '@Conway/patterns';
 
 import { SinonFakeTimers, SinonSandbox, SinonStub} from 'sinon';
 

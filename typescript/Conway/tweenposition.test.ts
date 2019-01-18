@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { Position } from './position';
-import { TweenPosition } from './tweenposition';
+import { Position } from '@Conway/position';
+import { TweenPosition } from '@Conway/tweenposition';
 
 describe('PositionTween', () => {
 

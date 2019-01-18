@@ -1,12 +1,12 @@
-import { CellTypeCheckerboardDark } from 'CellType/CellTypeCheckerboardDark';
-import { CellTypeCheckerboardLight } from 'CellType/CellTypeCheckerboardLight';
-import { CellTypeLiving } from 'CellType/CellTypeLiving';
+import { CellTypeCheckerboardDark } from '@CellType/CellTypeCheckerboardDark';
+import { CellTypeCheckerboardLight } from '@CellType/CellTypeCheckerboardLight';
+import { CellTypeLiving } from '@CellType/CellTypeLiving';
 import { CellTypesCenter } from 'CellType/CellTypesCenter';
 import {Config} from '../Config';
-import {CellTypeInterface} from 'CellType/CellTypeInterface';
+import {CellTypeInterface} from '@CellType/CellTypeInterface';
 
 /**
- * Not a real sensfull usecase, but try singleton in typescript ;)
+ * Not a real sensefull usecase for this design, just try singleton in typescript ;)
  */
 export class CellTypesFactory {
 
