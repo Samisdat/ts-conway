@@ -14,8 +14,8 @@ var browserify = {
             plugin: [
                 [
                     'tsify', {
-                    project: './tsconfig.json'
-                }
+                        project: './tsconfig.json'
+                    }
                 ]
             ]
         }
