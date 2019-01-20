@@ -8,6 +8,7 @@ import { Grid} from '../Grid';
 import { GridCreator} from 'Grid/GridCreator';
 import { GridDimension } from 'Grid/GridDimension';
 import { Config } from '../Config';
+import {Position} from '../Conway/position';
 
 export class Frontend {
 
@@ -27,9 +28,6 @@ export class Frontend {
         }
 
         this.habitat = new Habitat(Config.generationDuration);
-
-        const patterns = new Patterns();
-        this.habitat.seedPattern(patterns.get('guns_and_eaters'));
 
         this.wrapper = $element;
 
