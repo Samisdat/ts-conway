@@ -1,13 +1,6 @@
 {
     "compilerOptions":{
-        "rootDirs":[""],
         "baseUrl": "typescript",
-        "paths": {
-            "@Conway/*": ["Conway/*"],
-            "@CellType/*": ["CellType/*"],
-            "@Control/*": ["Control/*"],
-            "@Grid/*": ["Grid/*"]
-        },
         "module": "CommonJS",
         "moduleResolution": "node",
         "outDir": "./dist/",
