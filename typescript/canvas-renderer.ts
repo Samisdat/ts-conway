@@ -37,11 +37,11 @@ export class CanvasRenderer {
             this.$element.append($('<canvas>'));
         }
 
-        this.setCanvas($element);
+        this.setCanvas();
 
     }
 
-    private setCanvas($element: JQuery): void {
+    public setCanvas(): void {
 
         const canvasWidth = this.$element.width();
         const canvasHeight = this.$element.height();
