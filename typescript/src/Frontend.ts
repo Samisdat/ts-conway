@@ -50,10 +50,10 @@ export class Frontend {
         this.habitat.startAging();
 
         function checkWindowSize() {
-            var width = window.innerWidth,
+            let width = window.innerWidth,
                 height = window.innerHeight;
 
-            console.log("window.innerHeight: ", window.innerHeight, " window.innerWidth: ", window.innerWidth);
+            console.log('window.innerHeight: ', window.innerHeight, ' window.innerWidth: ', window.innerWidth);
         }
 
         window.onload = () => {
@@ -61,13 +61,13 @@ export class Frontend {
             window.addEventListener('resize', (event) => {
                 checkWindowSize();
 
-                this.canvasRenderer.setCanvas()
+                this.canvasRenderer.setCanvas();
             });
-        }
+        };
 
     }
 
-    private initialSeed():void{
+    private initialSeed(): void {
 
         const patterns = new Patterns();
         const gunsAndEaters = patterns.get('guns_and_eaters');
@@ -84,11 +84,11 @@ export class Frontend {
 
         let repeat = Math.floor(gridCreator.getRows() / (gunsAndEaters.getWidth() + patternGutter ));
 
-        if(0 === repeat % 2){
-            repeat += 1
+        if (0 === repeat % 2) {
+            repeat += 1;
         }
 
-        let patternsPerSide = Math.floor(repeat/ 2);
+        let patternsPerSide = Math.floor(repeat / 2);
 
         this.habitat.seedPattern(
             patterns.get('guns_and_eaters'),
@@ -98,19 +98,19 @@ export class Frontend {
 
         let move = new Position(0, 0);
 
-        if(0 === repeat % 2) {
+        if (0 === repeat % 2) {
             move = move.move(
-                new Position(-1* Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-            )
+                new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
+            );
         }
 
-        for(let i = 0; i < patternsPerSide; i += 1){
+        for (let i = 0; i < patternsPerSide; i += 1) {
 
             move = move.move(
                 new Position(
                     -1 * (gunsAndEaters.getWidth() + patternGutter), 0
                 )
-            )
+            );
 
             this.habitat.seedPattern(
                 patterns.get('guns_and_eaters'),
@@ -121,13 +121,13 @@ export class Frontend {
 
         move = new Position(0, 0);
 
-        if(0 === repeat % 2) {
+        if (0 === repeat % 2) {
             move = move.move(
-                new Position(-1* Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-            )
+                new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
+            );
         }
 
-        for(let i = 0; i < patternsPerSide; i += 1){
+        for (let i = 0; i < patternsPerSide; i += 1) {
 
             move = move.move(
                 new Position(

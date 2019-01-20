@@ -146,7 +146,7 @@ export class Habitat {
         this.cells.push(new LivingCell(position));
     }
 
-    public seedPattern(pattern: Pattern, moveBy = new Position(0,0)): void {
+    public seedPattern(pattern: Pattern, moveBy = new Position(0, 0)): void {
 
         const positions = pattern.get();
 
