@@ -33,8 +33,6 @@ export class Cell {
 
     elapse(): void {
 
-        console.log('asssss');
-
         if (true === this.thenLiving) {
             this.nowliving = true;
         }
