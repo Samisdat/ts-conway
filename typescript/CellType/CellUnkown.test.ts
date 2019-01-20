@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { CellUnkown } from '@CellType/CellUnkown';
+import { CellUnkown } from 'CellType/CellUnkown';
 
 describe('CellUnkown', () => {
 

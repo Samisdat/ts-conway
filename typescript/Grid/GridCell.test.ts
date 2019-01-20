@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 
-import { Position } from '@Conway/position';
+import { Position } from 'Conway/position';
 
 
-import {GridCell} from '@Grid/GridCell';
+import {GridCell} from 'Grid/GridCell';
 import {Config} from '../Config';
-import {CellTypesFactory} from '@CellType/CellTypesFactory';
+import {CellTypesFactory} from 'CellType/CellTypesFactory';
 
 
 describe('GridCell', () => {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import {Integer} from '@Conway/Integer';
+import {Integer} from 'Conway/Integer';
 
 describe('Integer', () => {
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { CellTypeCheckerboardLight } from '@CellType/CellTypeCheckerboardLight';
+import { CellTypeCheckerboardLight } from 'CellType/CellTypeCheckerboardLight';
 import {Config} from '../Config';
 
 describe('CellTypeCheckerboardLight', () => {

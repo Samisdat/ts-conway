@@ -1,9 +1,9 @@
-import { Position } from '@Conway/position';
+import { Position } from 'Conway/position';
 import { GridCell } from './Grid/GridCell';
-import { Habitat } from '@Conway/habitat';
+import { Habitat } from 'Conway/habitat';
 import { GridDimension } from 'Grid/GridDimension';
-import { IntegerPosition } from '@Conway/IntegerPosition';
-import {CellTypesFactory} from '@CellType/CellTypesFactory';
+import { IntegerPosition } from 'Conway/IntegerPosition';
+import {CellTypesFactory} from 'CellType/CellTypesFactory';
 
 export class Grid {
 

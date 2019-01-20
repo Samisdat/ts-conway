@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { CellTypesCenter } from '@CellType/CellTypesCenter';
+import { CellTypesCenter } from 'CellType/CellTypesCenter';
 
 import {CellTypesFactory} from 'CellType/CellTypesFactory';
 import {CellTypeCheckerboardDark} from 'CellType/CellTypeCheckerboardDark';

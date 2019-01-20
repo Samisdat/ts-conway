@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import {GridDimension} from '@Grid/GridDimension';
+import {GridDimension} from 'Grid/GridDimension';
 
 
 describe('GridDimension', () => {

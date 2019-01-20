@@ -1,12 +1,12 @@
 import * as $ from 'jquery';
 
 import { CanvasRenderer } from '../canvas-renderer';
-import { MainControl } from '@Control/ControlMain';
-import { Habitat  } from '@Conway/habitat';
-import { Patterns } from '@Conway/patterns';
+import { MainControl } from 'Control/ControlMain';
+import { Habitat  } from 'Conway/habitat';
+import { Patterns } from 'Conway/patterns';
 import { Grid} from '../Grid';
-import { GridCreator} from '@Grid/GridCreator';
-import { GridDimension } from '@Grid/GridDimension';
+import { GridCreator} from 'Grid/GridCreator';
+import { GridDimension } from 'Grid/GridDimension';
 import { Config } from '../Config';
 
 export class Frontend {

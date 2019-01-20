@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { CellTypeLiving } from '@CellType/CellTypeLiving';
+import { CellTypeLiving } from 'CellType/CellTypeLiving';
 import {Config} from '../Config';
 
 describe('CellTypeLiving', () => {

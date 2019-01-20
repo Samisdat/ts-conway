@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
-import { Position } from '@Conway/position';
-import { Cell } from '@Conway/cell';
+import { Position } from 'Conway/position';
+import { Cell } from 'Conway/cell';
 
-import { LivingCell }  from '@Conway/livingcell';
+import { LivingCell }  from 'Conway/livingcell';
 
 describe('LivingCell', () => {
 

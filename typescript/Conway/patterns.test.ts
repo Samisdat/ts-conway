@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
 
-import { Position } from '@Conway/position';
-import { Pattern  } from '@Conway/pattern';
-import { Patterns  } from '@Conway/patterns';
+import { Position } from 'Conway/position';
+import { Pattern  } from 'Conway/pattern';
+import { Patterns  } from 'Conway/patterns';
 
 describe('Patterns', () => {
 

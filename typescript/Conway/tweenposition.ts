@@ -1,5 +1,5 @@
-import { Position } from '@Conway/position';
-import { Tween } from '@Conway/tween';
+import { Position } from 'Conway/position';
+import { Tween } from 'Conway/tween';
 
 export class TweenPosition {
 

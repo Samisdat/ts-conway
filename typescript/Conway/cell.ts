@@ -1,4 +1,4 @@
-import { Position } from '@Conway/position';
+import { Position } from 'Conway/position';
 
 export class Cell {
 
@@ -32,6 +32,9 @@ export class Cell {
     }
 
     elapse(): void {
+
+        console.log('asssss');
+
         if (true === this.thenLiving) {
             this.nowliving = true;
         }
