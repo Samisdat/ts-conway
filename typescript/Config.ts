@@ -2,7 +2,7 @@ export abstract class Config {
 
     public static readonly htmlId: string = '#conway';
 
-    public static readonly cellWidth: number = 50;
+    public static readonly cellWidth: number = 10;
 
     public static readonly generationDuration: number = 500;
 
