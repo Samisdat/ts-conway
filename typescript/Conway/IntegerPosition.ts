@@ -1,5 +1,5 @@
-import {Position} from 'Conway/position';
-import {Integer} from 'Conway/Integer';
+import {Position} from './position';
+import {Integer} from './Integer';
 
 export class IntegerPosition extends Position {
 

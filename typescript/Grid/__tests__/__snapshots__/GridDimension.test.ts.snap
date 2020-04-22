@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GridDimension throw execption for cols value less then 1 1`] = `"cols must be at least 1"`;
+
+exports[`GridDimension throw execption for cols value less then 1 2`] = `"cols must be at least 1"`;
+
+exports[`GridDimension throw execption for rows value less then 1 1`] = `"rows must be at least 1"`;
+
+exports[`GridDimension throw execption for rows value less then 1 2`] = `"rows must be at least 1"`;

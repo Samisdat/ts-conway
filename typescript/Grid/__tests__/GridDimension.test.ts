@@ -1,6 +1,4 @@
-import { expect } from 'chai';
-
-import {GridDimension} from 'Grid/GridDimension';
+import {GridDimension} from '../GridDimension';
 
 
 describe('GridDimension', () => {
@@ -9,7 +7,7 @@ describe('GridDimension', () => {
 
         let gridDimension = new GridDimension(2, 3);
 
-        expect(gridDimension).to.be.instanceof(GridDimension);
+        expect(gridDimension).toBeInstanceOf(GridDimension);
 
     });
 
@@ -18,7 +16,7 @@ describe('GridDimension', () => {
 
         let gridDimension = new GridDimension(2, 3);
 
-        expect(gridDimension.rows).to.be.equal(2);
+        expect(gridDimension.rows).toBe(2);
 
     });
 
@@ -26,7 +24,7 @@ describe('GridDimension', () => {
 
         let gridDimension = new GridDimension(2, 3);
 
-        expect(gridDimension.cols).to.be.equal(3);
+        expect(gridDimension.cols).toBe(3);
 
     });
 
@@ -34,15 +32,11 @@ describe('GridDimension', () => {
 
         expect(() => {
             new GridDimension(0, 3);
-        }).to.throw(
-            Error, 'rows must be at least 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
         expect(() => {
             new GridDimension(-1, 3);
-        }).to.throw(
-            Error, 'rows must be at least 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 
@@ -50,17 +44,12 @@ describe('GridDimension', () => {
 
         expect(() => {
             new GridDimension(3, 0);
-        }).to.throw(
-            Error, 'cols must be at least 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
         expect(() => {
             new GridDimension(3, -1);
-        }).to.throw(
-            Error, 'cols must be at least 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
-
 
 });

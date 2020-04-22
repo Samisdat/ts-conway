@@ -1,5 +1,5 @@
-import { Position } from 'Conway/position';
-import { IntegerPosition } from 'Conway/IntegerPosition';
+import {IntegerPosition} from '../Conway/IntegerPosition';
+import {Position} from '../Conway/position';
 
 export class GridCreator {
 
