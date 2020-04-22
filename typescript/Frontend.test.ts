@@ -33,7 +33,7 @@ describe.skip('Frontend', () => {
 
         const frontend = new Frontend();
 
-        expect(frontend).to.be.instanceof(Frontend);
+        expect(frontend).toBeInstanceOf(Frontend);
 
     });
 

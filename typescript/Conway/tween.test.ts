@@ -11,10 +11,10 @@ describe('Tween', () => {
 
         let tween = new Tween(1);
 
-        expect(tween).to.be.instanceof(Tween);
-        expect(tween.getStart()).to.be.equal(1);
-        expect(tween.getCurrent()).to.be.equal(1);
-        expect(tween.getEnd()).to.be.equal(1);
+        expect(tween).toBeInstanceOf(Tween);
+        expect(tween.getStart()).toBe(1);
+        expect(tween.getCurrent()).toBe(1);
+        expect(tween.getEnd()).toBe(1);
 
     });
 
@@ -23,15 +23,15 @@ describe('Tween', () => {
         let tween = new Tween(1);
         tween.setEnd(31);
 
-        expect(tween.getStart()).to.be.equal(1);
-        expect(tween.getCurrent()).to.be.equal(1);
-        expect(tween.getEnd()).to.be.equal(31);
-        expect(tween.getStepsDone()).to.be.equal(0);
+        expect(tween.getStart()).toBe(1);
+        expect(tween.getCurrent()).toBe(1);
+        expect(tween.getEnd()).toBe(31);
+        expect(tween.getStepsDone()).toBe(0);
 
         tween.update();
 
-        expect(tween.getCurrent()).to.be.equal(2);
-        expect(tween.getStepsDone()).to.be.equal(1);
+        expect(tween.getCurrent()).toBe(2);
+        expect(tween.getStepsDone()).toBe(1);
 
     });
 
@@ -40,15 +40,15 @@ describe('Tween', () => {
         let tween = new Tween(1);
         tween.setEnd(1);
 
-        expect(tween.getStart()).to.be.equal(1);
-        expect(tween.getCurrent()).to.be.equal(1);
-        expect(tween.getEnd()).to.be.equal(1);
-        expect(tween.getStepsDone()).to.be.equal(0);
+        expect(tween.getStart()).toBe(1);
+        expect(tween.getCurrent()).toBe(1);
+        expect(tween.getEnd()).toBe(1);
+        expect(tween.getStepsDone()).toBe(0);
 
         tween.update();
 
-        expect(tween.getCurrent()).to.be.equal(1);
-        expect(tween.getStepsDone()).to.be.equal(0);
+        expect(tween.getCurrent()).toBe(1);
+        expect(tween.getStepsDone()).toBe(0);
 
 
     });
@@ -60,24 +60,24 @@ describe('Tween', () => {
         let tween = new Tween(0, steps);
         tween.setEnd(10);
 
-        expect(tween.getStart()).to.be.equal(0);
-        expect(tween.getCurrent()).to.be.equal(0);
-        expect(tween.getEnd()).to.be.equal(10);
+        expect(tween.getStart()).toBe(0);
+        expect(tween.getCurrent()).toBe(0);
+        expect(tween.getEnd()).toBe(10);
 
         for (let i = 0; i < steps; i += 1) {
-            expect(tween.getCurrent()).to.be.equal(i);
-            expect(tween.getStepsDone()).to.be.equal(i);
+            expect(tween.getCurrent()).toBe(i);
+            expect(tween.getStepsDone()).toBe(i);
             tween.update();
         }
 
-        expect(tween.getCurrent()).to.be.equal(10);
-        expect(tween.getStepsDone()).to.be.equal(10);
+        expect(tween.getCurrent()).toBe(10);
+        expect(tween.getStepsDone()).toBe(10);
         tween.update();
-        expect(tween.getCurrent()).to.be.equal(10);
-        expect(tween.getStepsDone()).to.be.equal(10);
+        expect(tween.getCurrent()).toBe(10);
+        expect(tween.getStepsDone()).toBe(10);
         tween.update();
-        expect(tween.getCurrent()).to.be.equal(10);
-        expect(tween.getStepsDone()).to.be.equal(10);
+        expect(tween.getCurrent()).toBe(10);
+        expect(tween.getStepsDone()).toBe(10);
 
     });
 
@@ -90,20 +90,20 @@ describe('Tween', () => {
         tween.setEnd(1);
 
         expect(tween.equal(1)).to.be.true;
-        expect(tween.getStart()).to.be.equal(0);
-        expect(tween.getCurrent()).to.be.equal(0);
-        expect(tween.getEnd()).to.be.equal(1);
+        expect(tween.getStart()).toBe(0);
+        expect(tween.getCurrent()).toBe(0);
+        expect(tween.getEnd()).toBe(1);
 
         for (let i = 0; i <= steps; i += 1) {
-            expect(Math.round(tween.getCurrent() * 100)).to.be.equal(i);
+            expect(Math.round(tween.getCurrent() * 100)).toBe(i);
             tween.update();
         }
 
-        expect(tween.getCurrent()).to.be.equal(1);
+        expect(tween.getCurrent()).toBe(1);
         tween.update();
-        expect(tween.getCurrent()).to.be.equal(1);
+        expect(tween.getCurrent()).toBe(1);
         tween.update();
-        expect(tween.getCurrent()).to.be.equal(1);
+        expect(tween.getCurrent()).toBe(1);
 
 
     });
@@ -115,17 +115,17 @@ describe('Tween', () => {
 
         tween.update();
 
-        expect(tween.getStart()).to.be.equal(1);
-        expect(tween.getEnd()).to.be.equal(31);
-        expect(tween.getCurrent()).to.be.equal(2);
-        expect(tween.getStepsDone()).to.be.equal(1);
+        expect(tween.getStart()).toBe(1);
+        expect(tween.getEnd()).toBe(31);
+        expect(tween.getCurrent()).toBe(2);
+        expect(tween.getStepsDone()).toBe(1);
 
         tween.overwrite(5);
 
-        expect(tween.getStart()).to.be.equal(5);
-        expect(tween.getEnd()).to.be.equal(5);
-        expect(tween.getCurrent()).to.be.equal(5);
-        expect(tween.getStepsDone()).to.be.equal(0);
+        expect(tween.getStart()).toBe(5);
+        expect(tween.getEnd()).toBe(5);
+        expect(tween.getCurrent()).toBe(5);
+        expect(tween.getStepsDone()).toBe(0);
 
     });
 

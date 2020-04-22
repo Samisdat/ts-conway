@@ -9,7 +9,7 @@ describe('IntegerPosition', () => {
 
         let position = new IntegerPosition(1, 2);
 
-        expect(position).to.be.instanceof(Position);
+        expect(position).toBeInstanceOf(Position);
 
     });
 
@@ -39,10 +39,10 @@ describe('IntegerPosition', () => {
 
         let cloned = position.clone();
 
-        expect(cloned).to.be.instanceof(IntegerPosition);
+        expect(cloned).toBeInstanceOf(IntegerPosition);
 
-        expect(cloned.x).to.be.equal(1);
-        expect(cloned.y).to.be.equal(2);
+        expect(cloned.x).toBe(1);
+        expect(cloned.y).toBe(2);
 
 
     });
@@ -51,8 +51,8 @@ describe('IntegerPosition', () => {
 
         let position = new IntegerPosition(1, 2);
 
-        expect(position.x).to.be.equal(1);
-        expect(position.y).to.be.equal(2);
+        expect(position.x).toBe(1);
+        expect(position.y).toBe(2);
 
     });
 
@@ -64,8 +64,8 @@ describe('IntegerPosition', () => {
             new IntegerPosition(10, 20)
         );
 
-        expect(moved.x).to.be.equal(11);
-        expect(moved.y).to.be.equal(22);
+        expect(moved.x).toBe(11);
+        expect(moved.y).toBe(22);
 
     });
 
@@ -75,13 +75,13 @@ describe('IntegerPosition', () => {
 
         let inversed = position.inverse();
 
-        expect(inversed.x).to.be.equal(-2);
-        expect(inversed.y).to.be.equal(-3);
+        expect(inversed.x).toBe(-2);
+        expect(inversed.y).toBe(-3);
 
         inversed = inversed.inverse();
 
-        expect(inversed.x).to.be.equal(2);
-        expect(inversed.y).to.be.equal(3);
+        expect(inversed.x).toBe(2);
+        expect(inversed.y).toBe(3);
 
     });
 
@@ -102,7 +102,7 @@ describe('IntegerPosition', () => {
         let position = new IntegerPosition(3, 3);
         let neighbours = position.getNeighbours();
 
-        expect(neighbours.length).to.be.equal(8);
+        expect(neighbours.length).toBe(8);
 
         expect(neighbours[0]).to.be.deep.equal(new IntegerPosition(2, 2));
         expect(neighbours[1]).to.be.deep.equal(new IntegerPosition(3, 2));

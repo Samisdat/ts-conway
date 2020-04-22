@@ -12,7 +12,7 @@ describe('Cell', () => {
             new Position(1, 2)
         );
 
-        expect(cell).to.be.instanceof(Cell);
+        expect(cell).toBeInstanceOf(Cell);
 
     });
 
@@ -21,9 +21,9 @@ describe('Cell', () => {
         let position = new Position(1, 2);
         let cell = new Cell(position);
 
-        expect(cell.x).to.be.equal(position.x);
-        expect(cell.y).to.be.equal(position.y);
-        expect(cell.position).to.be.equal(position);
+        expect(cell.x).toBe(position.x);
+        expect(cell.y).toBe(position.y);
+        expect(cell.position).toBe(position);
 
     });
 

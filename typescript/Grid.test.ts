@@ -25,7 +25,7 @@ describe('Grid', () => {
             new Position(0, 0)
         );
 
-        expect(grid).to.be.instanceOf(Grid);
+        expect(grid).toBeInstanceOf(Grid);
 
     });
 
@@ -99,8 +99,8 @@ describe('Grid', () => {
                 new Position(0, 0)
             );
 
-        expect(grid.getRows()).to.be.equal(3);
-        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).toBe(3);
+        expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
             new IntegerPosition(0, 0)
@@ -110,7 +110,7 @@ describe('Grid', () => {
             new Position(0, 0)
         );
 
-        expect(grid.getCells().length).to.be.equal(3 * 5);
+        expect(grid.getCells().length).toBe(3 * 5);
 
     });
 
@@ -123,8 +123,8 @@ describe('Grid', () => {
             new Position(0, 0)
         );
 
-        expect(grid.getRows()).to.be.equal(3);
-        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).toBe(3);
+        expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
             new IntegerPosition(-1, -2)
@@ -145,8 +145,8 @@ describe('Grid', () => {
             new Position(-0.5, -0.5)
         );
 
-        expect(grid.getRows()).to.be.equal(3);
-        expect(grid.getCols()).to.be.equal(5);
+        expect(grid.getRows()).toBe(3);
+        expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).to.be.deep.equal(
             new IntegerPosition(-1, -2)
@@ -170,7 +170,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(1);
+        expect(cells.length).toBe(1);
 
         const cell = cells[0];
 
@@ -195,7 +195,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(1);
+        expect(cells.length).toBe(1);
 
         const cellOne = cells[0];
 
@@ -203,7 +203,7 @@ describe('Grid', () => {
             new IntegerPosition(0, 0)
         );
 
-        expect(cellOne.x).to.be.equal(-0.5);
+        expect(cellOne.x).toBe(-0.5);
 
         expect(cellOne.absolutePosition).to.be.deep.equal(
             new IntegerPosition(0, 0)
@@ -222,7 +222,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(9);
+        expect(cells.length).toBe(9);
 
         const relativePositions: Position[] = [];
         const absolutePositions: Position[] = [];
@@ -260,7 +260,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(9);
+        expect(cells.length).toBe(9);
 
         const relativePositions: Position[] = [];
         const absolutePositions: Position[] = [];
@@ -298,7 +298,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(9);
+        expect(cells.length).toBe(9);
 
         const relativePositions: IntegerPosition[] = [];
         const absolutePositions: IntegerPosition[] = [];
@@ -345,7 +345,7 @@ describe('Grid', () => {
 
         const cells = grid.getCells();
 
-        expect(cells.length).to.be.equal(9);
+        expect(cells.length).toBe(9);
 
         const relativePositions: IntegerPosition[] = [];
         const absolutePositions: IntegerPosition[] = [];

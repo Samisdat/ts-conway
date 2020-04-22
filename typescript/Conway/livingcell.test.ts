@@ -16,8 +16,8 @@ describe('LivingCell', () => {
             new Position(1, 2)
         );
 
-        expect(cell).to.be.instanceof(LivingCell);
-        expect(cell).to.be.instanceof(Cell);
+        expect(cell).toBeInstanceOf(LivingCell);
+        expect(cell).toBeInstanceOf(Cell);
 
     });
 

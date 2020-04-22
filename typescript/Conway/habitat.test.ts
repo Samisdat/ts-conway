@@ -20,7 +20,7 @@ describe('Habitat', () => {
 
         let habitat = new Habitat(1000);
 
-        expect(habitat).to.be.instanceof(Habitat);
+        expect(habitat).toBeInstanceOf(Habitat);
 
     });
 
@@ -34,9 +34,9 @@ describe('Habitat', () => {
         );
 
         let cells = habitat.getAllCells();
-        expect(cells.length).to.be.equal(1);
-        expect(cells[0].x).to.be.equal(0);
-        expect(cells[0].y).to.be.equal(1);
+        expect(cells.length).toBe(1);
+        expect(cells[0].x).toBe(0);
+        expect(cells[0].y).toBe(1);
 
     });
 
@@ -84,7 +84,7 @@ describe('Habitat', () => {
         ]);
 
         // check garbage collection
-        expect(habitat.getAllCells().length).to.be.equal(3);
+        expect(habitat.getAllCells().length).toBe(3);
 
 
         habitat.elapse();
@@ -95,7 +95,7 @@ describe('Habitat', () => {
             new Position(0, 2)
         ]);
 
-        expect(habitat.getAllCells().length).to.be.equal(3);
+        expect(habitat.getAllCells().length).toBe(3);
 
     });
 

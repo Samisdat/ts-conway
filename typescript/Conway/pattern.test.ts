@@ -19,7 +19,7 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern).to.be.instanceof(Pattern);
+        expect(pattern).toBeInstanceOf(Pattern);
 
     });
 
@@ -49,8 +49,8 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern.getWidth()).to.be.equal(3);
-        expect(pattern.getHeight()).to.be.equal(2);
+        expect(pattern.getWidth()).toBe(3);
+        expect(pattern.getHeight()).toBe(2);
 
     });
 
@@ -183,23 +183,23 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern.getRotateSteps(-720)).to.be.equal(0);
-        expect(pattern.getRotateSteps(-630)).to.be.equal(1);
-        expect(pattern.getRotateSteps(-540)).to.be.equal(2);
-        expect(pattern.getRotateSteps(-450)).to.be.equal(3);
-        expect(pattern.getRotateSteps(-360)).to.be.equal(0);
-        expect(pattern.getRotateSteps(-270)).to.be.equal(1);
-        expect(pattern.getRotateSteps(-180)).to.be.equal(2);
-        expect(pattern.getRotateSteps(-90)).to.be.equal(3);
-        expect(pattern.getRotateSteps(0)).to.be.equal(0);
-        expect(pattern.getRotateSteps(90)).to.be.equal(1);
-        expect(pattern.getRotateSteps(180)).to.be.equal(2);
-        expect(pattern.getRotateSteps(270)).to.be.equal(3);
-        expect(pattern.getRotateSteps(360)).to.be.equal(0);
-        expect(pattern.getRotateSteps(450)).to.be.equal(1);
-        expect(pattern.getRotateSteps(540)).to.be.equal(2);
-        expect(pattern.getRotateSteps(630)).to.be.equal(3);
-        expect(pattern.getRotateSteps(720)).to.be.equal(0);
+        expect(pattern.getRotateSteps(-720)).toBe(0);
+        expect(pattern.getRotateSteps(-630)).toBe(1);
+        expect(pattern.getRotateSteps(-540)).toBe(2);
+        expect(pattern.getRotateSteps(-450)).toBe(3);
+        expect(pattern.getRotateSteps(-360)).toBe(0);
+        expect(pattern.getRotateSteps(-270)).toBe(1);
+        expect(pattern.getRotateSteps(-180)).toBe(2);
+        expect(pattern.getRotateSteps(-90)).toBe(3);
+        expect(pattern.getRotateSteps(0)).toBe(0);
+        expect(pattern.getRotateSteps(90)).toBe(1);
+        expect(pattern.getRotateSteps(180)).toBe(2);
+        expect(pattern.getRotateSteps(270)).toBe(3);
+        expect(pattern.getRotateSteps(360)).toBe(0);
+        expect(pattern.getRotateSteps(450)).toBe(1);
+        expect(pattern.getRotateSteps(540)).toBe(2);
+        expect(pattern.getRotateSteps(630)).toBe(3);
+        expect(pattern.getRotateSteps(720)).toBe(0);
 
 
     });

@@ -14,7 +14,7 @@ describe('Patterns', () => {
 
         let patterns = new Patterns();
 
-        expect(patterns).to.be.instanceof(Patterns);
+        expect(patterns).toBeInstanceOf(Patterns);
 
     });
 
@@ -36,7 +36,7 @@ describe('Patterns', () => {
 
         let blinker = patterns.get('blinker');
 
-        expect(blinker).to.be.instanceof(Pattern);
+        expect(blinker).toBeInstanceOf(Pattern);
 
         expect(blinker.get()).to.be.deep.equal(
             [

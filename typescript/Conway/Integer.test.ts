@@ -8,7 +8,7 @@ describe('Integer', () => {
 
         let integer = new Integer(1);
 
-        expect(integer).to.be.instanceof(Integer);
+        expect(integer).toBeInstanceOf(Integer);
 
     });
 
@@ -16,7 +16,7 @@ describe('Integer', () => {
 
         let integer = new Integer(1);
 
-        expect(integer.value).to.be.equal(1);
+        expect(integer.value).toBe(1);
 
     });
 

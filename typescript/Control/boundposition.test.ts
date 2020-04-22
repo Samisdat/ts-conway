@@ -15,7 +15,7 @@ describe('PositionBound', () => {
             new Position(2, 2)
         );
 
-        expect(bound).to.be.instanceof(BoundPosition);
+        expect(bound).toBeInstanceOf(BoundPosition);
 
     });
 

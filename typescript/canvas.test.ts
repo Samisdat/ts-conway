@@ -27,7 +27,7 @@ describe.skip('Canvas', () => {
             canvasContext
         );
 
-        expect(canvas).to.be.instanceof(Canvas);
+        expect(canvas).toBeInstanceOf(Canvas);
 
     });
 
@@ -37,7 +37,7 @@ describe.skip('Canvas', () => {
             canvasContext
         );
 
-        expect(canvas.ctx).to.be.equal(canvasContext);
+        expect(canvas.ctx).toBe(canvasContext);
 
     });
 
