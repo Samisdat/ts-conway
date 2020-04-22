@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PositionBound create fails when bottom is not below from top 1`] = `"bottomRight must be below from topLeft"`;
+
+exports[`PositionBound create fails when right is not right from left  1`] = `"bottomRight must be right from topLeft"`;
