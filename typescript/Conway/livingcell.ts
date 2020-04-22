@@ -1,5 +1,6 @@
-import { Cell } from 'Conway/cell';
-import { Position } from 'Conway/position';
+import {Cell} from './cell';
+import {Position} from './position';
+
 
 export class LivingCell extends Cell {
 

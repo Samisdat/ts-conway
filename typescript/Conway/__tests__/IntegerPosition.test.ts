@@ -1,7 +1,5 @@
-import { expect } from 'chai';
-
-import { Position } from 'Conway/position';
-import { IntegerPosition } from 'Conway/IntegerPosition';
+import {IntegerPosition} from '../IntegerPosition';
+import {Position} from '../position';
 
 describe('IntegerPosition', () => {
 
@@ -17,9 +15,7 @@ describe('IntegerPosition', () => {
 
         expect(() => {
             new IntegerPosition(0.5, 1);
-        }).to.throw(
-            Error, 'not an integer value'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 
@@ -27,9 +23,7 @@ describe('IntegerPosition', () => {
 
         expect(() => {
             new IntegerPosition(1, 0.5);
-        }).to.throw(
-            Error, 'not an integer value'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 

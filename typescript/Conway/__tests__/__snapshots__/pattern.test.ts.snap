@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pattern construct fails with row of uneven length 1`] = `"all rows must contain the same ammout of cols"`;
+
+exports[`Pattern rotate throw when angle is not a multiple of 90 1`] = `"angle must be 0 or a multiple of 90"`;

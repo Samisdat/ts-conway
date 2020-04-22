@@ -1,9 +1,6 @@
-import { expect } from 'chai';
-
-
-import { Position } from 'Conway/position';
-import { Pattern  } from 'Conway/pattern';
-import { Patterns  } from 'Conway/patterns';
+import {Patterns} from '../patterns';
+import {Position} from '../position';
+import {Pattern} from '../pattern';
 
 describe('Patterns', () => {
 
@@ -26,9 +23,10 @@ describe('Patterns', () => {
             patterns.get('foobar');
         };
 
-        expect(createPattern).to.throw(Error, 'unkown pattern foobar');
+        expect(createPattern).toThrowErrorMatchingSnapshot();
 
-    });
+
+});
 
     it('can get blinker', () => {
 

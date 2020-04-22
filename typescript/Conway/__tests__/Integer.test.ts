@@ -1,6 +1,4 @@
-import { expect } from 'chai';
-
-import {Integer} from 'Conway/Integer';
+import {Integer} from '../Integer';
 
 describe('Integer', () => {
 
@@ -24,9 +22,7 @@ describe('Integer', () => {
 
         expect(() => {
             new Integer(0.5);
-        }).to.throw(
-            Error, 'not an integer value'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 

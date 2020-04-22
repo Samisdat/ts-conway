@@ -1,7 +1,8 @@
-import { Pattern } from 'Conway/pattern';
 
 // taken from
 // http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+import {Pattern} from './pattern';
+
 const patterns = {
     // debug
     rotate: [

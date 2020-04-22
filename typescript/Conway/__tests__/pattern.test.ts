@@ -1,8 +1,5 @@
-import { expect } from 'chai';
-
-import { Position } from 'Conway/position';
-
-import { Pattern } from 'Conway/pattern';
+import {Pattern} from '../pattern';
+import {Position} from '../position';
 
 describe('Pattern', () => {
 
@@ -35,7 +32,7 @@ describe('Pattern', () => {
             );
         };
 
-        expect(createPattern).to.throw(Error, 'all rows must contain the same ammout of cols');
+        expect(createPattern).toThrowErrorMatchingSnapshot();
 
     });
 
@@ -169,7 +166,7 @@ describe('Pattern', () => {
             pattern.rotate(1);
         };
 
-        expect(invalid).to.throw(Error, 'angle must be 0 or a multiple of 90');
+        expect(invalid).toThrowErrorMatchingSnapshot();
 
     });
 
@@ -183,11 +180,11 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern.getRotateSteps(-720)).toBe(0);
+        expect(pattern.getRotateSteps(-720)).toBe(-0);
         expect(pattern.getRotateSteps(-630)).toBe(1);
         expect(pattern.getRotateSteps(-540)).toBe(2);
         expect(pattern.getRotateSteps(-450)).toBe(3);
-        expect(pattern.getRotateSteps(-360)).toBe(0);
+        expect(pattern.getRotateSteps(-360)).toBe(-0);
         expect(pattern.getRotateSteps(-270)).toBe(1);
         expect(pattern.getRotateSteps(-180)).toBe(2);
         expect(pattern.getRotateSteps(-90)).toBe(3);

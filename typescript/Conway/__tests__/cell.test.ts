@@ -1,8 +1,5 @@
-import { expect } from 'chai';
-
-import { Position } from 'Conway/position';
-
-import { Cell } from 'Conway/cell';
+import {Cell} from '../cell';
+import {Position} from '../position';
 
 describe('Cell', () => {
 
@@ -33,7 +30,7 @@ describe('Cell', () => {
 
         let cell;
 
-        before(() => {
+        beforeEach(() => {
 
             cell = new Cell(position);
 
