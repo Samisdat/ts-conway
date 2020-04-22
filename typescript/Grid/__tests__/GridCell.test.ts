@@ -1,7 +1,7 @@
-import {Position} from '../Conway/position';
-import {GridCell} from './GridCell';
-import {Config} from '../Config';
-import {CellTypesFactory} from '../CellType/CellTypesFactory';
+import {Position} from '../../Conway/position';
+import {GridCell} from '../GridCell';
+import {Config} from '../../Config';
+import {CellTypesFactory} from '../../CellType/CellTypesFactory';
 
 describe('GridCell', () => {
 
