@@ -27,7 +27,7 @@ describe('LivingCell', () => {
             new Position(1, 2)
         );
 
-        expect(cell.isAlive()).to.be.true;
+        expect(cell.isAlive()).toBeTruthy;
 
     });
 

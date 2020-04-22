@@ -38,7 +38,7 @@ describe('Patterns', () => {
 
         expect(blinker).toBeInstanceOf(Pattern);
 
-        expect(blinker.get()).to.be.deep.equal(
+        expect(blinker.get()).toStrictEqual(
             [
                 new Position(-1, 0),
                 new Position(0, 0),

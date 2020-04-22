@@ -89,7 +89,7 @@ describe('Tween', () => {
 
         tween.setEnd(1);
 
-        expect(tween.equal(1)).to.be.true;
+        expect(tween.equal(1)).toBeTruthy;
         expect(tween.getStart()).toBe(0);
         expect(tween.getCurrent()).toBe(0);
         expect(tween.getEnd()).toBe(1);

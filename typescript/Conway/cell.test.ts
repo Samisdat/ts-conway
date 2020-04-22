@@ -41,23 +41,23 @@ describe('Cell', () => {
 
         it('alive some time after  creation', () => {
 
-            expect(cell.isAlive()).to.be.false;
+            expect(cell.isAlive()).toBeFalsy;
 
             cell.elapse();
-            expect(cell.isAlive()).to.be.true;
+            expect(cell.isAlive()).toBeTruthy;
 
         });
 
         it('kill', () => {
 
             cell.elapse();
-            expect(cell.isAlive()).to.be.true;
+            expect(cell.isAlive()).toBeTruthy;
 
             cell.kill();
-            expect(cell.isAlive()).to.be.true;
+            expect(cell.isAlive()).toBeTruthy;
 
             cell.elapse();
-            expect(cell.isAlive()).to.be.false;
+            expect(cell.isAlive()).toBeFalsy;
 
         });
 

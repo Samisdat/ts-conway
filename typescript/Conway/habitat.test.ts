@@ -27,7 +27,7 @@ describe('Habitat', () => {
     it('seed a cell', () => {
 
         let habitat = new Habitat(1000);
-        expect(habitat.getAllCells()).to.be.deep.equal([]);
+        expect(habitat.getAllCells()).toStrictEqual([]);
 
         habitat.seed(
             new Position(0, 1)
@@ -43,21 +43,21 @@ describe('Habitat', () => {
     it('elapse with one cell', () => {
 
         let habitat = new Habitat(1000);
-        expect(habitat.getAllCells()).to.be.deep.equal([]);
+        expect(habitat.getAllCells()).toStrictEqual([]);
 
         habitat.seed(
             new Position(0, 1)
         );
 
-        expect(habitat.get()).to.be.deep.equal([new Position(0, 1)]);
+        expect(habitat.get()).toStrictEqual([new Position(0, 1)]);
 
     });
 
     it('elapse with a blinker', () => {
 
         let habitat = new Habitat(1000);
-        expect(habitat.get()).to.be.deep.equal([]);
-        expect(habitat.getAllCells()).to.be.deep.equal([]);
+        expect(habitat.get()).toStrictEqual([]);
+        expect(habitat.getAllCells()).toStrictEqual([]);
 
         habitat.seed(
             new Position(0, 0)
@@ -69,7 +69,7 @@ describe('Habitat', () => {
             new Position(0, 2)
         );
 
-        expect(habitat.get()).to.be.deep.equal([
+        expect(habitat.get()).toStrictEqual([
             new Position(0, 0),
             new Position(0, 1),
             new Position(0, 2)
@@ -77,7 +77,7 @@ describe('Habitat', () => {
 
         habitat.elapse();
 
-        expect(habitat.get()).to.be.deep.equal([
+        expect(habitat.get()).toStrictEqual([
             new Position(0, 1),
             new Position(-1, 1),
             new Position(1, 1)
@@ -89,7 +89,7 @@ describe('Habitat', () => {
 
         habitat.elapse();
 
-        expect(habitat.get()).to.be.deep.equal([
+        expect(habitat.get()).toStrictEqual([
             new Position(0, 1),
             new Position(0, 0),
             new Position(0, 2)
@@ -104,12 +104,12 @@ describe('Habitat', () => {
         const patterns = new Patterns();
 
         let habitat = new Habitat(1000);
-        expect(habitat.get()).to.be.deep.equal([]);
-        expect(habitat.getAllCells()).to.be.deep.equal([]);
+        expect(habitat.get()).toStrictEqual([]);
+        expect(habitat.getAllCells()).toStrictEqual([]);
 
         habitat.seedPattern(patterns.get('blinker'));
 
-        expect(habitat.get()).to.be.deep.equal([
+        expect(habitat.get()).toStrictEqual([
             new Position(-1, 0),
             new Position(0, 0),
             new Position(1, 0)

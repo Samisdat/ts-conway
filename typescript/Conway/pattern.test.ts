@@ -65,7 +65,7 @@ describe('Pattern', () => {
             ]
         );
 
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [new Position(0, 1)]
         );
 
@@ -83,7 +83,7 @@ describe('Pattern', () => {
         );
 
         pattern.mirrorHorizontal();
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [new Position(2, 1)]
         );
 
@@ -101,7 +101,7 @@ describe('Pattern', () => {
 
         pattern.mirrorHorizontal();
 
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [
                 new Position(2, 0),
                 new Position(2, 1)
@@ -121,7 +121,7 @@ describe('Pattern', () => {
             ]
         );
         pattern.mirrorVertical();
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [new Position(1, 2)]
         );
 
@@ -140,7 +140,7 @@ describe('Pattern', () => {
         );
         pattern.mirrorVertical();
 
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [
                 new Position(1, 2),
                 new Position(2, 2)
@@ -217,7 +217,7 @@ describe('Pattern', () => {
 
         pattern.rotate(90);
 
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [
                 new Position(0, 0),
                 new Position(2, 0),
@@ -240,7 +240,7 @@ describe('Pattern', () => {
 
         pattern.rotate(-90);
 
-        expect(pattern.get()).to.be.deep.equal(
+        expect(pattern.get()).toStrictEqual(
             [
                 new Position(0, 2),
                 new Position(1, 2),

@@ -15,9 +15,9 @@ describe('PositionTween', () => {
         );
 
         expect(tween).toBeInstanceOf(TweenPosition);
-        expect(tween.getStart()).to.be.deep.equal(new Position(1, 1));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 1));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(1, 1));
+        expect(tween.getStart()).toStrictEqual(new Position(1, 1));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 1));
+        expect(tween.getEnd()).toStrictEqual(new Position(1, 1));
 
     });
 
@@ -30,13 +30,13 @@ describe('PositionTween', () => {
             new Position(30, 60)
         );
 
-        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(30, 60));
+        expect(tween.getStart()).toStrictEqual(new Position(0, 0));
+        expect(tween.getCurrent()).toStrictEqual(new Position(0, 0));
+        expect(tween.getEnd()).toStrictEqual(new Position(30, 60));
 
         tween.update();
 
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 2));
 
     });
 
@@ -49,13 +49,13 @@ describe('PositionTween', () => {
             new Position(0, 0)
         );
 
-        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(0, 0));
+        expect(tween.getStart()).toStrictEqual(new Position(0, 0));
+        expect(tween.getCurrent()).toStrictEqual(new Position(0, 0));
+        expect(tween.getEnd()).toStrictEqual(new Position(0, 0));
 
         tween.update();
 
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(0, 0));
+        expect(tween.getCurrent()).toStrictEqual(new Position(0, 0));
 
     });
 
@@ -71,20 +71,20 @@ describe('PositionTween', () => {
             new Position(10, 20)
         );
 
-        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(10, 20));
+        expect(tween.getStart()).toStrictEqual(new Position(0, 0));
+        expect(tween.getCurrent()).toStrictEqual(new Position(0, 0));
+        expect(tween.getEnd()).toStrictEqual(new Position(10, 20));
 
         for (let i = 0; i < steps; i += 1) {
-            expect(tween.getCurrent()).to.be.deep.equal(new Position(i, i * 2));
+            expect(tween.getCurrent()).toStrictEqual(new Position(i, i * 2));
             tween.update();
         }
 
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(10, 20));
+        expect(tween.getCurrent()).toStrictEqual(new Position(10, 20));
         tween.update();
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(10, 20));
+        expect(tween.getCurrent()).toStrictEqual(new Position(10, 20));
         tween.update();
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(10, 20));
+        expect(tween.getCurrent()).toStrictEqual(new Position(10, 20));
 
 
     });
@@ -102,9 +102,9 @@ describe('PositionTween', () => {
             new Position(1, 2)
         );
 
-        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getStart()).toStrictEqual(new Position(0, 0));
+        expect(tween.getCurrent()).toStrictEqual(new Position(0, 0));
+        expect(tween.getEnd()).toStrictEqual(new Position(1, 2));
 
         for (let i = 0; i <= steps; i += 1) {
             expect(Math.round(tween.getCurrent().x * 100)).toBe(i);
@@ -112,11 +112,11 @@ describe('PositionTween', () => {
             tween.update();
         }
 
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 2));
         tween.update();
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 2));
         tween.update();
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 2));
 
     });
 
@@ -133,8 +133,8 @@ describe('PositionTween', () => {
 
         tween.setEnd(positionB);
 
-        expect(tween.equal(positionC)).to.be.true;
-        expect(tween.equal(positionD)).to.be.false;
+        expect(tween.equal(positionC)).toBeTruthy;
+        expect(tween.equal(positionD)).toBeFalsy;
 
     });
 
@@ -149,16 +149,16 @@ describe('PositionTween', () => {
 
 
         tween.update();
-        expect(tween.getStart()).to.be.deep.equal(new Position(0, 0));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(30, 60));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(1, 2));
+        expect(tween.getStart()).toStrictEqual(new Position(0, 0));
+        expect(tween.getEnd()).toStrictEqual(new Position(30, 60));
+        expect(tween.getCurrent()).toStrictEqual(new Position(1, 2));
         expect(tween.getStepsDone()).toBe(1);
 
         tween.overwrite(new Position(5, 10));
 
-        expect(tween.getStart()).to.be.deep.equal(new Position(5, 10));
-        expect(tween.getEnd()).to.be.deep.equal(new Position(5, 10));
-        expect(tween.getCurrent()).to.be.deep.equal(new Position(5, 10));
+        expect(tween.getStart()).toStrictEqual(new Position(5, 10));
+        expect(tween.getEnd()).toStrictEqual(new Position(5, 10));
+        expect(tween.getCurrent()).toStrictEqual(new Position(5, 10));
         expect(tween.getStepsDone()).toBe(0);
 
     });
