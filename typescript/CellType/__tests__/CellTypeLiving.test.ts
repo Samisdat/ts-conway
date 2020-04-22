@@ -1,7 +1,5 @@
-import { expect } from 'chai';
-
-import { CellTypeLiving } from 'CellType/CellTypeLiving';
-import {Config} from '../Config';
+import {Config} from '../../Config';
+import {CellTypeLiving} from '../CellTypeLiving';
 
 describe('CellTypeLiving', () => {
 
@@ -11,7 +9,7 @@ describe('CellTypeLiving', () => {
 
         let cellType = new CellTypeLiving(color);
 
-        expect(cellType).to.be.instanceof(CellTypeLiving);
+        expect(cellType).toBeInstanceOf(CellTypeLiving);
 
     });
 
@@ -19,7 +17,7 @@ describe('CellTypeLiving', () => {
 
         let cellType = new CellTypeLiving(color);
 
-        expect(cellType.name).to.be.equal('living');
+        expect(cellType.name).toBe('living');
 
     });
 
@@ -27,7 +25,7 @@ describe('CellTypeLiving', () => {
 
         let cellType = new CellTypeLiving(color);
 
-        expect(cellType.hex).to.be.equal(color);
+        expect(cellType.hex).toBe(color);
 
     });
 

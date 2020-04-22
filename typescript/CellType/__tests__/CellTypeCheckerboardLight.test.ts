@@ -1,7 +1,5 @@
-import { expect } from 'chai';
-
-import { CellTypeCheckerboardLight } from 'CellType/CellTypeCheckerboardLight';
-import {Config} from '../Config';
+import {Config} from '../../Config';
+import {CellTypeCheckerboardLight} from '../CellTypeCheckerboardLight';
 
 describe('CellTypeCheckerboardLight', () => {
 
@@ -11,7 +9,7 @@ describe('CellTypeCheckerboardLight', () => {
 
         let cellType = new CellTypeCheckerboardLight(color);
 
-        expect(cellType).to.be.instanceof(CellTypeCheckerboardLight);
+        expect(cellType).toBeInstanceOf(CellTypeCheckerboardLight);
 
     });
 
@@ -19,7 +17,7 @@ describe('CellTypeCheckerboardLight', () => {
 
         let cellType = new CellTypeCheckerboardLight(color);
 
-        expect(cellType.name).to.be.equal('checkerboard-light');
+        expect(cellType.name).toBe('checkerboard-light');
 
     });
 
@@ -27,7 +25,7 @@ describe('CellTypeCheckerboardLight', () => {
 
         let cellType = new CellTypeCheckerboardLight(color);
 
-        expect(cellType.hex).to.be.equal(color);
+        expect(cellType.hex).toBe(color);
 
     });
 

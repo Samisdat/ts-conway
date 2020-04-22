@@ -1,7 +1,5 @@
-import { expect } from 'chai';
-
-import { CellTypesCenter } from 'CellType/CellTypesCenter';
-import {Config} from '../Config';
+import {Config} from '../../Config';
+import {CellTypesCenter} from '../CellTypesCenter';
 
 describe('CellTypesCenter', () => {
 
@@ -11,7 +9,7 @@ describe('CellTypesCenter', () => {
 
         let cellType = new CellTypesCenter(color);
 
-        expect(cellType).to.be.instanceof(CellTypesCenter);
+        expect(cellType).toBeInstanceOf(CellTypesCenter);
 
     });
 
@@ -19,7 +17,7 @@ describe('CellTypesCenter', () => {
 
         let cellType = new CellTypesCenter(color);
 
-        expect(cellType.name).to.be.equal('center');
+        expect(cellType.name).toBe('center');
 
     });
 
@@ -27,7 +25,7 @@ describe('CellTypesCenter', () => {
 
         let cellType = new CellTypesCenter(color);
 
-        expect(cellType.hex).to.be.equal(color);
+        expect(cellType.hex).toBe(color);
 
     });
 
