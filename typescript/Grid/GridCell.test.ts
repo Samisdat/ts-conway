@@ -1,12 +1,7 @@
-import { expect } from 'chai';
-
-import { Position } from 'Conway/position';
-
-
-import {GridCell} from 'Grid/GridCell';
+import {Position} from '../Conway/position';
+import {GridCell} from './GridCell';
 import {Config} from '../Config';
-import {CellTypesFactory} from 'CellType/CellTypesFactory';
-
+import {CellTypesFactory} from '../CellType/CellTypesFactory';
 
 describe('GridCell', () => {
 
@@ -18,7 +13,7 @@ describe('GridCell', () => {
             new Position(0, 0)
         );
 
-        expect(gridCell).to.be.instanceof(GridCell);
+        expect(gridCell).toBeInstanceOf(GridCell);
 
     });
 
@@ -30,8 +25,8 @@ describe('GridCell', () => {
             new Position(0, 0)
         );
 
-        expect(gridCell.x).to.be.equal(10);
-        expect(gridCell.y).to.be.equal(10);
+        expect(gridCell.x).toBe(10);
+        expect(gridCell.y).toBe(10);
 
     });
 
@@ -44,7 +39,7 @@ describe('GridCell', () => {
             new Position(-1, -1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
@@ -52,62 +47,61 @@ describe('GridCell', () => {
             new Position(0, 0)
         );
 
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, -1),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(-1, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(0, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getType()).to.be.equal(CellTypesFactory.get().center());
-        expect(gridCell.getColor()).to.be.equal(Config.colorCenter);
+        expect(gridCell.getType()).toBe(CellTypesFactory.get().center());
+        expect(gridCell.getColor()).toBe(Config.colorCenter);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, 0),
             new Position(0, 0)
         );
-        expect(gridCell.getType()).to.be.equal(CellTypesFactory.get().checkerboardDark());
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
+        expect(gridCell.getType()).toBe(CellTypesFactory.get().checkerboardDark());
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(-1, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getType()).to.be.equal(CellTypesFactory.get().checkerboardLight());
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
+        expect(gridCell.getType()).toBe(CellTypesFactory.get().checkerboardLight());
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardLight);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(0, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getType()).to.be.equal(CellTypesFactory.get().checkerboardDark());
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardDark);
+        expect(gridCell.getType()).toBe(CellTypesFactory.get().checkerboardDark());
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardDark);
 
         gridCell = new GridCell(
             new Position(0, 0),
             new Position(1, 1),
             new Position(0, 0)
         );
-        expect(gridCell.getType()).to.be.equal(CellTypesFactory.get().checkerboardLight());
-        expect(gridCell.getColor()).to.be.equal(Config.colorCheckerboardLight);
-
+        expect(gridCell.getType()).toBe(CellTypesFactory.get().checkerboardLight());
+        expect(gridCell.getColor()).toBe(Config.colorCheckerboardLight);
 
     });
 
@@ -117,18 +111,18 @@ describe('GridCell', () => {
 
         gridCell = new GridCell(new Position(0, 0), new Position(0, 0), new Position(0, 0));
 
-        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
-        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(0, 0));
+        expect(gridCell.relativePosition).toStrictEqual(new Position(0, 0));
+        expect(gridCell.absolutePosition).toStrictEqual(new Position(0, 0));
 
         gridCell = new GridCell(new Position(0, 0), new Position(2, 3), new Position(0, 0));
 
-        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
-        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(2, 3));
+        expect(gridCell.relativePosition).toStrictEqual(new Position(0, 0));
+        expect(gridCell.absolutePosition).toStrictEqual(new Position(2, 3));
 
         gridCell = new GridCell(new Position(0, 0), new Position(-2, -3), new Position(0, 0));
 
-        expect(gridCell.relativePosition).to.be.deep.equal(new Position(0, 0));
-        expect(gridCell.absolutePosition).to.be.deep.equal(new Position(-2, -3));
+        expect(gridCell.relativePosition).toStrictEqual(new Position(0, 0));
+        expect(gridCell.absolutePosition).toStrictEqual(new Position(-2, -3));
 
     });
 
