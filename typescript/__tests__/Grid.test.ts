@@ -1,16 +1,13 @@
-import { expect } from 'chai';
-
-import { Position } from 'Conway/position';
-
-import { Grid } from './Grid';
-import {GridDimension} from 'Grid/GridDimension';
-import {Habitat} from 'Conway/habitat';
-import {IntegerPosition} from 'Conway/IntegerPosition';
+import {Habitat} from '../Conway/habitat';
+import {GridDimension} from '../Grid/GridDimension';
+import {IntegerPosition} from '../Conway/IntegerPosition';
+import {Position} from '../Conway/position';
+import {Grid} from '../Grid';
 
 describe('Grid', () => {
 
     let habitat: Habitat;
-    before(() => {
+    beforeAll(() => {
 
         habitat = new Habitat(1000);
 
@@ -40,9 +37,7 @@ describe('Grid', () => {
                 new Position(-1.1, 0)
             );
 
-        }).to.throw(
-            Error, 'offset.x must be between -1 and 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
         expect(() => {
 
@@ -53,9 +48,7 @@ describe('Grid', () => {
                 new Position(1.1, 0)
             );
 
-        }).to.throw(
-            Error, 'offset.x must be between -1 and 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 
@@ -70,9 +63,7 @@ describe('Grid', () => {
                 new Position(0, -1.1)
             );
 
-        }).to.throw(
-            Error, 'offset.y must be between -1 and 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
         expect(() => {
 
@@ -83,9 +74,7 @@ describe('Grid', () => {
                 new Position(0, 1.1)
             );
 
-        }).to.throw(
-            Error, 'offset.y must be between -1 and 1'
-        );
+        }).toThrowErrorMatchingSnapshot();
 
     });
 

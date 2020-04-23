@@ -1,20 +1,19 @@
-import { expect } from 'chai';
 
-import { Canvas } from './canvas';
+import { Canvas } from '../canvas';
 
 describe.skip('Canvas', () => {
-/*
+
     let canvasContext: CanvasRenderingContext2D;
 
-    before(() =>{
-
+    beforeEach(() =>{
+        /*
         let canvas = $('<canvas>').get(0);
         canvas = canvas as HTMLCanvasElement;
         canvasContext = canvas.getContext('2d') as CanvasRenderingContext2D;
-
+        */
     });
 
-    after(() =>{
+    afterEach(() =>{
 
         canvasContext = undefined;
 
@@ -41,5 +40,5 @@ describe.skip('Canvas', () => {
 
     });
 
-*/
+
 });

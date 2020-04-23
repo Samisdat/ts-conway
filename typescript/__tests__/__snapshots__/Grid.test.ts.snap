@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Grid throw execption for offset.x below -1 or higher then 1 1`] = `"offset.x must be between -1 and 1"`;
+
+exports[`Grid throw execption for offset.x below -1 or higher then 1 2`] = `"offset.x must be between -1 and 1"`;
+
+exports[`Grid throw execption for offset.y below -1 or higher then 1 1`] = `"offset.y must be between -1 and 1"`;
+
+exports[`Grid throw execption for offset.y below -1 or higher then 1 2`] = `"offset.y must be between -1 and 1"`;
