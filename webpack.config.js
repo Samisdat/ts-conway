@@ -5,6 +5,7 @@ const HtmlWebpackPlugin  = require('html-webpack-plugin');
 
 var DashboardPlugin = require("webpack-dashboard/plugin");
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -16,6 +17,9 @@ module.exports = {
     plugins: [
         new DashboardPlugin(),
         new CleanWebpackPlugin(),
+        new CopyWebpackPlugin([
+            { from: 'static' }
+        ]),
         new HtmlWebpackPlugin(
             {
                 title: 'Conways game of live',

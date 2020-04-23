@@ -33,6 +33,7 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "copy-webpack-plugin": "^5.1.1",
     "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "ts-loader": "^7.0.1"
