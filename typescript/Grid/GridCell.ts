@@ -1,7 +1,7 @@
 import {IntegerPosition} from '../Conway/IntegerPosition';
 import {CellTypesFactory} from '../CellType/CellTypesFactory';
 import {Position} from '../Conway/position';
-import {CellTypeInterface} from '../CellType/CellTypeInterface';
+import {CellType} from '../CellType/CellType';
 import {CellUnkown} from '../CellType/CellUnkown';
 
 export class GridCell {
@@ -10,7 +10,7 @@ export class GridCell {
     public readonly absolutePosition: IntegerPosition;
     public readonly offset: Position;
 
-    private type: CellTypeInterface = new CellUnkown();
+    private type: CellType = new CellUnkown();
 
     constructor(
         relativePosition: IntegerPosition,
@@ -53,11 +53,11 @@ export class GridCell {
 
     }
 
-    public setType(type: CellTypeInterface): void {
+    public setType(type: CellType): void {
         this.type = type;
     }
 
-    public getType(): CellTypeInterface {
+    public getType(): CellType {
         return this.type;
     }
 

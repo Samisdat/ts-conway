@@ -2,7 +2,7 @@ import { CellTypeCheckerboardDark } from './CellTypeCheckerboardDark';
 import { CellTypeCheckerboardLight } from './CellTypeCheckerboardLight';
 import { CellTypeLiving } from './CellTypeLiving';
 import { CellTypesCenter } from './CellTypesCenter';
-import {CellTypeInterface} from './CellTypeInterface';
+import {CellType} from './CellType';
 import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT, COLOR_LIVING} from '../Constants';
 
 /**
@@ -41,20 +41,20 @@ export class CellTypesFactory {
 
     }
 
-    public checkerboardDark(): CellTypeInterface {
+    public checkerboardDark(): CellType {
 
         return this.cellTypeCheckerboardDark;
 
     }
 
-    public checkerboardLight(): CellTypeInterface {
+    public checkerboardLight(): CellType {
 
 
         return this.cellTypeCheckerboardLight;
 
     }
 
-    public living(): CellTypeInterface {
+    public living(): CellType {
 
 
         return this.cellTypeLiving;
@@ -63,7 +63,7 @@ export class CellTypesFactory {
 
 
 
-    public center(): CellTypeInterface {
+    public center(): CellType {
 
 
         return this.cellTypesCenter;

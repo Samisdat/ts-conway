@@ -1,4 +1,4 @@
-export class CellTypeInterface {
+export class CellType {
 
     public readonly name: string;
 

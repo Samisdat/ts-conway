@@ -1,6 +1,6 @@
-import { CellTypeInterface } from './CellTypeInterface';
+import { CellType } from './CellType';
 
-export class CellTypeCheckerboardLight extends CellTypeInterface {
+export class CellTypeCheckerboardLight extends CellType {
 
     public readonly name: string = 'checkerboard-light';
 

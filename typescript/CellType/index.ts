@@ -1,4 +1,4 @@
-export {CellTypeInterface} from './CellTypeInterface';
+export {CellType} from './CellType';
 export {CellTypeCheckerboardDark} from './CellTypeCheckerboardDark';
 export {CellTypeCheckerboardLight} from './CellTypeCheckerboardLight';
 export {CellTypeLiving} from './CellTypeLiving';

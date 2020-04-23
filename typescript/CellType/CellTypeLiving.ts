@@ -1,6 +1,6 @@
-import { CellTypeInterface } from './CellTypeInterface';
+import { CellType } from './CellType';
 
-export class CellTypeLiving extends CellTypeInterface {
+export class CellTypeLiving extends CellType {
 
     public readonly name: string = 'living';
 
