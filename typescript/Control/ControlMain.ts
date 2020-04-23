@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 import { Position } from '../Conway/position';
 
 import { ZoomControl } from './ControlZoom';
@@ -12,7 +10,7 @@ export class MainControl {
 
     private readonly originalCellWidth: number;
 
-    private control: JQuery;
+    private control: HTMLElement;
 
     private zoomControl: ZoomControl;
 
@@ -32,10 +30,10 @@ export class MainControl {
 
     private createControl(): void {
 
-        this.control = $('<div>');
-        this.control.addClass('control');
+        this.control = document.createElement('div');
+        this.control.classList.add('control');
 
-        $(this.canvasWrap).append(this.control);
+        this.canvasWrap.append(this.control);
 
     }
 

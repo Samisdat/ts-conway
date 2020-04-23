@@ -1,4 +1,4 @@
-export const HTML_ID: string = '#conway';
+export const HTML_ID: string = 'conway';
 
 export const CELL_WIDTH: number = 10;
 

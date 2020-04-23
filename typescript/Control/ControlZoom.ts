@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 import { Tween } from '../Conway/tween';
 import { Bound } from './bound';
 
@@ -7,16 +5,16 @@ import { ControlAbstract } from './ControlAbstract';
 
 export class ZoomControl extends ControlAbstract {
 
-    private control: JQuery;
+    private control: HTMLElement;
 
-    private zoomIn: JQuery;
-    private zoomOut: JQuery;
+    private zoomIn: HTMLElement;
+    private zoomOut: HTMLElement;
 
     private zoomTween: Tween = new Tween(1, 10);
 
     private zoomBound: Bound = new Bound(0.1, 2);
 
-    constructor(controllWrap: JQuery) {
+    constructor(controllWrap: HTMLElement) {
 
         super();
 
@@ -29,32 +27,35 @@ export class ZoomControl extends ControlAbstract {
 
     public createControl(): void {
 
-        const zoom = $('<div>');
-        zoom.addClass('zoom');
+        const zoom = document.createElement('div');
+        zoom.classList.add('zoom');
 
         this.zoomIn = this.getControlElement('zoom', 'zoom-in', 'search-plus');
         this.zoomOut = this.getControlElement('zoom', 'zoom-out', 'search-minus');
 
-        $(zoom).append(this.zoomIn);
-        $(zoom).append(this.zoomOut);
+        zoom.append(this.zoomIn);
+        zoom.append(this.zoomOut);
 
         this.control.append(zoom);
     }
 
     public addEventListener(): void {
 
-        $(this.control).on('click', '.zoom-in, .zoom-out', (evt) => {
+        const listen = (event:Event) => {
 
-            const target: JQuery = $(evt.currentTarget);
+            const target = event.currentTarget as HTMLElement;
 
-            let action = target.data('action');
-            let value = target.data('value');
+            let action = target.getAttribute('data-action');
+            let value = target.getAttribute('data-value');
 
             if ('zoom' === action) {
                 this.setZoom(value);
             }
 
-        });
+        };
+
+        this.zoomIn.addEventListener('click', listen);
+        this.zoomOut.addEventListener('click', listen);
 
     }
 
@@ -80,17 +81,17 @@ export class ZoomControl extends ControlAbstract {
         const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
 
         if (false === this.zoomBound.isAbove(nextZoom)) {
-            this.zoomIn.removeClass('inactive');
+            this.zoomIn.classList.remove('inactive');
         }
         else {
-            this.zoomIn.addClass('inactive');
+            this.zoomIn.classList.add('inactive');
         }
 
         if (false === this.zoomBound.isBelow(nextZoom)) {
-            this.zoomOut.removeClass('inactive');
+            this.zoomOut.classList.remove('inactive');
         }
         else {
-            this.zoomOut.addClass('inactive');
+            this.zoomOut.classList.add('inactive');
         }
 
         this.zoomTween.setEnd(

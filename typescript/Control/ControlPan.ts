@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 import { Position } from '../Conway/position';
 import { TweenPosition } from '../Conway/tweenposition';
 import { BoundPosition } from './boundposition';
@@ -15,17 +13,17 @@ export class PanControl extends ControlAbstract {
 
     private readonly originalCellWidth: number;
 
-    private control: JQuery;
+    private control: HTMLElement;
 
-    private offset: JQueryCoordinates = {
+    private offset: any = {
         left: 0,
         top: 0
     };
 
-    private left: JQuery;
-    private right: JQuery;
-    private top: JQuery;
-    private bottom: JQuery;
+    private left: HTMLElement;
+    private right: HTMLElement;
+    private top: HTMLElement;
+    private bottom: HTMLElement;
 
     private positionTween: TweenPosition = new TweenPosition(
         new Position(0, 0),
@@ -41,7 +39,7 @@ export class PanControl extends ControlAbstract {
 
     constructor(
         canvasWrap: Element,
-        controllWrap: JQuery,
+        controllWrap: HTMLElement,
         originalCellWidth: number,
         zoomControl: ZoomControl
 
@@ -64,61 +62,72 @@ export class PanControl extends ControlAbstract {
 
     public createControl(): void {
 
-        const pan = $('<div>');
-        pan.addClass('pan');
+        const pan = document.createElement('div');
+        pan.classList.add('pan');
 
         this.top = this.getControlElement('pan', 'top', 'arrow-up');
         this.bottom = this.getControlElement('pan', 'bottom', 'arrow-down');
         this.left = this.getControlElement('pan', 'left', 'arrow-left');
         this.right = this.getControlElement('pan', 'right', 'arrow-right');
 
-        $(pan).append(this.top);
-        $(pan).append(this.bottom);
-        $(pan).append(this.left);
-        $(pan).append(this.right);
+        pan.append(this.top);
+        pan.append(this.bottom);
+        pan.append(this.left);
+        pan.append(this.right);
 
         this.control.append(pan);
     }
 
     public addEventListener(): void {
 
-        $(this.canvasWrap).on('click', '.control div[data-action]', (evt) => {
+        const listen = (event:Event) => {
 
-            const target: JQuery = $(evt.currentTarget);
+            const target = event.currentTarget as HTMLElement;
 
-            let action = target.data('action');
-            let value = target.data('value');
+            let action = target.getAttribute('data-action');
+            let value = target.getAttribute('data-value');
 
             if ('pan' === action) {
                 this.setPan(target);
             }
-        });
 
-        $(this.canvasWrap).on('mousedown', 'canvas', (evt) => {
-            $(this.canvasWrap).addClass('mousedown');
+        };
+
+        this.top.addEventListener('click', listen);
+        this.bottom.addEventListener('click', listen);
+        this.left.addEventListener('click', listen);
+        this.right.addEventListener('click', listen);
+
+        const canvas = this.canvasWrap.getElementsByTagName('canvas')[0];
+
+        canvas.addEventListener('mousedown',  (event:MouseEvent) => {
+
+            this.canvasWrap.classList.add('mousedown');
 
             this.offset = {
-                left: evt.clientX,
-                top: evt.clientY
+                left: event.clientX,
+                top: event.clientY
             };
 
         });
 
-        $(this.canvasWrap).on('mouseup', 'canvas', (evt) => {
-            $(this.canvasWrap).removeClass('mousedown');
+        canvas.addEventListener('mouseup', (event: MouseEvent) => {
+
+            this.canvasWrap.classList.remove('mousedown');
+
         });
 
-        $(this.canvasWrap).on('mousemove', 'canvas', (evt) => {
+        canvas.addEventListener('mousemove', (event:MouseEvent) => {
 
-            let offset: JQueryCoordinates = {
-                left: evt.clientX - this.offset.left,
-                top: evt.clientY - this.offset.top
+            let offset: any = {
+                left: event.clientX - this.offset.left,
+                top: event.clientY - this.offset.top
             };
 
             offset.left = offset.left / (this.zoomControl.getZoom() * this.originalCellWidth);
             offset.top = offset.top / (this.zoomControl.getZoom() * this.originalCellWidth);
 
-            if (true === $(this.canvasWrap).hasClass('mousedown')) {
+            if (true === this.canvasWrap.classList.contains('mousedown')) {
 
                 let position = this.positionTween.getCurrent().move(
                     new Position(offset.left, offset.top).inverse()
@@ -129,8 +138,8 @@ export class PanControl extends ControlAbstract {
             }
 
             this.offset = {
-                left: evt.clientX,
-                top: evt.clientY
+                left: event.clientX,
+                top: event.clientY
             };
 
         });
@@ -145,9 +154,9 @@ export class PanControl extends ControlAbstract {
         this.positionTween.overwrite(position);
     }
 
-    public setPan(target: JQuery): void {
+    public setPan(target: HTMLElement): void {
 
-        let mode = target.data('value');
+        let mode = target.getAttribute('data-value');
 
         let panX = 0;
         let panY = 0;
@@ -180,76 +189,76 @@ export class PanControl extends ControlAbstract {
 
         if ('top' === mode) {
             if (true === this.positionBound.isWithin(panTo)) {
-                this.top.removeClass('inactive');
+                this.top.classList.remove('inactive');
             }
             else {
-                this.top.addClass('inactive');
+                this.top.classList.add('inactive');
             }
 
             panTo = panTo.move(new Position(0, 1));
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.bottom.removeClass('inactive');
+                this.bottom.classList.remove('inactive');
             }
             else {
-                this.bottom.addClass('inactive');
+                this.bottom.classList.add('inactive');
             }
 
         }
         else if ('bottom' === mode) {
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.bottom.removeClass('inactive');
+                this.bottom.classList.remove('inactive');
             }
             else {
-                this.bottom.addClass('inactive');
+                this.bottom.classList.add('inactive');
             }
 
             panTo = panTo.move(new Position(0, -1));
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.top.removeClass('inactive');
+                this.top.classList.remove('inactive');
             }
             else {
-                this.top.addClass('inactive');
+                this.top.classList.add('inactive');
             }
 
         }
         else if ('left' === mode) {
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.left.removeClass('inactive');
+                this.left.classList.remove('inactive');
             }
             else {
-                this.left.addClass('inactive');
+                this.left.classList.add('inactive');
             }
 
             panTo = panTo.move(new Position(1, 0));
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.right.removeClass('inactive');
+                this.right.classList.remove('inactive');
             }
             else {
-                this.right.addClass('inactive');
+                this.right.classList.add('inactive');
             }
 
         }
         else if ('right' === mode) {
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.right.removeClass('inactive');
+                this.right.classList.remove('inactive');
             }
             else {
-                this.right.addClass('inactive');
+                this.right.classList.add('inactive');
             }
 
             panTo = panTo.move(new Position(-1, 0));
 
             if (true === this.positionBound.isWithin(panTo)) {
-                this.left.removeClass('inactive');
+                this.left.classList.remove('inactive');
             }
             else {
-                this.left.addClass('inactive');
+                this.left.classList.add('inactive');
             }
 
         }

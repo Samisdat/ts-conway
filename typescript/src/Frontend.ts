@@ -1,5 +1,3 @@
-import * as $ from 'jquery';
-
 import { CanvasRenderer } from '../canvas-renderer';
 import {MainControl} from '../Control/ControlMain';
 import {Habitat} from '../Conway/habitat';
@@ -12,7 +10,7 @@ import {CELL_WIDTH, DEBUG, GENERATION_DURATION, HTML_ID} from '../Constants';
 
 export class Frontend {
 
-    private wrapper: JQuery;
+    private wrapper: HTMLElement;
     private control: MainControl;
 
     private habitat: Habitat;
@@ -21,15 +19,17 @@ export class Frontend {
 
     constructor() {
 
-        const $element: JQuery = $(HTML_ID);
+        const element: HTMLElement = document.getElementById(HTML_ID);
 
-        if (undefined === $element.get(0)) {
-            throw new Error('jquery selector does not match an element');
+        console.log(element)
+
+        if (undefined === element) {
+            throw new Error('no element with [id=' + HTML_ID + ']');
         }
 
         this.habitat = new Habitat(GENERATION_DURATION);
 
-        this.wrapper = $element;
+        this.wrapper = element;
 
         this.canvasRenderer = new CanvasRenderer(
             this.wrapper,
@@ -37,7 +37,7 @@ export class Frontend {
         );
 
         this.control = new MainControl(
-            this.wrapper.get(0),
+            element,
             CELL_WIDTH
         );
 
@@ -73,8 +73,8 @@ export class Frontend {
         const gunsAndEaters = patterns.get('guns_and_eaters');
 
         const gridCreator = new GridCreator(
-            this.wrapper.width(),
-            this.wrapper.height(),
+            this.wrapper.offsetWidth,
+            this.wrapper.offsetHeight,
             CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()
@@ -149,8 +149,8 @@ export class Frontend {
         this.control.update();
 
         const gridCreator = new GridCreator(
-            this.wrapper.width(),
-            this.wrapper.height(),
+            this.wrapper.offsetWidth,
+            this.wrapper.offsetHeight,
             CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()

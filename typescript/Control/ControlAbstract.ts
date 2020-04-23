@@ -1,14 +1,18 @@
-import * as $ from 'jquery';
 
 export abstract class ControlAbstract {
 
-    protected getControlElement(action: string, value: string, icon: string): JQuery {
-        const element = $('<div>');
-        element.addClass(value);
-        element.attr('data-action', action);
-        element.attr('data-value', value);
-        element.append($('<i class="fa fa-' + icon + '">'));
+    protected getControlElement(action: string, value: string, icon: string): HTMLElement {
 
+        const element = document.createElement('div');
+        element.classList.add(value);
+        element.setAttribute('data-action', action);
+        element.setAttribute('data-value', value);
+
+        const iconElement: HTMLElement = document.createElement('i');
+        iconElement.classList.add('fa');
+        iconElement.classList.add('fa-' + icon);
+
+        element.append(iconElement)
         return element;
     }
 

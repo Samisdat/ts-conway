@@ -1,7 +1,8 @@
 import {IntegerPosition} from '../Conway/IntegerPosition';
-import {CellTypeInterface, CellUnkown} from '../CellType';
 import {CellTypesFactory} from '../CellType/CellTypesFactory';
 import {Position} from '../Conway/position';
+import {CellTypeInterface} from '../CellType/CellTypeInterface';
+import {CellUnkown} from '../CellType/CellUnkown';
 
 export class GridCell {
 

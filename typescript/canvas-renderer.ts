@@ -1,14 +1,10 @@
-// declare var $: JQueryStatic;
-
-import * as $ from 'jquery';
-
 import { Canvas } from './canvas';
 import {Grid} from './Grid';
 import {Position} from './Conway/position';
 
 export class CanvasRenderer {
 
-    private $element: JQuery;
+    private element: HTMLElement;
 
     private readonly debug: boolean;
 
@@ -23,18 +19,16 @@ export class CanvasRenderer {
         light: '#FFAAAA'
     };
 
-    constructor($element: JQuery, debug = false) {
+    constructor(element: HTMLElement, debug = false) {
 
-        if (undefined === $element.get(0)) {
-            throw new Error('jquery selector does not match an element');
-        }
-
-        this.$element = $element;
+        this.element = element;
 
         this.debug = debug;
 
-        if (0 === this.$element.find('canvas').length) {
-            this.$element.append($('<canvas>'));
+        if (0 === this.element.getElementsByTagName('canvas').length) {
+            this.element.append(
+                document.createElement('canvas')
+            );
         }
 
         this.setCanvas();
@@ -43,10 +37,10 @@ export class CanvasRenderer {
 
     public setCanvas(): void {
 
-        const canvasWidth = this.$element.width();
-        const canvasHeight = this.$element.height();
+        const canvasWidth = this.element.offsetWidth;
+        const canvasHeight = this.element.offsetHeight;
 
-        const canvas = this.$element.find('canvas').get(0) as HTMLCanvasElement;
+        const canvas = this.element.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
 
         const ctx = canvas.getContext('2d');
         ctx.canvas.width = canvasWidth;
@@ -55,10 +49,12 @@ export class CanvasRenderer {
         this.canvas = new Canvas(ctx);
 
         // canvas is getting blury when these stunts are left
+        /*
         $(canvas).css({
             width: canvasWidth + 'px',
             height: canvasHeight + 'px'
         });
+         */
 
     }
 
