@@ -1,9 +1,9 @@
-import {Config} from '../../Config';
 import {CellTypeLiving} from '../CellTypeLiving';
+import {COLOR_LIVING} from '../../Constants';
 
 describe('CellTypeLiving', () => {
 
-    let color: string = Config.colorLiving;
+    let color: string = COLOR_LIVING;
 
     it('can be created', () => {
 

@@ -2,8 +2,8 @@ import { CellTypeCheckerboardDark } from './CellTypeCheckerboardDark';
 import { CellTypeCheckerboardLight } from './CellTypeCheckerboardLight';
 import { CellTypeLiving } from './CellTypeLiving';
 import { CellTypesCenter } from './CellTypesCenter';
-import {Config} from '../Config';
 import {CellTypeInterface} from './CellTypeInterface';
+import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT, COLOR_LIVING} from '../Constants';
 
 /**
  * Not a real sensefull usecase for this design, just try singleton in typescript ;)
@@ -22,10 +22,10 @@ export class CellTypesFactory {
 
     private constructor() {
 
-        this.cellTypeCheckerboardDark = new CellTypeCheckerboardDark(Config.colorCheckerboardDark);
-        this.cellTypeCheckerboardLight = new CellTypeCheckerboardLight(Config.colorCheckerboardLight);
-        this.cellTypeLiving = new CellTypeLiving(Config.colorLiving);
-        this.cellTypesCenter = new CellTypesCenter(Config.colorCenter);
+        this.cellTypeCheckerboardDark = new CellTypeCheckerboardDark(COLOR_CHECKERBOARD_DARK);
+        this.cellTypeCheckerboardLight = new CellTypeCheckerboardLight(COLOR_CHECKERBOARD_LIGHT);
+        this.cellTypeLiving = new CellTypeLiving(COLOR_LIVING);
+        this.cellTypesCenter = new CellTypesCenter(COLOR_CENTER);
 
     }
 

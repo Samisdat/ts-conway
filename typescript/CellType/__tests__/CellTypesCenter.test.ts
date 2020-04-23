@@ -1,9 +1,9 @@
-import {Config} from '../../Config';
 import {CellTypesCenter} from '../CellTypesCenter';
+import {COLOR_CENTER} from '../../Constants';
 
 describe('CellTypesCenter', () => {
 
-    let color: string = Config.colorCenter;
+    let color: string = COLOR_CENTER;
 
     it('can be created', () => {
 

@@ -3,12 +3,12 @@ import * as $ from 'jquery';
 import { CanvasRenderer } from '../canvas-renderer';
 import {MainControl} from '../Control/ControlMain';
 import {Habitat} from '../Conway/habitat';
-import {Config} from '../Config';
 import {Patterns} from '../Conway/patterns';
 import {GridCreator} from '../Grid/GridCreator';
 import {Position} from '../Conway/position';
 import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
+import {CELL_WIDTH, DEBUG, GENERATION_DURATION, HTML_ID} from '../Constants';
 
 export class Frontend {
 
@@ -21,24 +21,24 @@ export class Frontend {
 
     constructor() {
 
-        const $element: JQuery = $(Config.htmlId);
+        const $element: JQuery = $(HTML_ID);
 
         if (undefined === $element.get(0)) {
             throw new Error('jquery selector does not match an element');
         }
 
-        this.habitat = new Habitat(Config.generationDuration);
+        this.habitat = new Habitat(GENERATION_DURATION);
 
         this.wrapper = $element;
 
         this.canvasRenderer = new CanvasRenderer(
             this.wrapper,
-            Config.debug
+            DEBUG
         );
 
         this.control = new MainControl(
             this.wrapper.get(0),
-            Config.cellWidth
+            CELL_WIDTH
         );
 
         this.initialSeed();
@@ -75,7 +75,7 @@ export class Frontend {
         const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),
-            Config.cellWidth,
+            CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()
         );
@@ -151,7 +151,7 @@ export class Frontend {
         const gridCreator = new GridCreator(
             this.wrapper.width(),
             this.wrapper.height(),
-            Config.cellWidth,
+            CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()
         );
@@ -163,7 +163,7 @@ export class Frontend {
             gridCreator.getOffset()
         );
 
-        this.canvasRenderer.update(Config.cellWidth * this.control.getZoom(), newGrid);
+        this.canvasRenderer.update(CELL_WIDTH * this.control.getZoom(), newGrid);
 
         this.canvasRenderer.render();
 

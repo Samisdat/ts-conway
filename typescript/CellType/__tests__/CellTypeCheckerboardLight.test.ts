@@ -1,9 +1,10 @@
-import {Config} from '../../Config';
+
 import {CellTypeCheckerboardLight} from '../CellTypeCheckerboardLight';
+import {COLOR_CHECKERBOARD_LIGHT} from '../../Constants';
 
 describe('CellTypeCheckerboardLight', () => {
 
-    let color: string = Config.colorCheckerboardLight;
+    let color: string = COLOR_CHECKERBOARD_LIGHT;
 
     it('can be created', () => {
 

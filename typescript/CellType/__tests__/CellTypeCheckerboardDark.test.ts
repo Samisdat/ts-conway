@@ -1,9 +1,9 @@
-import {Config} from '../../Config';
 import {CellTypeCheckerboardDark} from '../CellTypeCheckerboardDark';
+import {COLOR_CHECKERBOARD_DARK} from '../../Constants';
 
 describe('CellTypeCheckerboardDark', () => {
 
-    let color: string = Config.colorCheckerboardDark;
+    let color: string = COLOR_CHECKERBOARD_DARK;
 
     it('can be created', () => {
 
