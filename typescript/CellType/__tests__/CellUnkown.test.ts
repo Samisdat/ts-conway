@@ -12,7 +12,7 @@ describe('CellUnkown', () => {
 
     it('can retrieve name', () => {
 
-        let cellType = new CellUnkown;
+        let cellType = new CellUnkown();
 
         expect(cellType.name).toBe('none');
 
