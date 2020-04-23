@@ -1,17 +1,19 @@
 {
     "compilerOptions":{
-        "baseUrl": "typescript",
-        "module": "CommonJS",
-        "moduleResolution": "node",
         "outDir": "./dist/",
+        "noImplicitAny": false,
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "allowJs": true,
         "sourceMap": true,
-        "target": "ES5",
-		"typeRoots": ["node_modules/@types"]
+        "typeRoots": ["node_modules/@types"]
     },
     "include": [
         "**/*.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "**/__tests__"
     ]
 }
