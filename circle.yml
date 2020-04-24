@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Linting
           command: |
-            docker run samisdat/ts-conway grunt lint
+            docker run samisdat/ts-conway npm run tslint
 
 #      - run:
 #          name: Test and coverage
