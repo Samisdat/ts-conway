@@ -14,7 +14,7 @@ describe('CellMatrix', () => {
 
         const cellMatrix = new CellMatrix();
 
-        const position = new Position(0,0);
+        const position = new Position(0, 0);
 
         const livingCell = new LivingCell(
             position
@@ -33,7 +33,7 @@ describe('CellMatrix', () => {
 
         const cellMatrix = new CellMatrix();
 
-        const position = new Position(0,0);
+        const position = new Position(0, 0);
 
         const livingCell = new LivingCell(
             position
@@ -54,7 +54,7 @@ describe('CellMatrix', () => {
 
         const cellMatrix = new CellMatrix();
 
-        const position = new Position(0,0);
+        const position = new Position(0, 0);
 
         const livingCell = new LivingCell(
             position

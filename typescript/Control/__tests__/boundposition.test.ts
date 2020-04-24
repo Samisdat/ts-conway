@@ -39,7 +39,7 @@ describe('PositionBound', () => {
             );
         };
 
-        expect(createBound).toThrowErrorMatchingSnapshot()
+        expect(createBound).toThrowErrorMatchingSnapshot();
 
     });
 

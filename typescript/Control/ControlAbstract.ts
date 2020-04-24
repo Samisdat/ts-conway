@@ -12,7 +12,7 @@ export abstract class ControlAbstract {
         iconElement.classList.add('fa');
         iconElement.classList.add('fa-' + icon);
 
-        element.append(iconElement)
+        element.append(iconElement);
         return element;
     }
 

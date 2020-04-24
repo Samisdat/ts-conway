@@ -41,7 +41,7 @@ export class ZoomControl extends ControlAbstract {
 
     public addEventListener(): void {
 
-        const listen = (event:Event) => {
+        const listen = (event: Event) => {
 
             const target = event.currentTarget as HTMLElement;
 

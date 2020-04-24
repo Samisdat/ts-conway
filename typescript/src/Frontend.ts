@@ -21,7 +21,7 @@ export class Frontend {
 
         const element: HTMLElement = document.getElementById(HTML_ID);
 
-        console.log(element)
+        console.log(element);
 
         if (undefined === element) {
             throw new Error('no element with [id=' + HTML_ID + ']');

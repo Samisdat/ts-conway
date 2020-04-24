@@ -5,7 +5,7 @@ describe.skip('Canvas', () => {
 
     let canvasContext: CanvasRenderingContext2D;
 
-    beforeEach(() =>{
+    beforeEach(() => {
         /*
         let canvas = $('<canvas>').get(0);
         canvas = canvas as HTMLCanvasElement;
@@ -13,7 +13,7 @@ describe.skip('Canvas', () => {
         */
     });
 
-    afterEach(() =>{
+    afterEach(() => {
 
         canvasContext = undefined;
 

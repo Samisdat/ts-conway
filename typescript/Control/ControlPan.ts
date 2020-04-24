@@ -80,7 +80,7 @@ export class PanControl extends ControlAbstract {
 
     public addEventListener(): void {
 
-        const listen = (event:Event) => {
+        const listen = (event: Event) => {
 
             const target = event.currentTarget as HTMLElement;
 
@@ -100,7 +100,7 @@ export class PanControl extends ControlAbstract {
 
         const canvas = this.canvasWrap.getElementsByTagName('canvas')[0];
 
-        canvas.addEventListener('mousedown',  (event:MouseEvent) => {
+        canvas.addEventListener('mousedown',  (event: MouseEvent) => {
 
             this.canvasWrap.classList.add('mousedown');
 
@@ -117,7 +117,7 @@ export class PanControl extends ControlAbstract {
 
         });
 
-        canvas.addEventListener('mousemove', (event:MouseEvent) => {
+        canvas.addEventListener('mousemove', (event: MouseEvent) => {
 
             let offset: any = {
                 left: event.clientX - this.offset.left,

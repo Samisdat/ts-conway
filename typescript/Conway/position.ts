@@ -81,7 +81,7 @@ export class Position {
         );
     }
 
-    public toString():string{
+    public toString(): string {
 
         return this.x + '-' + this.y;
 

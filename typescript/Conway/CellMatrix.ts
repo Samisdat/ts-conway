@@ -3,16 +3,16 @@ import {LivingCell} from './livingcell';
 import {Position} from './position';
 
 interface CellMatrixInterface {
-    [index:string]:Cell;
+    [index: string]: Cell;
 }
 
 export class CellMatrix {
 
-    private matrix:CellMatrixInterface = {};
+    private matrix: CellMatrixInterface = {};
 
-    public get(position:Position):Cell{
+    public get(position: Position): Cell {
 
-        if(undefined !== this.matrix[position.toString()]){
+        if (undefined !== this.matrix[position.toString()]) {
             return this.matrix[position.toString()];
         }
 
@@ -21,29 +21,29 @@ export class CellMatrix {
 
     }
 
-    public add(cell:Cell):void{
+    public add(cell: Cell): void {
 
-        if(undefined !== this.matrix[cell.position.toString()]){
-            console.log('argh')
+        if (undefined !== this.matrix[cell.position.toString()]) {
+            console.log('argh');
         }
 
         this.matrix[cell.position.toString()] = cell;
 
     }
 
-    public remove(cell:Cell):void{
+    public remove(cell: Cell): void {
 
-        if(undefined !== this.matrix[cell.position.toString()]){
+        if (undefined !== this.matrix[cell.position.toString()]) {
             delete this.matrix[cell.position.toString()];
         }
 
     }
 
-    public all():Cell[]{
+    public all(): Cell[] {
 
-        const cells:Cell[] = [];
+        const cells: Cell[] = [];
 
-        for(const index in this.matrix){
+        for (const index in this.matrix) {
 
             cells.push(this.matrix[index]);
 

@@ -16,7 +16,7 @@ describe('Bound', () => {
             let bound = new Bound(2, 1);
         };
 
-        expect(createBound).toThrowErrorMatchingSnapshot()
+        expect(createBound).toThrowErrorMatchingSnapshot();
 
     });
 

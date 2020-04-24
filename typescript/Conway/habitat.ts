@@ -113,7 +113,7 @@ export class Habitat {
             let positionOfNewCell: Position = createCellsAt[pos];
 
 
-            this.matrix.add(new LivingCell(positionOfNewCell))
+            this.matrix.add(new LivingCell(positionOfNewCell));
 
         }
 
