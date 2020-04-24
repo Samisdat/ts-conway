@@ -25,19 +25,19 @@ jobs:
           command: |
             docker run samisdat/ts-conway npm run tslint
 
-#      - run:
-#          name: Test and coverage
-#          command: |
-#            ./cc-test-reporter before-build
-#            docker run --name coverage samisdat/ts-conway /bin/sh -c "npm run coverage"
-#            docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
-#            docker rm -f coverage
-#            ./cc-test-reporter format-coverage --prefix /home/conway/ -t lcov ./lcov.info
-#            ./cc-test-reporter upload-coverage
-#            sed -i -- 's/\/home\/conway\///g' ./lcov.info
-#            cat ./lcov.info
-#            npm install coveralls
-#            cat ./lcov.info | ./node_modules/coveralls/bin/coveralls.js
+      - run:
+          name: Test and coverage
+          command: |
+            ./cc-test-reporter before-build
+            docker run --name coverage samisdat/ts-conway /bin/sh -c "npm run coverage"
+            docker cp coverage:/home/conway/coverage/lcov.info ./lcov.info
+            docker rm -f coverage
+            ./cc-test-reporter format-coverage --prefix /home/conway/ -t lcov ./lcov.info
+            ./cc-test-reporter upload-coverage
+            sed -i -- 's/\/home\/conway\///g' ./lcov.info
+            cat ./lcov.info
+            npm install coveralls
+            cat ./lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
       # deploy the image
       - run: docker push samisdat/ts-conway
