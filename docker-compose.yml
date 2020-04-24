@@ -3,9 +3,8 @@ services:
   conway:
     build: .
     ports:
-      - "80:80"
-      - "35729:35729"
+      - "8080:8080"
     volumes:
       - .:/home/conway/
       - /home/conway/node_modules
-    command: ["grunt", "run"]
+    command: ["npm", "start"]

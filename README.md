@@ -12,4 +12,4 @@ dockerized conway's game of live written in typescript
 
 # docker run
 
-docker run -it  -p 80:80 -p 35729:35729 samisdat/ts-conway:latest grunt run
+docker run -it  -p 8080:8080 samisdat/ts-conway:latest npm start

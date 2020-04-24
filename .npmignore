@@ -4,13 +4,11 @@ circle.yml
 copy-types.sh
 docker-compose.yml
 Dockerfile
-Gruntfile.js
 README.md
 tsconfig.json
 tslint.json
 .github/
 .idea/
-.nyc_output/
 .tscache/
 coverage/
 

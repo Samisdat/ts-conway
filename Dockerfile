@@ -1,5 +1,13 @@
-FROM node:8.14.0-alpine
+FROM node:14.0.0-alpine3.11
 MAINTAINER Samisdat bastian@pertz.eu
+
+# HTTP Proxy with local default as arg
+ARG HTTP_PROXY=http://139.7.95.74:8080
+# HTTP as env (overwritable on container start)
+ENV HTTP_PROXY ${HTTP_PROXY}
+ENV HTTPS_PROXY ${HTTP_PROXY}
+ENV http_proxy ${HTTP_PROXY}
+ENV https_proxy ${HTTP_PROXY}
 
 RUN mkdir -p /tmp/conway
 
@@ -7,7 +15,6 @@ WORKDIR /tmp/conway
 
 COPY package.json .
 
-RUN npm install -g grunt-cli
 RUN npm install
 
 RUN mkdir -p /home/conway
@@ -17,20 +24,12 @@ RUN mv /tmp/conway/package.json /home/conway/
 
 WORKDIR /home/conway
 
-COPY grunt/ grunt
 COPY src/ src
 COPY typescript/ typescript
 
-COPY .eslintignore .
-COPY .nycrc .
-COPY .eslintrc .
-COPY Gruntfile.js .
 COPY tsconfig.json .
-COPY tsdoc.json .
 COPY tslint.json .
 
-RUN touch last-change.txt
+CMD ["npm" , "run", "build"]
 
-CMD ["grunt" , "build"]
-
-EXPOSE 80 35729
+EXPOSE 8080
