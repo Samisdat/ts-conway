@@ -19,6 +19,7 @@ WORKDIR /home/conway
 COPY src/ src
 COPY typescript/ typescript
 
+COPY jest.config.js .
 COPY tsconfig.json .
 COPY tslint.json .
 
