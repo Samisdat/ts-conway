@@ -111,51 +111,35 @@ describe('Habitat', () => {
 
 });
 
-/*
+jest.useFakeTimers();
+
 describe('Habitat aging with interval', function() {
+
+    const patterns = new Patterns();
 
     let habitat = new Habitat(50);
 
-    let sandbox: SinonSandbox;
-
-    let clock: SinonFakeTimers;
-
-    let stubElapse: SinonStub;
-
-    before(function() {
-
-        sandbox = sinon.createSandbox();
-
-        stubElapse = sandbox.stub(habitat, 'elapse' as any);
-
-        clock = sinon.useFakeTimers();
-
-    });
-
-    after(function() {
-
-        clock = sinon.restore();
-
-        sandbox.restore();
-
-    });
+    habitat.seedPattern(patterns.get('blinker'));
 
     it('should increase position', function() {
 
-        sinon.assert.notCalled(stubElapse);
+
+        expect(habitat.get()).toStrictEqual([
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0)
+        ]);
 
         habitat.startAging();
 
-        sinon.assert.notCalled(stubElapse);
+        jest.advanceTimersByTime(51);
 
-        clock.tick(51);
-
-        sinon.assert.calledOnce(stubElapse);
-
-        clock.tick(51);
-
-        sinon.assert.calledTwice(stubElapse);
+        expect(habitat.get()).toStrictEqual([
+            new Position(0, 0),
+            new Position(0, -1),
+            new Position(0, 1)
+        ]);
 
     });
+
 });
-*/
