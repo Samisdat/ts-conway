@@ -28,7 +28,7 @@ describe('Cell', () => {
 
         let position = new Position(1, 2);
 
-        let cell;
+        let cell: Cell;
 
         beforeEach(() => {
 

@@ -92,7 +92,7 @@ export class Habitat {
 
         }
 
-        let createCellsAt = {};
+        let createCellsAt: Position[] = [];
 
         for (let cell of this.matrix.all()) {
 
@@ -103,25 +103,21 @@ export class Habitat {
                 let livingNeighbours = this.countLivingNeighbours(neighbour);
 
                 if (3 === livingNeighbours) {
-                    createCellsAt[neighbour.x + '-' + neighbour.y] = neighbour;
+                    createCellsAt.push(neighbour);
                 }
 
             }
         }
 
-        for (let pos in createCellsAt) {
-            let positionOfNewCell: Position = createCellsAt[pos];
+        for (let position of createCellsAt) {
 
-
-            this.matrix.add(new LivingCell(positionOfNewCell));
+            this.matrix.add(new LivingCell(position));
 
         }
 
     }
 
     private removeBodies(): void {
-
-        let cleaned: Cell[] = [];
 
         for (let cell of this.matrix.all()) {
             if (true !== cell.isAlive()) {

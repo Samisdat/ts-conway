@@ -156,7 +156,7 @@ export class PanControl extends ControlAbstract {
 
     public setPan(target: HTMLElement): void {
 
-        let mode = target.getAttribute('data-value');
+        let mode = target.getAttribute('data-value') as string;
 
         let panX = 0;
         let panY = 0;

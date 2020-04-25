@@ -19,11 +19,11 @@ export class Frontend {
 
     constructor() {
 
-        const element: HTMLElement = document.getElementById(HTML_ID);
+        const element: HTMLElement | null = document.getElementById(HTML_ID);
 
         console.log(element);
 
-        if (undefined === element) {
+        if (null === element) {
             throw new Error('no element with [id=' + HTML_ID + ']');
         }
 

@@ -3,7 +3,11 @@
 // http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 import {Pattern} from './pattern';
 
-const patterns = {
+interface PatternsInterface {
+    [index: string]: number[][];
+}
+
+const patterns:PatternsInterface = {
     // debug
     rotate: [
         [1, 0, 0, 0],

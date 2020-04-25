@@ -5,6 +5,14 @@ import {GridCell} from './Grid/GridCell';
 import {Position} from './Conway/position';
 import {CellTypesFactory} from './CellType/CellTypesFactory';
 
+interface MatrixCol {
+    [index: number]: number;
+}
+
+interface MatrixRow {
+    [index: number]: MatrixCol;
+}
+
 export class Grid {
 
     private readonly habitat: Habitat;
@@ -18,7 +26,7 @@ export class Grid {
 
     public readonly center: IntegerPosition;
 
-    private absoluteMap: {} = {};
+    private absoluteMap: MatrixRow = {};
 
     constructor(
         habitat: Habitat,
@@ -158,7 +166,7 @@ export class Grid {
         return this.cells;
     }
 
-    public getCell(col: number, row: number): GridCell {
+    public getCell(col: number, row: number): GridCell | undefined {
 
         for (const cell of this.cells) {
 
@@ -171,7 +179,7 @@ export class Grid {
 
     }
 
-    public getCellByAbsolutePosition(x: number, y: number): GridCell {
+    public getCellByAbsolutePosition(x: number, y: number): GridCell | undefined {
 
         if (undefined === this.absoluteMap[x]) {
             return undefined;

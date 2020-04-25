@@ -42,7 +42,7 @@ export class CanvasRenderer {
 
         const canvas = this.element.getElementsByTagName('canvas')[0] as HTMLCanvasElement;
 
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
         ctx.canvas.width = canvasWidth;
         ctx.canvas.height = canvasHeight;
 

@@ -45,8 +45,8 @@ export class ZoomControl extends ControlAbstract {
 
             const target = event.currentTarget as HTMLElement;
 
-            let action = target.getAttribute('data-action');
-            let value = target.getAttribute('data-value');
+            let action = target.getAttribute('data-action') as string;
+            let value = target.getAttribute('data-value') as string;
 
             if ('zoom' === action) {
                 this.setZoom(value);

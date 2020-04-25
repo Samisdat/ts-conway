@@ -10,7 +10,7 @@ export class CellMatrix {
 
     private matrix: CellMatrixInterface = {};
 
-    public get(position: Position): Cell {
+    public get(position: Position): Cell | undefined {
 
         if (undefined !== this.matrix[position.toString()]) {
             return this.matrix[position.toString()];
