@@ -166,32 +166,4 @@ export class Grid {
         return this.cells;
     }
 
-    public getCell(col: number, row: number): GridCell | undefined {
-
-        for (const cell of this.cells) {
-
-            if (cell.relativePosition.x === row && cell.relativePosition.y === col) {
-                return cell;
-            }
-        }
-
-        return undefined;
-
-    }
-
-    public getCellByAbsolutePosition(x: number, y: number): GridCell | undefined {
-
-        if (undefined === this.absoluteMap[x]) {
-            return undefined;
-        }
-
-        if (undefined === this.absoluteMap[x][y]) {
-            return undefined;
-        }
-
-        const index = this.absoluteMap[x][y];
-
-        return this.cells[index];
-    }
-
 }
