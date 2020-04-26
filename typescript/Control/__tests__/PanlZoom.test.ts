@@ -75,8 +75,8 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panLeft = controllWrap.getElementsByClassName('right')[0] as HTMLElement;
-        panLeft.click();
+        const panRight = controllWrap.getElementsByClassName('right')[0] as HTMLElement;
+        panRight.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
@@ -97,8 +97,8 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panLeft = controllWrap.getElementsByClassName('top')[0] as HTMLElement;
-        panLeft.click();
+        const panTop = controllWrap.getElementsByClassName('top')[0] as HTMLElement;
+        panTop.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
@@ -119,8 +119,8 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panLeft = controllWrap.getElementsByClassName('bottom')[0] as HTMLElement;
-        panLeft.click();
+        const panBottom = controllWrap.getElementsByClassName('bottom')[0] as HTMLElement;
+        panBottom.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
