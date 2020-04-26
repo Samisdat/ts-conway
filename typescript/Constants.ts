@@ -11,3 +11,5 @@ export const COLOR_CHECKERBOARD_LIGHT: string = '#EBE3CD';
 export const COLOR_LIVING: string = '#DB8555';
 
 export const COLOR_CENTER: string = '#ff0000';
+
+export const PAN_TWEEN_STEPS: number = 10;

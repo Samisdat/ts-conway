@@ -5,6 +5,7 @@ import { BoundPosition } from './boundposition';
 import { ControlAbstract } from './ControlAbstract';
 
 import { ZoomControl } from './ControlZoom';
+import {PAN_TWEEN_STEPS} from '../Constants';
 
 
 export class PanControl extends ControlAbstract {
@@ -27,7 +28,7 @@ export class PanControl extends ControlAbstract {
 
     private positionTween: TweenPosition = new TweenPosition(
         new Position(0, 0),
-        10
+        PAN_TWEEN_STEPS
     );
 
     private positionBound: BoundPosition = new BoundPosition(
