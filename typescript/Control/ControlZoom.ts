@@ -2,6 +2,7 @@ import { Tween } from '../Conway/tween';
 import { Bound } from './bound';
 
 import { ControlAbstract } from './ControlAbstract';
+import {ZOOM_TWEEN_STEPS} from '../Constants';
 
 export class ZoomControl extends ControlAbstract {
 
@@ -10,7 +11,7 @@ export class ZoomControl extends ControlAbstract {
     private zoomIn: HTMLElement;
     private zoomOut: HTMLElement;
 
-    private zoomTween: Tween = new Tween(1, 10);
+    private zoomTween: Tween = new Tween(1, ZOOM_TWEEN_STEPS);
 
     private zoomBound: Bound = new Bound(0.1, 2);
 
