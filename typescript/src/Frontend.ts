@@ -6,33 +6,25 @@ import {GridCreator} from '../Grid/GridCreator';
 import {Position} from '../Conway/position';
 import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
-import {CELL_WIDTH, DEBUG, GENERATION_DURATION, HTML_ID} from '../Constants';
+import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
 
 export class Frontend {
 
-    private wrapper: HTMLElement;
+    private element: HTMLElement;
     private control: MainControl;
 
     private habitat: Habitat;
 
     private canvasRenderer: CanvasRenderer;
 
-    constructor() {
-
-        const element: HTMLElement | null = document.getElementById(HTML_ID);
-
-        console.log(element);
-
-        if (null === element) {
-            throw new Error('no element with [id=' + HTML_ID + ']');
-        }
+    constructor(element: HTMLElement) {
 
         this.habitat = new Habitat(GENERATION_DURATION);
 
-        this.wrapper = element;
+        this.element = element;
 
         this.canvasRenderer = new CanvasRenderer(
-            this.wrapper,
+            this.element,
             DEBUG
         );
 
@@ -53,7 +45,7 @@ export class Frontend {
             let width = window.innerWidth,
                 height = window.innerHeight;
 
-            console.log('window.innerHeight: ', window.innerHeight, ' window.innerWidth: ', window.innerWidth);
+            // console.log('window.innerHeight: ', window.innerHeight, ' window.innerWidth: ', window.innerWidth);
         }
 
         window.onload = () => {
@@ -73,8 +65,8 @@ export class Frontend {
         const gunsAndEaters = patterns.get('guns_and_eaters');
 
         const gridCreator = new GridCreator(
-            this.wrapper.offsetWidth,
-            this.wrapper.offsetHeight,
+            this.element.offsetWidth,
+            this.element.offsetHeight,
             CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()
@@ -149,8 +141,8 @@ export class Frontend {
         this.control.update();
 
         const gridCreator = new GridCreator(
-            this.wrapper.offsetWidth,
-            this.wrapper.offsetHeight,
+            this.element.offsetWidth,
+            this.element.offsetHeight,
             CELL_WIDTH,
             this.control.getPan(),
             this.control.getZoom()

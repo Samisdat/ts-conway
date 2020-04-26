@@ -1,5 +1,3 @@
-export const HTML_ID: string = 'conway';
-
 export const CELL_WIDTH: number = 10;
 
 export const GENERATION_DURATION: number = 500;

@@ -2,28 +2,21 @@
  * @jest-environment jsdom
  */
 import {Frontend} from '../Frontend';
-import {HTML_ID} from '../../Constants';
 
 describe('Frontend', () => {
 
+    let element: HTMLElement;
+
+
     beforeAll(() => {
 
-        const element = document.createElement('div');
-        element.setAttribute('id', HTML_ID);
-
-        document.body.append(element);
-
-    });
-
-    afterAll(() => {
-
-        document.body.innerHTML = '';
+        element = document.createElement('div');
 
     });
 
     test('can be created', () => {
 
-        let frontend = new Frontend();
+        let frontend = new Frontend(element);
 
         expect(frontend).toBeInstanceOf(Frontend);
 
