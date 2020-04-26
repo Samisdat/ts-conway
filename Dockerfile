@@ -1,6 +1,14 @@
 FROM node:14.0.0-alpine3.11
 MAINTAINER Samisdat bastian@pertz.eu
 
+RUN apk add --no-cache \
+    build-base \
+    g++ \
+    cairo-dev \
+    jpeg-dev \
+    pango-dev \
+    giflib-dev
+
 RUN mkdir -p /tmp/conway
 
 WORKDIR /tmp/conway
