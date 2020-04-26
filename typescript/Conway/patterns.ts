@@ -7,7 +7,7 @@ interface PatternsInterface {
     [index: string]: number[][];
 }
 
-const patterns:PatternsInterface = {
+const patterns: PatternsInterface = {
     // debug
     rotate: [
         [1, 0, 0, 0],
