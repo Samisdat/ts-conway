@@ -1,5 +1,5 @@
-import {CellTypeCheckerboardDark} from '../CellTypeCheckerboardDark';
 import {COLOR_CHECKERBOARD_DARK} from '../../Constants';
+import {CellTypeCheckerboardDark} from 'CellType/CellTypeCheckerboardDark';
 
 describe('CellTypeCheckerboardDark', () => {
 

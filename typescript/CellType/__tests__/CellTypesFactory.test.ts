@@ -1,4 +1,4 @@
-import {CellTypesFactory} from '../CellTypesFactory';
+import {CellTypesFactory} from 'CellType/CellTypesFactory';
 import {CellTypeCheckerboardDark} from '../CellTypeCheckerboardDark';
 import {CellTypeCheckerboardLight} from '../CellTypeCheckerboardLight';
 import {CellTypeLiving} from '../CellTypeLiving';

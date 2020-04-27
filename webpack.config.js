@@ -50,6 +50,9 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.ts', '.js' ],
+        alias: {
+            CellType: srcPath('typecript/CellType'),
+        },
     },
     output: {
         filename: 'bundle.js',
