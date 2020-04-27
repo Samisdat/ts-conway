@@ -15,8 +15,8 @@ export class GridCreator {
 
     public readonly zoom: number;
 
-    private rows: number;
-    private cols: number;
+    private readonly rows: number;
+    private readonly cols: number;
 
     constructor(
         canvasWidth: number,
