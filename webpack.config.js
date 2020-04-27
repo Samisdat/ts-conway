@@ -1,5 +1,9 @@
 const path = require('path');
 
+const srcPath = (subdir) => {
+    return path.join(__dirname, "src", subdir);
+}
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin  = require('html-webpack-plugin');
 
