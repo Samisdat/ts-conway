@@ -6,6 +6,7 @@
   "main": "dist/conway.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
+    "build-cli": "webpack --config webpack.cli.config.js",
     "start": "webpack-dashboard -- webpack-dev-server",
     "test": "jest",
     "coverage": "jest --coverage",
@@ -36,5 +37,7 @@
     "webpack-dashboard": "^3.2.0",
     "webpack-dev-server": "^3.10.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "neo-blessed": "^0.2.0"
+  }
 }
