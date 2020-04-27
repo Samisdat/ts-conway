@@ -23,7 +23,7 @@ export class CellMatrix {
     public add(cell: Cell): void {
 
         if (undefined !== this.matrix[cell.position.toString()]) {
-            console.log('argh');
+            return;
         }
 
         this.matrix[cell.position.toString()] = cell;
@@ -51,6 +51,5 @@ export class CellMatrix {
         return cells;
 
     }
-
 
 }
