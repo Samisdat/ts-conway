@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Habitat snapshot: blinker-next 1`] = `
+OOO
+OXO
+OXO
+OXO
+OOO
+`;
+
+exports[`Habitat snapshot: blinker-start 1`] = `
+OOOOO
+OXXXO
+OOOOO
+`;
+
+exports[`Habitat snapshot: blinker-start 2`] = `
+OOOOO
+OXXXO
+OOOOO
+`;

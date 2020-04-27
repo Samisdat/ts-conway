@@ -2,10 +2,14 @@ import {Position} from '../position';
 import {Habitat} from '../habitat';
 import {Patterns} from '../patterns';
 
+import serializer from '../../../jest-serialize-conway';
 
 describe('Habitat', () => {
 
     beforeEach(function () {
+
+        expect.addSnapshotSerializer(serializer);
+
     });
 
     it('can be created', () => {
@@ -30,6 +34,25 @@ describe('Habitat', () => {
         expect(cells[0].x).toBe(0);
         expect(cells[0].y).toBe(1);
 
+    });
+
+    test('snapshot', () => {
+
+        let habitat = new Habitat(1000);
+        expect(habitat.getAllCells()).toStrictEqual([]);
+
+        const patterns = new Patterns();
+        habitat.seedPattern(patterns.get('blinker'));
+
+        expect(habitat).toMatchSnapshot('blinker-start');
+
+        habitat.elapse();
+
+        expect(habitat).toMatchSnapshot('blinker-next');
+
+        habitat.elapse();
+
+        expect(habitat).toMatchSnapshot('blinker-start');
     });
 
     it('elapse with one cell', () => {
