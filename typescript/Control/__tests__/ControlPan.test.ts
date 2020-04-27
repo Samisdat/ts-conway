@@ -62,7 +62,7 @@ describe('ControlPan', () => {
 
         const panLeft = controllWrap.getElementsByClassName('left')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             panLeft.click();
 
             for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
@@ -96,7 +96,7 @@ describe('ControlPan', () => {
 
         const panRight = controllWrap.getElementsByClassName('right')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             panRight.click();
 
             for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
@@ -129,7 +129,7 @@ describe('ControlPan', () => {
 
         const panTop = controllWrap.getElementsByClassName('top')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             panTop.click();
 
             for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
@@ -162,7 +162,7 @@ describe('ControlPan', () => {
 
         const panBottom = controllWrap.getElementsByClassName('bottom')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             panBottom.click();
 
             for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {

@@ -66,7 +66,7 @@ describe('ControlZoom', () => {
 
         const zoomIn = element.getElementsByClassName('zoom-in')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             zoomIn.click();
 
             for (let i = 0; i < ZOOM_TWEEN_STEPS; i += 1) {
@@ -86,7 +86,7 @@ describe('ControlZoom', () => {
 
         const zoomOut = element.getElementsByClassName('zoom-out')[0] as HTMLElement;
 
-        for(let x = 0; x < 10; x += 1){
+        for (let x = 0; x < 10; x += 1) {
             zoomOut.click();
 
             for (let i = 0; i < ZOOM_TWEEN_STEPS; i += 1) {
