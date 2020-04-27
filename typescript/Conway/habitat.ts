@@ -1,6 +1,5 @@
 import {Position} from './position';
 import {Cell} from './cell';
-import {LivingCell} from './livingcell';
 import {Pattern} from './pattern';
 import {CellMatrix} from './CellMatrix';
 

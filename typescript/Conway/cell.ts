@@ -4,7 +4,7 @@ export class Cell {
 
     public readonly position: Position;
 
-    private nowliving: Boolean = false;
+    private nowliving: Boolean = true;
 
     private thenLiving: Boolean = true;
 

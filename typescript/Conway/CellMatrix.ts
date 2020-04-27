@@ -1,5 +1,4 @@
 import {Cell} from './cell';
-import {LivingCell} from './livingcell';
 import {Position} from './position';
 
 interface CellMatrixInterface {

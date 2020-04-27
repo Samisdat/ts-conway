@@ -1,6 +1,6 @@
 import {CellMatrix} from '../CellMatrix';
-import {LivingCell} from '../livingcell';
 import {Position} from '../position';
+import {Cell} from '../cell';
 
 describe('CellMatrix', () => {
 
@@ -16,7 +16,7 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        const livingCell = new LivingCell(
+        const livingCell = new Cell(
             position
         );
 
@@ -35,7 +35,7 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        const livingCell = new LivingCell(
+        const livingCell = new Cell(
             position
         );
 
@@ -56,7 +56,7 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        const livingCell = new LivingCell(
+        const livingCell = new Cell(
             position
         );
 
