@@ -1,5 +1,4 @@
 import { CanvasRenderer } from '../canvas-renderer';
-import {MainControl} from '../Control/ControlMain';
 import {Habitat} from '../Conway/habitat';
 import {Patterns} from '../Conway/patterns';
 import {GridCreator} from '../Grid/GridCreator';
@@ -7,17 +6,21 @@ import {Position} from '../Conway/position';
 import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
 import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
+import {ControlInterface} from '../Control/ControlInterface';
 
 export class Frontend {
 
     private element: HTMLElement;
-    private control: MainControl;
+    private control: ControlInterface;
 
     private habitat: Habitat;
 
     private canvasRenderer: CanvasRenderer;
 
-    constructor(element: HTMLElement) {
+    constructor(
+        element: HTMLElement,
+        control: ControlInterface
+    ) {
 
         this.habitat = new Habitat(GENERATION_DURATION);
 
@@ -28,10 +31,7 @@ export class Frontend {
             DEBUG
         );
 
-        this.control = new MainControl(
-            element,
-            CELL_WIDTH
-        );
+        this.control = control;
 
         this.initialSeed();
 
