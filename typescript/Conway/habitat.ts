@@ -73,10 +73,10 @@ export class Habitat {
          * 4) Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
          *
          *  All rules dealing with living cells can be handled by kill all cells that don't have two or three neighbours
-         *  Thats the first loop
+         *  That's the first loop
          *
          *  To check if any death cells will be birth, we count the living neighbour of all cells neighbours
-         *  Thats the second loop
+         *  That's the second loop
          */
 
         for (let cell of this.matrix.all()) {
@@ -110,7 +110,7 @@ export class Habitat {
 
         for (let position of createCellsAt) {
 
-            this.matrix.add(new LivingCell(position));
+            this.matrix.add(new Cell(position));
 
         }
 
@@ -143,7 +143,7 @@ export class Habitat {
 
     public seed(position: Position): void {
 
-        this.matrix.add(new LivingCell(position));
+        this.matrix.add(new Cell(position));
     }
 
     public seedPattern(pattern: Pattern, moveBy = new Position(0, 0)): void {
@@ -152,7 +152,7 @@ export class Habitat {
 
         for (let position of positions) {
 
-            this.matrix.add(new LivingCell(position.move(moveBy)));
+            this.matrix.add(new Cell(position.move(moveBy)));
 
 
         }
