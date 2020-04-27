@@ -151,10 +151,6 @@ export class PanControl extends ControlAbstract {
         return this.positionTween.getCurrent();
     }
 
-    public overwritePan(position: Position): void {
-        this.positionTween.overwrite(position);
-    }
-
     public setPan(target: HTMLElement): void {
 
         let mode = target.getAttribute('data-value') as string;
