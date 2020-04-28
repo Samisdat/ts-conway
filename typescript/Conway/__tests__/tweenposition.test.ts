@@ -1,5 +1,5 @@
-import {TweenPosition} from '../tweenposition';
-import {Position} from '../position';
+import {Tweenposition} from '../Tweenposition';
+import {Position} from '../Position';
 
 describe('PositionTween', () => {
 
@@ -8,11 +8,11 @@ describe('PositionTween', () => {
 
     it('can be created', () => {
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(1, 1)
         );
 
-        expect(tween).toBeInstanceOf(TweenPosition);
+        expect(tween).toBeInstanceOf(Tweenposition);
         expect(tween.getStart()).toStrictEqual(new Position(1, 1));
         expect(tween.getCurrent()).toStrictEqual(new Position(1, 1));
         expect(tween.getEnd()).toStrictEqual(new Position(1, 1));
@@ -21,7 +21,7 @@ describe('PositionTween', () => {
 
     it('one step', () => {
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(0, 0)
         );
         tween.setEnd(
@@ -40,7 +40,7 @@ describe('PositionTween', () => {
 
     it('from and to is the same', () => {
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(0, 0)
         );
         tween.setEnd(
@@ -61,7 +61,7 @@ describe('PositionTween', () => {
 
         let steps = 10;
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(0, 0),
             steps
         );
@@ -91,7 +91,7 @@ describe('PositionTween', () => {
 
         let steps = 100;
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(0, 0),
             steps
         );
@@ -125,7 +125,7 @@ describe('PositionTween', () => {
         let positionC = new Position(-5, 5);
         let positionD = new Position(2, 3);
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             positionA
         );
 
@@ -138,7 +138,7 @@ describe('PositionTween', () => {
 
     it('overwrite', () => {
 
-        let tween = new TweenPosition(
+        let tween = new Tweenposition(
             new Position(0, 0)
         );
         tween.setEnd(

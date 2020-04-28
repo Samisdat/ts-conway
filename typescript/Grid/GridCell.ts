@@ -1,6 +1,6 @@
 import {IntegerPosition} from '../Conway/IntegerPosition';
 import {CellTypesFactory} from '../CellType/CellTypesFactory';
-import {Position} from '../Conway/position';
+import {Position} from '../Conway/Position';
 import {CellType} from '../CellType/CellType';
 import {CellUnkown} from '../CellType/CellUnkown';
 

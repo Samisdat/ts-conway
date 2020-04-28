@@ -1,6 +1,6 @@
 import { Canvas } from './canvas';
 import {Grid} from './Grid';
-import {Position} from './Conway/position';
+import {Position} from './Conway/Position';
 
 export class CanvasRenderer {
 

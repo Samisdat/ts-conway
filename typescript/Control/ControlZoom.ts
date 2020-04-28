@@ -1,4 +1,4 @@
-import { Tween } from '../Conway/tween';
+import { Tween } from '../Conway/Tween';
 import { Bound } from './bound';
 
 import { ControlAbstract } from './ControlAbstract';

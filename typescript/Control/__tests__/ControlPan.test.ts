@@ -5,7 +5,7 @@
 import {ZoomControl} from '../ControlZoom';
 import {PanControl} from '../ControlPan';
 import {CELL_WIDTH, PAN_TWEEN_STEPS, ZOOM_TWEEN_STEPS} from '../../Constants';
-import {Position} from '../../Conway/position';
+import {Position} from '../../Conway/Position';
 
 describe('ControlPan', () => {
 

@@ -1,4 +1,4 @@
-import { Position } from '../Conway/position';
+import { Position } from '../Conway/Position';
 
 import { ZoomControl } from './ControlZoom';
 

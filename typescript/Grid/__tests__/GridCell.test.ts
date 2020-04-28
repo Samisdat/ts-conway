@@ -1,4 +1,4 @@
-import {Position} from '../../Conway/position';
+import {Position} from '../../Conway/Position';
 import {GridCell} from '../GridCell';
 import {CellTypesFactory} from '../../CellType/CellTypesFactory';
 import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT} from '../../Constants';

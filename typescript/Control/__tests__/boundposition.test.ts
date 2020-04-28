@@ -1,5 +1,5 @@
 import {BoundPosition} from '../boundposition';
-import {Position} from '../../Conway/position';
+import {Position} from '../../Conway/Position';
 
 describe('PositionBound', () => {
 

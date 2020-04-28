@@ -1,5 +1,5 @@
 import {GridCreator} from '../GridCreator';
-import {Position} from '../../Conway/position';
+import {Position} from '../../Conway/Position';
 import {IntegerPosition} from '../../Conway/IntegerPosition';
 
 describe('GridCreator', () => {

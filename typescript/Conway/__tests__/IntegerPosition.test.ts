@@ -1,5 +1,5 @@
 import {IntegerPosition} from '../IntegerPosition';
-import {Position} from '../position';
+import {Position} from '../Position';
 
 describe('IntegerPosition', () => {
 

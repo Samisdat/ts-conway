@@ -1,8 +1,8 @@
 import { CanvasRenderer } from '../canvas-renderer';
 import {Habitat} from '../Conway/Habitat';
-import {Patterns} from '../Conway/patterns';
+import {Patterns} from '../Conway/Patterns';
 import {GridCreator} from '../Grid/GridCreator';
-import {Position} from '../Conway/position';
+import {Position} from '../Conway/Position';
 import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
 import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
@@ -88,11 +88,11 @@ export class Web {
 
         this.matrix.seedPattern(
             patterns.get('guns_and_eaters'),
-            new Position(0, 0)
+            new Position(0, -1)
         );
 
 
-        let move = new Position(0, 0);
+        let move = new Position(0, -1);
 
         if (0 === repeat % 2) {
             move = move.move(
@@ -115,7 +115,7 @@ export class Web {
 
         }
 
-        move = new Position(0, 0);
+        move = new Position(0, -1);
 
         if (0 === repeat % 2) {
             move = move.move(

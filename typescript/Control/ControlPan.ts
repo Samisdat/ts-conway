@@ -1,5 +1,5 @@
-import { Position } from '../Conway/position';
-import { TweenPosition } from '../Conway/tweenposition';
+import { Position } from '../Conway/Position';
+import { Tweenposition } from '../Conway/Tweenposition';
 import { BoundPosition } from './boundposition';
 
 import { ControlAbstract } from './ControlAbstract';
@@ -26,7 +26,7 @@ export class PanControl extends ControlAbstract {
     private top: HTMLElement;
     private bottom: HTMLElement;
 
-    private positionTween: TweenPosition = new TweenPosition(
+    private positionTween: Tweenposition = new Tweenposition(
         new Position(0, 0),
         PAN_TWEEN_STEPS
     );

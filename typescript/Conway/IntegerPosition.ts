@@ -1,4 +1,4 @@
-import {Position} from './position';
+import {Position} from './Position';
 import {Integer} from './Integer';
 
 export class IntegerPosition extends Position {

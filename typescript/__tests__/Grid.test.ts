@@ -1,7 +1,7 @@
 import {Habitat} from '../Conway/Habitat';
 import {GridDimension} from '../Grid/GridDimension';
 import {IntegerPosition} from '../Conway/IntegerPosition';
-import {Position} from '../Conway/position';
+import {Position} from '../Conway/Position';
 import {Grid} from '../Grid';
 import {CellMatrix} from '../Conway/CellMatrix';
 
