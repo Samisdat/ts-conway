@@ -1,9 +1,8 @@
-import {Cell} from './cell';
 import {Position} from './position';
 import {Pattern} from './pattern';
 
 interface CellMatrixInterface {
-    [index: string]: Cell;
+    [index: string]: Position;
 }
 
 export class CellMatrix {
@@ -16,52 +15,38 @@ export class CellMatrix {
 
     }
 
-    public get(position: Position): Cell | undefined {
+    public add(position: Position): void {
 
-        if (undefined !== this.matrix[position.toString()]) {
-            return this.matrix[position.toString()];
-        }
-
-        return undefined;
-
-
-    }
-
-    public add(cell: Cell): void {
-
-        if (undefined !== this.matrix[cell.position.toString()]) {
+        if (true === this.has(position)) {
             return;
         }
 
-        this.matrix[cell.position.toString()] = cell;
+        this.matrix[position.toString()] = position;
 
     }
 
     public remove(position: Position): void {
 
-        if (undefined !== this.matrix[position.toString()]) {
-            delete this.matrix[position.toString()];
+        if (false === this.has(position)) {
+            return;
         }
+
+        delete this.matrix[position.toString()];
 
     }
 
-    public all(): Cell[] {
+    public all(): Position[] {
 
-        const cells: Cell[] = [];
+        const positions: Position[] = [];
 
         for (const index in this.matrix) {
 
-            cells.push(this.matrix[index]);
+            positions.push(this.matrix[index]);
 
         }
 
-        return cells;
+        return positions;
 
-    }
-
-    public seed(position: Position): void {
-
-        this.add(new Cell(position));
     }
 
     public seedPattern(pattern: Pattern, moveBy = new Position(0, 0)): void {
@@ -70,7 +55,7 @@ export class CellMatrix {
 
         for (let position of positions) {
 
-            this.add(new Cell(position.move(moveBy)));
+            this.add(position.move(moveBy));
 
         }
 

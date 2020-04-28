@@ -1,6 +1,5 @@
 import {CellMatrix} from '../CellMatrix';
 import {Position} from '../position';
-import {Cell} from '../cell';
 import {Patterns} from '../patterns';
 
 describe('CellMatrix', () => {
@@ -21,43 +20,11 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        const livingCell = new Cell(
-            position
-        );
-
-        expect(cellMatrix.get(position)).toBeUndefined();
-
-        cellMatrix.add(livingCell);
-
-        expect(cellMatrix.get(position)).toBe(livingCell);
-
-    });
-
-    test('get tell if having a cell at position', () => {
-
-        const position = new Position(0, 0);
-
         expect(cellMatrix.has(position)).toBeFalsy();
 
-        cellMatrix.seed(position);
+        cellMatrix.add(position);
 
         expect(cellMatrix.has(position)).toBeTruthy();
-
-    });
-
-    test('can seed at position', () => {
-
-        const position = new Position(0, 0);
-
-        expect(cellMatrix.get(position)).toBeUndefined();
-
-        cellMatrix.seed(position);
-
-        const livingCell = new Cell(
-            position
-        );
-
-        expect(cellMatrix.get(position)).toStrictEqual(livingCell);
 
     });
 
@@ -65,15 +32,11 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        cellMatrix.seed(position);
-
-        const cell = new Cell(
-            position
-        );
+        cellMatrix.add(position);
 
         expect(cellMatrix.all().length).toBe(1);
 
-        cellMatrix.add(cell);
+        cellMatrix.add(position);
 
         expect(cellMatrix.all().length).toBe(1);
 
@@ -83,13 +46,13 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        cellMatrix.seed(position);
+        cellMatrix.add(position);
 
-        expect(cellMatrix.get(position)).toBeInstanceOf(Cell);;
+        expect(cellMatrix.has(position)).toBeTruthy();
 
         cellMatrix.remove(position);
 
-        expect(cellMatrix.get(position)).toBeUndefined();
+        expect(cellMatrix.has(position)).toBeFalsy();
 
     });
 
@@ -97,11 +60,11 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        expect(cellMatrix.get(position)).toBeUndefined();;
+        expect(cellMatrix.has(position)).toBeFalsy();
 
         cellMatrix.remove(position);
 
-        expect(cellMatrix.get(position)).toBeUndefined();
+        expect(cellMatrix.has(position)).toBeFalsy();
 
     });
 
@@ -111,11 +74,7 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        const livingCell = new Cell(
-            position
-        );
-
-        cellMatrix.add(livingCell);
+        cellMatrix.add(position);
 
         expect(cellMatrix.all().length).toBe(1);
 
@@ -126,9 +85,7 @@ describe('CellMatrix', () => {
         const patterns = new Patterns();
         cellMatrix.seedPattern(patterns.get('blinker'));
 
-        expect(cellMatrix.all().map((cell: Cell) =>{
-            return cell.position;
-        })).toStrictEqual([
+        expect(cellMatrix.all()).toStrictEqual([
             new Position(-1, 0),
             new Position(0, 0),
             new Position(1, 0)
@@ -144,9 +101,7 @@ describe('CellMatrix', () => {
             new Position(0, 1)
         );
 
-        expect(cellMatrix.all().map((cell: Cell) =>{
-            return cell.position;
-        })).toStrictEqual([
+        expect(cellMatrix.all()).toStrictEqual([
             new Position(-1, 1),
             new Position(0, 1),
             new Position(1, 1)

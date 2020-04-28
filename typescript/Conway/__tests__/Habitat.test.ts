@@ -4,7 +4,6 @@ import {Patterns} from '../patterns';
 
 import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '../CellMatrix';
-import {Cell} from '../cell';
 
 describe('Habitat', () => {
 
@@ -29,27 +28,9 @@ describe('Habitat', () => {
 
     });
 
-    test('seed a cell', () => {
-
-        cellMatrix.seed(
-            new Position(0, 1)
-        );
-
-        let habitat = new Habitat(
-            cellMatrix,
-            1000
-        );
-
-        let cells = habitat.getAllCells();
-        expect(cells.length).toBe(1);
-        expect(cells[0].x).toBe(0);
-        expect(cells[0].y).toBe(1);
-
-    });
-
     test('a not existing cell is not alive', () => {
 
-        cellMatrix.seed(
+        cellMatrix.add(
             new Position(0, 1)
         );
 
@@ -77,20 +58,20 @@ describe('Habitat', () => {
             1000
         );
 
-        expect(habitat).toMatchSnapshot('blinker-start');
+        expect(habitat).toMatchSnapshot();
 
         habitat.elapse();
 
-        expect(habitat).toMatchSnapshot('blinker-next');
+        expect(habitat).toMatchSnapshot();
 
         habitat.elapse();
 
-        expect(habitat).toMatchSnapshot('blinker-start');
+        expect(habitat).toMatchSnapshot();
     });
 
     test('elapse with one cell', () => {
 
-        cellMatrix.seed(
+        cellMatrix.add(
             new Position(0, 1)
         );
 
@@ -105,13 +86,13 @@ describe('Habitat', () => {
 
     test('elapse with a blinker', () => {
 
-        cellMatrix.seed(
+        cellMatrix.add(
             new Position(0, 0)
         );
-        cellMatrix.seed(
+        cellMatrix.add(
             new Position(0, 1)
         );
-        cellMatrix.seed(
+        cellMatrix.add(
             new Position(0, 2)
         );
 
