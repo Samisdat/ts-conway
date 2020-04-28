@@ -1,7 +1,9 @@
 
 // taken from
 // http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
-import {Pattern} from './pattern';
+import {Pattern} from './Pattern';
+import {CellMatrix} from './CellMatrix';
+import {Position} from './Position';
 
 interface PatternsInterface {
     [index: string]: number[][];
@@ -172,7 +174,33 @@ export class Patterns {
             throw new Error('unkown pattern ' + name);
         }
 
-        return new Pattern(name, patterns[name]);
+        const matrix = new CellMatrix();
+
+        const height = patterns[name].length;
+        const width = patterns[name][0].length;
+
+        const startX = -1 * Math.floor(width / 2);
+        let y = -1 * Math.floor(height / 2);
+
+        for (let row = patterns[name].length - 1;  row >= 0 ; row -= 1) {
+
+            let x = startX;
+            y += 1;
+
+            for (let col = 0;  col < patterns[name][row].length; col += 1) {
+
+                if (1 === patterns[name][row][col]) {
+                    const position = new Position(x, y);
+                    matrix.add(position);
+                }
+
+                x += 1;
+
+            }
+
+        }
+
+        return new Pattern(name, matrix);
 
     }
 

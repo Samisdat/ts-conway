@@ -1,6 +1,6 @@
-import {Position} from '../position';
+import {Position} from '../Position';
 import {Habitat} from '../Habitat';
-import {Patterns} from '../patterns';
+import {Patterns} from '../Patterns';
 
 import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '../CellMatrix';
@@ -135,7 +135,7 @@ describe('Habitat', () => {
 
 jest.useFakeTimers();
 
-describe('Habitat aging with interval', function() {
+describe.skip('Habitat aging with interval', function() {
 
     let habitat: Habitat;
 

@@ -1,21 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Habitat snapshot 1`] = `
-OOOOO
-OXXXO
-OOOOO
+XXX
+OOO
 `;
 
 exports[`Habitat snapshot 2`] = `
-OOO
-OXO
-OXO
-OXO
-OOO
+X
+X
+X
 `;
 
 exports[`Habitat snapshot 3`] = `
-OOOOO
-OXXXO
-OOOOO
+XXX
+OOO
 `;

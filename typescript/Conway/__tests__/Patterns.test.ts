@@ -1,13 +1,15 @@
-import {Patterns} from '../patterns';
+import {Patterns} from '../Patterns';
 import {Position} from '../Position';
-import {Pattern} from '../pattern';
+import {Pattern} from '../Pattern';
+import serializer from '../../../jest-serialize-conway';
 
 describe('Patterns', () => {
 
     beforeEach(function () {
+        expect.addSnapshotSerializer(serializer);
     });
 
-    it('can be created', () => {
+    test('can be created', () => {
 
         let patterns = new Patterns();
 
@@ -15,7 +17,7 @@ describe('Patterns', () => {
 
     });
 
-    it('construct fails with unkown pattern', () => {
+    test('construct fails with unkown pattern', () => {
 
         let createPattern = () => {
 
@@ -25,26 +27,42 @@ describe('Patterns', () => {
 
         expect(createPattern).toThrowErrorMatchingSnapshot();
 
-
-});
-
-    it('can get blinker', () => {
-
-        let patterns = new Patterns();
-
-        let blinker = patterns.get('blinker');
-
-        expect(blinker).toBeInstanceOf(Pattern);
-
-        expect(blinker.get()).toStrictEqual(
-            [
-                new Position(-1, 0),
-                new Position(0, 0),
-                new Position(1, 0)
-            ]
-        );
-
-
     });
+
+    const allPatterns = [
+        'rotate',
+        'block',
+        'beehive',
+        'loaf',
+        'boat',
+        'blinker',
+        'toad',
+        'beacon',
+        'pulsar',
+        'revolver',
+        'glider',
+        'lightweight_spaceship',
+        'r_pentomino',
+        'diehard',
+        'acorn',
+        'gosper_glider_gun',
+        'exhibit_infinite_growth_1',
+        'glider_eater',
+        'guns_and_eaters',
+    ];
+
+    for(const pattern of allPatterns){
+
+        test('pattern ' + pattern, () => {
+
+            let patterns = new Patterns();
+
+            let blinker = patterns.get(pattern);
+
+            expect(blinker.getMatrix()).toMatchSnapshot();
+
+        });
+
+    }
 
 });
