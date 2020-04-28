@@ -51,7 +51,7 @@ export class Pattern {
 
         const mirror = new CellMatrix();
 
-        for(const position of this.matrix.all()){
+        for (const position of this.matrix.all()) {
 
             mirror.add(
                 new Position(

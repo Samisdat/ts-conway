@@ -51,7 +51,7 @@ describe('Patterns', () => {
         'guns_and_eaters',
     ];
 
-    for(const pattern of allPatterns){
+    for (const pattern of allPatterns) {
 
         test('pattern ' + pattern, () => {
 

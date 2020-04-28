@@ -66,18 +66,18 @@ export class CellMatrix {
 
     }
 
-    public width(): number{
+    public width(): number {
 
         let left = 0;
         let right = 0;
 
-        for(let position of this.all()) {
+        for (let position of this.all()) {
 
-            if(position.x < left){
+            if (position.x < left) {
                 left = position.x;
             }
 
-            if(position.x > right){
+            if (position.x > right) {
                 right = position.x;
             }
 
@@ -92,12 +92,12 @@ export class CellMatrix {
 
     }
 
-    public height(): number{
+    public height(): number {
 
         let top = 0;
         let bottom = 0;
 
-        for(let position of this.all()) {
+        for (let position of this.all()) {
 
             if (position.y < bottom) {
                 bottom = position.y;
