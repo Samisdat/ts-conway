@@ -1,11 +1,11 @@
 import './style.scss';
 
-import { Frontend } from '../typescript/src/Frontend';
+import { Web } from '../typescript/Frontend/Web';
 import {NoControl} from '../typescript/Control/ControlNo';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    new Frontend(
+    new Web(
         document.getElementById('conway') as HTMLElement,
         new NoControl()
     );
