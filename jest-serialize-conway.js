@@ -29,11 +29,12 @@ module.exports = {
 
     }
 
+    /*
     left = left -1;
     right = right +1;
     top = top  + 1;
     bottom = bottom -1;
-
+    */
     let output = '';
 
     for(let y = top; y >= bottom; y -= 1){
