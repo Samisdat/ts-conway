@@ -1,5 +1,5 @@
 import {Position} from '../position';
-import {Habitat} from '../habitat';
+import {Habitat} from '../Habitat';
 import {Patterns} from '../patterns';
 
 import serializer from '../../../jest-serialize-conway';
