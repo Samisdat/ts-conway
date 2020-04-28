@@ -58,15 +58,15 @@ describe('Habitat', () => {
             1000
         );
 
-        expect(habitat).toMatchSnapshot();
+        expect(habitat.getMatrix()).toMatchSnapshot();
 
         habitat.elapse();
 
-        expect(habitat).toMatchSnapshot();
+        expect(habitat.getMatrix()).toMatchSnapshot();
 
         habitat.elapse();
 
-        expect(habitat).toMatchSnapshot();
+        expect(habitat.getMatrix()).toMatchSnapshot();
     });
 
     test('elapse with one cell', () => {

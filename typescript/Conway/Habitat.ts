@@ -5,7 +5,7 @@ export class Habitat {
 
     private readonly generationDuration: number;
 
-    public matrix: CellMatrix;
+    private matrix: CellMatrix;
 
     constructor(
         matrix: CellMatrix,
@@ -127,6 +127,10 @@ export class Habitat {
 
         return this.matrix.all();
 
+    }
+
+    public getMatrix(): CellMatrix{
+        return this.matrix;
     }
 
 }
