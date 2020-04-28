@@ -6,7 +6,7 @@ import {NoControl} from '../../Control/ControlNo';
 import {MainControl} from '../../Control/ControlMain';
 import {CELL_WIDTH} from '../../Constants';
 
-describe('Frontend', () => {
+describe('Frontend/Web', () => {
 
     let element: HTMLElement;
 

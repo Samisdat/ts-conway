@@ -3,30 +3,41 @@ import {Habitat} from '../Habitat';
 import {Patterns} from '../patterns';
 
 import serializer from '../../../jest-serialize-conway';
+import {CellMatrix} from '../CellMatrix';
+import {Cell} from '../cell';
 
 describe('Habitat', () => {
+
+    let cellMatrix: CellMatrix;
 
     beforeEach(function () {
 
         expect.addSnapshotSerializer(serializer);
 
+        cellMatrix = new CellMatrix();
+
     });
 
-    it('can be created', () => {
+    test('can be created', () => {
 
-        let habitat = new Habitat(1000);
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
+        );
 
         expect(habitat).toBeInstanceOf(Habitat);
 
     });
 
-    it('seed a cell', () => {
+    test('seed a cell', () => {
 
-        let habitat = new Habitat(1000);
-        expect(habitat.getAllCells()).toStrictEqual([]);
-
-        habitat.seed(
+        cellMatrix.seed(
             new Position(0, 1)
+        );
+
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
         );
 
         let cells = habitat.getAllCells();
@@ -36,13 +47,35 @@ describe('Habitat', () => {
 
     });
 
+    test('a not existing cell is not alive', () => {
+
+        cellMatrix.seed(
+            new Position(0, 1)
+        );
+
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
+        );
+
+        expect(habitat.getAllCells().length).toBe(1);
+
+        habitat.elapse();
+
+        expect(habitat.getAllCells().length).toBe(0);
+
+    });
+
+
     test('snapshot', () => {
 
-        let habitat = new Habitat(1000);
-        expect(habitat.getAllCells()).toStrictEqual([]);
-
         const patterns = new Patterns();
-        habitat.seedPattern(patterns.get('blinker'));
+        cellMatrix.seedPattern(patterns.get('blinker'));
+
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
+        );
 
         expect(habitat).toMatchSnapshot('blinker-start');
 
@@ -55,33 +88,36 @@ describe('Habitat', () => {
         expect(habitat).toMatchSnapshot('blinker-start');
     });
 
-    it('elapse with one cell', () => {
+    test('elapse with one cell', () => {
 
-        let habitat = new Habitat(1000);
-        expect(habitat.getAllCells()).toStrictEqual([]);
-
-        habitat.seed(
+        cellMatrix.seed(
             new Position(0, 1)
+        );
+
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
         );
 
         expect(habitat.get()).toStrictEqual([new Position(0, 1)]);
 
     });
 
-    it('elapse with a blinker', () => {
+    test('elapse with a blinker', () => {
 
-        let habitat = new Habitat(1000);
-        expect(habitat.get()).toStrictEqual([]);
-        expect(habitat.getAllCells()).toStrictEqual([]);
-
-        habitat.seed(
+        cellMatrix.seed(
             new Position(0, 0)
         );
-        habitat.seed(
+        cellMatrix.seed(
             new Position(0, 1)
         );
-        habitat.seed(
+        cellMatrix.seed(
             new Position(0, 2)
+        );
+
+        let habitat = new Habitat(
+            cellMatrix,
+            1000
         );
 
         expect(habitat.get()).toStrictEqual([
@@ -114,38 +150,31 @@ describe('Habitat', () => {
 
     });
 
-    it('seed a pattern', () => {
-
-        const patterns = new Patterns();
-
-        let habitat = new Habitat(1000);
-        expect(habitat.get()).toStrictEqual([]);
-        expect(habitat.getAllCells()).toStrictEqual([]);
-
-        habitat.seedPattern(patterns.get('blinker'));
-
-        expect(habitat.get()).toStrictEqual([
-            new Position(-1, 0),
-            new Position(0, 0),
-            new Position(1, 0)
-        ]);
-
-    });
-
 });
 
 jest.useFakeTimers();
 
 describe('Habitat aging with interval', function() {
 
-    const patterns = new Patterns();
+    let habitat: Habitat;
 
-    let habitat = new Habitat(50);
+    beforeEach(() => {
 
-    habitat.seedPattern(patterns.get('blinker'));
+        const patterns = new Patterns();
+
+        const cellMatrix = new CellMatrix();
+
+        cellMatrix.seedPattern(patterns.get('blinker'));
+
+        habitat = new Habitat(
+            cellMatrix,
+            50
+        );
+
+    });
+
 
     it('should increase position', function() {
-
 
         expect(habitat.get()).toStrictEqual([
             new Position(-1, 0),

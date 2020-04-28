@@ -1,15 +1,22 @@
-import {Habitat} from '../Conway/habitat';
+import {Habitat} from '../Conway/Habitat';
 import {GridDimension} from '../Grid/GridDimension';
 import {IntegerPosition} from '../Conway/IntegerPosition';
 import {Position} from '../Conway/position';
 import {Grid} from '../Grid';
+import {CellMatrix} from '../Conway/CellMatrix';
 
 describe('Grid', () => {
 
     let habitat: Habitat;
+
     beforeAll(() => {
 
-        habitat = new Habitat(1000);
+        const cellMatrix = new CellMatrix();
+
+        habitat = new Habitat(
+            cellMatrix,
+            1000
+        );
 
     });
 

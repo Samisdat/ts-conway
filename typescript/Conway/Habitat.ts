@@ -1,15 +1,19 @@
 import {Position} from './position';
 import {Cell} from './cell';
-import {Pattern} from './pattern';
 import {CellMatrix} from './CellMatrix';
 
 export class Habitat {
 
-    private generationDuration: number;
+    private readonly generationDuration: number;
 
-    private matrix: CellMatrix = new CellMatrix();
+    public readonly matrix: CellMatrix;
 
-    constructor(generationDuration: number) {
+    constructor(
+        matrix: CellMatrix,
+        generationDuration: number
+    ) {
+
+        this.matrix = matrix;
 
         this.generationDuration = generationDuration;
 
@@ -28,21 +32,14 @@ export class Habitat {
 
     private isLiving(position: Position): Boolean {
 
-        let isLiving = false;
-
-        for (let cell of this.matrix.all()) {
-
-            if (cell.x === position.x && cell.y === position.y) {
-
-                if (true === cell.isAlive()) {
-                    isLiving = true;
-                }
-
-                break;
-            }
+        if (false === this.matrix.has(position)) {
+            return false;
         }
 
-        return isLiving;
+        const cell = this.matrix.get(position) as Cell;
+
+        return cell.isAlive();
+
     }
 
     private countLivingNeighbours(position: Position): number {
@@ -52,6 +49,7 @@ export class Habitat {
         let neighbours: Position[] = position.getNeighbours();
 
         for (let neighbour of neighbours) {
+
             let isLiving = this.isLiving(neighbour);
 
             if (true === isLiving) {
@@ -101,7 +99,7 @@ export class Habitat {
 
                 let livingNeighbours = this.countLivingNeighbours(neighbour);
 
-                if (3 === livingNeighbours) {
+                if (3 === livingNeighbours && false === this.matrix.has(neighbour)) {
                     createCellsAt.push(neighbour);
                 }
 
@@ -118,11 +116,18 @@ export class Habitat {
 
     private removeBodies(): void {
 
+        let numberLivingCells = 0;
+
         for (let cell of this.matrix.all()) {
             if (true !== cell.isAlive()) {
-                this.matrix.remove(cell);
+                this.matrix.remove(cell.position);
+            }
+            else{
+                numberLivingCells += 1;
             }
         }
+
+        console.log(numberLivingCells);
 
     }
 
@@ -140,25 +145,6 @@ export class Habitat {
 
     }
 
-
-    public seed(position: Position): void {
-
-        this.matrix.add(new Cell(position));
-    }
-
-    public seedPattern(pattern: Pattern, moveBy = new Position(0, 0)): void {
-
-        const positions = pattern.get();
-
-        for (let position of positions) {
-
-            this.matrix.add(new Cell(position.move(moveBy)));
-
-
-        }
-
-    }
-
     public getAllCells(): Cell[] {
 
         return this.matrix.all();
@@ -167,15 +153,10 @@ export class Habitat {
 
     get(): Position[] {
 
-        let living: Position[] = [];
+        return this.matrix.all().map((cell: Cell) => {
+            return cell.position;
+        });
 
-        for (let cell of this.matrix.all()) {
-            if (true === cell.isAlive()) {
-                living.push(cell.position);
-            }
-        }
-
-        return living;
     }
 
 }

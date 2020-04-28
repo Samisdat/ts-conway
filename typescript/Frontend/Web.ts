@@ -1,5 +1,5 @@
 import { CanvasRenderer } from '../canvas-renderer';
-import {Habitat} from '../Conway/habitat';
+import {Habitat} from '../Conway/Habitat';
 import {Patterns} from '../Conway/patterns';
 import {GridCreator} from '../Grid/GridCreator';
 import {Position} from '../Conway/position';
@@ -7,12 +7,14 @@ import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
 import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
 import {ControlInterface} from '../Control/ControlInterface';
+import {CellMatrix} from '../Conway/CellMatrix';
 
-export class Frontend {
+export class Web {
 
     private element: HTMLElement;
     private control: ControlInterface;
 
+    private matrix: CellMatrix;
     private habitat: Habitat;
 
     private canvasRenderer: CanvasRenderer;
@@ -22,7 +24,11 @@ export class Frontend {
         control: ControlInterface
     ) {
 
-        this.habitat = new Habitat(GENERATION_DURATION);
+        this.matrix = new CellMatrix();
+        this.habitat = new Habitat(
+            this.matrix,
+            GENERATION_DURATION
+        );
 
         this.element = element;
 
@@ -36,8 +42,6 @@ export class Frontend {
         this.initialSeed();
 
         this.loop();
-
-
 
         this.habitat.startAging();
 
@@ -82,7 +86,7 @@ export class Frontend {
 
         let patternsPerSide = Math.floor(repeat / 2);
 
-        this.habitat.seedPattern(
+        this.matrix.seedPattern(
             patterns.get('guns_and_eaters'),
             new Position(0, 0)
         );
@@ -104,7 +108,7 @@ export class Frontend {
                 )
             );
 
-            this.habitat.seedPattern(
+            this.matrix.seedPattern(
                 patterns.get('guns_and_eaters'),
                 move
             );
@@ -127,7 +131,7 @@ export class Frontend {
                 )
             );
 
-            this.habitat.seedPattern(
+            this.matrix.seedPattern(
                 patterns.get('guns_and_eaters'),
                 move
             );

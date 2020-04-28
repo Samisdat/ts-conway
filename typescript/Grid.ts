@@ -1,4 +1,4 @@
-import {Habitat} from './Conway/habitat';
+import {Habitat} from './Conway/Habitat';
 import {GridDimension} from './Grid/GridDimension';
 import {IntegerPosition} from './Conway/IntegerPosition';
 import {GridCell} from './Grid/GridCell';
