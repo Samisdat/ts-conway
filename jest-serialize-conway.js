@@ -1,7 +1,7 @@
 module.exports = {
   serialize(val, config, indentation, depth, refs, printer) {
 
-    const allCells = val.getAllCells();
+    const allCells = val.all();
 
     let top = 0;
     let bottom = 0;
@@ -60,8 +60,7 @@ module.exports = {
 
   test(val) {
 
-    return val && ('Habitat' === val.constructor.name);
+    return val && ('CellMatrix' === val.constructor.name);
 
-    return val && val.hasOwnProperty('foo');
   },
 };
