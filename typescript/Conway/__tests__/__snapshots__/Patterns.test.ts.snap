@@ -1,16 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Patterns can get corner3 1`] = `
-XOO
-XOO
-XXX
-`;
-
-exports[`Patterns can get corner3 2`] = `
-XO
-XX
-`;
-
 exports[`Patterns construct fails with unkown pattern 1`] = `"unkown pattern foobar"`;
 
 exports[`Patterns pattern acorn 1`] = `
