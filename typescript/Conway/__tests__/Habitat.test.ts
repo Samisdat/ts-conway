@@ -135,7 +135,7 @@ describe('Habitat', () => {
 
 jest.useFakeTimers();
 
-describe.skip('Habitat aging with interval', function() {
+describe('Habitat aging with interval', function() {
 
     let habitat: Habitat;
 
@@ -155,23 +155,15 @@ describe.skip('Habitat aging with interval', function() {
     });
 
 
-    it('should increase position', function() {
+    test('should increase position', function() {
 
-        expect(habitat.get()).toStrictEqual([
-            new Position(-1, 0),
-            new Position(0, 0),
-            new Position(1, 0)
-        ]);
+        expect(habitat.getMatrix()).toMatchSnapshot();
 
         habitat.startAging();
 
         jest.advanceTimersByTime(51);
 
-        expect(habitat.get()).toStrictEqual([
-            new Position(0, 0),
-            new Position(0, -1),
-            new Position(0, 1)
-        ]);
+        expect(habitat.getMatrix()).toMatchSnapshot();
 
     });
 
