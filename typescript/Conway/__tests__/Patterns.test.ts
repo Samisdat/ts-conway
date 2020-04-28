@@ -1,5 +1,5 @@
 import {Patterns} from '../patterns';
-import {Position} from '../position';
+import {Position} from '../Position';
 import {Pattern} from '../pattern';
 
 describe('Patterns', () => {

@@ -1,5 +1,5 @@
 import {Tween} from './tween';
-import {Position} from './position';
+import {Position} from './Position';
 
 export class TweenPosition {
 
