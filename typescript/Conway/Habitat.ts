@@ -129,7 +129,7 @@ export class Habitat {
 
     }
 
-    public getMatrix(): CellMatrix{
+    public getMatrix(): CellMatrix {
         return this.matrix;
     }
 
