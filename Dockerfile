@@ -30,6 +30,7 @@ COPY typescript/ typescript
 COPY jest.config.js .
 COPY tsconfig.json .
 COPY tslint.json .
+COPY jest-serialize-conway.js .
 
 CMD ["npm" , "run", "build"]
 
