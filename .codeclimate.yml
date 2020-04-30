@@ -20,4 +20,4 @@ ratings:
   - "**.py"
   - "**.rb"
 exclude_paths:
-- tests/
+  - "**/__tests__/"
