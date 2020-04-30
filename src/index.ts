@@ -14,7 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     new Web(
         element,
         guns_and_eaters,
-        new NoControl()
+        new MainControl(
+            element,
+            CELL_WIDTH
+        )
     );
 
 });
