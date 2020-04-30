@@ -1,6 +1,14 @@
 FROM node:14.0.0-alpine3.11
 MAINTAINER Samisdat bastian@pertz.eu
 
+# HTTP Proxy with local default as arg
+ARG HTTP_PROXY=http://139.7.95.74:8080
+# HTTP as env (overwritable on container start)
+ENV HTTP_PROXY ${HTTP_PROXY}
+ENV HTTPS_PROXY ${HTTP_PROXY}
+ENV http_proxy ${HTTP_PROXY}
+ENV https_proxy ${HTTP_PROXY}
+
 RUN apk add --no-cache \
     build-base \
     g++ \

@@ -7,7 +7,7 @@ engines:
       - typescript
       - javascript
   eslint:
-    enabled: false
+    enabled: true
   fixme:
     enabled: true
 ratings:
