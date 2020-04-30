@@ -9,6 +9,9 @@ import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
 import {ControlInterface} from '../Control/ControlInterface';
 import {CellMatrix} from '../Conway/CellMatrix';
 
+
+export type SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => void;
+
 export class Web {
 
     private element: HTMLElement;
@@ -21,6 +24,7 @@ export class Web {
 
     constructor(
         element: HTMLElement,
+        seeder: SeedFunction,
         control: ControlInterface
     ) {
 
@@ -39,7 +43,7 @@ export class Web {
 
         this.control = control;
 
-        this.initialSeed();
+        this.initialSeed(seeder);
 
         this.loop();
 
@@ -63,10 +67,7 @@ export class Web {
 
     }
 
-    private initialSeed(): void {
-
-        const patterns = new Patterns();
-        const gunsAndEaters = patterns.get('guns_and_eaters');
+    private initialSeed(seeder: SeedFunction): void {
 
         const gridCreator = new GridCreator(
             this.element.offsetWidth,
@@ -76,67 +77,7 @@ export class Web {
             this.control.getZoom()
         );
 
-        const patternGutter = 2;
-
-        let repeat = Math.floor(gridCreator.getRows() / (gunsAndEaters.getWidth() + patternGutter ));
-
-        if (0 === repeat % 2) {
-            repeat += 1;
-        }
-
-        let patternsPerSide = Math.floor(repeat / 2);
-
-        this.matrix.seedPattern(
-            patterns.get('guns_and_eaters'),
-            new Position(0, -1)
-        );
-
-
-        let move = new Position(0, -1);
-
-        if (0 === repeat % 2) {
-            move = move.move(
-                new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-            );
-        }
-
-        for (let i = 0; i < patternsPerSide; i += 1) {
-
-            move = move.move(
-                new Position(
-                    -1 * (gunsAndEaters.getWidth() + patternGutter), 0
-                )
-            );
-
-            this.matrix.seedPattern(
-                patterns.get('guns_and_eaters'),
-                move
-            );
-
-        }
-
-        move = new Position(0, -1);
-
-        if (0 === repeat % 2) {
-            move = move.move(
-                new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-            );
-        }
-
-        for (let i = 0; i < patternsPerSide; i += 1) {
-
-            move = move.move(
-                new Position(
-                    gunsAndEaters.getWidth() + patternGutter, 0
-                )
-            );
-
-            this.matrix.seedPattern(
-                patterns.get('guns_and_eaters'),
-                move
-            );
-
-        }
+        seeder(gridCreator, this.matrix);
 
     }
 

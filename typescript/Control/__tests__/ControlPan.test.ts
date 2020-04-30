@@ -10,13 +10,18 @@ import {Position} from '../../Conway/Position';
 describe('ControlPan', () => {
 
     let controllWrap: HTMLElement;
+    let canvasWrap: HTMLElement;
+    let canvas: HTMLCanvasElement;
     let panControl: PanControl;
 
     beforeEach(() => {
 
-        const canvasWrap = document.createElement('div');
+        canvasWrap = document.createElement('div');
+
+        canvas = document.createElement('canvas');
+
         canvasWrap.append(
-            document.createElement('canvas')
+            canvas
         );
 
         controllWrap = document.createElement('div');
@@ -73,7 +78,6 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(-2, 0));
 
     });
-
 
     test('can click on right', () => {
 
@@ -171,6 +175,74 @@ describe('ControlPan', () => {
         }
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 2));
+
+    });
+
+    test('can handle mousedown', () => {
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
+
+        canvas.dispatchEvent(new MouseEvent( 'mousedown', {
+            clientX: 10,
+            clientY: 20
+        }));
+
+        expect(canvasWrap.classList.contains('mousedown')).toBeTruthy();
+
+
+    });
+
+    test('can handle mouseup', () => {
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
+
+        canvas.dispatchEvent(new MouseEvent( 'mousedown', {
+            clientX: 10,
+            clientY: 20
+        }));
+
+        expect(canvasWrap.classList.contains('mousedown')).toBeTruthy();
+
+        canvas.dispatchEvent(new MouseEvent( 'mouseup', {
+        }));
+
+        expect(canvasWrap.classList.contains('mousedown')).toBeFalsy();
+
+
+    });
+
+    test('can handle mousemove', () => {
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
+
+        canvas.dispatchEvent(new MouseEvent( 'mousedown', {
+            clientX: 500,
+            clientY: 500
+        }));
+
+        expect(canvasWrap.classList.contains('mousedown')).toBeTruthy();
+
+        canvas.dispatchEvent(new MouseEvent( 'mousemove', {
+            clientX: 100,
+            clientY: 100
+        }));
+
+        expect(panControl.getPan()).toStrictEqual(new Position(40,  40));
+
+    });
+
+    test('can handle mousemove without mousedown', () => {
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
+
+        expect(canvasWrap.classList.contains('mousedown')).toBeFalsy();
+
+        canvas.dispatchEvent(new MouseEvent( 'mousemove', {
+            clientX: 500,
+            clientY: 500
+        }));
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0,  0));
 
     });
 

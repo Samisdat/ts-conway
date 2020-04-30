@@ -5,10 +5,12 @@ import {Web} from '../Web';
 import {NoControl} from '../../Control/ControlNo';
 import {MainControl} from '../../Control/ControlMain';
 import {CELL_WIDTH} from '../../Constants';
+import {guns_and_eaters} from '../../Seed/guns_and_eaters';
 
 describe('Frontend/Web', () => {
 
     let element: HTMLElement;
+
 
 
     beforeAll(() => {
@@ -21,6 +23,7 @@ describe('Frontend/Web', () => {
 
         let frontend = new Web(
             element,
+            guns_and_eaters,
             new NoControl()
         );
 
@@ -32,6 +35,7 @@ describe('Frontend/Web', () => {
 
         let frontend = new Web(
             element,
+            guns_and_eaters,
             new MainControl(element, CELL_WIDTH)
         );
 
