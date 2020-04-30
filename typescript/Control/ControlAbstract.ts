@@ -1,11 +1,10 @@
 
 export abstract class ControlAbstract {
 
-    protected getControlElement(action: string, value: string, icon: string): HTMLElement {
+    protected getControlElement(className: string, value: string, icon: string): HTMLElement {
 
         const element = document.createElement('div');
-        element.classList.add(value);
-        element.setAttribute('data-action', action);
+        element.classList.add(className);
         element.setAttribute('data-value', value);
 
         const iconElement: HTMLElement = document.createElement('i');

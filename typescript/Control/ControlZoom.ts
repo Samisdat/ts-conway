@@ -13,7 +13,7 @@ export class ZoomControl extends ControlAbstract {
 
     private zoomTween: Tween = new Tween(1, ZOOM_TWEEN_STEPS);
 
-    private zoomBound: Bound = new Bound(0.1, 2);
+    private zoomBound: Bound = new Bound(0.5, 3);
 
     constructor(controllWrap: HTMLElement) {
 
@@ -29,10 +29,10 @@ export class ZoomControl extends ControlAbstract {
     public createControl(): void {
 
         const zoom = document.createElement('div');
-        zoom.classList.add('zoom');
+        zoom.classList.add('conway__control-zoom');
 
-        this.zoomIn = this.getControlElement('zoom', 'zoom-in', 'search-plus');
-        this.zoomOut = this.getControlElement('zoom', 'zoom-out', 'search-minus');
+        this.zoomIn = this.getControlElement('conway__control-zoom__zoom-in', 'zoom-in', 'search-plus');
+        this.zoomOut = this.getControlElement('conway__control-zoom__zoom-out', 'zoom-out', 'search-minus');
 
         zoom.append(this.zoomIn);
         zoom.append(this.zoomOut);
@@ -58,6 +58,7 @@ export class ZoomControl extends ControlAbstract {
     }
 
     public getZoom(): number {
+        console.log(this.zoomTween.getCurrent())
         return this.zoomTween.getCurrent();
     }
 

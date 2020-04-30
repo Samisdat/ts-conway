@@ -25,6 +25,7 @@ export class PanControl extends ControlAbstract {
     private right: HTMLElement;
     private top: HTMLElement;
     private bottom: HTMLElement;
+    private center: HTMLElement;
 
     private positionTween: Tweenposition = new Tweenposition(
         new Position(0, 0),
@@ -32,8 +33,8 @@ export class PanControl extends ControlAbstract {
     );
 
     private positionBound: BoundPosition = new BoundPosition(
-        new Position(-2, -2),
-        new Position(2, 2)
+        new Position(-20, -20),
+        new Position(20, 20)
     );
 
     private zoomControl: ZoomControl;
@@ -64,17 +65,19 @@ export class PanControl extends ControlAbstract {
     public createControl(): void {
 
         const pan = document.createElement('div');
-        pan.classList.add('pan');
+        pan.classList.add('conway__control-pan');
 
-        this.top = this.getControlElement('pan', 'top', 'arrow-up');
-        this.bottom = this.getControlElement('pan', 'bottom', 'arrow-down');
-        this.left = this.getControlElement('pan', 'left', 'arrow-left');
-        this.right = this.getControlElement('pan', 'right', 'arrow-right');
+        this.top = this.getControlElement('conway__control-pan__top', 'top', 'arrow-up');
+        this.bottom = this.getControlElement('conway__control-pan__bottom', 'bottom', 'arrow-down');
+        this.left = this.getControlElement('conway__control-pan__left', 'left', 'arrow-left');
+        this.right = this.getControlElement('conway__control-pan__right', 'right', 'arrow-right');
+        this.center = this.getControlElement('conway__control-pan__center', 'center', 'crosshairs');
 
         pan.append(this.top);
         pan.append(this.bottom);
         pan.append(this.left);
         pan.append(this.right);
+        pan.append(this.center);
 
         this.control.append(pan);
     }
@@ -84,13 +87,7 @@ export class PanControl extends ControlAbstract {
         const listen = (event: Event) => {
 
             const target = event.currentTarget as HTMLElement;
-
-            let action = target.getAttribute('data-action');
-            let value = target.getAttribute('data-value');
-
-            if ('pan' === action) {
-                this.setPan(target);
-            }
+            this.setPan(target);
 
         };
 
@@ -98,6 +95,7 @@ export class PanControl extends ControlAbstract {
         this.bottom.addEventListener('click', listen);
         this.left.addEventListener('click', listen);
         this.right.addEventListener('click', listen);
+        this.center.addEventListener('click', listen);
 
         const canvas = this.canvasWrap.getElementsByTagName('canvas')[0];
 
@@ -155,20 +153,28 @@ export class PanControl extends ControlAbstract {
 
         let mode = target.getAttribute('data-value') as string;
 
+        if ('center' === mode) {
+
+            this.positionTween.setEnd(
+                this.positionBound.confine(new Position(0, 0))
+            );
+            return;
+        }
+
         let panX = 0;
         let panY = 0;
 
         if ('top' === mode) {
-            panY = -1;
+            panY = -5;
         }
         else if ('bottom' === mode) {
-            panY = 1;
+            panY = 5;
         }
         else if ('left' === mode) {
-            panX = -1;
+            panX = -5;
         }
         else if ('right' === mode) {
-            panX = 1;
+            panX = 5;
         }
 
         const panBy = new Position(panX, panY);
