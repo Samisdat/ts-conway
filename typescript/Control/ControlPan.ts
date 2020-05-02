@@ -7,6 +7,13 @@ import { ControlAbstract } from './ControlAbstract';
 import { ZoomControl } from './ControlZoom';
 import {PAN_TWEEN_STEPS} from '../Constants';
 
+type PanMode = 'top' | 'bottom' | 'left' | 'right' | 'center';
+
+const PAN_MODES: PanMode[] = ['top', 'bottom', 'left', 'right', 'center'];
+
+interface PanByInterface {
+    [index: string]: Position;
+}
 
 export class PanControl extends ControlAbstract {
 
@@ -19,6 +26,14 @@ export class PanControl extends ControlAbstract {
     private offset: any = {
         left: 0,
         top: 0
+    };
+
+    private panBy: PanByInterface = {
+        top: new Position(0, -5),
+        bottom: new Position(0, 5),
+        left: new Position(5, 0),
+        right: new Position(-5, 0),
+        center: new Position(5, 0)
     };
 
     private left: HTMLElement;
@@ -87,7 +102,14 @@ export class PanControl extends ControlAbstract {
         const listen = (event: Event) => {
 
             const target = event.currentTarget as HTMLElement;
-            this.setPan(target);
+
+            let mode = target.getAttribute('data-value') as PanMode;
+
+            if (false === PAN_MODES.includes(mode)) {
+                throw new Error('unsupported pan mode');
+            }
+
+            this.setPan(mode);
 
         };
 
@@ -149,119 +171,60 @@ export class PanControl extends ControlAbstract {
         return this.positionTween.getCurrent();
     }
 
-    public setPan(target: HTMLElement): void {
+    public setPan(mode: PanMode): void {
 
-        let mode = target.getAttribute('data-value') as string;
+        let panTo = new Position(0, 0);
 
-        if ('center' === mode) {
+        if ('center' !== mode) {
 
-            this.positionTween.setEnd(
-                this.positionBound.confine(new Position(0, 0))
-            );
-            return;
+            const panBy = this.panBy[mode];
+
+            panTo = this.positionTween.getEnd().move(panBy);
+
         }
 
-        let panX = 0;
-        let panY = 0;
-
-        if ('top' === mode) {
-            panY = -5;
-        }
-        else if ('bottom' === mode) {
-            panY = 5;
-        }
-        else if ('left' === mode) {
-            panX = -5;
-        }
-        else if ('right' === mode) {
-            panX = 5;
-        }
-
-        const panBy = new Position(panX, panY);
-
-        const panTo = this.positionTween.getEnd().move(panBy);
-
-        this.updateState(mode, panTo);
+        this.updateState(mode, this.positionBound.confine(panTo));
 
         this.positionTween.setEnd(
             this.positionBound.confine(panTo)
         );
+
     }
 
-    private updateState(mode: string, panTo: Position): void {
+    private updateState(mode: PanMode, panTo: Position): void {
 
-        if ('top' === mode) {
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.top.classList.remove('inactive');
-            }
-            else {
-                this.top.classList.add('inactive');
-            }
+        const possiblePans: PanMode[] = [];
 
-            panTo = panTo.move(new Position(0, 1));
+        for (const nextMode of PAN_MODES) {
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.bottom.classList.remove('inactive');
-            }
-            else {
-                this.bottom.classList.add('inactive');
+            if ('center' === nextMode) {
+                possiblePans.push(nextMode);
+                continue;
             }
 
-        }
-        else if ('bottom' === mode) {
+            let nextPan = panTo.move(this.panBy[nextMode]);
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.bottom.classList.remove('inactive');
-            }
-            else {
-                this.bottom.classList.add('inactive');
-            }
+            let stillWithin  = this.positionBound.isWithin(nextPan);
 
-            panTo = panTo.move(new Position(0, -1));
-
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.top.classList.remove('inactive');
-            }
-            else {
-                this.top.classList.add('inactive');
+            if (true === stillWithin) {
+                possiblePans.push(nextMode);
             }
 
         }
-        else if ('left' === mode) {
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.left.classList.remove('inactive');
-            }
-            else {
-                this.left.classList.add('inactive');
-            }
+        for (const panMode of PAN_MODES) {
 
-            panTo = panTo.move(new Position(1, 0));
+            const panElement = this.control.getElementsByClassName('conway__control-pan__' + panMode)[0];
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.right.classList.remove('inactive');
-            }
-            else {
-                this.right.classList.add('inactive');
-            }
+            if (true === possiblePans.includes(panMode)) {
 
-        }
-        else if ('right' === mode) {
+                panElement.classList.remove('conway__control-pan--incactive');
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.right.classList.remove('inactive');
             }
-            else {
-                this.right.classList.add('inactive');
-            }
+            else{
 
-            panTo = panTo.move(new Position(-1, 0));
+                panElement.classList.add('conway__control-pan--incactive');
 
-            if (true === this.positionBound.isWithin(panTo)) {
-                this.left.classList.remove('inactive');
-            }
-            else {
-                this.left.classList.add('inactive');
             }
 
         }

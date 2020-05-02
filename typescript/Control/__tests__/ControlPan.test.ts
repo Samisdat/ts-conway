@@ -50,32 +50,37 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panLeft = controllWrap.getElementsByClassName('left')[0] as HTMLElement;
+        const panLeft = controllWrap.getElementsByClassName('conway__control-pan__left')[0] as HTMLElement;
+
         panLeft.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
+        for (let y = 0; y < PAN_TWEEN_STEPS; y += 1) {
             panControl.update();
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(-1, 0));
+        expect(panControl.getPan()).toStrictEqual(new Position(5, 0));
+        expect('conway__control-pan--incactive').toBeTruthy();
 
     });
 
-    test('pan left beyond bound', () => {
+    test('can click on left beyond bound', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panLeft = controllWrap.getElementsByClassName('left')[0] as HTMLElement;
+        const panLeft = controllWrap.getElementsByClassName('conway__control-pan__left')[0] as HTMLElement;
 
-        for (let x = 0; x < 10; x += 1) {
+        for (let i = 0; i < 5; i += 1) {
+
             panLeft.click();
 
-            for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
+            for (let y = 0; y < PAN_TWEEN_STEPS; y += 1) {
                 panControl.update();
             }
+
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(-2, 0));
+        expect(panControl.getPan()).toStrictEqual(new Position(20, 0));
+        expect(panLeft.classList.contains('conway__control-pan--incactive')).toBeTruthy();
 
     });
 
@@ -83,32 +88,14 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panRight = controllWrap.getElementsByClassName('right')[0] as HTMLElement;
+        const panRight = controllWrap.getElementsByClassName('conway__control-pan__right')[0] as HTMLElement;
         panRight.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(1, 0));
-
-    });
-
-    test('pan right beyond bound', () => {
-
-        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
-
-        const panRight = controllWrap.getElementsByClassName('right')[0] as HTMLElement;
-
-        for (let x = 0; x < 10; x += 1) {
-            panRight.click();
-
-            for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-                panControl.update();
-            }
-        }
-
-        expect(panControl.getPan()).toStrictEqual(new Position(2, 0));
+        expect(panControl.getPan()).toStrictEqual(new Position(-5, 0));
 
     });
 
@@ -116,32 +103,14 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panTop = controllWrap.getElementsByClassName('top')[0] as HTMLElement;
+        const panTop = controllWrap.getElementsByClassName('conway__control-pan__top')[0] as HTMLElement;
         panTop.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(0, -1));
-
-    });
-
-    test('pan top beyond bound', () => {
-
-        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
-
-        const panTop = controllWrap.getElementsByClassName('top')[0] as HTMLElement;
-
-        for (let x = 0; x < 10; x += 1) {
-            panTop.click();
-
-            for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-                panControl.update();
-            }
-        }
-
-        expect(panControl.getPan()).toStrictEqual(new Position(0, -2));
+        expect(panControl.getPan()).toStrictEqual(new Position(0, -5));
 
     });
 
@@ -149,35 +118,42 @@ describe('ControlPan', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panBottom = controllWrap.getElementsByClassName('bottom')[0] as HTMLElement;
+        const panBottom = controllWrap.getElementsByClassName('conway__control-pan__bottom')[0] as HTMLElement;
         panBottom.click();
 
         for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
             panControl.update();
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(0, 1));
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 5));
 
     });
 
-    test('pan bottom beyond bound', () => {
+    test('can click on center', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
-        const panBottom = controllWrap.getElementsByClassName('bottom')[0] as HTMLElement;
+        const panBottom = controllWrap.getElementsByClassName('conway__control-pan__bottom')[0] as HTMLElement;
+        panBottom.click();
 
-        for (let x = 0; x < 10; x += 1) {
-            panBottom.click();
-
-            for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-                panControl.update();
-            }
+        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
+            panControl.update();
         }
 
-        expect(panControl.getPan()).toStrictEqual(new Position(0, 2));
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 5));
+
+        const panCenter = controllWrap.getElementsByClassName('conway__control-pan__center')[0] as HTMLElement;
+        panCenter.click();
+
+        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
+            panControl.update();
+        }
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
     });
 
+    /*
     test('can handle mousedown', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
@@ -245,6 +221,6 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0,  0));
 
     });
-
+    */
 
 });
