@@ -142,7 +142,10 @@ export class PanControl implements ControlInterface {
                     new Position(offset.left, offset.top).inverse()
                 );
 
-                this.positionTween.overwrite(position);
+                this.positionTween.overwrite(this.positionBound.confine(position));
+
+                this.updateState(this.positionBound.confine(position));
+
 
             }
 
@@ -171,7 +174,7 @@ export class PanControl implements ControlInterface {
 
         }
 
-        this.updateState(mode, this.positionBound.confine(panTo));
+        this.updateState(this.positionBound.confine(panTo));
 
         this.positionTween.setEnd(
             this.positionBound.confine(panTo)
@@ -179,7 +182,7 @@ export class PanControl implements ControlInterface {
 
     }
 
-    private updateState(mode: PanMode, panTo: Position): void {
+    private updateState(panTo: Position): void {
 
         const possiblePans: PanMode[] = [];
 

@@ -177,7 +177,6 @@ describe('ControlPan', () => {
 
     });
 
-    /*
     test('can handle mousedown', () => {
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
@@ -227,7 +226,7 @@ describe('ControlPan', () => {
             clientY: 100
         }));
 
-        expect(panControl.getPan()).toStrictEqual(new Position(40,  40));
+        expect(panControl.getPan()).toStrictEqual(new Position(20,  20));
 
     });
 
@@ -245,6 +244,5 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0,  0));
 
     });
-    */
 
 });
