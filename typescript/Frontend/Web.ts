@@ -57,7 +57,7 @@ export class Web {
         }
 
         window.addEventListener('load', (event) => {
-            
+
             checkWindowSize();
             window.addEventListener('resize', (event) => {
                 checkWindowSize();

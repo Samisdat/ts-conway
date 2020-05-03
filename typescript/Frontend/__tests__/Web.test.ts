@@ -13,8 +13,6 @@ describe('Frontend/Web', () => {
 
     let element: HTMLElement;
 
-
-
     beforeAll(() => {
 
         element = document.createElement('div');

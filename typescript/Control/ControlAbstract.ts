@@ -5,7 +5,7 @@ export abstract class ControlAbstract {
 
         const element = document.createElement('div');
 
-        for(const className of classNames){
+        for (const className of classNames) {
             element.classList.add(className.trim());
         }
         element.setAttribute('data-value', value);
