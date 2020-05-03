@@ -6,7 +6,7 @@ import {Position} from '../Conway/Position';
 import {Grid} from '../Grid';
 import {GridDimension} from '../Grid/GridDimension';
 import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
-import {ControlInterface} from '../Control/ControlInterface';
+import {MainControlInterface} from '../Control/MainControlInterface';
 import {CellMatrix} from '../Conway/CellMatrix';
 
 
@@ -15,7 +15,7 @@ export type SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => voi
 export class Web {
 
     private element: HTMLElement;
-    private control: ControlInterface;
+    private control: MainControlInterface;
 
     private matrix: CellMatrix;
     private habitat: Habitat;
@@ -25,7 +25,7 @@ export class Web {
     constructor(
         element: HTMLElement,
         seeder: SeedFunction,
-        control: ControlInterface
+        control: MainControlInterface
     ) {
 
         this.matrix = new CellMatrix();

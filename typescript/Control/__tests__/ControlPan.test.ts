@@ -4,8 +4,9 @@
 
 import {ZoomControl} from '../ControlZoom';
 import {PanControl} from '../ControlPan';
-import {CELL_WIDTH, PAN_TWEEN_STEPS, ZOOM_TWEEN_STEPS} from '../../Constants';
+import {CELL_WIDTH, PAN_TWEEN_STEPS} from '../../Constants';
 import {Position} from '../../Conway/Position';
+import {clickAndWaitForTweenEnd} from './clickAndWaitForTweenEnd';
 
 describe('ControlPan', () => {
 
@@ -52,14 +53,31 @@ describe('ControlPan', () => {
 
         const panLeft = controllWrap.getElementsByClassName('conway__control-pan__left')[0] as HTMLElement;
 
-        panLeft.click();
-
-        for (let y = 0; y < PAN_TWEEN_STEPS; y += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panLeft,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(5, 0));
-        expect('conway__control-pan--incactive').toBeTruthy();
+        expect(panLeft.classList.contains('conway__control-pan--incactive')).toBeFalsy();
+
+    });
+
+    test('can click on icon within left', () => {
+
+        expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
+
+        const panLeft = controllWrap.getElementsByClassName('conway__control-pan__left')[0] as HTMLElement;
+
+        clickAndWaitForTweenEnd(
+            panControl,
+            panLeft.getElementsByClassName('fa')[0] as HTMLElement,
+            PAN_TWEEN_STEPS
+        );
+
+        expect(panControl.getPan()).toStrictEqual(new Position(5, 0));
+        expect(panLeft.classList.contains('conway__control-pan--incactive')).toBeFalsy();
 
     });
 
@@ -71,11 +89,11 @@ describe('ControlPan', () => {
 
         for (let i = 0; i < 5; i += 1) {
 
-            panLeft.click();
-
-            for (let y = 0; y < PAN_TWEEN_STEPS; y += 1) {
-                panControl.update();
-            }
+            clickAndWaitForTweenEnd(
+                panControl,
+                panLeft,
+                PAN_TWEEN_STEPS
+            );
 
         }
 
@@ -89,13 +107,15 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
         const panRight = controllWrap.getElementsByClassName('conway__control-pan__right')[0] as HTMLElement;
-        panRight.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panRight,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(-5, 0));
+        expect(panRight.classList.contains('conway__control-pan--incactive')).toBeFalsy();
 
     });
 
@@ -104,11 +124,12 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
         const panTop = controllWrap.getElementsByClassName('conway__control-pan__top')[0] as HTMLElement;
-        panTop.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panTop,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, -5));
 
@@ -119,11 +140,12 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
         const panBottom = controllWrap.getElementsByClassName('conway__control-pan__bottom')[0] as HTMLElement;
-        panBottom.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panBottom,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 5));
 
@@ -134,20 +156,22 @@ describe('ControlPan', () => {
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 
         const panBottom = controllWrap.getElementsByClassName('conway__control-pan__bottom')[0] as HTMLElement;
-        panBottom.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panBottom,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 5));
 
         const panCenter = controllWrap.getElementsByClassName('conway__control-pan__center')[0] as HTMLElement;
-        panCenter.click();
 
-        for (let i = 0; i < PAN_TWEEN_STEPS; i += 1) {
-            panControl.update();
-        }
+        clickAndWaitForTweenEnd(
+            panControl,
+            panCenter,
+            PAN_TWEEN_STEPS
+        );
 
         expect(panControl.getPan()).toStrictEqual(new Position(0, 0));
 

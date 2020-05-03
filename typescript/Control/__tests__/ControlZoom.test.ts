@@ -2,9 +2,8 @@
  * @jest-environment jsdom
  */
 import {ZoomControl} from '../ControlZoom';
-import {PanControl} from '../ControlPan';
-import {CELL_WIDTH, PAN_TWEEN_STEPS, ZOOM_TWEEN_STEPS} from '../../Constants';
-import {Position} from '../../Conway/Position';
+import {ZOOM_TWEEN_STEPS} from '../../Constants';
+import {clickAndWaitForTweenEnd} from './clickAndWaitForTweenEnd';
 
 describe('ControlZoom', () => {
 
@@ -16,7 +15,7 @@ describe('ControlZoom', () => {
 
     });
 
-    test('can be created', () => {
+    test.only('can be created', () => {
 
         let zoomControl = new ZoomControl(element);
 
@@ -24,36 +23,57 @@ describe('ControlZoom', () => {
 
     });
 
-    test('can click on zoom-in', () => {
+    test.only('can click on zoom-in', () => {
 
         let zoomControl = new ZoomControl(element);
 
         expect(zoomControl.getZoom()).toStrictEqual(1);
 
-        const zoomIn = element.getElementsByClassName('zoom-in')[0] as HTMLElement;
-        zoomIn.click();
+        const zoomIn = element.getElementsByClassName('conway__control-zoom__in')[0] as HTMLElement;
 
-        for (let i = 0; i < ZOOM_TWEEN_STEPS; i += 1) {
-            zoomControl.update();
-        }
-        expect(zoomControl.getZoom()).toStrictEqual(2);
+        clickAndWaitForTweenEnd(
+            zoomControl,
+            zoomIn,
+            ZOOM_TWEEN_STEPS
+        );
 
+        expect(zoomControl.getZoom()).toStrictEqual(1.2);
 
     });
 
-    test('can click on zoom-out', () => {
+    test.only('can click on icon within zoom-in', () => {
 
         let zoomControl = new ZoomControl(element);
 
         expect(zoomControl.getZoom()).toStrictEqual(1);
 
-        const zoomIn = element.getElementsByClassName('zoom-out')[0] as HTMLElement;
-        zoomIn.click();
+        const zoomIn = element.getElementsByClassName('conway__control-zoom__in')[0] as HTMLElement;
 
-        for (let i = 0; i < ZOOM_TWEEN_STEPS; i += 1) {
-            zoomControl.update();
-        }
-        expect(zoomControl.getZoom()).toStrictEqual(0.9);
+        clickAndWaitForTweenEnd(
+            zoomControl,
+            zoomIn.getElementsByClassName('fa')[0] as HTMLElement,
+            ZOOM_TWEEN_STEPS
+        );
+
+        expect(zoomControl.getZoom()).toStrictEqual(1.2);
+
+    });
+
+    test.only('can click on zoom-out', () => {
+
+        let zoomControl = new ZoomControl(element);
+
+        expect(zoomControl.getZoom()).toStrictEqual(1);
+
+        const zoomOut = element.getElementsByClassName('conway__control-zoom__out')[0] as HTMLElement;
+
+        clickAndWaitForTweenEnd(
+            zoomControl,
+            zoomOut,
+            ZOOM_TWEEN_STEPS
+        );
+
+        expect(zoomControl.getZoom()).toStrictEqual(0.8);
 
 
     });

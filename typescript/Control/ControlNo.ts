@@ -1,7 +1,7 @@
 import {Position} from '../Conway/Position';
-import {ControlInterface} from './ControlInterface';
+import {MainControlInterface} from './MainControlInterface';
 
-export class NoControl implements ControlInterface {
+export class NoControl implements MainControlInterface {
 
     getZoom(): number {
         return 1;

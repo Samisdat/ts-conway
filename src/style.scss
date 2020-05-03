@@ -173,14 +173,15 @@ html,body{
     content: ' ';
   }
 
-  &__zoom-in,
-  &__zoom-out{
+  &__in,
+  &__out{
     position:absolute;
     width:30px;
     height:30px;
     text-align:center;
     line-height:30px;
     opacity: 1;
+    cursor: pointer;
 
     &--inactive{
       opacity: 0.3;
@@ -189,12 +190,12 @@ html,body{
 
   }
 
-  &__zoom-in{
+  &__in{
     top:0px;
     left:0px;
   }
 
-  &__zoom-out {
+  &__out {
     top:60px;
     left:00px;
   }

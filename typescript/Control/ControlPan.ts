@@ -2,20 +2,18 @@ import { Position } from '../Conway/Position';
 import { Tweenposition } from '../Conway/Tweenposition';
 import { BoundPosition } from './boundposition';
 
-import { ControlAbstract } from './ControlAbstract';
-
 import { ZoomControl } from './ControlZoom';
 import {PAN_TWEEN_STEPS} from '../Constants';
+import {ControlInterface, createControlElement} from './Control';
 
 type PanMode = 'top' | 'bottom' | 'left' | 'right' | 'center';
-
 const PAN_MODES: PanMode[] = ['top', 'bottom', 'left', 'right', 'center'];
 
 interface PanByInterface {
     [index: string]: Position;
 }
 
-export class PanControl extends ControlAbstract {
+export class PanControl implements ControlInterface {
 
     private readonly canvasWrap: Element;
 
@@ -35,12 +33,6 @@ export class PanControl extends ControlAbstract {
         right: new Position(-5, 0),
         center: new Position(5, 0)
     };
-
-    private left: HTMLElement;
-    private right: HTMLElement;
-    private top: HTMLElement;
-    private bottom: HTMLElement;
-    private center: HTMLElement;
 
     private positionTween: Tweenposition = new Tweenposition(
         new Position(0, 0),
@@ -62,8 +54,6 @@ export class PanControl extends ControlAbstract {
 
     ) {
 
-        super();
-
         this.canvasWrap = canvasWrap;
 
         this.originalCellWidth = originalCellWidth;
@@ -82,42 +72,40 @@ export class PanControl extends ControlAbstract {
         const pan = document.createElement('div');
         pan.classList.add('conway__control-pan');
 
-        this.top = this.getControlElement('conway__control-pan__top', 'top', 'arrow-up');
-        this.bottom = this.getControlElement('conway__control-pan__bottom', 'bottom', 'arrow-down');
-        this.left = this.getControlElement('conway__control-pan__left', 'left', 'arrow-left');
-        this.right = this.getControlElement('conway__control-pan__right', 'right', 'arrow-right');
-        this.center = this.getControlElement('conway__control-pan__center', 'center', 'crosshairs');
+        const top = createControlElement (['conway__control-pan__element', 'conway__control-pan__top'], 'top', 'arrow-up');
+        const bottom = createControlElement(['conway__control-pan__element', 'conway__control-pan__bottom'], 'bottom', 'arrow-down');
+        const left = createControlElement(['conway__control-pan__element', 'conway__control-pan__left'], 'left', 'arrow-left');
+        const right = createControlElement(['conway__control-pan__element', 'conway__control-pan__right'], 'right', 'arrow-right');
+        const center = createControlElement(['conway__control-pan__element', 'conway__control-pan__center'], 'center', 'crosshairs');
 
-        pan.append(this.top);
-        pan.append(this.bottom);
-        pan.append(this.left);
-        pan.append(this.right);
-        pan.append(this.center);
+        pan.append(top);
+        pan.append(bottom);
+        pan.append(left);
+        pan.append(right);
+        pan.append(center);
 
         this.control.append(pan);
     }
 
-    public addEventListener(): void {
+    private addEventListener(): void {
 
         const listen = (event: Event) => {
 
-            const target = event.currentTarget as HTMLElement;
+            let target = event.target as HTMLElement;
+
+            if (false === target.classList.contains('conway__control-pan__element')) {
+
+                target = target.parentElement as HTMLElement;
+
+            }
 
             let mode = target.getAttribute('data-value') as PanMode;
-
-            if (false === PAN_MODES.includes(mode)) {
-                throw new Error('unsupported pan mode');
-            }
 
             this.setPan(mode);
 
         };
 
-        this.top.addEventListener('click', listen);
-        this.bottom.addEventListener('click', listen);
-        this.left.addEventListener('click', listen);
-        this.right.addEventListener('click', listen);
-        this.center.addEventListener('click', listen);
+        this.control.addEventListener('click', listen);
 
         const canvas = this.canvasWrap.getElementsByTagName('canvas')[0];
 
@@ -221,7 +209,7 @@ export class PanControl extends ControlAbstract {
                 panElement.classList.remove('conway__control-pan--incactive');
 
             }
-            else{
+            else {
 
                 panElement.classList.add('conway__control-pan--incactive');
 

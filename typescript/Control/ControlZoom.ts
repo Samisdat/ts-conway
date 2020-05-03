@@ -1,23 +1,22 @@
 import { Tween } from '../Conway/Tween';
 import { Bound } from './bound';
 
-import { ControlAbstract } from './ControlAbstract';
 import {ZOOM_TWEEN_STEPS} from '../Constants';
+import {ControlInterface, createControlElement} from './Control';
 
-export class ZoomControl extends ControlAbstract {
+type ZoomMode = 'in' | 'out';
+const ZOOM_MODES: ZoomMode[] = ['in', 'out'];
+
+
+export class ZoomControl implements ControlInterface {
 
     private control: HTMLElement;
 
-    private zoomIn: HTMLElement;
-    private zoomOut: HTMLElement;
-
     private zoomTween: Tween = new Tween(1, ZOOM_TWEEN_STEPS);
 
-    private zoomBound: Bound = new Bound(0.5, 3);
+    private zoomBound: Bound = new Bound(0.4, 1.6);
 
     constructor(controllWrap: HTMLElement) {
-
-        super();
 
         this.control = controllWrap;
 
@@ -31,73 +30,96 @@ export class ZoomControl extends ControlAbstract {
         const zoom = document.createElement('div');
         zoom.classList.add('conway__control-zoom');
 
-        this.zoomIn = this.getControlElement('conway__control-zoom__zoom-in', 'zoom-in', 'search-plus');
-        this.zoomOut = this.getControlElement('conway__control-zoom__zoom-out', 'zoom-out', 'search-minus');
+        const zoomIn = createControlElement(['conway__control-zoom__element', 'conway__control-zoom__in'], 'in', 'search-plus');
+        const zoomOut = createControlElement(['conway__control-zoom__element', 'conway__control-zoom__out'], 'out', 'search-minus');
 
-        zoom.append(this.zoomIn);
-        zoom.append(this.zoomOut);
+        zoom.append(zoomIn);
+        zoom.append(zoomOut);
 
         this.control.append(zoom);
     }
 
-    public addEventListener(): void {
+    private addEventListener(): void {
 
         const listen = (event: Event) => {
 
-            const target = event.currentTarget as HTMLElement;
+            let target = event.target as HTMLElement;
 
-            let value = target.getAttribute('data-value') as string;
+
+            if (true === target.classList.contains('fa')) {
+
+                target = target.parentElement as HTMLElement;
+
+            }
+
+            let value = target.getAttribute('data-value') as ZoomMode;
 
             this.setZoom(value);
 
         };
 
-        this.zoomIn.addEventListener('click', listen);
-        this.zoomOut.addEventListener('click', listen);
+        this.control.addEventListener('click', listen);
 
     }
 
     public getZoom(): number {
-        console.log(this.zoomTween.getCurrent())
+
         return this.zoomTween.getCurrent();
     }
 
-    public setZoom(mode: string) {
+    public setZoom(mode: ZoomMode) {
 
-        let modifier = 1;
+        let modifier = 0.2;
 
-        if (1 > this.zoomTween.getEnd()) {
-            modifier = 0.1;
-        }
-        else if (1 === this.zoomTween.getEnd() && 'zoom-out' === mode) {
-            modifier = 0.1;
-        }
-
-        if ('zoom-out' === mode) {
+        if ('out' === mode) {
             modifier = -1 * modifier;
         }
 
         const nextZoom = Math.round((this.zoomTween.getEnd() + modifier) * 10) / 10;
 
-        if (false === this.zoomBound.isAbove(nextZoom)) {
-            this.zoomIn.classList.remove('inactive');
-        }
-        else {
-            this.zoomIn.classList.add('inactive');
-        }
-
-        if (false === this.zoomBound.isBelow(nextZoom)) {
-            this.zoomOut.classList.remove('inactive');
-        }
-        else {
-            this.zoomOut.classList.add('inactive');
-        }
+        this.updateState(mode, this.zoomBound.confine(nextZoom));
 
         this.zoomTween.setEnd(
             this.zoomBound.confine(nextZoom)
         );
 
     }
+
+    private updateState(mode: ZoomMode, zoom: number): void {
+
+        const possibleZooms: ZoomMode[] = [];
+
+        if ('in' === mode && this.zoomBound.isWithin(zoom + 0.2)) {
+
+            possibleZooms.push('in');
+
+        }
+
+        if ('out' === mode && this.zoomBound.isWithin(zoom - 0.2)) {
+
+
+            possibleZooms.push('out');
+        }
+
+        for (const zoomMode of ZOOM_MODES) {
+
+            const panElement = this.control.getElementsByClassName('conway__control-zoom__' + zoomMode)[0];
+
+            if (true === possibleZooms.includes(zoomMode)) {
+
+                panElement.classList.remove('conway__control-zoom--incactive');
+
+            }
+            else {
+
+                panElement.classList.add('conway__control-zoom--incactive');
+
+            }
+
+        }
+
+    }
+
 
     public update(): void {
         this.zoomTween.update();
