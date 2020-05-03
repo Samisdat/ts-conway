@@ -56,14 +56,17 @@ export class Web {
             // console.log('window.innerHeight: ', window.innerHeight, ' window.innerWidth: ', window.innerWidth);
         }
 
-        window.onload = () => {
+        window.addEventListener('load', (event) => {
+
+            console.log('addEventListener', event);
+
             checkWindowSize();
             window.addEventListener('resize', (event) => {
                 checkWindowSize();
 
                 this.canvasRenderer.setCanvas();
             });
-        };
+        });
 
     }
 
