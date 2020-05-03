@@ -6,7 +6,7 @@ import {ZoomControl} from '../ControlZoom';
 import {PanControl} from '../ControlPan';
 import {CELL_WIDTH, PAN_TWEEN_STEPS} from '../../Constants';
 import {Position} from '../../Conway/Position';
-import {clickAndWaitForTweenEnd} from './clickAndWaitForTweenEnd';
+import {clickAndWaitForTweenEnd} from '../test-helper/clickAndWaitForTweenEnd';
 
 describe('ControlPan', () => {
 

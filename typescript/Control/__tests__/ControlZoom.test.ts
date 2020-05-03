@@ -3,7 +3,7 @@
  */
 import {ZoomControl} from '../ControlZoom';
 import {ZOOM_TWEEN_STEPS} from '../../Constants';
-import {clickAndWaitForTweenEnd} from './clickAndWaitForTweenEnd';
+import {clickAndWaitForTweenEnd} from '../test-helper/clickAndWaitForTweenEnd';
 
 describe('ControlZoom', () => {
 
