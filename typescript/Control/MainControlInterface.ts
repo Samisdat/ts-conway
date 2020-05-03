@@ -1,6 +1,6 @@
 import {Position} from '../Conway/Position';
 
-export interface ControlInterface {
+export interface MainControlInterface {
     getZoom(): number;
 
     getPan(): Position;
