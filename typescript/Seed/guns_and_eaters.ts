@@ -24,14 +24,7 @@ export const guns_and_eaters: SeedFunction = (gridCreator: GridCreator, matrix: 
         new Position(0, -1)
     );
 
-
     let move = new Position(0, -1);
-
-    if (0 === repeat % 2) {
-        move = move.move(
-            new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-        );
-    }
 
     for (let i = 0; i < patternsPerSide; i += 1) {
 
@@ -49,12 +42,6 @@ export const guns_and_eaters: SeedFunction = (gridCreator: GridCreator, matrix: 
     }
 
     move = new Position(0, -1);
-
-    if (0 === repeat % 2) {
-        move = move.move(
-            new Position(-1 * Math.floor((gunsAndEaters.getWidth() + patternGutter )  / 2 ), 0)
-        );
-    }
 
     for (let i = 0; i < patternsPerSide; i += 1) {
 
