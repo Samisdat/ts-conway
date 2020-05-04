@@ -171,11 +171,11 @@ describe('Grid', () => {
         const cell = cells[0];
 
         expect(cell.relativePosition).toStrictEqual(
-            new IntegerPosition(0, 0)
+            new Position(0, 0)
         );
 
         expect(cell.absolutePosition).toStrictEqual(
-            new IntegerPosition(-1, -2)
+            new Position(-1, -2)
         );
 
     });
@@ -196,13 +196,13 @@ describe('Grid', () => {
         const cellOne = cells[0];
 
         expect(cellOne.relativePosition).toStrictEqual(
-            new IntegerPosition(0, 0)
+            new Position(0, 0)
         );
 
         expect(cellOne.x).toBe(-0.5);
 
         expect(cellOne.absolutePosition).toStrictEqual(
-            new IntegerPosition(0, 0)
+            new Position(0, 0)
         );
 
     });
@@ -229,15 +229,15 @@ describe('Grid', () => {
         }
 
         expect(relativePositions).toStrictEqual([
-            new IntegerPosition(-1, -1),
-            new IntegerPosition(0, -1),
-            new IntegerPosition(1, -1),
-            new IntegerPosition(-1, 0),
-            new IntegerPosition(0, 0),
-            new IntegerPosition(1, 0),
-            new IntegerPosition(-1, 1),
-            new IntegerPosition(0, 1),
-            new IntegerPosition(1, 1)
+            new Position(-1, -1),
+            new Position(0, -1),
+            new Position(1, -1),
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0),
+            new Position(-1, 1),
+            new Position(0, 1),
+            new Position(1, 1)
         ]);
 
         // no offset, so relative and absolute positions should be the same
@@ -267,15 +267,15 @@ describe('Grid', () => {
         }
 
         expect(relativePositions).toStrictEqual([
-            new IntegerPosition(-1, -1),
-            new IntegerPosition(0, -1),
-            new IntegerPosition(1, -1),
-            new IntegerPosition(-1, 0),
-            new IntegerPosition(0, 0),
-            new IntegerPosition(1, 0),
-            new IntegerPosition(-1, 1),
-            new IntegerPosition(0, 1),
-            new IntegerPosition(1, 1)
+            new Position(-1, -1),
+            new Position(0, -1),
+            new Position(1, -1),
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0),
+            new Position(-1, 1),
+            new Position(0, 1),
+            new Position(1, 1)
         ]);
 
         // no offset, so relative and absolute positions should be the same
@@ -305,27 +305,27 @@ describe('Grid', () => {
         }
 
         expect(relativePositions).toStrictEqual([
-            new IntegerPosition(-1, -1),
-            new IntegerPosition(0, -1),
-            new IntegerPosition(1, -1),
-            new IntegerPosition(-1, 0),
-            new IntegerPosition(0, 0),
-            new IntegerPosition(1, 0),
-            new IntegerPosition(-1, 1),
-            new IntegerPosition(0, 1),
-            new IntegerPosition(1, 1)
+            new Position(-1, -1),
+            new Position(0, -1),
+            new Position(1, -1),
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0),
+            new Position(-1, 1),
+            new Position(0, 1),
+            new Position(1, 1)
         ]);
 
         expect(absolutePositions).toStrictEqual([
-            new IntegerPosition(-1, 0),
-            new IntegerPosition(0, 0),
-            new IntegerPosition(1, 0),
-            new IntegerPosition(-1, 1),
-            new IntegerPosition(0, 1),
-            new IntegerPosition(1, 1),
-            new IntegerPosition(-1, 2),
-            new IntegerPosition(0, 2),
-            new IntegerPosition(1, 2)
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0),
+            new Position(-1, 1),
+            new Position(0, 1),
+            new Position(1, 1),
+            new Position(-1, 2),
+            new Position(0, 2),
+            new Position(1, 2)
         ]);
 
     });
@@ -352,27 +352,27 @@ describe('Grid', () => {
         }
 
         expect(relativePositions).toStrictEqual([
-            new IntegerPosition(-1, -1),
-            new IntegerPosition(0, -1),
-            new IntegerPosition(1, -1),
-            new IntegerPosition(-1, 0),
-            new IntegerPosition(0, 0),
-            new IntegerPosition(1, 0),
-            new IntegerPosition(-1, 1),
-            new IntegerPosition(0, 1),
-            new IntegerPosition(1, 1)
+            new Position(-1, -1),
+            new Position(0, -1),
+            new Position(1, -1),
+            new Position(-1, 0),
+            new Position(0, 0),
+            new Position(1, 0),
+            new Position(-1, 1),
+            new Position(0, 1),
+            new Position(1, 1)
         ]);
 
         expect(absolutePositions).toStrictEqual([
-            new IntegerPosition(-1 + 1, -1),
-            new IntegerPosition(0 + 1, -1),
-            new IntegerPosition(1 + 1, -1),
-            new IntegerPosition(-1 + 1, 0),
-            new IntegerPosition(0 + 1, 0),
-            new IntegerPosition(1 + 1, 0),
-            new IntegerPosition(-1 + 1, 1),
-            new IntegerPosition(0 + 1, 1),
-            new IntegerPosition(1 + 1, 1)
+            new Position(-1 + 1, -1),
+            new Position(0 + 1, -1),
+            new Position(1 + 1, -1),
+            new Position(-1 + 1, 0),
+            new Position(0 + 1, 0),
+            new Position(1 + 1, 0),
+            new Position(-1 + 1, 1),
+            new Position(0 + 1, 1),
+            new Position(1 + 1, 1)
         ]);
 
     });
@@ -484,7 +484,7 @@ describe('Grid', () => {
         );
 
         expect(grid.center).toStrictEqual(
-            new IntegerPosition(0, 0)
+            new Position(0, 0)
         );
 
         grid = new Grid(
@@ -495,7 +495,7 @@ describe('Grid', () => {
         );
 
         expect(grid.center).toStrictEqual(
-            new IntegerPosition(1, 0)
+            new Position(1, 0)
         );
 
         grid = new Grid(
@@ -506,7 +506,7 @@ describe('Grid', () => {
         );
 
         expect(grid.center).toStrictEqual(
-            new IntegerPosition(0, 1)
+            new Position(0, 1)
         );
 
 
@@ -518,7 +518,7 @@ describe('Grid', () => {
         );
 
         expect(grid.center).toStrictEqual(
-            new IntegerPosition(1, 1)
+            new Position(1, 1)
         );
 
         grid = new Grid(
@@ -529,7 +529,7 @@ describe('Grid', () => {
         );
 
         expect(grid.center).toStrictEqual(
-            new IntegerPosition(2, 2)
+            new Position(2, 2)
         );
 
     });

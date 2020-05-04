@@ -33,7 +33,7 @@ describe('IntegerPosition', () => {
 
         let cloned = position.clone();
 
-        expect(cloned).toBeInstanceOf(IntegerPosition);
+        expect(cloned).toBeInstanceOf(Position);
 
         expect(cloned.x).toBe(1);
         expect(cloned.y).toBe(2);
@@ -98,14 +98,14 @@ describe('IntegerPosition', () => {
 
         expect(neighbours.length).toBe(8);
 
-        expect(neighbours[0]).toStrictEqual(new IntegerPosition(2, 2));
-        expect(neighbours[1]).toStrictEqual(new IntegerPosition(3, 2));
-        expect(neighbours[2]).toStrictEqual(new IntegerPosition(4, 2));
-        expect(neighbours[3]).toStrictEqual(new IntegerPosition(2, 3));
-        expect(neighbours[4]).toStrictEqual(new IntegerPosition(4, 3));
-        expect(neighbours[5]).toStrictEqual(new IntegerPosition(2, 4));
-        expect(neighbours[6]).toStrictEqual(new IntegerPosition(3, 4));
-        expect(neighbours[7]).toStrictEqual(new IntegerPosition(4, 4));
+        expect(neighbours[0]).toStrictEqual(new Position(2, 2));
+        expect(neighbours[1]).toStrictEqual(new Position(3, 2));
+        expect(neighbours[2]).toStrictEqual(new Position(4, 2));
+        expect(neighbours[3]).toStrictEqual(new Position(2, 3));
+        expect(neighbours[4]).toStrictEqual(new Position(4, 3));
+        expect(neighbours[5]).toStrictEqual(new Position(2, 4));
+        expect(neighbours[6]).toStrictEqual(new Position(3, 4));
+        expect(neighbours[7]).toStrictEqual(new Position(4, 4));
 
     });
 
