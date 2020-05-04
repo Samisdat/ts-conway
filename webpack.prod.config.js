@@ -43,6 +43,9 @@ module.exports = {
     },
     resolve: {
         extensions: [ '.ts', '.js', '.scss' ],
+        alias: {
+            '@Conway': path.resolve(__dirname, 'typescript/')
+        },
     },
     output: {
         filename: 'bundle.js',
