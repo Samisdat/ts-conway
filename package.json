@@ -3,7 +3,7 @@
   "version": "0.2.1",
   "description": "conway's game of life in typescript",
   "repository": "git@github.com:Samisdat/ts-conway.git",
-  "main": "dist/conway.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "build-cli": "webpack --config webpack.cli.config.js",
