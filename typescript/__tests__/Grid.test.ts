@@ -1,7 +1,6 @@
 import {Habitat} from '@Conway/Conway/Habitat';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {GridDimension} from '@Conway/Grid/GridDimension';
-import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
 import {Position} from '@Conway/Conway/Position';
 import {Grid} from '@Conway/Grid';
 
@@ -25,7 +24,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 5),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -77,7 +76,7 @@ describe('Grid', () => {
             new Grid(
                 habitat,
                 new GridDimension(2, 3),
-                new IntegerPosition(0, 0),
+                new Position(0, 0),
                 new Position(0, 1.1)
             );
 
@@ -91,7 +90,7 @@ describe('Grid', () => {
         let grid = new Grid(
                 habitat,
                 new GridDimension(3, 5),
-                new IntegerPosition(0, 0),
+                new Position(0, 0),
                 new Position(0, 0)
             );
 
@@ -99,7 +98,7 @@ describe('Grid', () => {
         expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).toStrictEqual(
-            new IntegerPosition(0, 0)
+            new Position(0, 0)
         );
 
         expect(grid.getOffset()).toStrictEqual(
@@ -115,7 +114,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 5),
-            new IntegerPosition(-1, -2),
+            new Position(-1, -2),
             new Position(0, 0)
         );
 
@@ -123,7 +122,7 @@ describe('Grid', () => {
         expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).toStrictEqual(
-            new IntegerPosition(-1, -2)
+            new Position(-1, -2)
         );
 
         expect(grid.getOffset()).toStrictEqual(
@@ -137,7 +136,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 5),
-            new IntegerPosition(-1, -2),
+            new Position(-1, -2),
             new Position(-0.5, -0.5)
         );
 
@@ -145,7 +144,7 @@ describe('Grid', () => {
         expect(grid.getCols()).toBe(5);
 
         expect(grid.getSourcePosition()).toStrictEqual(
-            new IntegerPosition(-1, -2)
+            new Position(-1, -2)
         );
 
         expect(grid.getOffset()).toStrictEqual(
@@ -159,7 +158,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(1, 1),
-            new IntegerPosition(-1, -2),
+            new Position(-1, -2),
             new Position(0, 0)
         );
 
@@ -185,7 +184,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(1, 1),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(-0.5, 0)
         );
 
@@ -212,7 +211,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -250,7 +249,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(-0.5, -0.5)
         );
 
@@ -288,7 +287,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 1),
+            new Position(0, 1),
             new Position(0, 0)
         );
 
@@ -296,8 +295,8 @@ describe('Grid', () => {
 
         expect(cells.length).toBe(9);
 
-        const relativePositions: IntegerPosition[] = [];
-        const absolutePositions: IntegerPosition[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
         for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
@@ -335,7 +334,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(1, 0),
+            new Position(1, 0),
             new Position(0, 0)
         );
 
@@ -343,8 +342,8 @@ describe('Grid', () => {
 
         expect(cells.length).toBe(9);
 
-        const relativePositions: IntegerPosition[] = [];
-        const absolutePositions: IntegerPosition[] = [];
+        const relativePositions: Position[] = [];
+        const absolutePositions: Position[] = [];
 
         for (const cell of cells) {
             relativePositions.push(cell.relativePosition);
@@ -382,7 +381,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -415,7 +414,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(xOffset, 0)
         );
 
@@ -448,7 +447,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(3, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, yOffset)
         );
 
@@ -479,7 +478,7 @@ describe('Grid', () => {
         let grid = new Grid(
             habitat,
             new GridDimension(1, 1),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -490,7 +489,7 @@ describe('Grid', () => {
         grid = new Grid(
             habitat,
             new GridDimension(3, 1),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -501,7 +500,7 @@ describe('Grid', () => {
         grid = new Grid(
             habitat,
             new GridDimension(1, 3),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -513,7 +512,7 @@ describe('Grid', () => {
         grid = new Grid(
             habitat,
             new GridDimension(2, 2),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 
@@ -524,7 +523,7 @@ describe('Grid', () => {
         grid = new Grid(
             habitat,
             new GridDimension(4, 4),
-            new IntegerPosition(0, 0),
+            new Position(0, 0),
             new Position(0, 0)
         );
 

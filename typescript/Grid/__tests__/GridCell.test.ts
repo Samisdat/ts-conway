@@ -3,7 +3,6 @@ import {Position} from '@Conway/Conway/Position';
 import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT} from '@Conway/Constants';
 import {CellTypesFactory} from '@Conway/CellType/CellTypesFactory';
 
-
 describe('GridCell', () => {
 
     it('can be created', () => {

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`IntegerPosition throw execption for x with decimal value 1`] = `"x not an integer value"`;
-
-exports[`IntegerPosition throw execption for y with decimal value 1`] = `"y not an integer value"`;

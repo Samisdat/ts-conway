@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Integer throw execption for rows with decimal value 1`] = `"not an integer value"`;

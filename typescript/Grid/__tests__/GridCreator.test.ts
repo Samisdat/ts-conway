@@ -1,5 +1,4 @@
 import {GridCreator} from '@Conway/Grid/GridCreator';
-import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
 import {Position} from '@Conway/Conway/Position';
 
 describe('GridCreator', () => {
@@ -29,7 +28,7 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).toStrictEqual(new Position(1, 3));
-        expect(gridCreator.getSourcePosition()).toStrictEqual(new IntegerPosition(1, 3));
+        expect(gridCreator.getSourcePosition()).toStrictEqual(new Position(1, 3));
         expect(gridCreator.getOffset()).toStrictEqual(new Position(0, 0));
 
     });
@@ -45,7 +44,7 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).toStrictEqual(new Position(0.5, 0.5));
-        expect(gridCreator.getSourcePosition()).toStrictEqual(new IntegerPosition(0, 0));
+        expect(gridCreator.getSourcePosition()).toStrictEqual(new Position(0, 0));
         expect(gridCreator.getOffset()).toStrictEqual(new Position(-0.5, -0.5));
 
     });
@@ -61,7 +60,7 @@ describe('GridCreator', () => {
         );
 
         expect(gridCreator.getPan()).toStrictEqual(new Position(4.8, -3.3));
-        expect(gridCreator.getSourcePosition()).toStrictEqual(new IntegerPosition(4, -3));
+        expect(gridCreator.getSourcePosition()).toStrictEqual(new Position(4, -3));
         expect(gridCreator.getOffset().x).toBeCloseTo(-0.8, 0.0001);
         expect(gridCreator.getOffset().y).toBeCloseTo(0.3, 0.0001);
 

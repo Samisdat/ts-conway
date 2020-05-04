@@ -1,4 +1,3 @@
-import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
 import {Position} from '@Conway/Conway/Position';
 
 export class GridCreator {
@@ -38,7 +37,7 @@ export class GridCreator {
         );
 
         const sourcePosition = this.pan.clone().move(this.offset.inverse());
-        this.sourcePosition = new IntegerPosition(
+        this.sourcePosition = new Position(
             sourcePosition.x,
             sourcePosition.y
         );
@@ -79,7 +78,7 @@ export class GridCreator {
         return this.pan;
     }
 
-    public getSourcePosition(): IntegerPosition {
+    public getSourcePosition(): Position {
         return this.sourcePosition;
     }
 

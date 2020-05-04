@@ -1,6 +1,5 @@
 import {Habitat} from '@Conway/Conway/Habitat';
 import {GridDimension} from '@Conway/Grid/GridDimension';
-import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
 import {GridCell} from '@Conway/Grid/GridCell';
 import {Position} from '@Conway/Conway/Position';
 import {CellTypesFactory} from '@Conway/CellType/CellTypesFactory';
@@ -20,20 +19,20 @@ export class Grid {
     private readonly habitat: Habitat;
 
     private gridDimension: GridDimension;
-    private sourcePosition: IntegerPosition;
+    private sourcePosition: Position;
 
     private offset: Position;
 
     private cells: GridCell[] = [];
 
-    public readonly center: IntegerPosition;
+    public readonly center: Position;
 
     private absoluteMap: MatrixRow = {};
 
     constructor(
         habitat: Habitat,
         gridDimension: GridDimension,
-        sourcePosition: IntegerPosition,
+        sourcePosition: Position,
         offset: Position
     ) {
 
@@ -49,11 +48,11 @@ export class Grid {
 
         // create rows
 
-        let relativePointer = new IntegerPosition(0, 0);
-        let absolutePointer = this.sourcePosition;
+        let relativePointer = new Position(0, 0);
+        let absolutePointer = this.sourcePosition as Position;
 
         this.center = relativePointer.clone().move(
-            new IntegerPosition(
+            new Position(
                 Math.floor(this.gridDimension.rows / 2),
                 Math.floor(this.gridDimension.cols / 2)
             )
@@ -109,11 +108,11 @@ export class Grid {
             }
 
             relativePointer = relativePointer.move(
-                new IntegerPosition(-1 * this.gridDimension.rows, 1),
+                new Position(-1 * this.gridDimension.rows, 1),
             );
 
             absolutePointer = absolutePointer.move(
-                new IntegerPosition(-1 * this.gridDimension.rows, 1),
+                new Position(-1 * this.gridDimension.rows, 1),
             );
 
         }
@@ -148,7 +147,7 @@ export class Grid {
 
     }
 
-    public getSourcePosition(): IntegerPosition {
+    public getSourcePosition(): Position {
         return this.sourcePosition;
     }
 
