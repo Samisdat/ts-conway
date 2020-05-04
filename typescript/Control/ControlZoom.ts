@@ -52,7 +52,9 @@ export class ZoomControl implements ControlInterface {
 
             let value = target.getAttribute('data-value') as ZoomMode;
 
-            this.setZoom(value);
+            if (true === ZOOM_MODES.includes(value)) {
+                this.setZoom(value);
+            }
 
         };
 
