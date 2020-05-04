@@ -1,7 +1,8 @@
-import {Pattern} from '../Pattern';
-import {Position} from '../Position';
-import {CellMatrix} from '../CellMatrix';
 import serializer from '../../../jest-serialize-conway';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Position} from '@Conway/Conway/Position';
+import {Pattern} from '@Conway/Conway/Pattern';
+
 
 describe('Pattern', () => {
 
@@ -102,7 +103,6 @@ describe('Pattern', () => {
         pattern.mirrorVertical();
 
         expect(pattern.getMatrix()).toMatchSnapshot();
-
 
     });
 
