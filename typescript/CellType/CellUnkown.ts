@@ -1,4 +1,4 @@
-import { CellType } from './CellType';
+import {CellType} from '@Conway/CellType/CellType';
 
 export class CellUnkown extends CellType {
 

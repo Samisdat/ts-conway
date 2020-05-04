@@ -1,4 +1,4 @@
-import {Position} from '../Position';
+import {Position} from '@Conway/Conway/Position';
 
 describe('Position', () => {
 

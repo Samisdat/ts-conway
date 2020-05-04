@@ -1,10 +1,9 @@
-import { Position } from '../Conway/Position';
+import {MainControlInterface} from '@Conway/Control/MainControlInterface';
+import {Position} from '@Conway/Conway/Position';
+import {ZoomControl} from '@Conway/Control/ControlZoom';
+import {PanControl} from '@Conway/Control/ControlPan';
 
-import { ZoomControl } from './ControlZoom';
-
-import { PanControl } from './ControlPan';
-
-export class MainControl {
+export class MainControl implements MainControlInterface {
 
     private readonly canvasWrap: Element;
 

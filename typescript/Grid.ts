@@ -1,9 +1,11 @@
-import {Habitat} from './Conway/Habitat';
-import {GridDimension} from './Grid/GridDimension';
-import {IntegerPosition} from './Conway/IntegerPosition';
-import {GridCell} from './Grid/GridCell';
-import {Position} from './Conway/Position';
-import {CellTypesFactory} from './CellType/CellTypesFactory';
+import {Habitat} from '@Conway/Conway/Habitat';
+import {GridDimension} from '@Conway/Grid/GridDimension';
+import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
+import {GridCell} from '@Conway/Grid/GridCell';
+import {Position} from '@Conway/Conway/Position';
+import {CellTypesFactory} from '@Conway/CellType/CellTypesFactory';
+
+
 
 interface MatrixCol {
     [index: number]: number;

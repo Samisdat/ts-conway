@@ -1,12 +1,12 @@
 /**
  * @jest-environment jsdom
  */
+import {PanControl} from '@Conway/Control/ControlPan';
+import {CELL_WIDTH, PAN_TWEEN_STEPS} from '@Conway/Constants';
+import {ZoomControl} from '@Conway/Control/ControlZoom';
+import {clickAndWaitForTweenEnd} from '@Conway/Control/test-helper/clickAndWaitForTweenEnd';
+import {Position} from '@Conway/Conway/Position';
 
-import {ZoomControl} from '../ControlZoom';
-import {PanControl} from '../ControlPan';
-import {CELL_WIDTH, PAN_TWEEN_STEPS} from '../../Constants';
-import {Position} from '../../Conway/Position';
-import {clickAndWaitForTweenEnd} from '../test-helper/clickAndWaitForTweenEnd';
 
 describe('ControlPan', () => {
 

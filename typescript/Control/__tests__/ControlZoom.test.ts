@@ -1,9 +1,10 @@
 /**
  * @jest-environment jsdom
  */
-import {ZoomControl} from '../ControlZoom';
-import {ZOOM_TWEEN_STEPS} from '../../Constants';
-import {clickAndWaitForTweenEnd} from '../test-helper/clickAndWaitForTweenEnd';
+import {clickAndWaitForTweenEnd} from '@Conway/Control/test-helper/clickAndWaitForTweenEnd';
+import {ZOOM_TWEEN_STEPS} from '@Conway/Constants';
+import {ZoomControl} from '@Conway/Control/ControlZoom';
+
 
 describe('ControlZoom', () => {
 

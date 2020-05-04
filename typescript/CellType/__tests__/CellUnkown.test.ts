@@ -1,4 +1,4 @@
-import {CellUnkown} from '../CellUnkown';
+import {CellUnkown} from '@Conway/CellType/CellUnkown';
 
 describe('CellUnkown', () => {
 

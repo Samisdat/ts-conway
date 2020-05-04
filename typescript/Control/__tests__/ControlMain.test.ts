@@ -1,9 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-import {MainControl} from '../ControlMain';
-import {CELL_WIDTH} from '../../Constants';
-import {Position} from '../../Conway/Position';
+import {CELL_WIDTH} from '@Conway/Constants';
+import {MainControl} from '@Conway/Control/ControlMain';
+import {Position} from '@Conway/Conway/Position';
 
 describe('MainControl', () => {
 

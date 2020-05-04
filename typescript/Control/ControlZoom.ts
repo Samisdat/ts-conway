@@ -1,8 +1,7 @@
-import { Tween } from '../Conway/Tween';
-import { Bound } from './bound';
-
-import {ZOOM_TWEEN_STEPS} from '../Constants';
-import {ControlInterface, createControlElement} from './Control';
+import {ControlInterface, createControlElement} from '@Conway/Control/Control';
+import {ZOOM_TWEEN_STEPS} from '@Conway/Constants';
+import {Tween} from '@Conway/Conway/Tween';
+import {Bound} from '@Conway/Control/bound';
 
 type ZoomMode = 'in' | 'out';
 const ZOOM_MODES: ZoomMode[] = ['in', 'out'];
@@ -44,7 +43,6 @@ export class ZoomControl implements ControlInterface {
         const listen = (event: Event) => {
 
             let target = event.target as HTMLElement;
-
 
             if (true === target.classList.contains('fa')) {
 

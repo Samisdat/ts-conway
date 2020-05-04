@@ -1,13 +1,13 @@
-import { CellTypeCheckerboardDark } from './CellTypeCheckerboardDark';
-import { CellTypeCheckerboardLight } from './CellTypeCheckerboardLight';
-import { CellTypeLiving } from './CellTypeLiving';
-import { CellTypesCenter } from './CellTypesCenter';
-import {CellType} from './CellType';
-import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT, COLOR_LIVING} from '../Constants';
-
 /**
  * Not a real sensefull usecase for this design, just try singleton in typescript ;)
  */
+import {CellTypeCheckerboardDark} from '@Conway/CellType/CellTypeCheckerboardDark';
+import {CellTypeCheckerboardLight} from '@Conway/CellType/CellTypeCheckerboardLight';
+import {CellTypeLiving} from '@Conway/CellType/CellTypeLiving';
+import {CellTypesCenter} from '@Conway/CellType/CellTypesCenter';
+import {COLOR_CENTER, COLOR_CHECKERBOARD_DARK, COLOR_CHECKERBOARD_LIGHT, COLOR_LIVING} from '@Conway/Constants';
+import {CellType} from '@Conway/CellType/CellType';
+
 export class CellTypesFactory {
 
     private static instance: CellTypesFactory;

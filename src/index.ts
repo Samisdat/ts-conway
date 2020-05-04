@@ -1,10 +1,9 @@
 import './style.scss';
 
-import { Web } from '../typescript/Frontend/Web';
-import {NoControl} from '../typescript/Control/ControlNo';
-import {guns_and_eaters} from '../typescript/Seed/guns_and_eaters';
-import {MainControl} from '../typescript/Control/ControlMain';
-import {CELL_WIDTH} from '../typescript/Constants';
+import {Web} from '@Conway/Frontend/Web';
+import {MainControl} from '@Conway/Control/ControlMain';
+import {CELL_WIDTH} from '@Conway/Constants';
+import {guns_and_eaters} from '@Conway/Seed/guns_and_eaters';
 
 
 document.addEventListener('DOMContentLoaded', () => {

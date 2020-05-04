@@ -1,10 +1,9 @@
-import { Position } from '../Conway/Position';
-import { Tweenposition } from '../Conway/Tweenposition';
-import { BoundPosition } from './boundposition';
-
-import { ZoomControl } from './ControlZoom';
-import {PAN_TWEEN_STEPS} from '../Constants';
-import {ControlInterface, createControlElement} from './Control';
+import {ControlInterface, createControlElement} from '@Conway/Control/Control';
+import {Tweenposition} from '@Conway/Conway/Tweenposition';
+import {PAN_TWEEN_STEPS} from '@Conway/Constants';
+import {BoundPosition} from '@Conway/Control/boundposition';
+import {ZoomControl} from '@Conway/Control/ControlZoom';
+import {Position} from '@Conway/Conway/Position';
 
 type PanMode = 'top' | 'bottom' | 'left' | 'right' | 'center';
 const PAN_MODES: PanMode[] = ['top', 'bottom', 'left', 'right', 'center'];

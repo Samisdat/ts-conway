@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
+import {Canvas} from '@Conway/canvas';
 
-import { Canvas } from '../canvas';
 
 describe('Canvas', () => {
 

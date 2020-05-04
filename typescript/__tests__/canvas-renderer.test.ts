@@ -1,15 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-
-import { CanvasRenderer } from '../canvas-renderer';
-import {Grid} from '../Grid';
-import {GridDimension} from '../Grid/GridDimension';
-import {CELL_WIDTH} from '../Constants';
-import {Patterns} from '../Conway/Patterns';
-import {CellMatrix} from '../Conway/CellMatrix';
-import {Habitat} from '../Conway/Habitat';
-import {Position} from '../Conway/Position';
+import {CanvasRenderer} from '@Conway/canvas-renderer';
+import {Patterns} from '@Conway/Conway/Patterns';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Habitat} from '@Conway/Conway/Habitat';
+import {Grid} from '@Conway/Grid';
+import {GridDimension} from '@Conway/Grid/GridDimension';
+import {Position} from '@Conway/Conway/Position';
+import {CELL_WIDTH} from '@Conway/Constants';
 
 describe('CanvasRenderer', () => {
 

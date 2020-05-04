@@ -1,6 +1,6 @@
-import { Canvas } from './canvas';
-import {Grid} from './Grid';
-import {Position} from './Conway/Position';
+import {Canvas} from '@Conway/canvas';
+import {Grid} from '@Conway/Grid';
+import {Position} from '@Conway/Conway/Position';
 
 export class CanvasRenderer {
 

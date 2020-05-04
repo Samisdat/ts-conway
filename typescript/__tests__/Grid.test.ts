@@ -1,9 +1,9 @@
-import {Habitat} from '../Conway/Habitat';
-import {GridDimension} from '../Grid/GridDimension';
-import {IntegerPosition} from '../Conway/IntegerPosition';
-import {Position} from '../Conway/Position';
-import {Grid} from '../Grid';
-import {CellMatrix} from '../Conway/CellMatrix';
+import {Habitat} from '@Conway/Conway/Habitat';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {GridDimension} from '@Conway/Grid/GridDimension';
+import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
+import {Position} from '@Conway/Conway/Position';
+import {Grid} from '@Conway/Grid';
 
 describe('Grid', () => {
 

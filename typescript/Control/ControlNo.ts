@@ -1,5 +1,5 @@
-import {Position} from '../Conway/Position';
-import {MainControlInterface} from './MainControlInterface';
+import {MainControlInterface} from '@Conway/Control/MainControlInterface';
+import {Position} from '@Conway/Conway/Position';
 
 export class NoControl implements MainControlInterface {
 

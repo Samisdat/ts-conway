@@ -1,14 +1,14 @@
+import {Pattern} from '@Conway/Conway/Pattern';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Position} from '@Conway/Conway/Position';
 
-// taken from
-// http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
-import {Pattern} from './Pattern';
-import {CellMatrix} from './CellMatrix';
-import {Position} from './Position';
 
 interface PatternsInterface {
     [index: string]: number[][];
 }
 
+// taken from
+// http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
 const patterns: PatternsInterface = {
     // debug
     rotate: [

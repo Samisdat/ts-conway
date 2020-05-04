@@ -1,7 +1,5 @@
-import {Patterns} from '../Patterns';
-import {Position} from '../Position';
-import {Pattern} from '../Pattern';
 import serializer from '../../../jest-serialize-conway';
+import {Patterns} from '@Conway/Conway/Patterns';
 
 describe('Patterns', () => {
 

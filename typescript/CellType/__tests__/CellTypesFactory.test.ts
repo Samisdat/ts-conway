@@ -1,8 +1,8 @@
-import {CellTypesFactory} from 'CellType/CellTypesFactory';
-import {CellTypeCheckerboardDark} from '../CellTypeCheckerboardDark';
-import {CellTypeCheckerboardLight} from '../CellTypeCheckerboardLight';
-import {CellTypeLiving} from '../CellTypeLiving';
-import {CellTypesCenter} from '../CellTypesCenter';
+import {CellTypesFactory} from '@Conway/CellType/CellTypesFactory';
+import {CellTypeCheckerboardDark} from '@Conway/CellType/CellTypeCheckerboardDark';
+import {CellTypeCheckerboardLight} from '@Conway/CellType/CellTypeCheckerboardLight';
+import {CellTypeLiving} from '@Conway/CellType/CellTypeLiving';
+import {CellTypesCenter} from '@Conway/CellType/CellTypesCenter';
 
 describe('CellTypesFactory', () => {
 

@@ -1,4 +1,4 @@
-import {Bound} from '../bound';
+import {Bound} from '@Conway/Control/bound';
 
 describe('Bound', () => {
 

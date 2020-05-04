@@ -1,14 +1,11 @@
-import { CanvasRenderer } from '../canvas-renderer';
-import {Habitat} from '../Conway/Habitat';
-import {Patterns} from '../Conway/Patterns';
-import {GridCreator} from '../Grid/GridCreator';
-import {Position} from '../Conway/Position';
-import {Grid} from '../Grid';
-import {GridDimension} from '../Grid/GridDimension';
-import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '../Constants';
-import {MainControlInterface} from '../Control/MainControlInterface';
-import {CellMatrix} from '../Conway/CellMatrix';
-
+import {GridCreator} from '@Conway/Grid/GridCreator';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {MainControlInterface} from '@Conway/Control/MainControlInterface';
+import {Habitat} from '@Conway/Conway/Habitat';
+import {CanvasRenderer} from '@Conway/canvas-renderer';
+import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '@Conway/Constants';
+import {Grid} from '@Conway/Grid';
+import {GridDimension} from '@Conway/Grid/GridDimension';
 
 export type SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => void;
 

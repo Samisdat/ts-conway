@@ -1,5 +1,5 @@
-import {COLOR_CHECKERBOARD_DARK} from '../../Constants';
-import {CellTypeCheckerboardDark} from 'CellType/CellTypeCheckerboardDark';
+import {COLOR_CHECKERBOARD_DARK} from '@Conway/Constants';
+import {CellTypeCheckerboardDark} from '@Conway/CellType/CellTypeCheckerboardDark';
 
 describe('CellTypeCheckerboardDark', () => {
 

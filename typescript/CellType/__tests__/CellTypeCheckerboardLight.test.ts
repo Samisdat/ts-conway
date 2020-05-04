@@ -1,6 +1,5 @@
-
-import {CellTypeCheckerboardLight} from '../CellTypeCheckerboardLight';
-import {COLOR_CHECKERBOARD_LIGHT} from '../../Constants';
+import {COLOR_CHECKERBOARD_LIGHT} from '@Conway/Constants';
+import {CellTypeCheckerboardLight} from '@Conway/CellType/CellTypeCheckerboardLight';
 
 describe('CellTypeCheckerboardLight', () => {
 

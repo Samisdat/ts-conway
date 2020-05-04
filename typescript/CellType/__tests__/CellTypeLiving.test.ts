@@ -1,5 +1,5 @@
-import {CellTypeLiving} from '../CellTypeLiving';
-import {COLOR_LIVING} from '../../Constants';
+import {COLOR_LIVING} from '@Conway/Constants';
+import {CellTypeLiving} from '@Conway/CellType/CellTypeLiving';
 
 describe('CellTypeLiving', () => {
 

@@ -1,5 +1,5 @@
-import { Position } from '../Conway/Position';
-import { Bound } from './bound';
+import {Bound} from '@Conway/Control/bound';
+import {Position} from '@Conway/Conway/Position';
 
 export class BoundPosition {
 

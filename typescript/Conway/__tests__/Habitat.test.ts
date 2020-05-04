@@ -1,9 +1,10 @@
-import {Position} from '../Position';
-import {Habitat} from '../Habitat';
-import {Patterns} from '../Patterns';
-
 import serializer from '../../../jest-serialize-conway';
-import {CellMatrix} from '../CellMatrix';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Habitat} from '@Conway/Conway/Habitat';
+import {Position} from '@Conway/Conway/Position';
+import {Patterns} from '@Conway/Conway/Patterns';
+
+
 
 describe('Habitat', () => {
 

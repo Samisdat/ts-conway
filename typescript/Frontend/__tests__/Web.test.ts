@@ -1,12 +1,12 @@
 /**
  * @jest-environment jsdom
  */
-import {Web} from '../Web';
-import {NoControl} from '../../Control/ControlNo';
-import {MainControl} from '../../Control/ControlMain';
-import {CELL_WIDTH} from '../../Constants';
-import {guns_and_eaters} from '../../Seed/guns_and_eaters';
-import {doc} from 'prettier';
+import {Web} from '@Conway/Frontend/Web';
+import {guns_and_eaters} from '@Conway/Seed/guns_and_eaters';
+import {NoControl} from '@Conway/Control/ControlNo';
+import {MainControl} from '@Conway/Control/ControlMain';
+import {CELL_WIDTH} from '@Conway/Constants';
+
 
 jest.useFakeTimers();
 describe('Frontend/Web', () => {

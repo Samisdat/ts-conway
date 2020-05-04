@@ -1,4 +1,4 @@
-import {Position} from '../Conway/Position';
+import {Position} from '@Conway/Conway/Position';
 
 export interface MainControlInterface {
     getZoom(): number;

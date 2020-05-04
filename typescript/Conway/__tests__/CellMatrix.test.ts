@@ -1,8 +1,6 @@
-import {CellMatrix} from '../CellMatrix';
-import {Position} from '../Position';
-import {Patterns} from '../Patterns';
-
 import serializer from '../../../jest-serialize-conway';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Position} from '@Conway/Conway/Position';
 
 describe('CellMatrix', () => {
 

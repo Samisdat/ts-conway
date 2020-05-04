@@ -1,5 +1,4 @@
-import {GridDimension} from '../GridDimension';
-
+import {GridDimension} from '@Conway/Grid/GridDimension';
 
 describe('GridDimension', () => {
 

@@ -1,9 +1,9 @@
-import {guns_and_eaters} from '../guns_and_eaters';
-import {Position} from '../../Conway/Position';
-import {CellMatrix} from '../../Conway/CellMatrix';
-import {GridCreator} from '../../Grid/GridCreator';
 
 import serializer from '../../../jest-serialize-conway';
+import {GridCreator} from '@Conway/Grid/GridCreator';
+import {Position} from '@Conway/Conway/Position';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {guns_and_eaters} from '@Conway/Seed/guns_and_eaters';
 
 describe('guns_and_eaters', () => {
 

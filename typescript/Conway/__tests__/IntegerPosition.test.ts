@@ -1,5 +1,5 @@
-import {IntegerPosition} from '../IntegerPosition';
-import {Position} from '../Position';
+import {IntegerPosition} from '@Conway/Conway/IntegerPosition';
+import {Position} from '@Conway/Conway/Position';
 
 describe('IntegerPosition', () => {
 

@@ -1,5 +1,5 @@
-import {Position} from './Position';
-import {CellMatrix} from './CellMatrix';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Position} from '@Conway/Conway/Position';
 
 export class Pattern {
 

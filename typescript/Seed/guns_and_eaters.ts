@@ -1,8 +1,8 @@
-import {GridCreator} from '../Grid/GridCreator';
-import {CellMatrix} from '../Conway/CellMatrix';
-import {Patterns} from '../Conway/Patterns';
-import {Position} from '../Conway/Position';
-import {SeedFunction} from '../Frontend/Web';
+import {SeedFunction} from '@Conway/Frontend/Web';
+import {GridCreator} from '@Conway/Grid/GridCreator';
+import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Patterns} from '@Conway/Conway/Patterns';
+import {Position} from '@Conway/Conway/Position';
 
 export const guns_and_eaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
 

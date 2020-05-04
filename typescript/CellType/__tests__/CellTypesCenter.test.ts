@@ -1,5 +1,5 @@
-import {CellTypesCenter} from '../CellTypesCenter';
-import {COLOR_CENTER} from '../../Constants';
+import {COLOR_CENTER} from '@Conway/Constants';
+import {CellTypesCenter} from '@Conway/CellType/CellTypesCenter';
 
 describe('CellTypesCenter', () => {
 

@@ -1,5 +1,5 @@
-import {Position} from './Position';
-import {Pattern} from './Pattern';
+import {Position} from '@Conway/Conway/Position';
+import {Pattern} from '@Conway/Conway/Pattern';
 
 interface CellMatrixInterface {
     [index: string]: Position;
