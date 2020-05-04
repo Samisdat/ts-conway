@@ -55,7 +55,6 @@ module.exports = {
     resolve: {
         extensions: [ '.ts', '.js' ],
         alias: {
-            CellType: srcPath('typecript/CellType'),
             '@Conway': path.resolve(__dirname, 'typescript/')
         },
     },
