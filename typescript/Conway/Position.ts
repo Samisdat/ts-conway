@@ -83,7 +83,17 @@ export class Position {
 
     public toString(): string {
 
-        return this.x + '-' + this.y;
+        let str = '';
+
+        str += (0 <= this.x) ? '+' : '';
+        str += this.x;
+
+        str += '/';
+
+        str += (0 <= this.y) ? '+' : '';
+        str += this.y;
+
+        return str;
 
     }
 }
