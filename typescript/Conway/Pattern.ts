@@ -71,6 +71,45 @@ export class Pattern {
 
     }
 
+    public rotate(): void {
+
+        const matrix = this.toArray();
+
+        const rotated: number[][] = [];
+
+        for (let x = 0; x < matrix[0].length; x += 1) {
+
+            const row: number[] = [];
+
+            for (let y = matrix.length - 1; y >= 0 ; y -= 1) {
+
+                row.push(matrix[y][x]);
+
+            }
+
+            rotated.push(row);
+
+        }
+        const rotatedMatrix = new CellMatrix();
+
+        for (let y = 0; y < rotated.length; y += 1) {
+
+            for (let x = 0; x < rotated[y].length; x += 1) {
+
+                if (0 === rotated[y][x]) {
+                    continue;
+                }
+
+                rotatedMatrix.add(new Position(x, y));
+
+            }
+
+        }
+
+        this.matrix = rotatedMatrix;
+
+    }
+
     public toArray(): number[][]{
 
         let farLeft = this.getWidth();

@@ -1,30 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Pattern get width and height 1`] = `
-OOX
-OOO
-OOO
+exports[`Pattern rotate 1`] = `
+XXX
 XOO
 `;
 
-exports[`Pattern mirrorHorizontal simple 1`] = `
+exports[`Pattern rotate 2`] = `
 XO
 XO
-XO
+XX
 `;
 
-exports[`Pattern mirrorHorizontal simple 2`] = `
-OX
-OX
-OX
-`;
-
-exports[`Pattern mirrorVertical simple 1`] = `
+exports[`Pattern rotate 3`] = `
+OOX
 XXX
-OOO
 `;
 
-exports[`Pattern mirrorVertical simple 2`] = `
-OOO
+exports[`Pattern rotate 4`] = `
+XX
+OX
+OX
+`;
+
+exports[`Pattern rotate 5`] = `
 XXX
+XOO
 `;

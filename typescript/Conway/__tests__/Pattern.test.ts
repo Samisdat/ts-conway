@@ -107,6 +107,29 @@ describe('Pattern', () => {
 
     });
 
+    test.only('rotate', () => {
+
+        const patternStr = '!Name: Rotate\n' +
+            'O..\n' +
+            'OOO';
+
+        const pattern = Pattern.fromString(patternStr);
+        expect(pattern.getMatrix()).toMatchSnapshot();
+
+        pattern.rotate();
+        expect(pattern.getMatrix()).toMatchSnapshot();
+
+        pattern.rotate();
+        expect(pattern.getMatrix()).toMatchSnapshot();
+
+        pattern.rotate();
+        expect(pattern.getMatrix()).toMatchSnapshot();
+
+        pattern.rotate();
+        expect(pattern.getMatrix()).toMatchSnapshot();
+
+    });
+
     test('toArray', () => {
 
         const patterns = new Patterns();
