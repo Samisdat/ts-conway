@@ -2,6 +2,7 @@ import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
 import {Pattern} from '@Conway/Conway/Pattern';
+import {Patterns} from '@Conway/Conway/Patterns';
 
 
 describe('Pattern', () => {
@@ -105,5 +106,43 @@ describe('Pattern', () => {
         expect(pattern.getMatrix()).toMatchSnapshot();
 
     });
+
+    test('toArray', () => {
+
+        const patterns = new Patterns();
+
+        const pattern = patterns.get('rotate');
+        expect(pattern.toArray()).toMatchSnapshot();
+
+        console.log(pattern.toArray())
+
+    });
+
+    test('toString', () => {
+
+        const patterns = new Patterns();
+
+        const pattern = patterns.get('rotate');
+        expect(pattern.toString()).toMatchSnapshot();
+
+        console.log(pattern.toString())
+
+    });
+
+    test('fromString', () => {
+
+        const patternStr = '!Name: Rotat\n' +
+            'O..\n' +
+            'OOO';
+
+        const pattern = Pattern.fromString(patternStr);
+
+        expect(pattern).toBeInstanceOf(Pattern);
+
+        expect(pattern.toString()).toBe(patternStr);
+
+
+    });
+
 
 });
