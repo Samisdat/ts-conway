@@ -84,7 +84,7 @@ export class CellMatrix {
         }
 
         if (0 > left && 0 < right) {
-            return right - left + 1;
+            return right - left;
         }
 
         return right - left;
@@ -110,7 +110,7 @@ export class CellMatrix {
         }
 
         if (0 > bottom && 0 < top) {
-            return top - bottom + 1;
+            return top - bottom;
         }
 
         return top - bottom;
