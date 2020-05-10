@@ -102,7 +102,7 @@ describe('CellMatrix', () => {
         cellMatrix.add(new Position(0, -5));
         cellMatrix.add(new Position(0, 5));
 
-        expect(cellMatrix.height()).toBe(11);
+        expect(cellMatrix.height()).toBe(10);
 
     });
 
@@ -135,7 +135,7 @@ describe('CellMatrix', () => {
         cellMatrix.add(new Position(-5, 0));
         cellMatrix.add(new Position(5, 0));
 
-        expect(cellMatrix.width()).toBe(11);
+        expect(cellMatrix.width()).toBe(10);
 
     });
 

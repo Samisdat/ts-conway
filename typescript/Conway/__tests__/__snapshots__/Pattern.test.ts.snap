@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Pattern get width and height 1`] = `
+OOX
+OOO
+OOO
+XOO
+`;
+
+exports[`Pattern mirrorHorizontal simple 1`] = `
+XO
+XO
+XO
+`;
+
+exports[`Pattern mirrorHorizontal simple 2`] = `
+OX
+OX
+OX
+`;
+
+exports[`Pattern mirrorVertical simple 1`] = `
+XXX
+OOO
+`;
+
+exports[`Pattern mirrorVertical simple 2`] = `
+OOO
+XXX
+`;
+
 exports[`Pattern rotate 1`] = `
 XXX
 XOO
@@ -25,4 +54,34 @@ OX
 exports[`Pattern rotate 5`] = `
 XXX
 XOO
+`;
+
+exports[`Pattern toArray 1`] = `
+Array [
+  Array [
+    1,
+    1,
+    1,
+    1,
+  ],
+  Array [
+    1,
+    0,
+    0,
+    0,
+  ],
+  Array [
+    1,
+    0,
+    0,
+    0,
+  ],
+]
+`;
+
+exports[`Pattern toString 1`] = `
+"!Name: rotate
+OOOO
+O...
+O..."
 `;

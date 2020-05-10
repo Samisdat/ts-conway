@@ -23,11 +23,7 @@ export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
 
             if (true === isMeta.test(patternPow)) {
 
-                const meta = isMeta.exec(patternPow);
-
-                if (null === meta) {
-                    continue;
-                }
+                const meta = isMeta.exec(patternPow) as RegExpMatchArray;
 
                 if ('Name' === meta[1]) {
                     name = meta[2].trim();
@@ -61,9 +57,9 @@ export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
     }
 
     const pattern = new Pattern(name, matrix);
-    //pattern.mirrorVertical();
+    // pattern.mirrorVertical();
 
     return pattern;
 
-}
+};
 

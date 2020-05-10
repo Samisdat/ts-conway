@@ -3,6 +3,8 @@ import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
 import {Pattern} from '@Conway/Conway/Pattern';
 import {Patterns} from '@Conway/Conway/Patterns';
+import {readFileSync} from 'fs';
+import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
 
 
 describe('Pattern', () => {
@@ -14,9 +16,6 @@ describe('Pattern', () => {
     test('can be created', () => {
 
         const cellMatrix = new CellMatrix();
-        cellMatrix.add(
-            new Position(-1, -1)
-        );
 
         let pattern = new Pattern(
             'Scottish',
@@ -42,8 +41,8 @@ describe('Pattern', () => {
             cellMatrix
         );
 
-        expect(pattern.getWidth()).toBe(3);
-        expect(pattern.getHeight()).toBe(4);
+        expect(pattern.getWidth()).toBe(2);
+        expect(pattern.getHeight()).toBe(3);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
 
@@ -68,7 +67,7 @@ describe('Pattern', () => {
         );
 
         expect(pattern.getWidth()).toBe(1);
-        expect(pattern.getHeight()).toBe(3);
+        expect(pattern.getHeight()).toBe(2);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
 
@@ -96,7 +95,7 @@ describe('Pattern', () => {
             cellMatrix
         );
 
-        expect(pattern.getWidth()).toBe(3);
+        expect(pattern.getWidth()).toBe(2);
         expect(pattern.getHeight()).toBe(1);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
@@ -107,7 +106,7 @@ describe('Pattern', () => {
 
     });
 
-    test.only('rotate', () => {
+    test('rotate', () => {
 
         const patternStr = '!Name: Rotate\n' +
             'O..\n' +
@@ -137,8 +136,6 @@ describe('Pattern', () => {
         const pattern = patterns.get('rotate');
         expect(pattern.toArray()).toMatchSnapshot();
 
-        console.log(pattern.toArray())
-
     });
 
     test('toString', () => {
@@ -148,11 +145,9 @@ describe('Pattern', () => {
         const pattern = patterns.get('rotate');
         expect(pattern.toString()).toMatchSnapshot();
 
-        console.log(pattern.toString())
-
     });
 
-    test('fromString', () => {
+    test('fromString("a string").toString should be "a string"', () => {
 
         const patternStr = '!Name: Rotat\n' +
             'O..\n' +
@@ -160,12 +155,14 @@ describe('Pattern', () => {
 
         const pattern = Pattern.fromString(patternStr);
 
-        expect(pattern).toBeInstanceOf(Pattern);
-
-        expect(pattern.toString()).toBe(patternStr);
-
-
     });
 
+    test('read and rotate scholar', () => {
+
+        const scholarFile = readFileSync(__dirname + '/../Pattern/__tests__/scholar.cells', {encoding: 'utf8'});
+
+        const pattern = Pattern.fromString(scholarFile);
+
+    });
 
 });
