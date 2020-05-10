@@ -4,6 +4,7 @@
 import {clickAndWaitForTweenEnd} from '@Conway/Control/test-helper/clickAndWaitForTweenEnd';
 import {ZOOM_TWEEN_STEPS} from '@Conway/Constants';
 import {ZoomControl} from '@Conway/Control/ControlZoom';
+import {Position} from '@Conway/Conway/Position';
 
 
 describe('ControlZoom', () => {
@@ -117,8 +118,31 @@ describe('ControlZoom', () => {
 
         expect(zoomControl.getZoom()).toStrictEqual(0.1);
 
+    });
+
+    test.only('can handle click onto an element that ist not an valid zoom', () => {
+
+        const htmlDivElement = document.createElement('div');
+
+        htmlDivElement.classList.add('not-zoom');
+        htmlDivElement.setAttribute('data-value', 'not-zoom');
+
+        element.append(htmlDivElement);
+
+        let zoomControl = new ZoomControl(element);
+
+        const notZoom = element.getElementsByClassName('not-zoom')[0] as HTMLElement;
+
+        clickAndWaitForTweenEnd(
+            zoomControl,
+            notZoom,
+            ZOOM_TWEEN_STEPS
+        );
+
+        expect(zoomControl.getZoom()).toStrictEqual(1);
 
 
     });
+
 
 });
