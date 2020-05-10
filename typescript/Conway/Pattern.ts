@@ -1,3 +1,5 @@
+import {readFileSync} from 'fs';
+
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
 import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
@@ -16,7 +18,7 @@ export class Pattern {
 
     }
 
-    public static fromString(patternString: string): Pattern{
+    public static fromString(patternString: string): Pattern {
         return readPatternFromPlainFile(patternString);
     }
 
@@ -110,7 +112,7 @@ export class Pattern {
 
     }
 
-    public toArray(): number[][]{
+    public toArray(): number[][] {
 
         let farLeft = this.getWidth();
         let farBottom = this.getHeight();
@@ -162,7 +164,7 @@ export class Pattern {
 
     }
 
-    public toString(): string{
+    public toString(): string {
 
         const matrixAsArray = this.toArray();
 
