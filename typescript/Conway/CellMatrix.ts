@@ -118,8 +118,6 @@ export class CellMatrix {
             dimension.height = top - bottom;
         }
 
-
-
         return dimension;
 
     }
