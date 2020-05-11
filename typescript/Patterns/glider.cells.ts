@@ -1,0 +1,7 @@
+export const glider = `!Name: Glider
+!Author: Richard K. Guy
+!The smallest, most common, and first discovered spaceship.
+!www.conwaylife.com/wiki/index.php?title=Glider
+.O
+..O
+OOO`;
