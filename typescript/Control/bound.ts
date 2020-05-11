@@ -14,15 +14,15 @@ export class Bound {
         this.max = max;
     }
 
-    public isWithin(test: number): Boolean {
+    public isWithin(test: number): boolean {
         return (test >= this.min && test <= this.max);
     }
 
-    public isBelow(test: number): Boolean {
+    public isBelow(test: number): boolean {
         return (test < this.min);
     }
 
-    public isAbove(test: number): Boolean {
+    public isAbove(test: number): boolean {
         return (test > this.max);
     }
 

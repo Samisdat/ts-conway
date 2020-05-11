@@ -18,7 +18,7 @@ describe('Canvas', () => {
 
     it('can be created', () => {
 
-        let canvas = new Canvas(
+        const canvas = new Canvas(
             canvasContext
         );
 
@@ -28,7 +28,7 @@ describe('Canvas', () => {
 
     it('can get cxt', () => {
 
-        let canvas = new Canvas(
+        const canvas = new Canvas(
             canvasContext
         );
 

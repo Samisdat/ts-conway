@@ -29,7 +29,7 @@ export class Habitat {
 
     }
 
-    private isLiving(position: Position): Boolean {
+    private isLiving(position: Position): boolean {
 
         return this.matrix.has(position);
 
@@ -37,13 +37,13 @@ export class Habitat {
 
     private countLivingNeighbours(position: Position): number {
 
-        let livingNeighbours: number = 0;
+        let livingNeighbours = 0;
 
-        let neighbours: Position[] = position.getNeighbours();
+        const neighbours: Position[] = position.getNeighbours();
 
-        for (let neighbour of neighbours) {
+        for (const neighbour of neighbours) {
 
-            let isLiving = this.isLiving(neighbour);
+            const isLiving = this.isLiving(neighbour);
 
             if (true === isLiving) {
                 livingNeighbours += 1;
@@ -73,7 +73,7 @@ export class Habitat {
          *  That's the second loop
          */
 
-        for (let position of this.matrix.all()) {
+        for (const position of this.matrix.all()) {
 
             const livingNeighbours = this.countLivingNeighbours(position);
 
@@ -85,11 +85,11 @@ export class Habitat {
 
         }
 
-        for (let position of this.matrix.all()) {
+        for (const position of this.matrix.all()) {
 
             const neighbours = position.getNeighbours();
 
-            for (let neighbour of neighbours) {
+            for (const neighbour of neighbours) {
 
                 if (true === this.matrix.has(neighbour)) {
                     continue;

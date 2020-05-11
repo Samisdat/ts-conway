@@ -47,7 +47,7 @@ export class Web {
         this.habitat.startAging();
 
         function checkWindowSize() {
-            let width = window.innerWidth,
+            const width = window.innerWidth,
                 height = window.innerHeight;
 
             // console.log('window.innerHeight: ', window.innerHeight, ' window.innerWidth: ', window.innerWidth);

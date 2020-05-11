@@ -7,7 +7,7 @@ export class Tween {
     private stepInterval: number;
 
     private steps: number;
-    private stepsDone: number = 0;
+    private stepsDone = 0;
 
     constructor(start: number, steps = 30) {
 
@@ -18,7 +18,7 @@ export class Tween {
 
     }
 
-    public equal(end: number): Boolean {
+    public equal(end: number): boolean {
 
         return end === this.end;
 

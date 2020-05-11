@@ -6,11 +6,11 @@ import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPl
 
 export class Pattern {
 
-    private name: String;
+    private name: string;
 
     private matrix: CellMatrix;
 
-    constructor(name: String, matrix: CellMatrix) {
+    constructor(name: string, matrix: CellMatrix) {
 
         this.name = name;
 

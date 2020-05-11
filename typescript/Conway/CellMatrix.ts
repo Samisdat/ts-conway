@@ -58,7 +58,7 @@ export class CellMatrix {
             -1 * Math.floor(pattern.getMatrix().height() / 2)
         ).move(moveBy);
 
-        for (let position of positions) {
+        for (const position of positions) {
 
             this.add(position.move(moveBy));
 
@@ -71,7 +71,7 @@ export class CellMatrix {
         let left = 0;
         let right = 0;
 
-        for (let position of this.all()) {
+        for (const position of this.all()) {
 
             if (position.x < left) {
                 left = position.x;
@@ -97,7 +97,7 @@ export class CellMatrix {
         let top = 0;
         let bottom = 0;
 
-        for (let position of this.all()) {
+        for (const position of this.all()) {
 
             if (position.y < bottom) {
                 bottom = position.y;

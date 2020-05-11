@@ -21,7 +21,7 @@ export class BoundPosition {
 
     }
 
-    public isWithin(test: Position): Boolean {
+    public isWithin(test: Position): boolean {
         return (this.x.isWithin(test.x) && this.y.isWithin(test.y));
     }
 

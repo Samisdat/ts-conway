@@ -22,7 +22,7 @@ describe('CanvasRenderer', () => {
 
     test('can be created with [debug=false]', () => {
 
-        let canvasRenderer = new CanvasRenderer(
+        const canvasRenderer = new CanvasRenderer(
             element,
             false
         );
@@ -33,7 +33,7 @@ describe('CanvasRenderer', () => {
 
     test('can be created with [debug=true]', () => {
 
-        let canvasRenderer = new CanvasRenderer(
+        const canvasRenderer = new CanvasRenderer(
             element,
             true
         );
@@ -44,7 +44,7 @@ describe('CanvasRenderer', () => {
 
     test('update and render with [debug=true]', () => {
 
-        let canvasRenderer = new CanvasRenderer(
+        const canvasRenderer = new CanvasRenderer(
             element,
             true
         );
@@ -77,7 +77,7 @@ describe('CanvasRenderer', () => {
 
     test('can be created with [debug=undefined]', () => {
 
-        let canvasRenderer = new CanvasRenderer(
+        const canvasRenderer = new CanvasRenderer(
             element
         );
 
@@ -91,7 +91,7 @@ describe('CanvasRenderer', () => {
             document.createElement('canvas')
         );
 
-        let canvasRenderer = new CanvasRenderer(
+        const canvasRenderer = new CanvasRenderer(
             element
         );
 

@@ -98,7 +98,7 @@ export class PanControl implements ControlInterface {
 
             }
 
-            let mode = target.getAttribute('data-value') as PanMode;
+            const mode = target.getAttribute('data-value') as PanMode;
 
             this.setPan(mode);
 
@@ -127,7 +127,7 @@ export class PanControl implements ControlInterface {
 
         canvas.addEventListener('mousemove', (event: MouseEvent) => {
 
-            let offset: any = {
+            const offset: any = {
                 left: event.clientX - this.offset.left,
                 top: event.clientY - this.offset.top
             };
@@ -137,7 +137,7 @@ export class PanControl implements ControlInterface {
 
             if (true === this.canvasWrap.classList.contains('mousedown')) {
 
-                let position = this.positionTween.getCurrent().move(
+                const position = this.positionTween.getCurrent().move(
                     new Position(offset.left, offset.top).inverse()
                 );
 
@@ -192,9 +192,9 @@ export class PanControl implements ControlInterface {
                 continue;
             }
 
-            let nextPan = panTo.move(this.panBy[nextMode]);
+            const nextPan = panTo.move(this.panBy[nextMode]);
 
-            let stillWithin  = this.positionBound.isWithin(nextPan);
+            const stillWithin  = this.positionBound.isWithin(nextPan);
 
             if (true === stillWithin) {
                 possiblePans.push(nextMode);

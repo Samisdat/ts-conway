@@ -16,7 +16,7 @@ export class Tweenposition {
         this.y = new Tween(start.x, this.steps);
     }
 
-    public equal(position: Position): Boolean {
+    public equal(position: Position): boolean {
         return (position.x === this.x.getEnd() && position.y === this.y.getEnd());
     }
 

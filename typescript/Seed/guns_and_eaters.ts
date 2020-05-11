@@ -4,7 +4,7 @@ import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Patterns} from '@Conway/Conway/Patterns';
 import {Position} from '@Conway/Conway/Position';
 
-export const guns_and_eaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
+export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
 
     const patterns = new Patterns();
     const gunsAndEaters = patterns.get('guns_and_eaters');
@@ -17,7 +17,7 @@ export const guns_and_eaters: SeedFunction = (gridCreator: GridCreator, matrix: 
         repeat += 1;
     }
 
-    let patternsPerSide = Math.floor(repeat / 2);
+    const patternsPerSide = Math.floor(repeat / 2);
 
     matrix.seedPattern(
         patterns.get('guns_and_eaters'),

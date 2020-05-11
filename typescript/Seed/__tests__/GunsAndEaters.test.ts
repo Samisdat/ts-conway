@@ -3,7 +3,7 @@ import serializer from '../../../jest-serialize-conway';
 import {GridCreator} from '@Conway/Grid/GridCreator';
 import {Position} from '@Conway/Conway/Position';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
-import {guns_and_eaters} from '@Conway/Seed/guns_and_eaters';
+import {gunsAndEaters} from '@Conway/Seed/guns_and_eaters';
 
 describe('guns_and_eaters', () => {
 
@@ -25,7 +25,7 @@ describe('guns_and_eaters', () => {
 
         const matrix = new CellMatrix();
 
-        guns_and_eaters(gridCreator, matrix);
+        gunsAndEaters(gridCreator, matrix);
 
         expect(matrix).toMatchSnapshot();
 
@@ -43,7 +43,7 @@ describe('guns_and_eaters', () => {
 
         const matrix = new CellMatrix();
 
-        guns_and_eaters(gridCreator, matrix);
+        gunsAndEaters(gridCreator, matrix);
 
         expect(matrix).toMatchSnapshot();
 

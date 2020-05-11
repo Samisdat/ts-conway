@@ -31,7 +31,7 @@ export class Position {
         );
     }
 
-    public compare(position: Position): Boolean {
+    public compare(position: Position): boolean {
 
         return (position.x === this.x && position.y === this.y);
 
@@ -39,7 +39,7 @@ export class Position {
 
     public getNeighbours(): Position[] {
 
-        let neighbours: Position[] = [];
+        const neighbours: Position[] = [];
 
         // neighbours on bottom
         neighbours.push(
