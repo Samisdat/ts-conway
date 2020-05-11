@@ -20,33 +20,20 @@ describe('CanvasRenderer', () => {
 
     });
 
-    test('can be created with [debug=false]', () => {
+    test('can be created', () => {
 
         const canvasRenderer = new CanvasRenderer(
-            element,
-            false
+            element
         );
 
         expect(canvasRenderer).toBeInstanceOf(CanvasRenderer);
 
     });
 
-    test('can be created with [debug=true]', () => {
+    test('update and render with', () => {
 
         const canvasRenderer = new CanvasRenderer(
-            element,
-            true
-        );
-
-        expect(canvasRenderer).toBeInstanceOf(CanvasRenderer);
-
-    });
-
-    test('update and render with [debug=true]', () => {
-
-        const canvasRenderer = new CanvasRenderer(
-            element,
-            true
+            element
         );
 
         const patterns = new Patterns();
@@ -72,16 +59,6 @@ describe('CanvasRenderer', () => {
         canvasRenderer.render();
 
         expect('Would be could to have an image snapshot matcher').toBe('Would be could to have an image snapshot matcher');
-
-    });
-
-    test('can be created with [debug=undefined]', () => {
-
-        const canvasRenderer = new CanvasRenderer(
-            element
-        );
-
-        expect(canvasRenderer).toBeInstanceOf(CanvasRenderer);
 
     });
 

@@ -34,8 +34,7 @@ export class Web {
         this.element = element;
 
         this.canvasRenderer = new CanvasRenderer(
-            this.element,
-            DEBUG
+            this.element
         );
 
         this.control = control;
