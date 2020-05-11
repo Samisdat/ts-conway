@@ -5,6 +5,11 @@ interface CellMatrixInterface {
     [index: string]: Position;
 }
 
+interface Dimension {
+    width: number;
+    height: number;
+}
+
 export class CellMatrix {
 
     private matrix: CellMatrixInterface = {};
@@ -66,10 +71,18 @@ export class CellMatrix {
 
     }
 
-    public width(): number {
+    private getDimension(): Dimension {
+
+        const dimension: Dimension = {
+            width: 0,
+            height: 0
+        }
 
         let left = 0;
         let right = 0;
+
+        let top = 0;
+        let bottom = 0;
 
         for (const position of this.all()) {
 
@@ -81,24 +94,6 @@ export class CellMatrix {
                 right = position.x;
             }
 
-        }
-
-        if (0 > left && 0 < right) {
-            return right - left;
-        }
-
-        return right - left;
-
-
-    }
-
-    public height(): number {
-
-        let top = 0;
-        let bottom = 0;
-
-        for (const position of this.all()) {
-
             if (position.y < bottom) {
                 bottom = position.y;
             }
@@ -109,12 +104,35 @@ export class CellMatrix {
 
         }
 
-        if (0 > bottom && 0 < top) {
-            return top - bottom;
+        if (0 > left && 0 < right) {
+            dimension.width = right - left;
+        }
+        else{
+            dimension.width = right - left;
         }
 
-        return top - bottom;
+        if (0 > bottom && 0 < top) {
+            dimension.height = top - bottom;
+        }
+        else{
+            dimension.height = top - bottom;
+        }
 
+
+
+        return dimension;
+
+    }
+
+    public width(): number {
+
+        return this.getDimension().width;
+
+    }
+
+    public height(): number {
+
+        return this.getDimension().height;
 
     }
 
