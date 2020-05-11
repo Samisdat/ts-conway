@@ -59,29 +59,26 @@ XOO
 exports[`Pattern toArray 1`] = `
 Array [
   Array [
+    0,
     1,
-    1,
-    1,
+    0,
+  ],
+  Array [
+    0,
+    0,
     1,
   ],
   Array [
     1,
-    0,
-    0,
-    0,
-  ],
-  Array [
     1,
-    0,
-    0,
-    0,
+    1,
   ],
 ]
 `;
 
 exports[`Pattern toString 1`] = `
-"!Name: rotate
-OOOO
-O...
-O..."
+"!Name: Glider
+.O.
+..O
+OOO"
 `;

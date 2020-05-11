@@ -1,28 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Habitat aging with interval should increase position 1`] = `
-XXX
-OOO
-`;
+exports[`Habitat aging with interval should increase position 1`] = `XXX`;
 
 exports[`Habitat aging with interval should increase position 2`] = `
-X
-X
-X
+OX
+OX
+OX
 `;
 
-exports[`Habitat snapshot 1`] = `
-XXX
-OOO
-`;
+exports[`Habitat snapshot 1`] = `XXX`;
 
 exports[`Habitat snapshot 2`] = `
-X
-X
-X
+OX
+OX
+OX
 `;
 
-exports[`Habitat snapshot 3`] = `
-XXX
-OOO
-`;
+exports[`Habitat snapshot 3`] = `XXX`;

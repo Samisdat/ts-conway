@@ -2,10 +2,8 @@ import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
 import {Pattern} from '@Conway/Conway/Pattern';
-import {Patterns} from '@Conway/Conway/Patterns';
-import {readFileSync} from 'fs';
-import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
-
+import {scholar} from '@Conway/Patterns/scholar.cells';
+import {glider} from '@Conway/Patterns/glider.cells';
 
 describe('Pattern', () => {
 
@@ -17,7 +15,7 @@ describe('Pattern', () => {
 
         const cellMatrix = new CellMatrix();
 
-        let pattern = new Pattern(
+        const pattern = new Pattern(
             'Scottish',
             cellMatrix
         );
@@ -36,7 +34,7 @@ describe('Pattern', () => {
             new Position(1, 2)
         );
 
-        let pattern = new Pattern(
+        const pattern = new Pattern(
             'Scottish',
             cellMatrix
         );
@@ -61,7 +59,7 @@ describe('Pattern', () => {
             new Position(-1, -1)
         );
 
-        let pattern = new Pattern(
+        const pattern = new Pattern(
             'Scottish',
             cellMatrix
         );
@@ -90,7 +88,7 @@ describe('Pattern', () => {
             new Position(1, 1)
         );
 
-        let pattern = new Pattern(
+        const pattern = new Pattern(
             'Scottish',
             cellMatrix
         );
@@ -131,18 +129,17 @@ describe('Pattern', () => {
 
     test('toArray', () => {
 
-        const patterns = new Patterns();
-
-        const pattern = patterns.get('rotate');
+        const pattern = Pattern.fromString(glider)
         expect(pattern.toArray()).toMatchSnapshot();
 
     });
 
     test('toString', () => {
 
-        const patterns = new Patterns();
+        const pattern = Pattern.fromString(glider)
 
-        const pattern = patterns.get('rotate');
+        console.log(pattern.toString())
+
         expect(pattern.toString()).toMatchSnapshot();
 
     });
@@ -159,9 +156,7 @@ describe('Pattern', () => {
 
     test('read and rotate scholar', () => {
 
-        const scholarFile = readFileSync(__dirname + '/../Pattern/__tests__/scholar.cells', {encoding: 'utf8'});
-
-        const pattern = Pattern.fromString(scholarFile);
+        const pattern = Pattern.fromString(scholar);
 
     });
 

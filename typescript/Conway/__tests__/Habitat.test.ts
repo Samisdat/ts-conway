@@ -2,8 +2,9 @@ import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Habitat} from '@Conway/Conway/Habitat';
 import {Position} from '@Conway/Conway/Position';
-import {Patterns} from '@Conway/Conway/Patterns';
 
+import {blinker} from '@Conway/Patterns/blinker.cells';
+import {Pattern} from '@Conway/Conway/Pattern';
 
 
 describe('Habitat', () => {
@@ -20,7 +21,7 @@ describe('Habitat', () => {
 
     test('can be created', () => {
 
-        let habitat = new Habitat(
+        const habitat = new Habitat(
             cellMatrix,
             1000
         );
@@ -35,7 +36,7 @@ describe('Habitat', () => {
             new Position(0, 1)
         );
 
-        let habitat = new Habitat(
+        const habitat = new Habitat(
             cellMatrix,
             1000
         );
@@ -51,10 +52,11 @@ describe('Habitat', () => {
 
     test('snapshot', () => {
 
-        const patterns = new Patterns();
-        cellMatrix.seedPattern(patterns.get('blinker'));
+        cellMatrix.seedPattern(
+            Pattern.fromString(blinker)
+        );
 
-        let habitat = new Habitat(
+        const habitat = new Habitat(
             cellMatrix,
             1000
         );
@@ -76,7 +78,7 @@ describe('Habitat', () => {
             new Position(0, 1)
         );
 
-        let habitat = new Habitat(
+        const habitat = new Habitat(
             cellMatrix,
             1000
         );
@@ -97,7 +99,7 @@ describe('Habitat', () => {
             new Position(0, 2)
         );
 
-        let habitat = new Habitat(
+        const habitat = new Habitat(
             cellMatrix,
             1000
         );
@@ -142,11 +144,11 @@ describe('Habitat aging with interval', function() {
 
     beforeEach(() => {
 
-        const patterns = new Patterns();
-
         const cellMatrix = new CellMatrix();
 
-        cellMatrix.seedPattern(patterns.get('blinker'));
+        cellMatrix.seedPattern(
+            Pattern.fromString(blinker)
+        );
 
         habitat = new Habitat(
             cellMatrix,

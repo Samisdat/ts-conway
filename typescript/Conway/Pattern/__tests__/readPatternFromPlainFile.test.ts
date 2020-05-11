@@ -1,8 +1,10 @@
-import {readFileSync} from 'fs';
 import serializer from '../../../../jest-serialize-conway';
 
 import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
 import {Pattern} from '@Conway/Conway/Pattern';
+import {glider} from '@Conway/Patterns/glider.cells';
+
+
 
 describe('PatternFromPlainText', () => {
 
@@ -12,13 +14,11 @@ describe('PatternFromPlainText', () => {
 
     test('can be created with a complete *.cell file', () => {
 
-        const gliderFile = readFileSync(__dirname + '/glider.cells', {encoding: 'utf8'});
+        const pattern = readPatternFromPlainFile(glider);
 
-        const gilder = readPatternFromPlainFile(gliderFile);
+        expect(pattern).toBeInstanceOf(Pattern);
 
-        expect(gilder).toBeInstanceOf(Pattern);
-
-        expect(gilder.getMatrix()).toMatchSnapshot();
+        expect(pattern.getMatrix()).toMatchSnapshot();
 
     });
 

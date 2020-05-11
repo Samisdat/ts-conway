@@ -1,13 +1,15 @@
 import {SeedFunction} from '@Conway/Frontend/Web';
 import {GridCreator} from '@Conway/Grid/GridCreator';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
-import {Patterns} from '@Conway/Conway/Patterns';
 import {Position} from '@Conway/Conway/Position';
+
+import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
+import {gunsAndEatersPattern} from '@Conway/Patterns/gunsAndEaters.cells';
+
 
 export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
 
-    const patterns = new Patterns();
-    const gunsAndEaters = patterns.get('guns_and_eaters');
+    const gunsAndEaters = readPatternFromPlainFile(gunsAndEatersPattern);
 
     const patternGutter = 2;
 
@@ -20,7 +22,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
     const patternsPerSide = Math.floor(repeat / 2);
 
     matrix.seedPattern(
-        patterns.get('guns_and_eaters'),
+        gunsAndEaters,
         new Position(0, -1)
     );
 
@@ -35,7 +37,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
         );
 
         matrix.seedPattern(
-            patterns.get('guns_and_eaters'),
+            gunsAndEaters,
             move
         );
 
@@ -52,7 +54,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
         );
 
         matrix.seedPattern(
-            patterns.get('guns_and_eaters'),
+            gunsAndEaters,
             move
         );
 

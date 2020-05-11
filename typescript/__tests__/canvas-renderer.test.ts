@@ -2,13 +2,14 @@
  * @jest-environment jsdom
  */
 import {CanvasRenderer} from '@Conway/canvas-renderer';
-import {Patterns} from '@Conway/Conway/Patterns';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Habitat} from '@Conway/Conway/Habitat';
 import {Grid} from '@Conway/Grid';
 import {GridDimension} from '@Conway/Grid/GridDimension';
 import {Position} from '@Conway/Conway/Position';
 import {CELL_WIDTH} from '@Conway/Constants';
+import {Pattern} from '@Conway/Conway/Pattern';
+import {blinker} from '@Conway/Patterns/blinker.cells';
 
 describe('CanvasRenderer', () => {
 
@@ -36,11 +37,11 @@ describe('CanvasRenderer', () => {
             element
         );
 
-        const patterns = new Patterns();
-
         const cellMatrix = new CellMatrix();
 
-        cellMatrix.seedPattern(patterns.get('blinker'));
+        cellMatrix.seedPattern(
+            Pattern.fromString(blinker)
+        );
 
         const habitat = new Habitat(
             cellMatrix,
