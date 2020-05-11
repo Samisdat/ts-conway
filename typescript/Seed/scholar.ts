@@ -11,7 +11,12 @@ export const scholar: SeedFunction = (gridCreator: GridCreator, matrix: CellMatr
 
     matrix.seedPattern(
         pattern,
-        new Position(0, 0)
+        new Position(-75, 0)
+    );
+
+    matrix.seedPattern(
+        pattern,
+        new Position(75, 0)
     );
 
 };
