@@ -4,8 +4,8 @@ import {Web} from '@Conway/Frontend/Web';
 import {MainControl} from '@Conway/Control/ControlMain';
 import {CELL_WIDTH} from '@Conway/Constants';
 import {gunsAndEaters} from '@Conway/Seed/guns_and_eaters';
-import {scholar} from '@Conway/Seed/scholar';
 import {NoControl} from '@Conway/Control/ControlNo';
+import {scholarSeed} from '@Conway/Seed/scholarSeed';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     new Web(
         element,
-        scholar,
+        scholarSeed,
         new MainControl(
             element,
             CELL_WIDTH
