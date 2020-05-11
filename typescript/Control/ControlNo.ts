@@ -12,7 +12,7 @@ export class NoControl implements MainControlInterface {
     }
 
     update(): void {
-
+        return;
     }
 
 }
