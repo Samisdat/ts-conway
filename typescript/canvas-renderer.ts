@@ -6,8 +6,6 @@ export class CanvasRenderer {
 
     private element: HTMLElement;
 
-    private readonly debug: boolean;
-
     private canvas: Canvas;
 
     private cellWidth: number;
@@ -19,11 +17,9 @@ export class CanvasRenderer {
         light: '#FFAAAA'
     };
 
-    constructor(element: HTMLElement, debug = false) {
+    constructor(element: HTMLElement) {
 
         this.element = element;
-
-        this.debug = debug;
 
         if (0 === this.element.getElementsByTagName('canvas').length) {
             this.element.append(
@@ -87,7 +83,7 @@ export class CanvasRenderer {
         // const cells = [this.newGrid.getCells()[4]];
         const cells = this.newGrid.getCells();
 
-        for (let cell of cells) {
+        for (const cell of cells) {
 
             const color = cell.getColor();
 
@@ -103,20 +99,6 @@ export class CanvasRenderer {
                 cellDimension,
                 cellDimension
             );
-
-            if (true === this.debug) {
-
-                this.canvas.ctx.fillStyle = '#000000';
-
-                const absolute = cell.absolutePosition;
-                this.canvas.ctx.font = '10px sans-serif';
-                this.canvas.ctx.fillText('a ' + absolute.x + '/' + absolute.y, x, (y + 15), cellDimension);
-
-                const relative = cell.relativePosition;
-
-                this.canvas.ctx.fillText('r ' + relative.x + '/' + relative.y, x, (y + 30), cellDimension);
-
-            }
 
         }
 
