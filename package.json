@@ -6,7 +6,6 @@
   "main": "dist/bundle.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
-    "build-cli": "webpack --config webpack.cli.config.js",
     "start": "webpack-dashboard -- webpack-dev-server",
     "test": "jest",
     "coverage": "jest --coverage",
@@ -40,7 +39,6 @@
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "eslint": "^7.0.0",
-    "neo-blessed": "^0.2.0",
     "prettier": "^2.0.5"
   }
 }
