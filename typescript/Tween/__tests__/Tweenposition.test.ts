@@ -6,7 +6,7 @@ describe('PositionTween', () => {
     beforeEach(function () {
     });
 
-    it('can be created', () => {
+    test('can be created', () => {
 
         let tween = new Tweenposition(
             new Position(1, 1)
@@ -19,7 +19,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('one step', () => {
+    test('one step', () => {
 
         let tween = new Tweenposition(
             new Position(0, 0)
@@ -38,7 +38,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('from and to is the same', () => {
+    test('from and to is the same', () => {
 
         let tween = new Tweenposition(
             new Position(0, 0)
@@ -57,7 +57,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('all steps with integer values', () => {
+    test('all steps with integer values', () => {
 
         let steps = 10;
 
@@ -87,7 +87,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('all steps with float values', () => {
+    test('all steps with float values', () => {
 
         let steps = 100;
 
@@ -118,7 +118,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('equal', () => {
+    test('equal', () => {
 
         let positionA = new Position(-5, 5);
         let positionB = new Position(-5, 5);
@@ -136,7 +136,7 @@ describe('PositionTween', () => {
 
     });
 
-    it('overwrite', () => {
+    test('overwrite', () => {
 
         let tween = new Tweenposition(
             new Position(0, 0)

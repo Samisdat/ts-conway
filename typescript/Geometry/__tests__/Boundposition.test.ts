@@ -1,0 +1,89 @@
+import {Position} from '@Conway/Geometry/Position';
+import {Boundposition} from '@Conway/Geometry/Boundposition';
+
+describe('PositionBound', () => {
+
+    test('can be created', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-2, -2),
+            new Position(2, 2)
+        );
+
+        expect(boundposition).toBeInstanceOf(Boundposition);
+
+    });
+
+    test('create fails when right is not right from left ', () => {
+
+        const createBound = function () {
+            new Boundposition(
+                new Position(2, 0),
+                new Position(-2, 0)
+            );
+        };
+
+        expect(createBound).toThrowErrorMatchingSnapshot();
+
+    });
+
+    test('create fails when bottom is not below from top', () => {
+
+        const createBound = function () {
+            new Boundposition(
+                new Position(1, 2),
+                new Position(2, 1)
+            );
+        };
+
+        expect(createBound).toThrowErrorMatchingSnapshot();
+
+    });
+
+    test('within', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-2, -2),
+            new Position(2, 2)
+        );
+
+        expect(boundposition.isWithin(new Position(-3, -3))).toBeFalsy();
+        expect(boundposition.isWithin(new Position(-2, -3))).toBeFalsy();
+        expect(boundposition.isWithin(new Position(-3, -2))).toBeFalsy();
+
+        expect(boundposition.isWithin(new Position(-2, -2))).toBeTruthy();
+        expect(boundposition.isWithin(new Position(-1, -1))).toBeTruthy();
+        expect(boundposition.isWithin(new Position(0, 0))).toBeTruthy();
+        expect(boundposition.isWithin(new Position(1, 1))).toBeTruthy();
+        expect(boundposition.isWithin(new Position(2, 2))).toBeTruthy();
+
+        expect(boundposition.isWithin(new Position(3, 2))).toBeFalsy();
+        expect(boundposition.isWithin(new Position(2, 3))).toBeFalsy();
+        expect(boundposition.isWithin(new Position(3, 3))).toBeFalsy();
+
+    });
+
+    test('confine', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-2, -2),
+            new Position(2, 2)
+        );
+
+        expect(boundposition.confine(new Position(-3, -3))).toStrictEqual(new Position(-2, -2));
+        expect(boundposition.confine(new Position(-2, -3))).toStrictEqual(new Position(-2, -2));
+        expect(boundposition.confine(new Position(-3, -2))).toStrictEqual(new Position(-2, -2));
+
+        expect(boundposition.confine(new Position(-2, -2))).toStrictEqual(new Position(-2, -2));
+        expect(boundposition.confine(new Position(-1, -1))).toStrictEqual(new Position(-1, -1));
+        expect(boundposition.confine(new Position(0, 0))).toStrictEqual(new Position(0, 0));
+        expect(boundposition.confine(new Position(1, 1))).toStrictEqual(new Position(1, 1));
+        expect(boundposition.confine(new Position(2, 2))).toStrictEqual(new Position(2, 2));
+
+        expect(boundposition.confine(new Position(3, 2))).toStrictEqual(new Position(2, 2));
+        expect(boundposition.confine(new Position(2, 3))).toStrictEqual(new Position(2, 2));
+        expect(boundposition.confine(new Position(3, 3))).toStrictEqual(new Position(2, 2));
+
+    });
+
+});

@@ -5,7 +5,7 @@ describe('Tween', () => {
     beforeEach(function () {
     });
 
-    it('can be created', () => {
+    test('can be created', () => {
 
         let tween = new Tween(1);
 
@@ -16,7 +16,7 @@ describe('Tween', () => {
 
     });
 
-    it('one step', () => {
+    test('one step', () => {
 
         let tween = new Tween(1);
         tween.setEnd(31);
@@ -33,7 +33,7 @@ describe('Tween', () => {
 
     });
 
-    it('from and to is the same', () => {
+    test('from and to is the same', () => {
 
         let tween = new Tween(1);
         tween.setEnd(1);
@@ -51,7 +51,7 @@ describe('Tween', () => {
 
     });
 
-    it('all steps with integer values', () => {
+    test('all steps with integer values', () => {
 
         let steps = 10;
 
@@ -79,7 +79,7 @@ describe('Tween', () => {
 
     });
 
-    it('all steps with float values', () => {
+    test('all steps with float values', () => {
 
         let steps = 100;
 
@@ -106,7 +106,7 @@ describe('Tween', () => {
 
     });
 
-    it('overwrite', () => {
+    test('overwrite', () => {
 
         let tween = new Tween(1);
         tween.setEnd(31);

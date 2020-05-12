@@ -1,32 +1,32 @@
-import {GridCreator} from '@Conway/Grid/GridCreator';
-import {CellMatrix} from '@Conway/Conway/CellMatrix';
-import {MainControlInterface} from '@Conway/Control/MainControlInterface';
-import {Habitat} from '@Conway/Conway/Habitat';
-import {CanvasRenderer} from '@Conway/canvas-renderer';
-import {CELL_WIDTH, DEBUG, GENERATION_DURATION} from '@Conway/Constants';
-import {Grid} from '@Conway/Grid';
-import {GridDimension} from '@Conway/Grid/GridDimension';
+import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {Grid} from '@Conway/Frontend/Grid';
+import {CELL_WIDTH, GENERATION_DURATION} from '@Conway/Constants';
+import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
+import {CanvasRenderer} from '@Conway/Frontend/CanvasRenderer';
+import {CellMatrix} from '@Conway/Geometry/CellMatrix';
+import {Population} from '@Conway/Population';
+import {MainControl} from '@Conway/Frontend/Control/ControlMain';
 
 export type SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => void;
 
 export class Web {
 
     private element: HTMLElement;
-    private control: MainControlInterface;
+    private control: MainControl;
 
     private matrix: CellMatrix;
-    private habitat: Habitat;
+    private habitat: Population;
 
     private canvasRenderer: CanvasRenderer;
 
     constructor(
         element: HTMLElement,
         seeder: SeedFunction,
-        control: MainControlInterface
+        control: MainControl
     ) {
 
         this.matrix = new CellMatrix();
-        this.habitat = new Habitat(
+        this.habitat = new Population(
             this.matrix,
             GENERATION_DURATION
         );

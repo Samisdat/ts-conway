@@ -1,8 +1,8 @@
 
 import serializer from '../../../../jest-serialize-conway';
 import {GridCreator} from '@Conway/Grid/GridCreator';
-import {Position} from '@Conway/Conway/Position';
-import {CellMatrix} from '@Conway/Conway/CellMatrix';
+import {Position} from '@Conway/Geometry/Position';
+import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {gunsAndEaters} from '@Conway/Pattern/Seed/guns_and_eaters';
 
 describe('guns_and_eaters', () => {
