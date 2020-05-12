@@ -1,8 +1,6 @@
-import {readFileSync} from 'fs';
-
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
-import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
+import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
 
 export class Pattern {
 

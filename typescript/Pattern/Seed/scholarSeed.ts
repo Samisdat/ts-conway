@@ -2,8 +2,8 @@ import {SeedFunction} from '@Conway/Frontend/Web';
 import {GridCreator} from '@Conway/Grid/GridCreator';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
-import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
-import {scholar} from '@Conway/Patterns/scholar.cells';
+import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
+import {scholar} from '@Conway/Pattern/scholar.cells';
 
 export const scholarSeed: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
 

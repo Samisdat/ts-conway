@@ -1,9 +1,9 @@
 import serializer from '../../../jest-serialize-conway';
 import {CellMatrix} from '@Conway/Conway/CellMatrix';
 import {Position} from '@Conway/Conway/Position';
-import {Pattern} from '@Conway/Conway/Pattern';
-import {scholar} from '@Conway/Patterns/scholar.cells';
-import {glider} from '@Conway/Patterns/glider.cells';
+import {Pattern} from '@Conway/Pattern/Pattern';
+import {glider} from '@Conway/Pattern/Store/glider.cells';
+import {scholar} from '@Conway/Pattern/scholar.cells';
 
 describe('Pattern', () => {
 
@@ -137,8 +137,6 @@ describe('Pattern', () => {
     test('toString', () => {
 
         const pattern = Pattern.fromString(glider)
-
-        console.log(pattern.toString())
 
         expect(pattern.toString()).toMatchSnapshot();
 

@@ -1,9 +1,7 @@
-import serializer from '../../../../jest-serialize-conway';
-
-import {readPatternFromPlainFile} from '@Conway/Conway/Pattern/readPatternFromPlainFile';
-import {Pattern} from '@Conway/Conway/Pattern';
-import {glider} from '@Conway/Patterns/glider.cells';
-
+import serializer from '../../../jest-serialize-conway';
+import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
+import {glider} from '@Conway/Pattern/Store/glider.cells';
+import {Pattern} from '@Conway/Pattern/Pattern';
 
 
 describe('PatternFromPlainText', () => {

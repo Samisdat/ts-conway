@@ -3,9 +3,9 @@ import './style.scss';
 import {Web} from '@Conway/Frontend/Web';
 import {MainControl} from '@Conway/Control/ControlMain';
 import {CELL_WIDTH} from '@Conway/Constants';
-import {gunsAndEaters} from '@Conway/Seed/guns_and_eaters';
+import {gunsAndEaters} from '@Conway/Pattern/Seed/guns_and_eaters';
 import {NoControl} from '@Conway/Control/ControlNo';
-import {scholarSeed} from '@Conway/Seed/scholarSeed';
+import {scholarSeed} from '@Conway/Pattern/Seed/scholarSeed';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     new Web(
         element,
-        scholarSeed,
+        gunsAndEaters,
         new MainControl(
             element,
             CELL_WIDTH
