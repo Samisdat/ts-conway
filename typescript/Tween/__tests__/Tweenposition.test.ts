@@ -1,5 +1,5 @@
-import {Tweenposition} from '@Conway/Conway/Tweenposition';
-import {Position} from '@Conway/Conway/Position';
+import {Tweenposition} from '@Conway/Tween/Tweenposition';
+import {Position} from '@Conway/Geometry/Position';
 
 describe('PositionTween', () => {
 

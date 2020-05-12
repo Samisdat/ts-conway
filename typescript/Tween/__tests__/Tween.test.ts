@@ -1,4 +1,4 @@
-import {Tween} from '@Conway/Conway/Tween';
+import {Tween} from '@Conway/Tween/Tween';
 
 describe('Tween', () => {
 
