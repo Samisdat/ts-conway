@@ -21,3 +21,7 @@ ratings:
   - "**.rb"
 exclude_paths:
   - "**/__tests__/"
+  - "jest.config.js"
+  - "jest-serialize-conway.js"
+  - "webpack.config.js"
+  - "webpack.prod.config.js"
