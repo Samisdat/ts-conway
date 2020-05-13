@@ -15,7 +15,7 @@ export class Web {
     private control: MainControl;
 
     private matrix: Matrix;
-    private habitat: Population;
+    private population: Population;
 
     private canvasRenderer: CanvasRenderer;
 
@@ -26,7 +26,7 @@ export class Web {
     ) {
 
         this.matrix = new Matrix();
-        this.habitat = new Population(
+        this.population = new Population(
             this.matrix,
             GENERATION_DURATION
         );
@@ -43,7 +43,7 @@ export class Web {
 
         this.loop();
 
-        this.habitat.startAging();
+        this.population.startAging();
 
         function checkWindowSize() {
             const width = window.innerWidth,
@@ -91,7 +91,7 @@ export class Web {
         );
 
         const newGrid = new Grid(
-            this.habitat,
+            this.population,
             new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
             gridCreator.getSourcePosition(),
             gridCreator.getOffset()
