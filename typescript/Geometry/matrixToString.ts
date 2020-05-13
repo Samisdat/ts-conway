@@ -175,7 +175,7 @@ const getVerticalScale = (matrix: Matrix, matrixArray: string[][]): string[][] =
 
 };
 
-export const matrixToString = (matrix: Matrix): string => {
+export const matrixToString = (matrix: Matrix, addScale = true): string => {
 
     if(0 === matrix.all().length){
         return 'Matrix is empty';
@@ -192,10 +192,12 @@ export const matrixToString = (matrix: Matrix): string => {
         })
     });
 
-    matrixArray = getHorizontalScale(matrix, matrixArray);
-    matrixArray = getVerticalScale(matrix, matrixArray);
+    if(true === addScale){
+        matrixArray = getHorizontalScale(matrix, matrixArray);
+        matrixArray = getVerticalScale(matrix, matrixArray);
+    }
 
-    const str:string[] = [];
+    const str: string[] = [];
 
     for(let i = 0; i < matrixArray.length; i += 1){
 

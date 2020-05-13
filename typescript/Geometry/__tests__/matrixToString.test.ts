@@ -67,9 +67,32 @@ describe('matrixToString', () => {
         matrix.add(new Position(5, 5));
         matrix.add(new Position(6, 6));
 
-        //console.log(matrixToString(matrix))
+        //console.log(matrixToString(matrix, true))
 
-        expect(matrixToString(matrix)).toMatchSnapshot();
+        expect(matrixToString(matrix, true)).toMatchSnapshot();
+
+    });
+
+    test('Matrix diagonal line without scale', () => {
+
+        matrix.add(new Position(-6, -7));
+        matrix.add(new Position(-6, -6));
+        matrix.add(new Position(-5, -5));
+        matrix.add(new Position(-4, -4));
+        matrix.add(new Position(-3, -3));
+        matrix.add(new Position(-2, -2));
+        matrix.add(new Position(-1, -1));
+        matrix.add(new Position(0, 0));
+        matrix.add(new Position(1, 1));
+        matrix.add(new Position(2, 2));
+        matrix.add(new Position(3, 3));
+        matrix.add(new Position(4, 4));
+        matrix.add(new Position(5, 5));
+        matrix.add(new Position(6, 6));
+
+        //console.log(matrixToString(matrix, false))
+
+        expect(matrixToString(matrix, false)).toMatchSnapshot();
 
     });
 
