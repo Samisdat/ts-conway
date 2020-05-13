@@ -5,6 +5,7 @@ import {gunsAndEatersPattern} from '@Conway/Pattern/Store/gunsAndEaters.cells';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
 import {seedPattern} from '@Conway/Pattern/seedPattern';
 import {Matrix} from '@Conway/Geometry/Matrix';
+import {matrixToString} from '@Conway/Geometry/matrixToString';
 
 
 export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Matrix) => {
@@ -59,5 +60,6 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ma
         );
 
     }
+    console.log(matrixToString(matrix))
 
 };
