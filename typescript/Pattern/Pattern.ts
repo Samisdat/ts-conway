@@ -117,30 +117,14 @@ export class Pattern {
 
     public toArray(): number[][] {
 
-        let farLeft = this.getWidth();
-        let farBottom = this.getHeight();
-
-        for (const position of this.matrix.all()) {
-
-            if (farLeft > position.x) {
-                farLeft = position.x;
-            }
-            if (farBottom > position.y) {
-                farBottom = position.y;
-            }
-
-        }
-
         const moved = new Matrix();
 
+        const moveBy = this.getMatrix().getBound().bottomLeft().inverse();
+
         for (const position of this.matrix.all()) {
 
-            moved.add(position.move(
-                new Position(
-                    -1 * farLeft,
-                    -1 * farBottom
-                )
-                )
+            moved.add(
+                position.move(moveBy)
             );
 
         }
