@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PatternFromPlainText can be created with a .cell without meta  1`] = `
-XXX
 XOO
+XXX
 `;
 
 exports[`PatternFromPlainText can be created with a complete *.cell file 1`] = `
-XXX
-OOX
 OXO
+OOX
+XXX
 `;

@@ -4,6 +4,7 @@ import {Pattern} from '@Conway/Pattern/Pattern';
 import {glider} from '@Conway/Pattern/Store/glider.cells';
 import {scholar} from '@Conway/Pattern/Store/scholar.cells';
 import {Matrix} from '@Conway/Geometry/Matrix';
+import {patternToString} from '@Conway/Pattern/patternToString';
 
 describe('Pattern', () => {
 
@@ -21,6 +22,7 @@ describe('Pattern', () => {
         );
 
         expect(pattern).toBeInstanceOf(Pattern);
+        expect(pattern.getName()).toBe('Scottish');
 
     });
 
@@ -137,6 +139,9 @@ describe('Pattern', () => {
     test('toString', () => {
 
         const pattern = Pattern.fromString(glider)
+
+        console.log(glider)
+        console.log(patternToString(pattern))
 
         expect(pattern.toString()).toMatchSnapshot();
 

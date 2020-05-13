@@ -30,38 +30,38 @@ XXX
 `;
 
 exports[`Pattern rotate 1`] = `
-XXX
 XOO
+XXX
 `;
 
 exports[`Pattern rotate 2`] = `
-XO
-XO
+OX
+OX
 XX
 `;
 
 exports[`Pattern rotate 3`] = `
-OOX
 XXX
+OOX
 `;
 
 exports[`Pattern rotate 4`] = `
 XX
-OX
-OX
+XO
+XO
 `;
 
 exports[`Pattern rotate 5`] = `
-XXX
 XOO
+XXX
 `;
 
 exports[`Pattern toArray 1`] = `
 Array [
   Array [
-    0,
     1,
-    0,
+    1,
+    1,
   ],
   Array [
     0,
@@ -69,9 +69,9 @@ Array [
     1,
   ],
   Array [
+    0,
     1,
-    1,
-    1,
+    0,
   ],
 ]
 `;

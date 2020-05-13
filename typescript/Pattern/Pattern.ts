@@ -1,6 +1,7 @@
 import {Position} from '@Conway/Geometry/Position';
 import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
 import {Matrix} from '@Conway/Geometry/Matrix';
+import {patternToString} from '@Conway/Pattern/patternToString';
 
 export class Pattern {
 
@@ -18,6 +19,10 @@ export class Pattern {
 
     public static fromString(patternString: string): Pattern {
         return readPatternFromPlainFile(patternString);
+    }
+
+    public getName(): string {
+        return this.name;
     }
 
     public getMatrix(): Matrix {
@@ -164,27 +169,7 @@ export class Pattern {
 
     public toString(): string {
 
-        const matrixAsArray = this.toArray();
-
-        let patternAsString = '!Name: ' + this.name + '\n';
-
-        for (let y = 0; y < matrixAsArray.length; y += 1) {
-
-            const row: string = matrixAsArray[y].map((cell) => {
-
-                if (0 === cell) {
-                    return '.';
-                }
-
-                return 'O';
-
-            }).join('');
-
-            patternAsString += row + '\n';
-
-        }
-
-        return patternAsString.trim();
+        return patternToString(this);
 
     }
 

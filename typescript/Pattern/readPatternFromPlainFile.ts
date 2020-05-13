@@ -7,7 +7,7 @@ export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
     let name: string | undefined = undefined;
     const matrix = new Matrix();
 
-    const patternPows: string[] = patternPlainText.split('\n');
+    const patternPows: string[] = patternPlainText.split('\n').reverse();
 
     const isComment = new RegExp('^!(.*?)');
     const isMeta = new RegExp('^!(.*?)\:(.*?)$');
