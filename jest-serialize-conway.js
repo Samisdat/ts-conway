@@ -9,7 +9,7 @@ module.exports = {
     let left = 0;
     let right = 0;
 
-    for(let cell of allCells){
+    for(const cell of allCells){
 
       if(cell.x < left){
         left = cell.x
@@ -44,7 +44,7 @@ module.exports = {
         let currentCell = 'O'
 
 
-        for(let cell of allCells) {
+        for(const cell of allCells) {
           if(cell.x === x && cell.y === y){
             currentCell = 'X'
           }
@@ -61,7 +61,7 @@ module.exports = {
 
   test(val) {
 
-    return val && ('CellMatrix' === val.constructor.name);
+    return val && ('Matrix' === val.constructor.name);
 
   },
 };

@@ -1,11 +1,11 @@
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {Pattern} from '@Conway/Pattern/Pattern';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
 
     let name: string | undefined = undefined;
-    const matrix = new CellMatrix();
+    const matrix = new Matrix();
 
     const patternPows: string[] = patternPlainText.split('\n');
 
@@ -57,7 +57,6 @@ export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
     }
 
     const pattern = new Pattern(name, matrix);
-    // pattern.mirrorVertical();
 
     return pattern;
 

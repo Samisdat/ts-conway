@@ -3,18 +3,18 @@ import {Grid} from '@Conway/Frontend/Grid';
 import {CELL_WIDTH, GENERATION_DURATION} from '@Conway/Constants';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
 import {CanvasRenderer} from '@Conway/Frontend/CanvasRenderer';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Population} from '@Conway/Population';
 import {MainControl} from '@Conway/Frontend/Control/ControlMain';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
-export type SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => void;
+export type SeedFunction = (gridCreator: GridCreator, matrix: Matrix) => void;
 
 export class Web {
 
     private element: HTMLElement;
     private control: MainControl;
 
-    private matrix: CellMatrix;
+    private matrix: Matrix;
     private habitat: Population;
 
     private canvasRenderer: CanvasRenderer;
@@ -25,7 +25,7 @@ export class Web {
         control: MainControl
     ) {
 
-        this.matrix = new CellMatrix();
+        this.matrix = new Matrix();
         this.habitat = new Population(
             this.matrix,
             GENERATION_DURATION

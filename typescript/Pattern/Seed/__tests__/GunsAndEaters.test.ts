@@ -1,8 +1,8 @@
 import serializer from '../../../../jest-serialize-conway';
 import {Position} from '@Conway/Geometry/Position';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {gunsAndEaters} from '@Conway/Pattern/Seed/guns_and_eaters';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('guns_and_eaters', () => {
 
@@ -22,7 +22,7 @@ describe('guns_and_eaters', () => {
             1
         );
 
-        const matrix = new CellMatrix();
+        const matrix = new Matrix();
 
         gunsAndEaters(gridCreator, matrix);
 
@@ -40,7 +40,7 @@ describe('guns_and_eaters', () => {
             1
         );
 
-        const matrix = new CellMatrix();
+        const matrix = new Matrix();
 
         gunsAndEaters(gridCreator, matrix);
 

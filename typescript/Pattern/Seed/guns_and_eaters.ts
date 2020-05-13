@@ -1,13 +1,13 @@
 import {SeedFunction} from '@Conway/Frontend/Web';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
 import {gunsAndEatersPattern} from '@Conway/Pattern/Store/gunsAndEaters.cells';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
 import {seedPattern} from '@Conway/Pattern/seedPattern';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 
-export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
+export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Matrix) => {
 
     const gunsAndEaters = readPatternFromPlainFile(gunsAndEatersPattern);
 

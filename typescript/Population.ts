@@ -1,14 +1,14 @@
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 export class Population {
 
     private readonly generationDuration: number;
 
-    private matrix: CellMatrix;
+    private matrix: Matrix;
 
     constructor(
-        matrix: CellMatrix,
+        matrix: Matrix,
         generationDuration: number
     ) {
 
@@ -57,7 +57,7 @@ export class Population {
 
     private applyRules(): void {
 
-        const nextGeneration = new CellMatrix();
+        const nextGeneration = new Matrix();
 
         /**
          * there are four rules
@@ -129,7 +129,7 @@ export class Population {
 
     }
 
-    public getMatrix(): CellMatrix {
+    public getMatrix(): Matrix {
         return this.matrix;
     }
 

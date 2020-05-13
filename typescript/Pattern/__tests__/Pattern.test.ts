@@ -1,9 +1,9 @@
 import serializer from '../../../jest-serialize-conway';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {Pattern} from '@Conway/Pattern/Pattern';
 import {glider} from '@Conway/Pattern/Store/glider.cells';
 import {scholar} from '@Conway/Pattern/Store/scholar.cells';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('Pattern', () => {
 
@@ -13,11 +13,11 @@ describe('Pattern', () => {
 
     test('can be created', () => {
 
-        const cellMatrix = new CellMatrix();
+        const matrix = new Matrix();
 
         const pattern = new Pattern(
             'Scottish',
-            cellMatrix
+            matrix
         );
 
         expect(pattern).toBeInstanceOf(Pattern);
@@ -26,17 +26,17 @@ describe('Pattern', () => {
 
     test('get width and height', () => {
 
-        const cellMatrix = new CellMatrix();
-        cellMatrix.add(
+        const matrix = new Matrix();
+        matrix.add(
             new Position(-1, -1)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(1, 2)
         );
 
         const pattern = new Pattern(
             'Scottish',
-            cellMatrix
+            matrix
         );
 
         expect(pattern.getWidth()).toBe(2);
@@ -48,20 +48,20 @@ describe('Pattern', () => {
 
     test('mirrorHorizontal simple', () => {
 
-        const cellMatrix = new CellMatrix();
-        cellMatrix.add(
+        const matrix = new Matrix();
+        matrix.add(
             new Position(-1, 1)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(-1, 0)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(-1, -1)
         );
 
         const pattern = new Pattern(
             'Scottish',
-            cellMatrix
+            matrix
         );
 
         expect(pattern.getWidth()).toBe(1);
@@ -77,20 +77,20 @@ describe('Pattern', () => {
 
     test('mirrorVertical simple', () => {
 
-        const cellMatrix = new CellMatrix();
-        cellMatrix.add(
+        const matrix = new Matrix();
+        matrix.add(
             new Position(-1, 1)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 1)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(1, 1)
         );
 
         const pattern = new Pattern(
             'Scottish',
-            cellMatrix
+            matrix
         );
 
         expect(pattern.getWidth()).toBe(2);

@@ -1,6 +1,6 @@
 import {Position} from '@Conway/Geometry/Position';
 
-interface CellMatrixInterface {
+interface MatrixInterface {
     [index: string]: Position;
 }
 
@@ -9,9 +9,9 @@ interface Dimension {
     height: number;
 }
 
-export class CellMatrix {
+export class Matrix {
 
-    private matrix: CellMatrixInterface = {};
+    private matrix: MatrixInterface = {};
 
     public has(position: Position): boolean {
 

@@ -1,50 +1,50 @@
 import serializer from '../../jest-serialize-conway';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Population} from '../Population';
 import {Position} from '@Conway/Geometry/Position';
 import {blinker} from '@Conway/Pattern/Store/blinker.cells';
 import {Pattern} from '@Conway/Pattern/Pattern';
 import {seedPattern} from '@Conway/Pattern/seedPattern';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('Habitat', () => {
 
-    let cellMatrix: CellMatrix;
+    let matrix: Matrix;
 
     beforeEach(function () {
 
         expect.addSnapshotSerializer(serializer);
 
-        cellMatrix = new CellMatrix();
+        matrix = new Matrix();
 
     });
 
     test('can be created', () => {
 
-        const habitat = new Population(
-            cellMatrix,
+        const population = new Population(
+            matrix,
             1000
         );
 
-        expect(habitat).toBeInstanceOf(Population);
+        expect(population).toBeInstanceOf(Population);
 
     });
 
     test('a not existing cell is not alive', () => {
 
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 1)
         );
 
-        const habitat = new Population(
-            cellMatrix,
+        const population = new Population(
+            matrix,
             1000
         );
 
-        expect(habitat.getAllCells().length).toBe(1);
+        expect(population.getAllCells().length).toBe(1);
 
-        habitat.elapse();
+        population.elapse();
 
-        expect(habitat.getAllCells().length).toBe(0);
+        expect(population.getAllCells().length).toBe(0);
 
     });
 
@@ -52,85 +52,85 @@ describe('Habitat', () => {
     test('snapshot', () => {
 
         seedPattern(
-            cellMatrix,
+            matrix,
             Pattern.fromString(blinker)
         );
 
-        const habitat = new Population(
-            cellMatrix,
+        const population = new Population(
+            matrix,
             1000
         );
 
-        expect(habitat.getMatrix()).toMatchSnapshot();
+        expect(population.getMatrix()).toMatchSnapshot();
 
-        habitat.elapse();
+        population.elapse();
 
-        expect(habitat.getMatrix()).toMatchSnapshot();
+        expect(population.getMatrix()).toMatchSnapshot();
 
-        habitat.elapse();
+        population.elapse();
 
-        expect(habitat.getMatrix()).toMatchSnapshot();
+        expect(population.getMatrix()).toMatchSnapshot();
     });
 
     test('elapse with one cell', () => {
 
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 1)
         );
 
-        const habitat = new Population(
-            cellMatrix,
+        const population = new Population(
+            matrix,
             1000
         );
 
-        expect(habitat.get()).toStrictEqual([new Position(0, 1)]);
+        expect(population.get()).toStrictEqual([new Position(0, 1)]);
 
     });
 
     test('elapse with a blinker', () => {
 
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 0)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 1)
         );
-        cellMatrix.add(
+        matrix.add(
             new Position(0, 2)
         );
 
-        const habitat = new Population(
-            cellMatrix,
+        const population = new Population(
+            matrix,
             1000
         );
 
-        expect(habitat.get()).toStrictEqual([
+        expect(population.get()).toStrictEqual([
             new Position(0, 0),
             new Position(0, 1),
             new Position(0, 2)
         ]);
 
-        habitat.elapse();
+        population.elapse();
 
-        expect(habitat.get()).toStrictEqual([
+        expect(population.get()).toStrictEqual([
             new Position(0, 1),
             new Position(-1, 1),
             new Position(1, 1)
         ]);
 
         // check garbage collection
-        expect(habitat.getAllCells().length).toBe(3);
+        expect(population.getAllCells().length).toBe(3);
 
 
-        habitat.elapse();
+        population.elapse();
 
-        expect(habitat.get()).toStrictEqual([
+        expect(population.get()).toStrictEqual([
             new Position(0, 1),
             new Position(0, 0),
             new Position(0, 2)
         ]);
 
-        expect(habitat.getAllCells().length).toBe(3);
+        expect(population.getAllCells().length).toBe(3);
 
     });
 
@@ -140,33 +140,33 @@ jest.useFakeTimers();
 
 describe('Habitat aging with interval', function() {
 
-    let habitat: Population;
+    let population: Population;
 
     beforeEach(() => {
 
-        const cellMatrix = new CellMatrix();
+        const matrix = new Matrix();
 
         seedPattern(
-            cellMatrix,
+            matrix,
             Pattern.fromString(blinker)
         );
 
-        habitat = new Population(
-            cellMatrix,
+        population = new Population(
+            matrix,
             50
         );
 
     });
-    
+
     test('should increase position', function() {
 
-        expect(habitat.getMatrix()).toMatchSnapshot();
+        expect(population.getMatrix()).toMatchSnapshot();
 
-        habitat.startAging();
+        population.startAging();
 
         jest.advanceTimersByTime(51);
 
-        expect(habitat.getMatrix()).toMatchSnapshot();
+        expect(population.getMatrix()).toMatchSnapshot();
 
     });
 

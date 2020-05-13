@@ -2,7 +2,7 @@ import {Population} from '@Conway/Population';
 import {Grid} from '@Conway/Frontend/Grid';
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
 import {Position} from '@Conway/Geometry/Position';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('Grid', () => {
 
@@ -10,10 +10,10 @@ describe('Grid', () => {
 
     beforeAll(() => {
 
-        const cellMatrix = new CellMatrix();
+        const matrix = new Matrix();
 
         population = new Population(
-            cellMatrix,
+            matrix,
             1000
         );
 
@@ -532,7 +532,5 @@ describe('Grid', () => {
         );
 
     });
-
-
 
 });

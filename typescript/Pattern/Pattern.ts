@@ -1,14 +1,14 @@
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 export class Pattern {
 
     private name: string;
 
-    private matrix: CellMatrix;
+    private matrix: Matrix;
 
-    constructor(name: string, matrix: CellMatrix) {
+    constructor(name: string, matrix: Matrix) {
 
         this.name = name;
 
@@ -20,7 +20,7 @@ export class Pattern {
         return readPatternFromPlainFile(patternString);
     }
 
-    public getMatrix(): CellMatrix {
+    public getMatrix(): Matrix {
 
         return this.matrix;
     }
@@ -35,7 +35,7 @@ export class Pattern {
 
     public mirrorVertical(): void {
 
-        const mirror = new CellMatrix();
+        const mirror = new Matrix();
 
         for (const position of this.matrix.all()) {
 
@@ -54,7 +54,7 @@ export class Pattern {
 
     public mirrorHorizontal(): void {
 
-        const mirror = new CellMatrix();
+        const mirror = new Matrix();
 
         for (const position of this.matrix.all()) {
 
@@ -90,7 +90,7 @@ export class Pattern {
             rotated.push(row);
 
         }
-        const rotatedMatrix = new CellMatrix();
+        const rotatedMatrix = new Matrix();
 
         for (let y = 0; y < rotated.length; y += 1) {
 
@@ -126,7 +126,7 @@ export class Pattern {
 
         }
 
-        const moved = new CellMatrix();
+        const moved = new Matrix();
 
         for (const position of this.matrix.all()) {
 

@@ -1,22 +1,22 @@
 import serializer from '../../../jest-serialize-conway';
-import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
+import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('CellMatrix', () => {
 
-    let cellMatrix = new CellMatrix();
+    let matrix = new Matrix();
 
     beforeAll(() => {
         expect.addSnapshotSerializer(serializer);
     });
 
     beforeEach(() => {
-        cellMatrix = new CellMatrix();
+        matrix = new Matrix();
     });
 
     test('can be created', () => {
 
-        expect(cellMatrix).toBeInstanceOf(CellMatrix);
+        expect(matrix).toBeInstanceOf(Matrix);
 
     });
 
@@ -24,11 +24,11 @@ describe('CellMatrix', () => {
 
         const position = new Position(0, 0);
 
-        expect(cellMatrix.has(position)).toBeFalsy();
+        expect(matrix.has(position)).toBeFalsy();
 
-        cellMatrix.add(position);
+        matrix.add(position);
 
-        expect(cellMatrix.has(position)).toBeTruthy();
+        expect(matrix.has(position)).toBeTruthy();
 
     });
 
@@ -36,13 +36,13 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        cellMatrix.add(position);
+        matrix.add(position);
 
-        expect(cellMatrix.all().length).toBe(1);
+        expect(matrix.all().length).toBe(1);
 
-        cellMatrix.add(position);
+        matrix.add(position);
 
-        expect(cellMatrix.all().length).toBe(1);
+        expect(matrix.all().length).toBe(1);
 
     });
 
@@ -50,13 +50,13 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        cellMatrix.add(position);
+        matrix.add(position);
 
-        expect(cellMatrix.has(position)).toBeTruthy();
+        expect(matrix.has(position)).toBeTruthy();
 
-        cellMatrix.remove(position);
+        matrix.remove(position);
 
-        expect(cellMatrix.has(position)).toBeFalsy();
+        expect(matrix.has(position)).toBeFalsy();
 
     });
 
@@ -64,89 +64,75 @@ describe('CellMatrix', () => {
 
         const position = new Position(0,   0);
 
-        expect(cellMatrix.has(position)).toBeFalsy();
+        expect(matrix.has(position)).toBeFalsy();
 
-        cellMatrix.remove(position);
+        matrix.remove(position);
 
-        expect(cellMatrix.has(position)).toBeFalsy();
+        expect(matrix.has(position)).toBeFalsy();
 
     });
 
     test('can get all', () => {
 
-        const cellMatrix = new CellMatrix();
-
         const position = new Position(0, 0);
 
-        cellMatrix.add(position);
+        matrix.add(position);
 
-        expect(cellMatrix.all().length).toBe(1);
-
-    });
-
-    test('can get height', () => {
-
-        const cellMatrix = new CellMatrix();
-
-        cellMatrix.add(new Position(0, 1));
-        cellMatrix.add(new Position(0, 10));
-
-        expect(cellMatrix.height()).toBe(10);
+        expect(matrix.all().length).toBe(1);
 
     });
 
     test('can get height', () => {
 
-        const cellMatrix = new CellMatrix();
+        matrix.add(new Position(0, 1));
+        matrix.add(new Position(0, 10));
 
-        cellMatrix.add(new Position(0, -5));
-        cellMatrix.add(new Position(0, 5));
-
-        expect(cellMatrix.height()).toBe(10);
+        expect(matrix.height()).toBe(10);
 
     });
 
     test('can get height', () => {
 
-        const cellMatrix = new CellMatrix();
+        matrix.add(new Position(0, -5));
+        matrix.add(new Position(0, 5));
 
-        cellMatrix.add(new Position(0, -10));
-        cellMatrix.add(new Position(0, -1));
+        expect(matrix.height()).toBe(10);
 
-        expect(cellMatrix.height()).toBe(10);
+    });
+
+    test('can get height', () => {
+
+        matrix.add(new Position(0, -10));
+        matrix.add(new Position(0, -1));
+
+        expect(matrix.height()).toBe(10);
 
     });
 
     test('can get width', () => {
 
-        const cellMatrix = new CellMatrix();
+        matrix.add(new Position(1, 0));
+        matrix.add(new Position(10, 0));
 
-        cellMatrix.add(new Position(1, 0));
-        cellMatrix.add(new Position(10, 0));
-
-        expect(cellMatrix.width()).toBe(10);
+        expect(matrix.width()).toBe(10);
 
     });
 
     test('can get width', () => {
 
-        const cellMatrix = new CellMatrix();
+        matrix.add(new Position(-5, 0));
+        matrix.add(new Position(5, 0));
 
-        cellMatrix.add(new Position(-5, 0));
-        cellMatrix.add(new Position(5, 0));
-
-        expect(cellMatrix.width()).toBe(10);
+        expect(matrix.width()).toBe(10);
 
     });
 
     test('can get width', () => {
 
-        const cellMatrix = new CellMatrix();
+        matrix.add(new Position(-10, 0));
+        matrix.add(new Position(-1, 0));
 
-        cellMatrix.add(new Position(-10, 0));
-        cellMatrix.add(new Position(-1, 0));
-
-        expect(cellMatrix.width()).toBe(10);
+        expect(matrix.width()).toBe(10);
 
     });
 
