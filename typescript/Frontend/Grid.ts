@@ -1,8 +1,8 @@
-import {GridDimension} from '@Conway/Grid/GridDimension';
 import {Position} from '@Conway/Geometry/Position';
 import {Population} from '@Conway/Population';
 import {GridCell} from '@Conway/Frontend/Grid/GridCell';
 import {CellTypesFactory} from '@Conway/Frontend/CellType/CellTypesFactory';
+import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
 
 interface MatrixCol {
     [index: number]: number;

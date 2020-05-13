@@ -39,7 +39,7 @@ describe('GridDimension', () => {
 
     });
 
-    test('throw execption for cols value less then 1', () => {
+    test('throw exception for cols value less then 1', () => {
 
         expect(() => {
             new GridDimension(3, 0);

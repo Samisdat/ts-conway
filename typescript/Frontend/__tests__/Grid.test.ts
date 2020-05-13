@@ -2,6 +2,7 @@ import {Population} from '@Conway/Population';
 import {Grid} from '@Conway/Frontend/Grid';
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
 import {Position} from '@Conway/Geometry/Position';
+import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 
 describe('Grid', () => {
 

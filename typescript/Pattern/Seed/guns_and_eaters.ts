@@ -1,9 +1,9 @@
 import {SeedFunction} from '@Conway/Frontend/Web';
-import {GridCreator} from '@Conway/Grid/GridCreator';
 import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
 import {gunsAndEatersPattern} from '@Conway/Pattern/Store/gunsAndEaters.cells';
+import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
 
 
 export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {

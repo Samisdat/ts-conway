@@ -3,10 +3,8 @@
  */
 import {Web} from '@Conway/Frontend/Web';
 import {gunsAndEaters} from '@Conway/Pattern/Seed/guns_and_eaters';
-import {NoControl} from '@Conway/Control/ControlNo';
-import {MainControl} from '@Conway/Control/ControlMain';
 import {CELL_WIDTH} from '@Conway/Constants';
-
+import {MainControl} from '@Conway/Frontend/Control/ControlMain';
 
 jest.useFakeTimers();
 describe('Frontend/Web', () => {
@@ -19,21 +17,9 @@ describe('Frontend/Web', () => {
 
     });
 
-    test('can be created without control', () => {
-
-        let frontend = new Web(
-            element,
-            gunsAndEaters,
-            new NoControl()
-        );
-
-        expect(frontend).toBeInstanceOf(Web);
-
-    });
-
     test('can be created with maincontrol', () => {
 
-        let frontend = new Web(
+        const frontend = new Web(
             element,
             gunsAndEaters,
             new MainControl(element, CELL_WIDTH)
@@ -45,7 +31,7 @@ describe('Frontend/Web', () => {
 
     test('can be created with maincontrol', () => {
 
-        let frontend = new Web(
+        const frontend = new Web(
             element,
             gunsAndEaters,
             new MainControl(element, CELL_WIDTH)
@@ -85,7 +71,7 @@ describe('Frontend/Web', () => {
 
         test('start the loop', () => {
 
-            let frontend = new Web(
+            const frontend = new Web(
                 element,
                 gunsAndEaters,
                 new MainControl(element, CELL_WIDTH)
