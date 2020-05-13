@@ -49,26 +49,17 @@ export class Grid {
         let relativePointer = new Position(0, 0);
         let absolutePointer = this.sourcePosition as Position;
 
-        this.center = relativePointer.clone().move(
-            new Position(
-                Math.floor(this.gridDimension.rows / 2),
-                Math.floor(this.gridDimension.cols / 2)
-            )
+        const inMiddleOfGrid = new Position(
+            Math.floor(this.gridDimension.rows / 2),
+            Math.floor(this.gridDimension.cols / 2)
         );
 
-        relativePointer = relativePointer.move(
-            new Position(
-                -1 * Math.floor(this.gridDimension.rows / 2),
-                -1 * Math.floor(this.gridDimension.cols / 2)
-            )
-        );
 
-        absolutePointer = absolutePointer.move(
-            new Position(
-                -1 * Math.floor(this.gridDimension.rows / 2),
-                -1 * Math.floor(this.gridDimension.cols / 2)
-            )
-        );
+        this.center = relativePointer.clone().move(inMiddleOfGrid);
+
+        relativePointer = relativePointer.move(inMiddleOfGrid.inverse());
+
+        absolutePointer = absolutePointer.move(inMiddleOfGrid.inverse());
 
         const moveRight = new Position(
             1,
