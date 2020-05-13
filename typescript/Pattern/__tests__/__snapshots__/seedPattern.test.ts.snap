@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`seedPattern seed a pattern 1`] = `XXX`;
+
+exports[`seedPattern seed a pattern with offset 1`] = `XXX`;

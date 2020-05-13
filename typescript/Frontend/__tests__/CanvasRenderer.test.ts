@@ -10,6 +10,7 @@ import {Grid} from '@Conway/Frontend/Grid';
 import {Position} from '@Conway/Geometry/Position';
 import {CELL_WIDTH} from '@Conway/Constants';
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {seedPattern} from '@Conway/Pattern/seedPattern';
 
 describe('CanvasRenderer', () => {
 
@@ -39,7 +40,8 @@ describe('CanvasRenderer', () => {
 
         const cellMatrix = new CellMatrix();
 
-        cellMatrix.seedPattern(
+        seedPattern(
+            cellMatrix,
             Pattern.fromString(blinker)
         );
 
@@ -47,7 +49,6 @@ describe('CanvasRenderer', () => {
             cellMatrix,
             50
         );
-
 
         const newGrid = new Grid(
             habitat,

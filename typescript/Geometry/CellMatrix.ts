@@ -1,5 +1,4 @@
 import {Position} from '@Conway/Geometry/Position';
-import {Pattern} from '@Conway/Pattern/Pattern';
 
 interface CellMatrixInterface {
     [index: string]: Position;
@@ -51,26 +50,6 @@ export class CellMatrix {
         }
 
         return positions;
-
-    }
-
-    /**
-     * @TODO Decouple pattern and cell matrix
-     */
-    public seedPattern(pattern: Pattern, moveBy = new Position(0, 0)): void {
-
-        const positions = pattern.getMatrix().all();
-
-        const offSet = new Position(
-            -1 * Math.floor(pattern.getMatrix().width() / 2),
-            -1 * Math.floor(pattern.getMatrix().height() / 2)
-        ).move(moveBy);
-
-        for (const position of positions) {
-
-            this.add(position.move(moveBy));
-
-        }
 
     }
 

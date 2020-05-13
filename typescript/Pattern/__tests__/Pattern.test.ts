@@ -3,7 +3,7 @@ import {CellMatrix} from '@Conway/Geometry/CellMatrix';
 import {Position} from '@Conway/Geometry/Position';
 import {Pattern} from '@Conway/Pattern/Pattern';
 import {glider} from '@Conway/Pattern/Store/glider.cells';
-import {scholar} from '@Conway/Pattern/scholar.cells';
+import {scholar} from '@Conway/Pattern/Store/scholar.cells';
 
 describe('Pattern', () => {
 

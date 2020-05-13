@@ -150,36 +150,4 @@ describe('CellMatrix', () => {
 
     });
 
-    /*
-    test('seed a pattern', () => {
-
-        const patterns = new Patterns();
-        cellMatrix.seedPattern(patterns.get('blinker'));
-
-        expect(cellMatrix.all()).toStrictEqual([
-            new Position(-1, 0),
-            new Position(0, 0),
-            new Position(1, 0)
-        ]);
-
-    });
-    /*
-
-    test('seed a moved pattern', () => {
-
-        const patterns = new Patterns();
-        cellMatrix.seedPattern(
-            patterns.get('blinker'),
-            new Position(0, 1)
-        );
-
-        expect(cellMatrix.all()).toStrictEqual([
-            new Position(-1, 1),
-            new Position(0, 1),
-            new Position(1, 1)
-        ]);
-
-    });
-
-    */
 });

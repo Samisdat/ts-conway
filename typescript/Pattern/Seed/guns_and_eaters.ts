@@ -4,6 +4,7 @@ import {Position} from '@Conway/Geometry/Position';
 import {readPatternFromPlainFile} from '@Conway/Pattern/readPatternFromPlainFile';
 import {gunsAndEatersPattern} from '@Conway/Pattern/Store/gunsAndEaters.cells';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
+import {seedPattern} from '@Conway/Pattern/seedPattern';
 
 
 export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: CellMatrix) => {
@@ -20,7 +21,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
 
     const patternsPerSide = Math.floor(repeat / 2);
 
-    matrix.seedPattern(
+    seedPattern(matrix,
         gunsAndEaters,
         new Position(0, -1)
     );
@@ -35,7 +36,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
             )
         );
 
-        matrix.seedPattern(
+        seedPattern(matrix,
             gunsAndEaters,
             move
         );
@@ -52,7 +53,7 @@ export const gunsAndEaters: SeedFunction = (gridCreator: GridCreator, matrix: Ce
             )
         );
 
-        matrix.seedPattern(
+        seedPattern(matrix,
             gunsAndEaters,
             move
         );

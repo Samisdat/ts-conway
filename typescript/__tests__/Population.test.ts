@@ -4,6 +4,7 @@ import {Population} from '../Population';
 import {Position} from '@Conway/Geometry/Position';
 import {blinker} from '@Conway/Pattern/Store/blinker.cells';
 import {Pattern} from '@Conway/Pattern/Pattern';
+import {seedPattern} from '@Conway/Pattern/seedPattern';
 
 describe('Habitat', () => {
 
@@ -50,7 +51,8 @@ describe('Habitat', () => {
 
     test('snapshot', () => {
 
-        cellMatrix.seedPattern(
+        seedPattern(
+            cellMatrix,
             Pattern.fromString(blinker)
         );
 
@@ -144,7 +146,8 @@ describe('Habitat aging with interval', function() {
 
         const cellMatrix = new CellMatrix();
 
-        cellMatrix.seedPattern(
+        seedPattern(
+            cellMatrix,
             Pattern.fromString(blinker)
         );
 
@@ -154,8 +157,7 @@ describe('Habitat aging with interval', function() {
         );
 
     });
-
-
+    
     test('should increase position', function() {
 
         expect(habitat.getMatrix()).toMatchSnapshot();
