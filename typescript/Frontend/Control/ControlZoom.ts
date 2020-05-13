@@ -1,21 +1,21 @@
 import {ZOOM_TWEEN_STEPS} from '@Conway/Constants';
 import {Tween} from '@Conway/Tween/Tween';
-import {ControlInterface, createControlElement} from '@Conway/Frontend/Control/Control';
+import {Control, createControlElement} from '@Conway/Frontend/Control/Control';
 import {Bound} from '@Conway/Geometry/Bound';
 
 type ZoomMode = 'in' | 'out';
 const ZOOM_MODES: ZoomMode[] = ['in', 'out'];
 
 
-export class ZoomControl implements ControlInterface {
-
-    private control: HTMLElement;
+export class ZoomControl extends Control {
 
     private zoomTween: Tween = new Tween(1, ZOOM_TWEEN_STEPS);
 
     private zoomBound: Bound = new Bound(0.4, 1.6);
 
     constructor(controllWrap: HTMLElement) {
+
+        super();
 
         this.control = controllWrap;
 
@@ -97,26 +97,10 @@ export class ZoomControl implements ControlInterface {
 
         if ('out' === mode && this.zoomBound.isWithin(zoom - 0.2)) {
 
-
             possibleZooms.push('out');
         }
 
-        for (const zoomMode of ZOOM_MODES) {
-
-            const panElement = this.control.getElementsByClassName('conway__control-zoom__' + zoomMode)[0];
-
-            if (true === possibleZooms.includes(zoomMode)) {
-
-                panElement.classList.remove('conway__control-zoom--incactive');
-
-            }
-            else {
-
-                panElement.classList.add('conway__control-zoom--incactive');
-
-            }
-
-        }
+        super.updateUiSate('zoom', ZOOM_MODES, possibleZooms);
 
     }
 

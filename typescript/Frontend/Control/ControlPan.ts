@@ -1,7 +1,7 @@
 import {Tweenposition} from '@Conway/Tween/Tweenposition';
 import {PAN_TWEEN_STEPS} from '@Conway/Constants';
 import {Position} from '@Conway/Geometry/Position';
-import {ControlInterface, createControlElement} from '@Conway/Frontend/Control/Control';
+import {Control, createControlElement} from '@Conway/Frontend/Control/Control';
 import {Boundposition} from '@Conway/Geometry/Boundposition';
 import {ZoomControl} from '@Conway/Frontend/Control/ControlZoom';
 
@@ -12,13 +12,12 @@ interface PanByInterface {
     [index: string]: Position;
 }
 
-export class PanControl implements ControlInterface {
+export class PanControl extends Control {
 
     private readonly canvasWrap: Element;
 
     private readonly originalCellWidth: number;
 
-    private control: HTMLElement;
 
     private offset: any = {
         left: 0,
@@ -52,6 +51,8 @@ export class PanControl implements ControlInterface {
         zoomControl: ZoomControl
 
     ) {
+
+        super();
 
         this.canvasWrap = canvasWrap;
 
@@ -202,22 +203,7 @@ export class PanControl implements ControlInterface {
 
         }
 
-        for (const panMode of PAN_MODES) {
-
-            const panElement = this.control.getElementsByClassName('conway__control-pan__' + panMode)[0];
-
-            if (true === possiblePans.includes(panMode)) {
-
-                panElement.classList.remove('conway__control-pan--incactive');
-
-            }
-            else {
-
-                panElement.classList.add('conway__control-pan--incactive');
-
-            }
-
-        }
+        super.updateUiSate('pan', PAN_MODES, possiblePans);
 
     }
 

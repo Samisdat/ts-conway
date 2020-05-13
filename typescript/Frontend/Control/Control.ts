@@ -15,8 +15,32 @@ export const createControlElement = (classNames: string[], value: string, icon: 
     return element;
 };
 
-export interface ControlInterface {
+export abstract class Control {
 
-    update(): void;
+    protected control: HTMLElement;
+
+    abstract update(): void;
+
+
+    protected updateUiSate (type: string, allModes: string[], activeMode: string[]):void{
+
+        for (const panMode of allModes) {
+
+            const panElement = this.control.getElementsByClassName('conway__control-' + type + '__' + panMode)[0];
+
+            if (true === activeMode.includes(panMode)) {
+
+                panElement.classList.remove('conway__control-pan--incactive');
+
+            }
+            else {
+
+                panElement.classList.add('conway__control-pan--incactive');
+
+            }
+
+        }
+
+    }
 
 }

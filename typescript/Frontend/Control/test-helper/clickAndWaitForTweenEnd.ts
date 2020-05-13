@@ -1,6 +1,6 @@
-import {ControlInterface} from '@Conway/Frontend/Control/Control';
+import {Control} from '@Conway/Frontend/Control/Control';
 
-export const clickAndWaitForTweenEnd = (control: ControlInterface, clickOnElement: HTMLElement, tweenSteps: number) => {
+export const clickAndWaitForTweenEnd = (control: Control, clickOnElement: HTMLElement, tweenSteps: number) => {
 
     clickOnElement.click();
 
