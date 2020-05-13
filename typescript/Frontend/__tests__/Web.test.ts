@@ -15,6 +15,11 @@ describe('Frontend/Web', () => {
 
         element = document.createElement('div');
 
+        const canvas = document.createElement('canvas');
+
+        element.append(
+            canvas
+        );
     });
 
     test('can be created with maincontrol', () => {
