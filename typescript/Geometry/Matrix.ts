@@ -1,4 +1,5 @@
 import {Position} from '@Conway/Geometry/Position';
+import {Boundposition} from '@Conway/Geometry/Boundposition';
 
 interface MatrixInterface {
     [index: string]: Position;
@@ -9,9 +10,16 @@ interface Dimension {
     height: number;
 }
 
+type PositionAttributes = 'x' | 'y';
+
 export class Matrix {
 
     private matrix: MatrixInterface = {};
+
+    private boundposition: Boundposition = new Boundposition(
+        new Position(0, 0),
+        new Position(0, 0),
+    );
 
     public has(position: Position): boolean {
 
@@ -26,6 +34,8 @@ export class Matrix {
         }
 
         this.matrix[position.toString()] = position;
+
+        this.boundposition.expand(position);
 
     }
 
@@ -53,51 +63,20 @@ export class Matrix {
 
     }
 
+
+    public getBound(): Boundposition {
+
+        return this.boundposition;
+
+    }
+
     private getDimension(): Dimension {
 
+        const boundPosition = this.getBound();
+
         const dimension: Dimension = {
-            width: 0,
-            height: 0
-        }
-
-        let left = 0;
-        let right = 0;
-
-        let top = 0;
-        let bottom = 0;
-
-        for (const position of this.all()) {
-
-            if (position.x < left) {
-                left = position.x;
-            }
-
-            if (position.x > right) {
-                right = position.x;
-            }
-
-            if (position.y < bottom) {
-                bottom = position.y;
-            }
-
-            if (position.y > top) {
-                top = position.y;
-            }
-
-        }
-
-        if (0 > left && 0 < right) {
-            dimension.width = right - left;
-        }
-        else{
-            dimension.width = right - left;
-        }
-
-        if (0 > bottom && 0 < top) {
-            dimension.height = top - bottom;
-        }
-        else{
-            dimension.height = top - bottom;
+            width: boundPosition.topRight().x - boundPosition.bottomLeft().x,
+            height: boundPosition.topRight().y - boundPosition.bottomLeft().y,
         }
 
         return dimension;

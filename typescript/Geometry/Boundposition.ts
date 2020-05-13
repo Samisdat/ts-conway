@@ -34,4 +34,27 @@ export class Boundposition {
 
     }
 
+    public bottomLeft(): Position{
+
+        return new Position(this.x.getMin(), this.y.getMin());
+
+    }
+
+    public topRight(): Position{
+
+        return new Position(this.x.getMax(), this.y.getMax());
+
+    }
+
+    public expand(position: Position): void{
+
+        if(true === this.isWithin(position)){
+            return;
+        }
+
+        this.x.expand(position.x);
+        this.y.expand(position.y);
+
+    }
+
 }

@@ -10,6 +10,15 @@ describe('Bound', () => {
 
     });
 
+    test('can get min and max', () => {
+
+        const bound = new Bound(-1, 2);
+
+        expect(bound.getMin()).toBe(-1);
+        expect(bound.getMax()).toBe(2);
+
+    });
+
     test('create fails when max is lower then min ', () => {
 
         const createBound = function() {
@@ -73,6 +82,44 @@ describe('Bound', () => {
         expect(bound.confine(1)).toBe(1);
         expect(bound.confine(2)).toBe(2);
         expect(bound.confine(3)).toBe(2);
+
+    });
+
+    test('expand lower bound', () => {
+
+        const bound = new Bound(-2, 2);
+
+        expect(bound.isWithin(-3)).toBeFalsy();
+        expect(bound.isBelow(-3)).toBeTruthy();
+
+        bound.expand(-3);
+
+        expect(bound.isBelow(-3)).toBeFalsy();
+        expect(bound.isWithin(-3)).toBeTruthy();
+
+    });
+
+    test('expand upper bound', () => {
+
+        const bound = new Bound(-2, 2);
+
+        expect(bound.isWithin(3)).toBeFalsy();
+        expect(bound.isAbove(3)).toBeTruthy();
+
+        bound.expand(3);
+
+        expect(bound.isAbove(3)).toBeFalsy();
+        expect(bound.isWithin(3)).toBeTruthy();
+
+    });
+
+    test('don\'t expand when within', () => {
+
+        const bound = new Bound(-2, 2);
+
+        bound.expand(0);
+
+        expect(bound.isWithin(0)).toBeTruthy();
 
     });
 

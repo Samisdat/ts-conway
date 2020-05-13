@@ -86,4 +86,43 @@ describe('PositionBound', () => {
 
     });
 
+    test('expand not needed, while already withing', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-3, -3),
+            new Position(2, 2)
+        );
+
+        expect(boundposition.bottomLeft()).toStrictEqual(new Position(-3, -3));
+        expect(boundposition.topRight()).toStrictEqual(new Position(2, 2));
+
+        const within = new Position(0,0);
+
+        boundposition.expand(within);
+
+        expect(boundposition.bottomLeft()).toStrictEqual(new Position(-3, -3));
+        expect(boundposition.topRight()).toStrictEqual(new Position(2, 2));
+
+    });
+
+    test('expand leftBottom', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-3, -3),
+            new Position(2, 2)
+        );
+
+        expect(boundposition.bottomLeft()).toStrictEqual(new Position(-3, -3));
+        expect(boundposition.topRight()).toStrictEqual(new Position(2, 2));
+
+        const within = new Position(-10,-11);
+
+        boundposition.expand(within);
+
+        expect(boundposition.bottomLeft()).toStrictEqual(new Position(-10, -11));
+        expect(boundposition.topRight()).toStrictEqual(new Position(2, 2));
+
+    });
+
+
 });

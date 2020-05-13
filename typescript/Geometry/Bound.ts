@@ -40,4 +40,28 @@ export class Bound {
 
     }
 
+    public getMax(): number{
+        return this.max;
+    }
+
+    public getMin(): number{
+        return this.min;
+    }
+
+    public expand(value: number): void{
+
+        if(true === this.isWithin(value)){
+            return;
+        }
+
+        if(true === this.isBelow(value)){
+            this.min = value
+        }
+
+        if(true === this.isAbove(value)){
+            this.max = value
+        }
+
+    }
+
 }

@@ -2,7 +2,7 @@ import serializer from '../../../jest-serialize-conway';
 import {Position} from '@Conway/Geometry/Position';
 import {Matrix} from '@Conway/Geometry/Matrix';
 
-describe('CellMatrix', () => {
+describe('Matrix', () => {
 
     let matrix = new Matrix();
 
@@ -133,6 +133,16 @@ describe('CellMatrix', () => {
         matrix.add(new Position(-1, 0));
 
         expect(matrix.width()).toBe(10);
+
+    });
+
+    test('can get corners', () => {
+
+        matrix.add(new Position(-10, 10));
+        matrix.add(new Position(10, -10));
+
+        expect(matrix.getBound().bottomLeft()).toStrictEqual(new Position(-10, -10));
+        expect(matrix.getBound().topRight()).toStrictEqual(new Position(10, 10));
 
     });
 
