@@ -67,6 +67,37 @@ exports[`matrixToString Matrix from -5 to 5 in both dimensions to string 2`] = `
  0  ......"
 `;
 
+exports[`matrixToString Matrix from -5 to 5 in both dimensions to string 3`] = `
+"       
+     0 
+    
+    ..O
+ 0  ...
+    O.."
+`;
+
+exports[`matrixToString Matrix from -5 to 5 in both dimensions to string 4`] = `
+"         
+    0    
+    
+    ....O
+    .....
+    .....
+    .O...
+ 0  ....."
+`;
+
+exports[`matrixToString Matrix from -5 to 5 in both dimensions to string 5`] = `
+"         
+        0
+    
+ 0  .....
+    ...O.
+    .....
+    .....
+    O...."
+`;
+
 exports[`matrixToString Matrix with a nice pattern to string 1`] = `
 "         
       0  

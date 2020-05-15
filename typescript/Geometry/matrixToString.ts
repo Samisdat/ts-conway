@@ -1,57 +1,10 @@
 import {Matrix} from '@Conway/Geometry/Matrix';
 import {Position} from '@Conway/Geometry/Position';
 
-const matrixToArray = (matrix: Matrix): number[][] => {
+const getScaleHorizontal = (matrix: Matrix, matrixArray: string[][]): string[][] => {
 
-    const moved = new Matrix();
-
-    const moveBy = matrix.getBound().bottomLeft().inverse();
-
-    for (const position of matrix.all()) {
-
-        moved.add(
-            position.move(moveBy)
-        );
-
-    }
-
-    const matrixAsArray: number[][] = [];
-
-    for (let y = 0; y < matrix.height() + 1; y += 1) {
-
-        const row: number[] = [];
-
-        for (let x = 0; x < matrix.width() + 1; x += 1) {
-
-            const cell: number = (true === moved.has(new Position(x, y))) ? 1 : 0;
-
-            row.push(cell);
-
-        }
-
-        matrixAsArray.push(row);
-    }
-
-    return matrixAsArray;
-
-}
-
-const getHorizontalScale = (matrix: Matrix, matrixArray: string[][]): string[][] => {
-
-    let left = 0;
-    let right = 0;
-
-    for (const position of matrix.all()) {
-
-        if (position.x < left) {
-            left = position.x;
-        }
-
-        if (position.x > right) {
-            right = position.x;
-        }
-
-    }
+    const left = matrix.getBound().bottomLeft().x;
+    const right  = matrix.getBound().topRight().x;
 
     matrixArray = matrixArray.reverse();
 
@@ -97,23 +50,11 @@ const getHorizontalScale = (matrix: Matrix, matrixArray: string[][]): string[][]
 
 };
 
+const getScaleVertical = (matrix: Matrix, matrixArray: string[][]): string[][] => {
 
-const getVerticalScale = (matrix: Matrix, matrixArray: string[][]): string[][] => {
+    const top  = matrix.getBound().topRight().y;
+    const bottom = matrix.getBound().bottomLeft().y;
 
-    let top = 0;
-    let bottom = 0;
-
-    for (const position of matrix.all()) {
-
-        if (position.y < bottom) {
-            bottom = position.y;
-        }
-
-        if (position.y > top) {
-            top = position.y;
-        }
-
-    }
     const scale: string[] = [' ', ' ', ' '];
     const sign: string[] = [' ', ' ', ' '];
 
@@ -158,36 +99,68 @@ const getVerticalScale = (matrix: Matrix, matrixArray: string[][]): string[][] =
 
 };
 
-export const matrixToString = (matrix: Matrix, addScale = true): string => {
+
+const addScale = (matrix: Matrix, matrixString: string[][]): string[][] => {
+
+    matrixString = getScaleHorizontal(matrix, matrixString);
+    matrixString = getScaleVertical(matrix, matrixString);
+    return matrixString;
+};
+
+export const matrixToString = (matrix: Matrix, scale = true): string => {
 
     if(0 === matrix.all().length){
         return 'Matrix is empty';
     }
 
-    let matrixArray: string[][] = matrixToArray(matrix).reverse().map((row) =>{
-        return row.map((col)=>{
-            if(0 === col){
-                return '.';
+    const width = matrix.width();
+    const height = matrix.height();
+
+    const topLeft = new Position(
+        matrix.getBound().bottomLeft().x,
+        matrix.getBound().topRight().y
+    );
+
+    let matrixOfStrings: string[][] = [];
+
+    let pointer = topLeft.clone();
+
+    for(let y = 0; y < height; y += 1){
+
+        const line = [];
+
+        for(let x = 0; x < width; x += 1){
+
+            //console.log(pointer)
+
+            if(true === matrix.has(pointer)){
+                line.push('O');
             }
             else{
-                return 'O';
+                line.push('.');
             }
-        })
-    });
 
-    if(true === addScale){
-        matrixArray = getHorizontalScale(matrix, matrixArray);
-        matrixArray = getVerticalScale(matrix, matrixArray);
+
+            pointer = pointer.move(new Position(1,0));
+
+        }
+
+        matrixOfStrings.push(line);
+
+        pointer = new Position(
+            topLeft.x,
+            pointer.y - 1
+        );
+
     }
 
-    const str: string[] = [];
 
-    for(let i = 0; i < matrixArray.length; i += 1){
-
-        str.push(matrixArray[i].join(''))
-
+    if(true === scale){
+        matrixOfStrings = addScale(matrix, matrixOfStrings);
     }
 
-    return str.join('\n');
+    const matrixString = matrixOfStrings.map((row)=>{return row.join('')}).join('\n');
+
+    return matrixString;
 
 }

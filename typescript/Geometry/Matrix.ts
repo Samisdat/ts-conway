@@ -76,6 +76,11 @@ export class Matrix {
         const dimension: Dimension = {
             width: boundPosition.topRight().x - boundPosition.bottomLeft().x,
             height: boundPosition.topRight().y - boundPosition.bottomLeft().y,
+        };
+
+        if(true === this.boundposition.isWithin(new Position(0,0))){
+            dimension.width += 1;
+            dimension.height += 1;
         }
 
         return dimension;

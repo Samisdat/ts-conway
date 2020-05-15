@@ -3,61 +3,6 @@ import {Position} from '@Conway/Geometry/Position';
 import {Matrix} from '@Conway/Geometry/Matrix';
 import {matrixToString} from '@Conway/Geometry/matrixToString';
 
-/*
-describe.only('matrixToArray', () => {
-
-    let matrix = new Matrix();
-
-    beforeAll(() => {
-
-    });
-
-    beforeEach(() => {
-        matrix = new Matrix();
-    });
-
-    test.only('empty Matrix to string', () => {
-
-        expect(matrixToArray(matrix)).toStrictEqual([[0]]);
-        expect(matrixToArray2(matrix)).toStrictEqual([[0]]);
-
-    });
-
-    test.only('Matrix from -5 to 5 in both dimensions to string', () => {
-
-        matrix.add(new Position(-5, -6));
-        matrix.add(new Position(-5, 5));
-        matrix.add(new Position(5, 0));
-
-        //console.log(matrixToArray(matrix))
-
-        expect(matrixToArray(matrix)).toMatchSnapshot();
-
-        expect(matrixToArray(matrix)).toStrictEqual(matrixToArray2(matrix));
-
-    });
-
-    test.only('Matrix with a nice pattern to string', () => {
-
-        matrix.add(new Position(-1, -1));
-        matrix.add(new Position(-2, 0));
-        matrix.add(new Position(-1, 1));
-        matrix.add(new Position(0, 2));
-        matrix.add(new Position(1, 1));
-        matrix.add(new Position(2, 0));
-        matrix.add(new Position(2, -1));
-        matrix.add(new Position(2, -2));
-
-        console.log(matrixToArray(matrix))
-
-        expect(matrixToArray(matrix)).toMatchSnapshot();
-        expect(matrixToArray(matrix)).toStrictEqual(matrixToArray2(matrix));
-
-    });
-
-});
-*/
-
 describe('matrixToString', () => {
 
     let matrix = new Matrix();
@@ -155,6 +100,39 @@ describe('matrixToString', () => {
 
         matrix.add(new Position(5, 5));
         matrix.add(new Position(4, 4));
+
+        //console.log(matrixToString(matrix))
+
+        expect(matrixToString(matrix)).toMatchSnapshot();
+
+    });
+
+    test('Matrix from -5 to 5 in both dimensions to string', () => {
+
+        matrix.add(new Position(-1, -1));
+        matrix.add(new Position(1, 1));
+
+        //console.log(matrixToString(matrix))
+
+        expect(matrixToString(matrix)).toMatchSnapshot();
+
+    });
+
+    test('Matrix from -5 to 5 in both dimensions to string', () => {
+
+        matrix.add(new Position(1, 1));
+        matrix.add(new Position(4, 4));
+
+        //console.log(matrixToString(matrix))
+
+        expect(matrixToString(matrix)).toMatchSnapshot();
+
+    });
+
+    test('Matrix from -5 to 5 in both dimensions to string', () => {
+
+        matrix.add(new Position(-4, -4));
+        matrix.add(new Position(-1, -1));
 
         //console.log(matrixToString(matrix))
 
