@@ -63,7 +63,6 @@ export class Matrix {
 
     }
 
-
     public getBound(): Boundposition {
 
         return this.boundposition;

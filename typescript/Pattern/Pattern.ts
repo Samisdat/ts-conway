@@ -129,7 +129,6 @@ export class Pattern {
 
         }
 
-
         const matrixAsArray: number[][] = [];
 
         for (let y = 0; y < this.getHeight() + 1; y += 1) {
