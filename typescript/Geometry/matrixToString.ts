@@ -3,34 +3,17 @@ import {Position} from '@Conway/Geometry/Position';
 
 const matrixToArray = (matrix: Matrix): number[][] => {
 
-    let farLeft = matrix.width();
-    let farBottom = matrix.height();
-
-    for (const position of matrix.all()) {
-
-        if (farLeft > position.x) {
-            farLeft = position.x;
-        }
-        if (farBottom > position.y) {
-            farBottom = position.y;
-        }
-
-    }
-
     const moved = new Matrix();
 
+    const moveBy = matrix.getBound().bottomLeft().inverse();
+
     for (const position of matrix.all()) {
 
-        moved.add(position.move(
-            new Position(
-                -1 * farLeft,
-                -1 * farBottom
-            )
-            )
+        moved.add(
+            position.move(moveBy)
         );
 
     }
-
 
     const matrixAsArray: number[][] = [];
 
