@@ -131,15 +131,12 @@ export const matrixToString = (matrix: Matrix, scale = true): string => {
 
         for(let x = 0; x < width; x += 1){
 
-            //console.log(pointer)
-
             if(true === matrix.has(pointer)){
                 line.push('O');
             }
             else{
                 line.push('.');
             }
-
 
             pointer = pointer.move(new Position(1,0));
 
@@ -154,13 +151,10 @@ export const matrixToString = (matrix: Matrix, scale = true): string => {
 
     }
 
-
     if(true === scale){
         matrixOfStrings = addScale(matrix, matrixOfStrings);
     }
 
-    const matrixString = matrixOfStrings.map((row)=>{return row.join('')}).join('\n');
-
-    return matrixString;
+    return matrixOfStrings.map((row)=>{return row.join('')}).join('\n');;
 
 }
