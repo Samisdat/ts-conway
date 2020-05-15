@@ -15,10 +15,10 @@ jobs:
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
 
-      - run:
-          name: Build image
-          command: |
-            docker build --tag samisdat/ts-conway .
+#      - run:
+#          name: Build image
+#          command: |
+#            docker build --tag samisdat/ts-conway .
 
       - run:
           name: Linting
