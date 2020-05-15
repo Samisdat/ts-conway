@@ -1,6 +1,34 @@
 import {Matrix} from '@Conway/Geometry/Matrix';
 import {Position} from '@Conway/Geometry/Position';
 
+interface NumberedScale {
+    sign: string[];
+    number: string[];
+};
+
+const getSigns = (numberedScale: NumberedScale, i: number) =>{
+    if(0 === i % 5){
+
+        numberedScale.number.push(Math.abs(i).toString());
+
+        if(0 > i){
+            numberedScale.sign.push('-');
+        }
+        else if(0 < i){
+            numberedScale.sign.push('+');
+        }
+        else{
+            numberedScale.sign.push(' ');
+        }
+
+    }
+    else{
+        numberedScale.number.push(' ');
+        numberedScale.sign.push(' ');
+    }
+
+};
+
 const getScaleHorizontal = (matrix: Matrix, matrixArray: string[][]): string[][] => {
 
     const left = matrix.getBound().bottomLeft().x;
@@ -15,34 +43,18 @@ const getScaleHorizontal = (matrix: Matrix, matrixArray: string[][]): string[][]
 
     matrixArray.push(newRow);
 
-    const scaleRow: string[] = [];
-    const signRow: string[] = [];
+    const scale: NumberedScale = {
+        sign: [],
+        number: [],
+    };
 
     for(let i = left; i <= right; i += 1){
 
-        if(0 === i % 5){
-            scaleRow.push(Math.abs(i).toString());
-
-            if(0 > i){
-                signRow.push('-');
-            }
-            else if(0 < i){
-                signRow.push('+');
-            }
-            else{
-                signRow.push(' ');
-            }
-
-        }
-        else{
-            scaleRow.push(' ');
-            signRow.push(' ');
-        }
-
+        getSigns(scale, i);
     }
 
-    matrixArray.push(scaleRow);
-    matrixArray.push(signRow);
+    matrixArray.push(scale.number);
+    matrixArray.push(scale.sign);
 
     matrixArray = matrixArray.reverse();
     return matrixArray;
@@ -55,29 +67,14 @@ const getScaleVertical = (matrix: Matrix, matrixArray: string[][]): string[][] =
     const top  = matrix.getBound().topRight().y;
     const bottom = matrix.getBound().bottomLeft().y;
 
-    const scale: string[] = [' ', ' ', ' '];
-    const sign: string[] = [' ', ' ', ' '];
+    const scale: NumberedScale = {
+        sign: [' ', ' ', ' '],
+        number: [' ', ' ', ' '],
+    };
 
     for(let i = top; i >= bottom; i -= 1){
 
-        if(0 === i % 5){
-            scale.push(Math.abs(i).toString());
-
-            if(0 > i){
-                sign.push('-');
-            }
-            else if(0 < i){
-                sign.push('+');
-            }
-            else{
-                sign.push(' ');
-            }
-
-        }
-        else{
-            scale.push(' ');
-            sign.push(' ');
-        }
+        getSigns(scale, i);
 
     }
 
@@ -88,8 +85,8 @@ const getScaleVertical = (matrix: Matrix, matrixArray: string[][]): string[][] =
         matrixArray[i].push(' ')
         matrixArray[i].push(' ')
 
-        matrixArray[i].push(scale[i])
-        matrixArray[i].push(sign[i])
+        matrixArray[i].push(scale.number[i])
+        matrixArray[i].push(scale.sign[i])
 
         matrixArray[i] = matrixArray[i].reverse();
 
@@ -98,7 +95,6 @@ const getScaleVertical = (matrix: Matrix, matrixArray: string[][]): string[][] =
     return matrixArray;
 
 };
-
 
 const addScale = (matrix: Matrix, matrixString: string[][]): string[][] => {
 
