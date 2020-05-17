@@ -40,8 +40,6 @@ export class Grid {
 
         this.offset = offset;
 
-        // create rows
-
         let relativePointer = new Position(0, 0);
         let absolutePointer = this.sourcePosition as Position;
 
@@ -51,11 +49,19 @@ export class Grid {
         );
 
 
-        this.center = relativePointer.clone().move(inMiddleOfGrid);
+        this.center = relativePointer.move(inMiddleOfGrid);
 
         relativePointer = relativePointer.move(inMiddleOfGrid.inverse());
 
         absolutePointer = absolutePointer.move(inMiddleOfGrid.inverse());
+
+        this.createGridCells(relativePointer, absolutePointer);
+
+        this.markLivingCells(population);
+
+    }
+
+    private createGridCells(relativePointer: Position, absolutePointer: Position){
 
         const moveRight = new Position(
             1,
@@ -101,8 +107,6 @@ export class Grid {
             );
 
         }
-
-        this.markLivingCells(population);
 
     }
 
