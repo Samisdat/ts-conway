@@ -2,38 +2,61 @@ import {Position} from '@Conway/Geometry/Position';
 import {Pattern} from '@Conway/Pattern/Pattern';
 import {Matrix} from '@Conway/Geometry/Matrix';
 
-export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
+interface ExtractedPattern {
+    name: string;
+    pattern: string[];
+}
 
-    let name: string | undefined = undefined;
-    const matrix = new Matrix();
+const extractePattern = (patternPlainText: string): ExtractedPattern => {
 
-    const patternPows: string[] = patternPlainText.split('\n').reverse();
+    const extractedPattern: ExtractedPattern = {
+        name: 'unnamed',
+        pattern: []
+    };
+
+    const rows: string[] = patternPlainText.split('\n').reverse();
 
     const isComment = new RegExp('^!(.*?)');
     const isMeta = new RegExp('^!(.*?)\:(.*?)$');
 
-    let y = 0;
-    let x = 0;
+    for (const row of rows) {
 
-    for (let patternPow of patternPows) {
+        if (true === isComment.test(row)) {
 
-        patternPow = patternPow.trim();
+            if (true === isMeta.test(row)) {
 
-        if (true === isComment.test(patternPow)) {
-
-            if (true === isMeta.test(patternPow)) {
-
-                const meta = isMeta.exec(patternPow) as RegExpMatchArray;
+                const meta = isMeta.exec(row) as RegExpMatchArray;
 
                 if ('Name' === meta[1]) {
-                    name = meta[2].trim();
+                    extractedPattern.name = meta[2].trim();
                 }
 
             }
-            continue;
+
+        } else {
+
+            extractedPattern.pattern.push(row);
+
         }
 
-        const cols: string[] = patternPow.trim().split('');
+    }
+
+    return extractedPattern;
+
+};
+
+export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
+
+    const extractedPattern = extractePattern(patternPlainText);
+
+    const matrix = new Matrix();
+
+    let y = 0;
+    let x = 0;
+
+    for (const row of extractedPattern.pattern) {
+
+        const cols: string[] = row.trim().split('');
 
         x = 0;
 
@@ -52,11 +75,7 @@ export const readPatternFromPlainFile = (patternPlainText: string): Pattern => {
 
     }
 
-    if (undefined === name) {
-        name = 'unnamed';
-    }
-
-    const pattern = new Pattern(name, matrix);
+    const pattern = new Pattern(extractedPattern.name, matrix);
 
     return pattern;
 
