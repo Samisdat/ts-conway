@@ -32,7 +32,7 @@ export class Grid {
         offset: Position
     ) {
 
-        this.ensureOffsetBetweenMinusOneAndOne(offset);
+        Grid.ensureOffsetBetweenMinusOneAndOne(offset);
 
         this.gridDimension = gridDimension;
 
@@ -125,7 +125,7 @@ export class Grid {
 
     }
 
-    private ensureOffsetBetweenMinusOneAndOne(offset: Position) {
+    private static ensureOffsetBetweenMinusOneAndOne(offset: Position) {
 
         if (1 < Math.abs(offset.x )) {
             throw new Error('offset.x must be between -1 and 1');
