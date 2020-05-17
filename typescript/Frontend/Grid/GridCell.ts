@@ -34,16 +34,12 @@ export class GridCell {
 
         this.setType(CellTypesFactory.get().checkerboardDark());
 
-        if (0 === y % 2) {
-            if (0 === x % 2) {
-                this.setType(CellTypesFactory.get().checkerboardLight());
-            }
+        if (0 === y % 2 && 0 === x % 2) {
+            this.setType(CellTypesFactory.get().checkerboardLight());
         }
 
-        if (0 !== y % 2) {
-            if (0 !== x % 2) {
-                this.setType(CellTypesFactory.get().checkerboardLight());
-            }
+        if (0 !== y % 2 && 0 !== x % 2) {
+            this.setType(CellTypesFactory.get().checkerboardLight());
         }
 
         if (0 === x && 0 === y) {
