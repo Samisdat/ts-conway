@@ -14,8 +14,6 @@ interface MatrixRow {
 
 export class Grid {
 
-    private readonly population: Population;
-
     private gridDimension: GridDimension;
     private sourcePosition: Position;
 
@@ -35,8 +33,6 @@ export class Grid {
     ) {
 
         this.ensureOffsetBetweenMinusOneAndOne(offset);
-
-        this.population = population;
 
         this.gridDimension = gridDimension;
 
@@ -105,6 +101,12 @@ export class Grid {
             );
 
         }
+
+        this.markLivingCells(population);
+
+    }
+
+    private markLivingCells(population: Population){
 
         for (const positionWithLivingCells of population.get()) {
 
