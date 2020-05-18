@@ -41,8 +41,8 @@ describe('Pattern', () => {
             matrix
         );
 
-        expect(pattern.getWidth()).toBe(2);
-        expect(pattern.getHeight()).toBe(3);
+        expect(pattern.getWidth()).toBe(3);
+        expect(pattern.getHeight()).toBe(4);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
 
@@ -66,8 +66,8 @@ describe('Pattern', () => {
             matrix
         );
 
-        expect(pattern.getWidth()).toBe(1);
-        expect(pattern.getHeight()).toBe(2);
+        expect(pattern.getWidth()).toBe(2);
+        expect(pattern.getHeight()).toBe(3);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
 
@@ -95,8 +95,8 @@ describe('Pattern', () => {
             matrix
         );
 
-        expect(pattern.getWidth()).toBe(2);
-        expect(pattern.getHeight()).toBe(1);
+        expect(pattern.getWidth()).toBe(3);
+        expect(pattern.getHeight()).toBe(2);
 
         expect(pattern.getMatrix()).toMatchSnapshot();
 

@@ -46,6 +46,18 @@ export class Boundposition {
 
     }
 
+    public getWidth(): number{
+
+        return this.x.getMax() - this.x.getMin() + 1;
+
+    }
+
+    public getHeight(): number{
+
+        return this.y.getMax() - this.y.getMin() + 1;
+
+    }
+
     public expand(position: Position): void{
 
         if(true === this.isWithin(position)){

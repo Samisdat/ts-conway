@@ -5,21 +5,12 @@ interface MatrixInterface {
     [index: string]: Position;
 }
 
-interface Dimension {
-    width: number;
-    height: number;
-}
-
-type PositionAttributes = 'x' | 'y';
 
 export class Matrix {
 
     private matrix: MatrixInterface = {};
 
-    private boundposition: Boundposition = new Boundposition(
-        new Position(0, 0),
-        new Position(0, 0),
-    );
+    private boundposition: Boundposition;
 
     public has(position: Position): boolean {
 
@@ -35,7 +26,13 @@ export class Matrix {
 
         this.matrix[position.toString()] = position;
 
-        this.boundposition.expand(position);
+
+        if(undefined === this.boundposition){
+            this.boundposition = new Boundposition(position, position);
+        }
+        else{
+            this.boundposition.expand(position);
+        }
 
     }
 
@@ -69,33 +66,15 @@ export class Matrix {
 
     }
 
-    private getDimension(): Dimension {
-
-        const boundPosition = this.getBound();
-
-        const dimension: Dimension = {
-            width: boundPosition.topRight().x - boundPosition.bottomLeft().x,
-            height: boundPosition.topRight().y - boundPosition.bottomLeft().y,
-        };
-
-        if(true === this.boundposition.isWithin(new Position(0,0))){
-            dimension.width += 1;
-            dimension.height += 1;
-        }
-
-        return dimension;
-
-    }
-
     public width(): number {
 
-        return this.getDimension().width;
+        return this.getBound().getWidth();
 
     }
 
     public height(): number {
 
-        return this.getDimension().height;
+        return this.getBound().getHeight();
 
     }
 

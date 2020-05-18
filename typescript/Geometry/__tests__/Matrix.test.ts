@@ -82,12 +82,12 @@ describe('Matrix', () => {
 
     });
 
-    test('can get height', () => {
+    test('can get height ', () => {
 
         matrix.add(new Position(0, 1));
-        matrix.add(new Position(0, 10));
+        matrix.add(new Position(0, 11));
 
-        expect(matrix.height()).toBe(10);
+        expect(matrix.height()).toBe(11);
 
     });
 
@@ -96,7 +96,7 @@ describe('Matrix', () => {
         matrix.add(new Position(0, -5));
         matrix.add(new Position(0, 5));
 
-        expect(matrix.height()).toBe(10);
+        expect(matrix.height()).toBe(11);
 
     });
 
@@ -109,12 +109,30 @@ describe('Matrix', () => {
 
     });
 
-    test('can get width', () => {
+    test('can get width -> all positions over x > 0', () => {
 
         matrix.add(new Position(1, 0));
+        matrix.add(new Position(11, 0));
+
+        expect(matrix.width()).toBe(11);
+
+    });
+
+    test('can get width -> all positions over x < 0', () => {
+
+        matrix.add(new Position(-11, 0));
+        matrix.add(new Position(-1, 0));
+
+        expect(matrix.width()).toBe(11);
+
+    });
+
+    test('can get width -> positions include  x = 0', () => {
+
+        matrix.add(new Position(-10, 0));
         matrix.add(new Position(10, 0));
 
-        expect(matrix.width()).toBe(10);
+        expect(matrix.width()).toBe(21);
 
     });
 
@@ -123,7 +141,7 @@ describe('Matrix', () => {
         matrix.add(new Position(-5, 0));
         matrix.add(new Position(5, 0));
 
-        expect(matrix.width()).toBe(10);
+        expect(matrix.width()).toBe(11);
 
     });
 

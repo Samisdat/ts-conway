@@ -124,5 +124,92 @@ describe('PositionBound', () => {
 
     });
 
+    test('width -> both x above 0', () => {
+
+        const boundposition = new Boundposition(
+            new Position(2, 2),
+            new Position(3, 2)
+        );
+
+        expect(boundposition.getWidth()).toBe(2);
+
+    });
+
+    test('width -> both x below 0', () => {
+
+        const boundposition = new Boundposition(
+            new Position(-3, 2),
+            new Position(-2, 2)
+        );
+
+        expect(boundposition.getWidth()).toBe(2);
+
+    });
+
+    test('width -> one 0 and one above', () => {
+
+        const boundposition = new Boundposition(
+            new Position(0, 2),
+            new Position(2, 2)
+        );
+
+        expect(boundposition.getWidth()).toBe(3);
+
+    });
+
+    test('width', () => {
+
+        const boundposition = new Boundposition(
+            new Position(1, 2),
+            new Position(3, 2)
+        );
+
+        expect(boundposition.getWidth()).toBe(3);
+
+    });
+
+    test('height', () => {
+
+        const boundposition = new Boundposition(
+            new Position(1, 2),
+            new Position(3, 2)
+        );
+
+        expect(boundposition.getHeight()).toBe(1);
+
+    });
+
+    test('height', () => {
+
+        const boundposition = new Boundposition(
+            new Position(1, -1),
+            new Position(3, 1)
+        );
+
+        expect(boundposition.getHeight()).toBe(3);
+
+    });
+
+    test('height', () => {
+
+        const boundposition = new Boundposition(
+            new Position(1, 0),
+            new Position(3, 2)
+        );
+
+        expect(boundposition.getHeight()).toBe(3);
+
+    });
+
+    test('height', () => {
+
+        const boundposition = new Boundposition(
+            new Position(1, 1),
+            new Position(3, 3)
+        );
+
+        expect(boundposition.getHeight()).toBe(3);
+
+    });
 
 });
