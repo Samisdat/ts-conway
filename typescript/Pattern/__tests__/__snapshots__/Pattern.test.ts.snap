@@ -35,25 +35,25 @@ XXX
 `;
 
 exports[`Pattern rotate 2`] = `
-OX
-OX
-XX
+OOX
+OOX
+OXX
 `;
 
 exports[`Pattern rotate 3`] = `
-XXX
-OOX
+OXXX
+OOOX
 `;
 
 exports[`Pattern rotate 4`] = `
-XX
-XO
-XO
+OXX
+OXO
+OXO
 `;
 
 exports[`Pattern rotate 5`] = `
-XOO
-XXX
+OXOO
+OXXX
 `;
 
 exports[`Pattern toArray 1`] = `
@@ -62,15 +62,24 @@ Array [
     1,
     1,
     1,
+    0,
   ],
   Array [
     0,
     0,
     1,
+    0,
   ],
   Array [
     0,
     1,
+    0,
+    0,
+  ],
+  Array [
+    0,
+    0,
+    0,
     0,
   ],
 ]
