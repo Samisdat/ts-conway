@@ -105,12 +105,12 @@ const addScale = (matrix: Matrix, matrixString: string[][]): string[][] => {
 
 export const matrixToString = (matrix: Matrix, scale = true): string => {
 
-    if(0 === matrix.all().length){
+    if(0 === matrix.getAll().length){
         return 'Matrix is empty';
     }
 
-    const width = matrix.width();
-    const height = matrix.height();
+    const width = matrix.getWidth();
+    const height = matrix.getHeight();
 
     const topLeft = new Position(
         matrix.getBound().bottomLeft().x,

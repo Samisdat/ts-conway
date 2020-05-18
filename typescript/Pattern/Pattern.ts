@@ -31,18 +31,18 @@ export class Pattern {
     }
 
     public getWidth(): number {
-        return this.matrix.width();
+        return this.matrix.getWidth();
     }
 
     public getHeight(): number {
-        return this.matrix.height();
+        return this.matrix.getHeight();
     }
 
     public mirrorVertical(): void {
 
         const mirror = new Matrix();
 
-        for (const position of this.matrix.all()) {
+        for (const position of this.matrix.getAll()) {
 
             mirror.add(
                 new Position(
@@ -61,7 +61,7 @@ export class Pattern {
 
         const mirror = new Matrix();
 
-        for (const position of this.matrix.all()) {
+        for (const position of this.matrix.getAll()) {
 
             mirror.add(
                 new Position(
@@ -121,7 +121,7 @@ export class Pattern {
 
         const moveBy = this.getMatrix().getBound().bottomLeft().inverse();
 
-        for (const position of this.matrix.all()) {
+        for (const position of this.matrix.getAll()) {
 
             moved.add(
                 position.move(moveBy)

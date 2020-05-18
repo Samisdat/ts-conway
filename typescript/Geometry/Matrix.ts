@@ -46,7 +46,7 @@ export class Matrix {
 
     }
 
-    public all(): Position[] {
+    public getAll(): Position[] {
 
         const positions: Position[] = [];
 
@@ -66,13 +66,13 @@ export class Matrix {
 
     }
 
-    public width(): number {
+    public getWidth(): number {
 
         return this.getBound().getWidth();
 
     }
 
-    public height(): number {
+    public getHeight(): number {
 
         return this.getBound().getHeight();
 

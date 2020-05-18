@@ -73,7 +73,7 @@ export class Population {
          *  That's the second loop
          */
 
-        for (const position of this.matrix.all()) {
+        for (const position of this.matrix.getAll()) {
 
             const livingNeighbours = this.countLivingNeighbours(position);
 
@@ -85,7 +85,7 @@ export class Population {
 
         }
 
-        for (const position of this.matrix.all()) {
+        for (const position of this.matrix.getAll()) {
 
             const neighbours = position.getNeighbours();
 
@@ -119,13 +119,13 @@ export class Population {
 
     public getAllCells(): Position[] {
 
-        return this.matrix.all();
+        return this.matrix.getAll();
 
     }
 
     get(): Position[] {
 
-        return this.matrix.all();
+        return this.matrix.getAll();
 
     }
 
