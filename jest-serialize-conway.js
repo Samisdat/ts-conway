@@ -1,7 +1,7 @@
 module.exports = {
   serialize(val, config, indentation, depth, refs, printer) {
 
-    const allCells = val.all();
+    const allCells = val.getAll();
 
     let top = 0;
     let bottom = 0;
