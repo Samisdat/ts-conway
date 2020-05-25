@@ -1,5 +1,5 @@
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
-import {Grid} from '@Conway/Frontend/Grid';
+import {Habitat} from '@Conway/Habitat';
 import {CELL_WIDTH, GENERATION_DURATION} from '@Conway/Constants';
 import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
 import {CanvasRenderer} from '@Conway/Frontend/CanvasRenderer';
@@ -90,7 +90,7 @@ export class Web {
             this.control.getZoom()
         );
 
-        const newGrid = new Grid(
+        const newGrid = new Habitat(
             this.population,
             new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
             gridCreator.getSourcePosition(),

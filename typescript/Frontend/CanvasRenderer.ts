@@ -1,6 +1,6 @@
-import {Grid} from '@Conway/Frontend/Grid';
 import {Position} from '@Conway/Geometry/Position';
 import {Canvas} from '@Conway/Frontend/Canvas';
+import {Habitat} from '@Conway/Habitat';
 
 export class CanvasRenderer {
 
@@ -10,7 +10,7 @@ export class CanvasRenderer {
 
     private cellWidth: number;
 
-    private newGrid: Grid;
+    private newGrid: Habitat;
 
     private bgColors = {
         dark: '#dce2c8',
@@ -55,7 +55,7 @@ export class CanvasRenderer {
     }
 
 
-    public update(cellWidth: number,  newGrid: Grid): void {
+    public update(cellWidth: number,  newGrid: Habitat): void {
 
         this.cellWidth = cellWidth;
 

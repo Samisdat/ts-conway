@@ -1,10 +1,10 @@
 import {Population} from '@Conway/Population';
-import {Grid} from '@Conway/Frontend/Grid';
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
 import {Position} from '@Conway/Geometry/Position';
 import {Matrix} from '@Conway/Geometry/Matrix';
+import {Habitat} from '@Conway/Habitat';
 
-describe('Grid', () => {
+describe('Habitat', () => {
 
     let population: Population;
 
@@ -21,14 +21,14 @@ describe('Grid', () => {
 
     test('can be created', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 5),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid).toBeInstanceOf(Grid);
+        expect(habitat).toBeInstanceOf(Habitat);
 
     });
 
@@ -36,7 +36,7 @@ describe('Grid', () => {
 
         expect(() => {
 
-            new Grid(
+            new Habitat(
                 population,
                 new GridDimension(2, 3),
                 new Position(0, 0),
@@ -47,7 +47,7 @@ describe('Grid', () => {
 
         expect(() => {
 
-            new Grid(
+            new Habitat(
                 population,
                 new GridDimension(2, 3),
                 new Position(0, 0),
@@ -62,7 +62,7 @@ describe('Grid', () => {
 
         expect(() => {
 
-            new Grid(
+            new Habitat(
                 population,
                 new GridDimension(2, 3),
                 new Position(0, 0),
@@ -73,7 +73,7 @@ describe('Grid', () => {
 
         expect(() => {
 
-            new Grid(
+            new Habitat(
                 population,
                 new GridDimension(2, 3),
                 new Position(0, 0),
@@ -87,45 +87,45 @@ describe('Grid', () => {
 
     test('get rows/cols odd number of rows/cols', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
                 population,
                 new GridDimension(3, 5),
                 new Position(0, 0),
                 new Position(0, 0)
             );
 
-        expect(grid.getRows()).toBe(3);
-        expect(grid.getCols()).toBe(5);
+        expect(habitat.getRows()).toBe(3);
+        expect(habitat.getCols()).toBe(5);
 
-        expect(grid.getSourcePosition()).toStrictEqual(
+        expect(habitat.getSourcePosition()).toStrictEqual(
             new Position(0, 0)
         );
 
-        expect(grid.getOffset()).toStrictEqual(
+        expect(habitat.getOffset()).toStrictEqual(
             new Position(0, 0)
         );
 
-        expect(grid.getCells().length).toBe(3 * 5);
+        expect(habitat.getCells().length).toBe(3 * 5);
 
     });
 
     test('get rows/cols odd number of rows/cols with integer offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(0, 0)
         );
 
-        expect(grid.getRows()).toBe(3);
-        expect(grid.getCols()).toBe(5);
+        expect(habitat.getRows()).toBe(3);
+        expect(habitat.getCols()).toBe(5);
 
-        expect(grid.getSourcePosition()).toStrictEqual(
+        expect(habitat.getSourcePosition()).toStrictEqual(
             new Position(-1, -2)
         );
 
-        expect(grid.getOffset()).toStrictEqual(
+        expect(habitat.getOffset()).toStrictEqual(
             new Position(0, 0)
         );
 
@@ -133,21 +133,21 @@ describe('Grid', () => {
 
     test('get rows/cols odd number of rows/cols with decimal offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 5),
             new Position(-1, -2),
             new Position(-0.5, -0.5)
         );
 
-        expect(grid.getRows()).toBe(3);
-        expect(grid.getCols()).toBe(5);
+        expect(habitat.getRows()).toBe(3);
+        expect(habitat.getCols()).toBe(5);
 
-        expect(grid.getSourcePosition()).toStrictEqual(
+        expect(habitat.getSourcePosition()).toStrictEqual(
             new Position(-1, -2)
         );
 
-        expect(grid.getOffset()).toStrictEqual(
+        expect(habitat.getOffset()).toStrictEqual(
             new Position(-0.5, -0.5)
         );
 
@@ -155,7 +155,7 @@ describe('Grid', () => {
 
     test('get relative and absolute positions', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(1, 1),
             new Position(-1, -2),
@@ -163,7 +163,7 @@ describe('Grid', () => {
         );
 
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(1);
 
@@ -181,14 +181,14 @@ describe('Grid', () => {
 
     test('get cell with offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(-0.5, 0)
         );
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(1);
 
@@ -208,14 +208,14 @@ describe('Grid', () => {
 
     test('get cells positions without offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(9);
 
@@ -246,14 +246,14 @@ describe('Grid', () => {
 
     test('get cells positions with offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 0),
             new Position(-0.5, -0.5)
         );
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(9);
 
@@ -284,14 +284,14 @@ describe('Grid', () => {
 
     test('get cells positions without offset 0/1', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 1),
             new Position(0, 0)
         );
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(9);
 
@@ -331,14 +331,14 @@ describe('Grid', () => {
 
     test('get cells positions without offset 1/0', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(1, 0),
             new Position(0, 0)
         );
 
-        const cells = grid.getCells();
+        const cells = habitat.getCells();
 
         expect(cells.length).toBe(9);
 
@@ -378,7 +378,7 @@ describe('Grid', () => {
 
     test('get cells coordinates without offset', () => {
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 0),
@@ -387,7 +387,7 @@ describe('Grid', () => {
 
         const coordinates: Position[] = [];
 
-        for (const cell of grid.getCells()) {
+        for (const cell of habitat.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -411,7 +411,7 @@ describe('Grid', () => {
 
         const xOffset = -0.5;
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 0),
@@ -420,7 +420,7 @@ describe('Grid', () => {
 
         const coordinates: Position[] = [];
 
-        for (const cell of grid.getCells()) {
+        for (const cell of habitat.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -444,7 +444,7 @@ describe('Grid', () => {
 
         const yOffset = -0.5;
 
-        const grid = new Grid(
+        const habitat = new Habitat(
             population,
             new GridDimension(3, 3),
             new Position(0, 0),
@@ -453,7 +453,7 @@ describe('Grid', () => {
 
         const coordinates: Position[] = [];
 
-        for (const cell of grid.getCells()) {
+        for (const cell of habitat.getCells()) {
             coordinates.push(
                 new Position(cell.x, cell.y)
             );
@@ -475,59 +475,59 @@ describe('Grid', () => {
 
     test('relative center can be retrieved', () => {
 
-        let grid = new Grid(
+        let habitat = new Habitat(
             population,
             new GridDimension(1, 1),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid.center).toStrictEqual(
+        expect(habitat.center).toStrictEqual(
             new Position(0, 0)
         );
 
-        grid = new Grid(
+        habitat = new Habitat(
             population,
             new GridDimension(3, 1),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid.center).toStrictEqual(
+        expect(habitat.center).toStrictEqual(
             new Position(1, 0)
         );
 
-        grid = new Grid(
+        habitat = new Habitat(
             population,
             new GridDimension(1, 3),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid.center).toStrictEqual(
+        expect(habitat.center).toStrictEqual(
             new Position(0, 1)
         );
 
 
-        grid = new Grid(
+        habitat = new Habitat(
             population,
             new GridDimension(2, 2),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid.center).toStrictEqual(
+        expect(habitat.center).toStrictEqual(
             new Position(1, 1)
         );
 
-        grid = new Grid(
+        habitat = new Habitat(
             population,
             new GridDimension(4, 4),
             new Position(0, 0),
             new Position(0, 0)
         );
 
-        expect(grid.center).toStrictEqual(
+        expect(habitat.center).toStrictEqual(
             new Position(2, 2)
         );
 

@@ -12,7 +12,7 @@ interface MatrixRow {
     [index: number]: MatrixCol;
 }
 
-export class Grid {
+export class Habitat {
 
     private gridDimension: GridDimension;
     private sourcePosition: Position;
@@ -32,7 +32,7 @@ export class Grid {
         offset: Position
     ) {
 
-        Grid.ensureOffsetBetweenMinusOneAndOne(offset);
+        Habitat.ensureOffsetBetweenMinusOneAndOne(offset);
 
         this.gridDimension = gridDimension;
 

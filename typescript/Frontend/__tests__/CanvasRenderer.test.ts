@@ -5,7 +5,7 @@ import {CanvasRenderer} from '@Conway/Frontend/CanvasRenderer';
 import {Pattern} from '@Conway/Pattern/Pattern';
 import {blinker} from '@Conway/Pattern/Store/blinker.cells';
 import {Population} from '@Conway/Population';
-import {Grid} from '@Conway/Frontend/Grid';
+import {Habitat} from '@Conway/Habitat';
 import {Position} from '@Conway/Geometry/Position';
 import {CELL_WIDTH} from '@Conway/Constants';
 import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
@@ -50,7 +50,7 @@ describe('CanvasRenderer', () => {
             50
         );
 
-        const newGrid = new Grid(
+        const newGrid = new Habitat(
             habitat,
             new GridDimension(10, 10),
             new Position(0, 0),
