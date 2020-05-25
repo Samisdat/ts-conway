@@ -1,5 +1,5 @@
 import {Population} from '@Conway/Population';
-import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {Dimension} from '@Conway/Habitat/Dimension';
 import {Position} from '@Conway/Geometry/Position';
 import {Matrix} from '@Conway/Geometry/Matrix';
 import {Habitat} from '@Conway/Habitat';
@@ -23,7 +23,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 5),
+            new Dimension(3, 5),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -38,7 +38,7 @@ describe('Habitat', () => {
 
             new Habitat(
                 population,
-                new GridDimension(2, 3),
+                new Dimension(2, 3),
                 new Position(0, 0),
                 new Position(-1.1, 0)
             );
@@ -49,7 +49,7 @@ describe('Habitat', () => {
 
             new Habitat(
                 population,
-                new GridDimension(2, 3),
+                new Dimension(2, 3),
                 new Position(0, 0),
                 new Position(1.1, 0)
             );
@@ -64,7 +64,7 @@ describe('Habitat', () => {
 
             new Habitat(
                 population,
-                new GridDimension(2, 3),
+                new Dimension(2, 3),
                 new Position(0, 0),
                 new Position(0, -1.1)
             );
@@ -75,7 +75,7 @@ describe('Habitat', () => {
 
             new Habitat(
                 population,
-                new GridDimension(2, 3),
+                new Dimension(2, 3),
                 new Position(0, 0),
                 new Position(0, 1.1)
             );
@@ -89,7 +89,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
                 population,
-                new GridDimension(3, 5),
+                new Dimension(3, 5),
                 new Position(0, 0),
                 new Position(0, 0)
             );
@@ -113,7 +113,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 5),
+            new Dimension(3, 5),
             new Position(-1, -2),
             new Position(0, 0)
         );
@@ -135,7 +135,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 5),
+            new Dimension(3, 5),
             new Position(-1, -2),
             new Position(-0.5, -0.5)
         );
@@ -157,7 +157,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(1, 1),
+            new Dimension(1, 1),
             new Position(-1, -2),
             new Position(0, 0)
         );
@@ -183,7 +183,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(1, 1),
+            new Dimension(1, 1),
             new Position(0, 0),
             new Position(-0.5, 0)
         );
@@ -210,7 +210,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -248,7 +248,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 0),
             new Position(-0.5, -0.5)
         );
@@ -286,7 +286,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 1),
             new Position(0, 0)
         );
@@ -333,7 +333,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(1, 0),
             new Position(0, 0)
         );
@@ -380,7 +380,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -413,7 +413,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 0),
             new Position(xOffset, 0)
         );
@@ -446,7 +446,7 @@ describe('Habitat', () => {
 
         const habitat = new Habitat(
             population,
-            new GridDimension(3, 3),
+            new Dimension(3, 3),
             new Position(0, 0),
             new Position(0, yOffset)
         );
@@ -477,7 +477,7 @@ describe('Habitat', () => {
 
         let habitat = new Habitat(
             population,
-            new GridDimension(1, 1),
+            new Dimension(1, 1),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -488,7 +488,7 @@ describe('Habitat', () => {
 
         habitat = new Habitat(
             population,
-            new GridDimension(3, 1),
+            new Dimension(3, 1),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -499,7 +499,7 @@ describe('Habitat', () => {
 
         habitat = new Habitat(
             population,
-            new GridDimension(1, 3),
+            new Dimension(1, 3),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -511,7 +511,7 @@ describe('Habitat', () => {
 
         habitat = new Habitat(
             population,
-            new GridDimension(2, 2),
+            new Dimension(2, 2),
             new Position(0, 0),
             new Position(0, 0)
         );
@@ -522,7 +522,7 @@ describe('Habitat', () => {
 
         habitat = new Habitat(
             population,
-            new GridDimension(4, 4),
+            new Dimension(4, 4),
             new Position(0, 0),
             new Position(0, 0)
         );

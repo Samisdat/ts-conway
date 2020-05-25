@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dimension throw exception for getCols() value less then 1 1`] = `"cols must be at least 1"`;
+
+exports[`Dimension throw exception for getCols() value less then 1 2`] = `"cols must be at least 1"`;
+
+exports[`Dimension throw execption for getRows() value less then 1 1`] = `"rows must be at least 1"`;
+
+exports[`Dimension throw execption for getRows() value less then 1 2`] = `"rows must be at least 1"`;

@@ -140,9 +140,6 @@ describe('Pattern', () => {
 
         const pattern = Pattern.fromString(glider)
 
-        console.log(glider)
-        console.log(patternToString(pattern))
-
         expect(pattern.toString()).toMatchSnapshot();
 
     });

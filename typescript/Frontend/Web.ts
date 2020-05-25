@@ -1,13 +1,13 @@
-import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {Dimension} from '@Conway/Habitat/Dimension';
 import {Habitat} from '@Conway/Habitat';
 import {CELL_WIDTH, GENERATION_DURATION} from '@Conway/Constants';
-import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
+import {Creator} from '@Conway/Habitat/Creator';
 import {CanvasRenderer} from '@Conway/Frontend/CanvasRenderer';
 import {Population} from '@Conway/Population';
 import {MainControl} from '@Conway/Frontend/Control/ControlMain';
 import {Matrix} from '@Conway/Geometry/Matrix';
 
-export type SeedFunction = (gridCreator: GridCreator, matrix: Matrix) => void;
+export type SeedFunction = (gridCreator: Creator, matrix: Matrix) => void;
 
 export class Web {
 
@@ -66,7 +66,7 @@ export class Web {
 
     private initialSeed(seeder: SeedFunction): void {
 
-        const gridCreator = new GridCreator(
+        const gridCreator = new Creator(
             this.element.offsetWidth,
             this.element.offsetHeight,
             CELL_WIDTH,
@@ -82,7 +82,7 @@ export class Web {
 
         this.control.update();
 
-        const gridCreator = new GridCreator(
+        const creator = new Creator(
             this.element.offsetWidth,
             this.element.offsetHeight,
             CELL_WIDTH,
@@ -92,9 +92,9 @@ export class Web {
 
         const newGrid = new Habitat(
             this.population,
-            new GridDimension(gridCreator.getRows(), gridCreator.getCols()),
-            gridCreator.getSourcePosition(),
-            gridCreator.getOffset()
+            creator.getDimension(),
+            creator.getSourcePosition(),
+            creator.getOffset()
         );
 
         this.canvasRenderer.update(CELL_WIDTH * this.control.getZoom(), newGrid);

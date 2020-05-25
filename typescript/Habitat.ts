@@ -1,8 +1,8 @@
 import {Position} from '@Conway/Geometry/Position';
 import {Population} from '@Conway/Population';
-import {GridCell} from '@Conway/Frontend/Grid/GridCell';
+import {Cell} from '@Conway/Habitat/Cell';
 import {CellTypesFactory} from '@Conway/Frontend/CellType/CellTypesFactory';
-import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {Dimension} from '@Conway/Habitat/Dimension';
 
 interface MatrixCol {
     [index: number]: number;
@@ -14,12 +14,12 @@ interface MatrixRow {
 
 export class Habitat {
 
-    private gridDimension: GridDimension;
+    private gridDimension: Dimension;
     private sourcePosition: Position;
 
     private offset: Position;
 
-    private cells: GridCell[] = [];
+    private cells: Cell[] = [];
 
     public readonly center: Position;
 
@@ -27,7 +27,7 @@ export class Habitat {
 
     constructor(
         population: Population,
-        gridDimension: GridDimension,
+        gridDimension: Dimension,
         sourcePosition: Position,
         offset: Position
     ) {
@@ -44,10 +44,9 @@ export class Habitat {
         let absolutePointer = this.sourcePosition as Position;
 
         const inMiddleOfGrid = new Position(
-            Math.floor(this.gridDimension.rows / 2),
-            Math.floor(this.gridDimension.cols / 2)
+            Math.floor(this.gridDimension.getRows() / 2),
+            Math.floor(this.gridDimension.getCols() / 2)
         );
-
 
         this.center = relativePointer.move(inMiddleOfGrid);
 
@@ -70,11 +69,11 @@ export class Habitat {
 
         // @TODO Use Bounds
 
-        for (let top = 0; top < this.gridDimension.cols; top += 1) {
+        for (let top = 0; top < this.gridDimension.getCols(); top += 1) {
 
-            for (let right = 0; right < this.gridDimension.rows; right += 1) {
+            for (let right = 0; right < this.gridDimension.getRows(); right += 1) {
 
-                const gridCell = new GridCell(
+                const gridCell = new Cell(
                     relativePointer,
                     absolutePointer,
                     this.offset
@@ -99,11 +98,11 @@ export class Habitat {
             }
 
             relativePointer = relativePointer.move(
-                new Position(-1 * this.gridDimension.rows, 1),
+                new Position(-1 * this.gridDimension.getRows(), 1),
             );
 
             absolutePointer = absolutePointer.move(
-                new Position(-1 * this.gridDimension.rows, 1),
+                new Position(-1 * this.gridDimension.getRows(), 1),
             );
 
         }
@@ -151,11 +150,11 @@ export class Habitat {
     }
 
     public getCols(): number {
-        return this.gridDimension.cols;
+        return this.gridDimension.getCols();
     }
 
     public getRows(): number {
-        return this.gridDimension.rows;
+        return this.gridDimension.getRows();
     }
 
     public getCells() {

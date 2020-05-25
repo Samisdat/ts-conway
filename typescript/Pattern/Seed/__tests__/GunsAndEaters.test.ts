@@ -1,7 +1,7 @@
 import serializer from '../../../../jest-serialize-conway';
 import {Position} from '@Conway/Geometry/Position';
 import {gunsAndEaters} from '@Conway/Pattern/Seed/guns_and_eaters';
-import {GridCreator} from '@Conway/Frontend/Grid/GridCreator';
+import {Creator} from '@Conway/Habitat/Creator.ts';
 import {Matrix} from '@Conway/Geometry/Matrix';
 
 describe('guns_and_eaters', () => {
@@ -14,7 +14,7 @@ describe('guns_and_eaters', () => {
 
     test('seed with even grid', () => {
 
-        const gridCreator = new GridCreator(
+        const gridCreator = new Creator(
             200,
             100,
             1,
@@ -32,7 +32,7 @@ describe('guns_and_eaters', () => {
 
     test('seed with odd grid', () => {
 
-        const gridCreator = new GridCreator(
+        const gridCreator = new Creator(
             50,
             100,
             1,

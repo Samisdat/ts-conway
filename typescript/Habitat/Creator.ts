@@ -1,6 +1,7 @@
 import {Position} from '@Conway/Geometry/Position';
+import {Dimension} from '@Conway/Habitat/Dimension';
 
-export class GridCreator {
+export class Creator {
 
     public readonly canvasWidth: number;
     public readonly canvasHeigth: number;
@@ -13,18 +14,17 @@ export class GridCreator {
 
     public readonly zoom: number;
 
-    private readonly rows: number;
-    private readonly cols: number;
+    private dimension: Dimension;
 
     constructor(
         canvasWidth: number,
-        canvasHeigth: number,
+        canvasHeight: number,
         cellWidthAndHeight: number,
         pan: Position,
         zoom: number
     ) {
         this.canvasWidth = canvasWidth;
-        this.canvasHeigth = canvasHeigth;
+        this.canvasHeigth = canvasHeight;
         this.originalCellWidthAndHeight = cellWidthAndHeight;
         this.pan = pan;
         this.zoom = zoom;
@@ -43,34 +43,42 @@ export class GridCreator {
 
         this.cellWidthAndHeight = this.originalCellWidthAndHeight * this.getZoom();
 
-        this.rows = Math.ceil(this.canvasWidth / this.cellWidthAndHeight);
+        this.setDimension();
 
-        if (0 === this.rows % 2) {
-            this.rows += 1;
+    }
+
+    private setDimension(): void{
+
+        let rows = Math.ceil(this.canvasWidth / this.cellWidthAndHeight);
+
+        if (0 === rows % 2) {
+            rows += 1;
         }
 
         if (0 !== this.offset.x) {
-            this.rows += 2;
+            rows += 2;
         }
 
-        this.cols = Math.ceil(this.canvasHeigth / this.cellWidthAndHeight);
+        let cols = Math.ceil(this.canvasHeigth / this.cellWidthAndHeight);
 
-        if (0 === this.cols % 2) {
-            this.cols += 1;
+        if (0 === cols % 2) {
+            cols += 1;
         }
 
         if (0 !== this.offset.y) {
-            this.cols += 2;
+            cols += 2;
         }
+
+        this.dimension = new Dimension(rows, cols);
 
     }
 
     public getRows(): number {
-        return this.rows;
+        return this.dimension.getRows();
     }
 
     public getCols(): number {
-        return this.cols;
+        return this.dimension.getCols();
     }
 
     public getPan(): Position {
@@ -87,6 +95,10 @@ export class GridCreator {
 
     public getZoom(): number {
         return this.zoom;
+    }
+
+    public getDimension(): Dimension {
+        return this.dimension;
     }
 
 }

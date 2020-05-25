@@ -1,4 +1,4 @@
-export class GridDimension {
+export class Dimension {
 
     private readonly _rows: number;
     private readonly _cols: number;
@@ -13,11 +13,11 @@ export class GridDimension {
 
     }
 
-    public get rows(): number {
+    public getRows(): number {
         return this._rows;
     }
 
-    public get cols(): number {
+    public getCols(): number {
         return this._cols;
     }
 

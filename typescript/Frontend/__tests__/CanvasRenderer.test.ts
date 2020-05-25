@@ -8,7 +8,7 @@ import {Population} from '@Conway/Population';
 import {Habitat} from '@Conway/Habitat';
 import {Position} from '@Conway/Geometry/Position';
 import {CELL_WIDTH} from '@Conway/Constants';
-import {GridDimension} from '@Conway/Frontend/Grid/GridDimension';
+import {Dimension} from '@Conway/Habitat/Dimension';
 import {seedPattern} from '@Conway/Pattern/seedPattern';
 import {Matrix} from '@Conway/Geometry/Matrix';
 
@@ -52,7 +52,7 @@ describe('CanvasRenderer', () => {
 
         const newGrid = new Habitat(
             habitat,
-            new GridDimension(10, 10),
+            new Dimension(10, 10),
             new Position(0, 0),
             new Position(0, 0)
         );

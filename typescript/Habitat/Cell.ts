@@ -3,7 +3,7 @@ import {CellUnkown} from '@Conway/Frontend/CellType/CellUnkown';
 import {CellTypesFactory} from '@Conway/Frontend/CellType/CellTypesFactory';
 import {Position} from '@Conway/Geometry/Position';
 
-export class GridCell {
+export class Cell {
 
     public readonly relativePosition: Position;
     public readonly absolutePosition: Position;
