@@ -1,0 +1,23 @@
+{
+  "name": "conway",
+  "version": "0.4.0",
+  "description": "conway's game of life in typescript",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samisdat/ts-conway.git"
+  },
+  "author": {
+    "name": "Bastian Pertz",
+    "email": "bastian@pertz.eu",
+    "url": "http://samisdat.org/"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Samisdat/ts-conway/issues"
+  },
+  "homepage": "https://github.com/Samisdat/ts-conway#readme"
+}
