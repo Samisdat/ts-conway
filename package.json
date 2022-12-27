@@ -4,7 +4,10 @@
   "description": "conway's game of life in typescript",
   "main": "dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,16 @@
   "bugs": {
     "url": "https://github.com/Samisdat/ts-conway/issues"
   },
-  "homepage": "https://github.com/Samisdat/ts-conway#readme"
+  "homepage": "https://github.com/Samisdat/ts-conway#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  }
 }
