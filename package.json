@@ -26,7 +26,11 @@
   },
   "homepage": "https://github.com/Samisdat/ts-conway#readme",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/react-test-renderer": "^18.0.0",
+    "@vitest/coverage-c8": "^0.26.2",
     "@vitest/ui": "^0.26.2",
     "happy-dom": "^8.1.1",
     "jsdom": "^20.0.3",
