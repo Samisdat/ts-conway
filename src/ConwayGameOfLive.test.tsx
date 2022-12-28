@@ -1,14 +1,14 @@
-import App from "./App";
+import ConwayGameOfLive from "./ConwayGameOfLive";
 import { render, screen, userEvent } from "./utils/test-utils";
 
 describe("Simple working test", () => {
   it("the title is visible", () => {
-    render(<App />);
+    render(<ConwayGameOfLive />);
     expect(screen.getByText(/Vite \+ React/i)).toBeInTheDocument();
   });
 
   it("should increment count on click", async () => {
-    render(<App />);
+    render(<ConwayGameOfLive />);
     userEvent.click(screen.getByRole("button"));
     expect(await screen.findByText(/count is 1/i)).toBeInTheDocument();
   });

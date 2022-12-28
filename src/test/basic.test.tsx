@@ -2,6 +2,8 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Link from "../components/Link";
 
+import { describe, it, expect } from "vitest";
+
 function toJson(component: renderer.ReactTestRenderer) {
   const result = component.toJSON();
   expect(result).toBeDefined();
@@ -15,8 +17,6 @@ test("Link changes the class when hovered", () => {
   );
   let tree = toJson(component);
   expect(tree).toMatchSnapshot();
-
-  expect(true).toBeTruthy();
 
   // manually trigger the callback
   tree.props.onMouseEnter();

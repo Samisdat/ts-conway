@@ -1,7 +1,8 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-  body {
-      border:10px solid red;
-  }
+html,body{
+  margin:0px;
+  padding:0px;
+}
 `;
