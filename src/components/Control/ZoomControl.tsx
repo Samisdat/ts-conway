@@ -3,11 +3,8 @@ import Control from "./Control";
 const ZoomControl = () => {
   return (
     <>
-      <Control />
-      <Control />
-      <Control />
-      <Control />
-      <Control />
+      <Control controlType={"in"} />
+      <Control controlType={"out"} />
     </>
   );
 };

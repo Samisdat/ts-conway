@@ -3,8 +3,11 @@ import Control from "./Control";
 const PanControl = () => {
   return (
     <>
-      <Control />
-      <Control />
+      <Control controlType={"left"} />
+      <Control controlType={"up"} />
+      <Control controlType={"right"} />
+      <Control controlType={"down"} />
+      <Control controlType={"center"} />
     </>
   );
 };
