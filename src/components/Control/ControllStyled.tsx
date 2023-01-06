@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
-const ControlStyled = styled.button`
-  border: 1px solid red;
-  width: 30px;
-  height: 30px;
-`;
+export const ControlStyled = styled.button`
+  width: 40px;
+  height: 40px;
+  border: 0px solid #fff;
+  background: transparent;
 
-export default ControlStyled;
+  svg {
+    pointer: none;
+  }
+`;

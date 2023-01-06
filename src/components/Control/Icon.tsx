@@ -39,7 +39,7 @@ type IconProps = {
 };
 
 const Icon: FC<IconProps> = ({ icon }) => {
-  return <FontAwesomeIcon icon={iconMap[icon]} />;
+  return <FontAwesomeIcon size="lg" icon={iconMap[icon]} />;
 };
 
 export default Icon;
