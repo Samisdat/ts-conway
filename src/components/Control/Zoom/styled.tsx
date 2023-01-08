@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { ControlStyled } from "./ControllStyled";
 
 export const ZoomControlStyled = styled.div`
   position: absolute;
@@ -8,25 +7,26 @@ export const ZoomControlStyled = styled.div`
   width: 40px;
   height: 120px;
   background: #fff;
-  /*
+
   &:before {
     position: absolute;
-    top: -3px;
-    left: -3px;
+    top: -2px;
+    left: -2px;
     width: 40px;
     height: 120px;
     border: 2px solid rgba(0, 0, 0, 0.2);
     border-radius: 2px;
     content: " ";
+    opacity: 0.5;
   }
-  */
 `;
 
-export const ZoomInControlStyled = styled(ControlStyled)`
+export const ZoomInControlStyled = styled.button`
   position: absolute;
   top: 0px;
   left: 0px;
-  border: 1px solid red;
+  background: #fff;
+  border: 0px solid transparent;
   width: 40px;
   height: 40px;
   text-align: center;
@@ -35,12 +35,13 @@ export const ZoomInControlStyled = styled(ControlStyled)`
   cursor: pointer;
 `;
 
-export const ZoomOutControlStyled = styled(ControlStyled)`
+export const ZoomOutControlStyled = styled.button`
   position: absolute;
   width: 40px;
   bottom: 0px;
   left: 0px;
-  border: 1px solid red;
+  background: #fff;
+  border: 0px solid transparent;
   height: 40px;
   text-align: center;
   line-height: 40px;
