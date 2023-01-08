@@ -1,31 +1,18 @@
-import Control from "../Control";
-import {
-  PanBottomControlStyled,
-  PanCenterControlStyled,
-  PanControlStyled,
-  PanLeftControlStyled,
-  PanRightControlStyled,
-  PanTopControlStyled,
-} from "./styled";
+import PanLeft from "./Left";
+import PanCenter from "./Center";
+import PanRight from "./Right";
+import PanTop from "./Top";
+import PanBottom from "./Bottom";
+import { PanControlStyled } from "./styled";
 
 const PanControl = () => {
   return (
     <PanControlStyled>
-      <PanLeftControlStyled>
-        <Control controlType={"left"} />
-      </PanLeftControlStyled>
-      <PanTopControlStyled>
-        <Control controlType={"up"} />
-      </PanTopControlStyled>
-      <PanRightControlStyled>
-        <Control controlType={"right"} />
-      </PanRightControlStyled>
-      <PanBottomControlStyled>
-        <Control controlType={"down"} />
-      </PanBottomControlStyled>
-      <PanCenterControlStyled>
-        <Control controlType={"center"} />
-      </PanCenterControlStyled>
+      <PanLeft />
+      <PanTop />
+      <PanRight />
+      <PanBottom />
+      <PanCenter />
     </PanControlStyled>
   );
 };

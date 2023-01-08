@@ -1,39 +1,25 @@
-
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
 MapActions, mapReducer, MapType
 } from "./reducers";
 import {initalZoom} from "../configure";
 
-type InitialStateType = {
-  map: MapType;
-};
-
-const initialState:InitialStateType = {
-  map:{
+const initialState:MapType = {
     zoom: initalZoom,
     left:0,
     top:0,
-  }
 };
 
 const AppContext = createContext<{
-  state: InitialStateType;
+  state: MapType;
   dispatch: Dispatch<MapActions>;
 }>({
   state: initialState,
   dispatch: () => null
 });
 
-const mainReducer = (
-    { products, shoppingCart, map }: InitialStateType,
-    action: MapActions
-) => ({
-  map: mapReducer(map, action)
-});
-
-const AppProvider: React.FC = ({ children }) => {
-  const [state, dispatch] = useReducer(mainReducer, initialState);
+const MapProvider: React.FC = ({ children }) => {
+  const [state, dispatch] = useReducer(mapReducer, initialState);
 
   return (
       <AppContext.Provider value={{ state, dispatch }}>
@@ -51,4 +37,4 @@ const useMap = () => {
   return context;
 };
 
-export { AppProvider, AppContext, useMap };
+export { MapProvider, useMap };

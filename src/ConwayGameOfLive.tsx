@@ -2,17 +2,19 @@ import MainControl from "./components/Control/MainControl";
 import Dump from "./components/dev/Dump";
 import ConwayGameOfLiveStyled from "./ConwayGameOfLive.styled";
 import { GlobalStyles } from "./styles/GlobalStyles";
-import {AppProvider} from "./context/ConwayContext";
+import { MapProvider } from "./context/ConwayContext";
+import Canvas from "./components/Canvas/Canvas";
 
 function ConwayGameOfLive() {
   return (
-      <AppProvider>
-    <ConwayGameOfLiveStyled>
-      <MainControl />
-      <Dump />
-      <GlobalStyles />
-    </ConwayGameOfLiveStyled>
-      </AppProvider>
+    <MapProvider>
+      <ConwayGameOfLiveStyled>
+        <Canvas />
+        <MainControl />
+        <Dump />
+        <GlobalStyles />
+      </ConwayGameOfLiveStyled>
+    </MapProvider>
   );
 }
 

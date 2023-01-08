@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { zoomMax, zoomStep } from "../../../configure";
 
-import Control from "../Control";
 import { ZoomInControlStyled } from "./styled";
-import {useMap} from "../../../context/ConwayContext";
-import {Types} from "../../../context/reducers";
+import { useMap } from "../../../context/ConwayContext";
+import { Types } from "../../../context/reducers";
+import Icon from "../Icon";
 
 const ZoomIn = () => {
-  const {
-    state: { map },
-    dispatch,
-  } = useMap();
+  const { state, dispatch } = useMap();
 
   const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -19,14 +16,13 @@ const ZoomIn = () => {
       return;
     }
 
-    if (map.zoom < zoomMax) {
+    if (state.zoom < zoomMax) {
       setDisabled(false);
     }
-  }, [map.zoom]);
+  }, [state.zoom]);
 
   const onClick = () => {
-
-    let zoom = map.zoom + zoomStep;
+    let zoom = state.zoom + zoomStep;
     if (zoom >= zoomMax) {
       setDisabled(true);
 
@@ -34,15 +30,15 @@ const ZoomIn = () => {
     }
     dispatch({
       type: Types.Zoom,
-      payload:{
-        zoom
-      }
+      payload: {
+        zoom,
+      },
     });
   };
 
   return (
     <ZoomInControlStyled disabled={disabled} onClick={onClick}>
-      <Control controlType={"in"} />
+      <Icon icon={"in"} />
     </ZoomInControlStyled>
   );
 };

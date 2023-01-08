@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { zoomMin, zoomStep } from "../../../configure";
 import { useMap } from "../../../context/ConwayContext";
-import Control from "../Control";
 import { ZoomOutControlStyled } from "./styled";
-import {Types} from "../../../context/reducers";
+import { Types } from "../../../context/reducers";
+import Icon from "../Icon";
 
 const ZoomOut = () => {
-  const {
-    state: { map },
-    dispatch,
-  } = useMap();
+  const { state, dispatch } = useMap();
 
   const [disabled, setDisabled] = useState<boolean>(false);
 
@@ -18,13 +15,13 @@ const ZoomOut = () => {
       return;
     }
 
-    if (map.zoom > zoomMin) {
+    if (state.zoom > zoomMin) {
       setDisabled(false);
     }
-  }, [map.zoom]);
+  }, [state.zoom]);
 
   const onClick = () => {
-    let zoom = map.zoom - zoomStep;
+    let zoom = state.zoom - zoomStep;
     if (zoom <= zoomMin) {
       setDisabled(true);
 
@@ -33,16 +30,15 @@ const ZoomOut = () => {
 
     dispatch({
       type: Types.Zoom,
-      payload:{
-        zoom
-      }
+      payload: {
+        zoom,
+      },
     });
-
   };
 
   return (
     <ZoomOutControlStyled disabled={disabled} onClick={onClick}>
-      <Control controlType={"out"} />
+      <Icon icon={"out"} />
     </ZoomOutControlStyled>
   );
 };

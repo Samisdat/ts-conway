@@ -1,38 +1,28 @@
 import styled from "styled-components";
+import { ControlButtonStyled } from "../styled";
 
 export const PanControlStyled = styled.div`
   position: absolute;
   bottom: 10px;
   left: 10px;
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
   cursor: move;
 
   &:before {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: 30px;
-    height: 30px;
+    top: 40px;
+    left: 40px;
+    width: 40px;
+    height: 40px;
     background: #fff;
     content: " ";
   }
 `;
 
-const APanControlStyled = styled.div`
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  text-align: center;
-  line-height: 30px;
-  cursor: pointer;
-  opacity: 1;
-`;
-
-export const PanTopControlStyled = styled(APanControlStyled)`
+export const PanTopControlStyled = styled(ControlButtonStyled)`
   top: 0px;
-  left: 30px;
+  left: 40px;
 
   &:before {
     position: absolute;
@@ -48,9 +38,9 @@ export const PanTopControlStyled = styled(APanControlStyled)`
   }
 `;
 
-export const PanBottomControlStyled = styled(APanControlStyled)`
-  top: 60px;
-  left: 30px;
+export const PanBottomControlStyled = styled(ControlButtonStyled)`
+  top: 80px;
+  left: 40px;
 
   &:before {
     position: absolute;
@@ -65,9 +55,9 @@ export const PanBottomControlStyled = styled(APanControlStyled)`
     content: " ";
   }
 `;
-export const PanLeftControlStyled = styled(APanControlStyled)`
-  top: 30px;
-  left: 00px;
+export const PanLeftControlStyled = styled(ControlButtonStyled)`
+  top: 40px;
+  left: 0px;
 
   &:before {
     position: absolute;
@@ -82,9 +72,9 @@ export const PanLeftControlStyled = styled(APanControlStyled)`
     content: " ";
   }
 `;
-export const PanRightControlStyled = styled(APanControlStyled)`
-  top: 30px;
-  left: 60px;
+export const PanRightControlStyled = styled(ControlButtonStyled)`
+  top: 40px;
+  left: 80px;
 
   &:before {
     position: absolute;
@@ -99,7 +89,7 @@ export const PanRightControlStyled = styled(APanControlStyled)`
     content: " ";
   }
 `;
-export const PanCenterControlStyled = styled(APanControlStyled)`
-  top: 30px;
-  left: 30px;
+export const PanCenterControlStyled = styled(ControlButtonStyled)`
+  top: 40px;
+  left: 40px;
 `;

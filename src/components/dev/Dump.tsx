@@ -1,18 +1,20 @@
 import { useMap } from "../../context/ConwayContext";
+import { DumpStyled } from "./styled";
 
 const Dump = () => {
-  const {
-    state: { map },
-  } = useMap();
-  const x = 0;
+  const { state } = useMap();
 
   return (
-    <dl>
-      <dt>Zoom</dt>
-      <dd>{map.zoom}</dd>
-      <dt>X</dt>
-      <dd>{x}</dd>
-    </dl>
+    <DumpStyled>
+      <dl>
+        <dt>Zoom</dt>
+        <dd>{state.zoom}</dd>
+        <dt>Left</dt>
+        <dd>{state.left}</dd>
+        <dt>Top</dt>
+        <dd>{state.top}</dd>
+      </dl>
+    </DumpStyled>
   );
 };
 
