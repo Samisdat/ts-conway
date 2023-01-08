@@ -1,4 +1,4 @@
-import PanControl from "./PanControl";
+import PanControl from "./Pan";
 import ZoomControl from "./Zoom";
 
 const MainControl = () => {
