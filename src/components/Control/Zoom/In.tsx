@@ -8,52 +8,36 @@ import {Types} from "../../../context/reducers";
 
 const ZoomIn = () => {
   const {
-    state,
+    state: { map },
     dispatch,
   } = useMap();
 
-  console.log(state)
-
   const [disabled, setDisabled] = useState<boolean>(false);
-  /*
+
   useEffect(() => {
     if (false === disabled) {
       return;
     }
 
-    if (state.zoom < zoomMax) {
+    if (map.zoom < zoomMax) {
       setDisabled(false);
     }
-  }, [state.zoom]);
-  */
+  }, [map.zoom]);
+
   const onClick = () => {
 
-    dispatch({
-      type: Types.Add
-    })
-
-    /*
-    let nextZoom = state.zoom + zoomStep;
-    if (nextZoom >= zoomMax) {
+    let zoom = map.zoom + zoomStep;
+    if (zoom >= zoomMax) {
       setDisabled(true);
 
-      nextZoom = zoomMax;
+      zoom = zoomMax;
     }
     dispatch({
       type: Types.Zoom,
       payload:{
-        zoom: nextZoom
+        zoom
       }
-    });*/
-  /*
-    dispatch({
-      type: "SET_ZOOM",
-      payload: {
-        zoom: nextZoom,
-      },
     });
-
-   */
   };
 
   return (

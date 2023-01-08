@@ -10,72 +10,48 @@ type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export enum Types {
-    Create = "CREATE_PRODUCT",
-    Delete = "DELETE_PRODUCT",
-    Add = "ADD_PRODUCT"
+    Zoom = "SET_ZOOM",
+    Pan = "SET_PAN"
 }
 
-// Product
+// map
 
-type ProductType = {
-    id: number;
-    name: string;
-    price: number;
+export type MapType = {
+    zoom: number;
+    left: number;
+    top: number;
 };
 
-type ProductPayload = {
-    [Types.Create]: {
-        id: number;
-        name: string;
-        price: number;
+type MapPayload = {
+    [Types.Zoom]: {
+        zoom: number;
     };
-    [Types.Delete]: {
-        id: number;
+    [Types.Pan]: {
+        left: number;
+        top: number;
     };
 };
 
-export type ProductActions = ActionMap<ProductPayload>[keyof ActionMap<
-    ProductPayload
+export type MapActions = ActionMap<MapPayload>[keyof ActionMap<
+    MapPayload
     >];
 
-export const productReducer = (
-    state: ProductType[],
-    action: ProductActions | ShoppingCartActions
+
+
+export const mapReducer = (
+    state: MapType,
+    action: MapActions
 ) => {
     switch (action.type) {
-        case Types.Create:
-            return [
-                ...state,
-                {
-                    id: action.payload.id,
-                    name: action.payload.name,
-                    price: action.payload.price
-                }
-            ];
-        case Types.Delete:
-            return [...state.filter(product => product.id !== action.payload.id)];
-        default:
-            return state;
-    }
-};
+        case Types.Zoom:
+            const zoom = action.payload.zoom
 
-// ShoppingCart
+            return {...state,zoom}
 
-type ShoppingCartPayload = {
-    [Types.Add]: undefined;
-};
-
-export type ShoppingCartActions = ActionMap<
-    ShoppingCartPayload
-    >[keyof ActionMap<ShoppingCartPayload>];
-
-export const shoppingCartReducer = (
-    state: number,
-    action: ProductActions | ShoppingCartActions
-) => {
-    switch (action.type) {
-        case Types.Add:
-            return state + 1;
+            ;
+        case Types.Pan:
+            console.log('Pan', state);
+            return {...state}
         default:
             return state;
     }

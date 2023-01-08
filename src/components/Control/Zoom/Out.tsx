@@ -3,10 +3,11 @@ import { zoomMin, zoomStep } from "../../../configure";
 import { useMap } from "../../../context/ConwayContext";
 import Control from "../Control";
 import { ZoomOutControlStyled } from "./styled";
+import {Types} from "../../../context/reducers";
 
 const ZoomOut = () => {
   const {
-    state: { zoom },
+    state: { map },
     dispatch,
   } = useMap();
 
@@ -17,23 +18,26 @@ const ZoomOut = () => {
       return;
     }
 
-    if (zoom > zoomMin) {
+    if (map.zoom > zoomMin) {
       setDisabled(false);
     }
-  }, [zoom]);
+  }, [map.zoom]);
 
   const onClick = () => {
-    let nextZoom = zoom - zoomStep;
-    if (nextZoom <= zoomMin) {
+    let zoom = map.zoom - zoomStep;
+    if (zoom <= zoomMin) {
       setDisabled(true);
 
-      nextZoom = zoomMin;
+      zoom = zoomMin;
     }
 
     dispatch({
-      type: "SET_ZOOM",
-      zoom: nextZoom,
+      type: Types.Zoom,
+      payload:{
+        zoom
+      }
     });
+
   };
 
   return (

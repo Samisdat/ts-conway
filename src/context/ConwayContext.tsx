@@ -1,42 +1,35 @@
 
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
-  productReducer,
-  shoppingCartReducer,
-  ProductActions,
-  ShoppingCartActions
+MapActions, mapReducer, MapType
 } from "./reducers";
-
-type ProductType = {
-  id: number;
-  name: string;
-  price: number;
-};
+import {initalZoom} from "../configure";
 
 type InitialStateType = {
-  products: ProductType[];
-  shoppingCart: number;
+  map: MapType;
 };
 
-const initialState = {
-  products: [],
-  shoppingCart: 0
+const initialState:InitialStateType = {
+  map:{
+    zoom: initalZoom,
+    left:0,
+    top:0,
+  }
 };
 
 const AppContext = createContext<{
   state: InitialStateType;
-  dispatch: Dispatch<ProductActions | ShoppingCartActions>;
+  dispatch: Dispatch<MapActions>;
 }>({
   state: initialState,
   dispatch: () => null
 });
 
 const mainReducer = (
-    { products, shoppingCart }: InitialStateType,
-    action: ProductActions | ShoppingCartActions
+    { products, shoppingCart, map }: InitialStateType,
+    action: MapActions
 ) => ({
-  products: productReducer(products, action),
-  shoppingCart: shoppingCartReducer(shoppingCart, action)
+  map: mapReducer(map, action)
 });
 
 const AppProvider: React.FC = ({ children }) => {
