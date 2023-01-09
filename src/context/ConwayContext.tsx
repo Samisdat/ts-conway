@@ -1,72 +1,66 @@
-import * as React from 'react'
-import {useRef} from 'react';
+import * as React from "react";
+import { useRef } from "react";
+import { initalZoom } from "../configure";
 
-type Action =
-    {
-        type: 'SET_ZOOM',
-        zoom: number
-    }
-    ;
+type Action = {
+  type: "SET_ZOOM";
+  zoom: number;
+};
 
 type Dispatch = (action: Action) => void;
 type State = {
-    zoom:number;
-}
+  zoom: number;
+};
 
 type MapProviderProps = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const MapStateContext = React.createContext<
-    {state: State; dispatch: Dispatch} | undefined
-    >(undefined);
+  { state: State; dispatch: Dispatch } | undefined
+>(undefined);
 
+function mapReducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_ZOOM": {
+      const { zoom } = action;
 
-function mapReducer(state: State, action: Action):State {
-
-    switch (action.type) {
-
-
-        case 'SET_ZOOM': {
-
-            const {zoom} = action;
-
-            return {
-                ...state,
-                zoom,
-            };
-
-        }
-
-        default: {
-            throw new Error(`Unhandled action type: ${(action as any).type}`)
-        }
+      return {
+        ...state,
+        zoom,
+      };
     }
+
+    default: {
+      throw new Error(`Unhandled action type: ${(action as any).type}`);
+    }
+  }
 }
 
-function MapProvider({children}: MapProviderProps) {
+function MapProvider({ children }: MapProviderProps) {
+  const ref = useRef(null);
 
-    const ref = useRef(null);
+  const [state, dispatch] = React.useReducer(mapReducer, {
+    zoom: initalZoom,
+  });
 
-    const [state, dispatch] = React.useReducer(mapReducer, {
-        zoom: 1
-    });
+  const value = { state, dispatch };
 
-    const value = {state, dispatch};
-
-
-    return <MapStateContext.Provider value={value}>{children}</MapStateContext.Provider>
+  return (
+    <MapStateContext.Provider value={value}>
+      {children}
+    </MapStateContext.Provider>
+  );
 }
 
 const useMap = () => {
+  const context = React.useContext(MapStateContext);
 
-    const context = React.useContext(MapStateContext);
+  if (context === undefined) {
+    throw new Error("useMap must be used within a MapProvider");
+  }
 
-    if (context === undefined) {
-        throw new Error('useMap must be used within a MapProvider')
-    }
+  return context;
+};
 
-    return context
-}
-
-export {MapProvider, useMap}
+export { MapProvider, useMap };
