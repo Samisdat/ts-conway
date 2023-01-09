@@ -8,6 +8,7 @@ const ConwayGameOfLiveStyled = styled.div`
   width: ${mapWidth};
   height: ${mapHeight};
   background: #dce2c8;
+  background: yellow;
   margin: 0px;
   float: left;
 `;

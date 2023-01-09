@@ -12,6 +12,7 @@ type ActionMap<M extends { [index: string]: any }> = {
 export enum Types {
   Zoom = "SET_ZOOM",
   Pan = "SET_PAN",
+  Dimension = "Dimension",
   Canvas = "UPDATE_CANVAS",
 }
 
@@ -36,9 +37,11 @@ type MapPayload = {
     top: number;
   };
   [Types.Canvas]: {
+    ctx: CanvasRenderingContext2D;
+  };
+  [Types.Dimension]: {
     width: number;
     height: number;
-    ctx: CanvasRenderingContext2D;
   };
 };
 
@@ -51,21 +54,22 @@ export const mapReducer = (state: MapType, action: MapActions) => {
 
       return { ...state, zoom };
     case Types.Pan:
-      console.log(action.payload);
       const left = action.payload.left;
       const top = action.payload.top;
       return { ...state, left, top };
-    case Types.Canvas:
-      console.log(action);
-
+    case Types.Dimension:
       const width = action.payload.width;
       const height = action.payload.height;
-      const ctx = action.payload.ctx;
-      const ready = true;
       return {
         ...state,
         width,
         height,
+      };
+    case Types.Canvas:
+      const ctx = action.payload.ctx;
+      const ready = false;
+      return {
+        ...state,
         ctx,
         ready,
       };

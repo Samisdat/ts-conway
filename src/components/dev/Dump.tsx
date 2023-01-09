@@ -13,6 +13,12 @@ const Dump = () => {
         <dd>{state.left}</dd>
         <dt>Top</dt>
         <dd>{state.top}</dd>
+        <dt>with</dt>
+        <dd>{state.width}</dd>
+        <dt>height</dt>
+        <dd>{state.height}</dd>
+        <dt>ready</dt>
+        <dd>{state.ready}</dd>
       </dl>
     </DumpStyled>
   );

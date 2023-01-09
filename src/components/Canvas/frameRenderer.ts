@@ -12,7 +12,7 @@ function frameRenderer(width: number, height: number, ball: any) {
     this.restore();
   };
 
-  drawCircle(ball.x, ball.y, ball.radius, "#444");
+  drawCircle(ball.x, ball.y, ball.radius, "#f00");
 }
 
 export default frameRenderer;

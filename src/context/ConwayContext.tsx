@@ -1,6 +1,6 @@
-import React, { createContext, useReducer, Dispatch } from "react";
+import React, { createContext, useReducer, Dispatch, ReactNode } from "react";
 import { MapActions, mapReducer, MapType } from "./reducers";
-import { initalZoom, mapWidth } from "../configure";
+import { initalZoom } from "../configure";
 
 const initialState: MapType = {
   zoom: initalZoom,
@@ -17,7 +17,11 @@ const AppContext = createContext<{
   dispatch: () => null,
 });
 
-const MapProvider: React.FC = ({ children }) => {
+type MapProviderProps = {
+  children: ReactNode;
+};
+
+const MapProvider: React.FC<MapProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(mapReducer, initialState);
 
   return (
