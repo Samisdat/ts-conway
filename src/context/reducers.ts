@@ -21,6 +21,7 @@ export type MapType = {
   zoom: number;
   left: number;
   top: number;
+  ready: boolean;
   width?: number;
   height?: number;
   ctx?: CanvasRenderingContext2D;
@@ -60,12 +61,13 @@ export const mapReducer = (state: MapType, action: MapActions) => {
       const width = action.payload.width;
       const height = action.payload.height;
       const ctx = action.payload.ctx;
-
+      const ready = true;
       return {
         ...state,
         width,
         height,
         ctx,
+        ready,
       };
     default:
       return state;

@@ -3,7 +3,5 @@ import ReactDOM from "react-dom/client";
 import ConwayGameOfLive from "./ConwayGameOfLive";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <ConwayGameOfLive />
-  </React.StrictMode>
+  <ConwayGameOfLive />
 );

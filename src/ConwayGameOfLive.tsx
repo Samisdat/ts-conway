@@ -4,6 +4,7 @@ import ConwayGameOfLiveStyled from "./ConwayGameOfLive.styled";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { MapProvider } from "./context/ConwayContext";
 import Canvas from "./components/Canvas/Canvas";
+import Renderer from "./components/Canvas/Renderer";
 
 function ConwayGameOfLive() {
   return (
