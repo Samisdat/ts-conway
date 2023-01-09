@@ -1,3 +1,4 @@
+
 import React, { createContext, useReducer, Dispatch } from "react";
 import {
   productReducer,
@@ -49,12 +50,12 @@ const AppProvider: React.FC = ({ children }) => {
 };
 
 const useMap = () => {
-    const context = React.useContext(AppContext);
+  const context = React.useContext(AppContext);
 
-        if (context === undefined) {
-        throw new Error("useMap must be used within a MapProvider");
-      }
+  if (context === undefined) {throw new Error("useMap must be used within a MapProvider");
+  }
 
-        return context;
+  return context;
 };
+
 export { AppProvider, AppContext, useMap };

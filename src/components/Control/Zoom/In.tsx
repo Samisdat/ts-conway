@@ -1,37 +1,50 @@
 import { useEffect, useState } from "react";
 import { zoomMax, zoomStep } from "../../../configure";
-import { useMap } from "../../../context/ConwayContext";
+
 import Control from "../Control";
 import { ZoomInControlStyled } from "./styled";
+import {useMap} from "../../../context/ConwayContext";
 import {Types} from "../../../context/reducers";
+
 const ZoomIn = () => {
   const {
-    state: { zoom },
+    state,
     dispatch,
   } = useMap();
 
-  const [disabled, setDisabled] = useState<boolean>(false);
+  console.log(state)
 
+  const [disabled, setDisabled] = useState<boolean>(false);
+  /*
   useEffect(() => {
     if (false === disabled) {
       return;
     }
 
-    if (zoom < zoomMax) {
+    if (state.zoom < zoomMax) {
       setDisabled(false);
     }
-  }, [zoom]);
-
+  }, [state.zoom]);
+  */
   const onClick = () => {
-    let nextZoom = zoom + zoomStep;
+
+    dispatch({
+      type: Types.Add
+    })
+
+    /*
+    let nextZoom = state.zoom + zoomStep;
     if (nextZoom >= zoomMax) {
       setDisabled(true);
 
       nextZoom = zoomMax;
     }
     dispatch({
-      type: Types.Add
-    });
+      type: Types.Zoom,
+      payload:{
+        zoom: nextZoom
+      }
+    });*/
   /*
     dispatch({
       type: "SET_ZOOM",
