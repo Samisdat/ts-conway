@@ -1,15 +1,17 @@
-import {useMap} from "../../context/ConwayContext";
+import { useMap } from "../../context/ConwayContext";
 
 const Dump = () => {
-    const {
-        state: {zoom},
-        dispatch
-    } = useMap();
+  const {
+    state: { shoppingCart },
+  } = useMap();
+  const x = 0;
 
-    return (
+  return (
     <dl>
       <dt>Zoom</dt>
-      <dd>{zoom}</dd>
+      <dd>{shoppingCart}</dd>
+      <dt>X</dt>
+      <dd>{x}</dd>
     </dl>
   );
 };

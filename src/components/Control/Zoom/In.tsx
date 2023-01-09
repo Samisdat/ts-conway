@@ -3,6 +3,7 @@ import { zoomMax, zoomStep } from "../../../configure";
 import { useMap } from "../../../context/ConwayContext";
 import Control from "../Control";
 import { ZoomInControlStyled } from "./styled";
+import {Types} from "../../../context/reducers";
 const ZoomIn = () => {
   const {
     state: { zoom },
@@ -28,11 +29,18 @@ const ZoomIn = () => {
 
       nextZoom = zoomMax;
     }
-
+    dispatch({
+      type: Types.Add
+    });
+  /*
     dispatch({
       type: "SET_ZOOM",
-      zoom: nextZoom,
+      payload: {
+        zoom: nextZoom,
+      },
     });
+
+   */
   };
 
   return (
